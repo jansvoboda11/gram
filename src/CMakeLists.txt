@@ -1,6 +1,39 @@
 set(SOURCE_FILES
-        Greeter.cpp
-        Greeter.h
+        evolution/operator/CrossoverOperator.cpp
+        evolution/operator/CrossoverOperator.h
+        evolution/operator/MutationOperator.cpp
+        evolution/operator/MutationOperator.h
+        evolution/operator/Operator.h
+        evolution/Evolution.cpp
+        evolution/Evolution.h
+        evolution/EvolutionBuilder.cpp
+        evolution/EvolutionBuilder.h
+        evolution/FitnessCalculator.cpp
+        evolution/FitnessCalculator.h
+        evolution/IndividualSelector.h
+        language/grammar/rule_parser/BnfRuleParser.cpp
+        language/grammar/rule_parser/BnfRuleParser.h
+        language/grammar/rule_parser/RuleParser.h
+        language/grammar/symbol/NonTerminalSymbol.cpp
+        language/grammar/symbol/NonTerminalSymbol.h
+        language/grammar/symbol/Symbol.h
+        language/grammar/symbol/TerminalSymbol.cpp
+        language/grammar/symbol/TerminalSymbol.h
+        language/grammar/Grammar.cpp
+        language/grammar/Grammar.h
+        language/Evaluator.h
+        population/individual/Genotype.cpp
+        population/individual/Genotype.h
+        population/individual/Individual.cpp
+        population/individual/Individual.h
+        population/individual/Mapper.cpp
+        population/individual/Mapper.h
+        population/individual/Phenotype.cpp
+        population/individual/Phenotype.h
+        population/Initializer.cpp
+        population/Initializer.h
+        population/Population.cpp
+        population/Population.h
         )
 
 add_library(gram STATIC ${SOURCE_FILES})
