@@ -1,6 +1,7 @@
 set(GTEST_ROOT ../lib/googletest/googletest)
 
 include_directories(GTEST_ROOT GTEST_ROOT/include)
+include_directories(../../src/)
 
 add_executable(gram_unit_tests
         evolution/operator/crossover_operator_test.cpp
@@ -13,7 +14,9 @@ add_executable(gram_unit_tests
         language/grammar/symbol/non_terminal_symbol_test.cpp
         language/grammar/symbol/terminal_symbol_test.cpp
         language/grammar/grammar_test.cpp
+        language/grammar/rule_test.cpp
         language/evaluator_test.cpp
+        population/individual/genotype_test.cpp
         population/individual/mapper_test.cpp
         population/individual/phenotype_test.cpp
         population/initializer_test.cpp

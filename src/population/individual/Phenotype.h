@@ -3,7 +3,8 @@
 
 #include <string>
 #include <vector>
-#include "../../language/grammar/symbol/TerminalSymbol.h"
+
+#include "../../language/grammar/symbol/Terminal.h"
 
 namespace gram {
 namespace population {
@@ -13,10 +14,13 @@ namespace individual {
  */
 class Phenotype {
  public:
-  Phenotype(std::vector<gram::language::grammar::TerminalSymbol> terminals);
+  void addTerminal(gram::language::grammar::Terminal terminal);
+  gram::language::grammar::Terminal terminalAt(int index);
   std::string serialize();
+  bool operator==(const Phenotype &phenotype) const;
+  bool operator!=(const Phenotype &phenotype) const;
  private:
-  std::vector<gram::language::grammar::TerminalSymbol> terminals;
+  std::vector<gram::language::grammar::Terminal> terminals;
 };
 }
 }

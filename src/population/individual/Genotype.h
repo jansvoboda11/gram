@@ -7,10 +7,13 @@ namespace gram {
 namespace population {
 namespace individual {
 /**
- * Structure.
+ * Class.
  */
 struct Genotype {
+ public:
   Genotype(std::vector<int> values);
+  int geneAt(int index);
+ private:
   std::vector<int> values;
 };
 }

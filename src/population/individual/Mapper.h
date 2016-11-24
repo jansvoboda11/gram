@@ -1,6 +1,8 @@
 #ifndef GRAM_INDIVIDUAL_MAPPER
 #define GRAM_INDIVIDUAL_MAPPER
 
+#include "../../language/grammar/Grammar.h"
+#include "../../language/grammar/Rule.h"
 #include "Genotype.h"
 #include "Phenotype.h"
 
@@ -12,7 +14,14 @@ namespace individual {
  */
 class Mapper {
  public:
-  Phenotype map(Genotype genotype);
+  Mapper(Genotype genotype, gram::language::grammar::Grammar grammar);
+  Phenotype map();
+ private:
+  Phenotype phenotype;
+  Genotype genotype;
+  gram::language::grammar::Grammar grammar;
+  int geneCount;
+  Phenotype recursiveMap(gram::language::grammar::Rule rule);
 };
 }
 }

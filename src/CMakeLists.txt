@@ -14,13 +14,14 @@ set(SOURCE_FILES
         language/grammar/rule_parser/BnfRuleParser.cpp
         language/grammar/rule_parser/BnfRuleParser.h
         language/grammar/rule_parser/RuleParser.h
-        language/grammar/symbol/NonTerminalSymbol.cpp
-        language/grammar/symbol/NonTerminalSymbol.h
-        language/grammar/symbol/Symbol.h
-        language/grammar/symbol/TerminalSymbol.cpp
-        language/grammar/symbol/TerminalSymbol.h
+        language/grammar/symbol/NonTerminal.cpp
+        language/grammar/symbol/NonTerminal.h
+        language/grammar/symbol/Terminal.cpp
+        language/grammar/symbol/Terminal.h
         language/grammar/Grammar.cpp
         language/grammar/Grammar.h
+        language/grammar/Rule.cpp
+        language/grammar/Rule.h
         language/Evaluator.h
         population/individual/Genotype.cpp
         population/individual/Genotype.h
