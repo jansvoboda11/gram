@@ -1,7 +1,5 @@
 #include <gtest/gtest.h>
 
-#include <memory>
-
 #include <evolution/operator/Mutation.h>
 #include <util/FakeNumberGenerator.h>
 
@@ -11,9 +9,10 @@ using namespace gram::fake::util;
 
 TEST(mutation_operator_test, test_it_mutates_one_gene) {
   Genotype genotype{1, 1, 1};
-  Genotype expectedGenotype{1, 1, 2};
+  Genotype expectedGenotype{1, 1, 3};
 
-  FakeNumberGenerator numberGenerator;
+  std::vector<int> generatedNumbers{2, 3};
+  FakeNumberGenerator numberGenerator(generatedNumbers);
 
   Mutation mutation(numberGenerator);
   Genotype mutatedGenotype = mutation.apply(genotype);

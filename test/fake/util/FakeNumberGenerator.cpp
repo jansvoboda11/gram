@@ -2,6 +2,14 @@
 
 using namespace gram::fake::util;
 
+FakeNumberGenerator::FakeNumberGenerator(std::vector<int> numbers) : numbers(numbers), count(0) {
+  //
+}
+
 int FakeNumberGenerator::generate() {
-  return 2;
+  int number = numbers[count];
+
+  count = (count + 1) % numbers.size();
+
+  return number;
 }
