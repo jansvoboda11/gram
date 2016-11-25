@@ -6,6 +6,14 @@ Genotype::Genotype(std::vector<int> values) : values(values) {
   //
 }
 
-int Genotype::geneAt(int index) {
+int &Genotype::operator[](int index) {
   return values[index];
+}
+
+bool Genotype::operator==(const Genotype &genotype) const {
+  return values == genotype.values;
+}
+
+bool Genotype::operator!=(const Genotype &genotype) const {
+  return !operator==(genotype);
 }

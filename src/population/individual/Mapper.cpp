@@ -21,7 +21,7 @@ Phenotype Mapper::recursiveMap(Rule rule) {
     } else {
       NonTerminal &nonTerminal = rule.nonTerminalAt(i);
 
-      int gene = genotype.geneAt(geneCount);
+      int gene = genotype[geneCount];
       geneCount += 1;
 
       recursiveMap(nonTerminal.ruleAt(gene));

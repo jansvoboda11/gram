@@ -12,7 +12,9 @@ namespace individual {
 struct Genotype {
  public:
   Genotype(std::vector<int> values);
-  int geneAt(int index);
+  int &operator[](int index);
+  bool operator==(const Genotype &genotype) const;
+  bool operator!=(const Genotype &genotype) const;
  private:
   std::vector<int> values;
 };
