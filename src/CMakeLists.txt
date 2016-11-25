@@ -1,11 +1,10 @@
 include_directories(.)
 
 set(SOURCE_FILES
-        evolution/operator/CrossoverOperator.cpp
-        evolution/operator/CrossoverOperator.h
-        evolution/operator/MutationOperator.cpp
-        evolution/operator/MutationOperator.h
-        evolution/operator/Operator.h
+        evolution/operator/Crossover.cpp
+        evolution/operator/Crossover.h
+        evolution/operator/Mutation.cpp
+        evolution/operator/Mutation.h
         evolution/Evolution.cpp
         evolution/Evolution.h
         evolution/EvolutionBuilder.cpp
@@ -37,6 +36,7 @@ set(SOURCE_FILES
         population/Initializer.h
         population/Population.cpp
         population/Population.h
+        util/NumberGenerator.h
         )
 
 add_library(gram STATIC ${SOURCE_FILES})

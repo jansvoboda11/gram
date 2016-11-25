@@ -1,11 +1,12 @@
 set(GTEST_ROOT ../lib/googletest/googletest)
 
 include_directories(GTEST_ROOT GTEST_ROOT/include)
-include_directories(../../src/)
+include_directories(../../src)
+include_directories(../fake)
 
 add_executable(gram_unit_tests
-        evolution/operator/crossover_operator_test.cpp
-        evolution/operator/mutation_operator_test.cpp
+        evolution/operator/crossover_test.cpp
+        evolution/operator/mutation_test.cpp
         evolution/evolution_builder_test.cpp
         evolution/evolution_test.cpp
         evolution/fitness_calculator_test.cpp
@@ -24,4 +25,5 @@ add_executable(gram_unit_tests
         )
 
 target_link_libraries(gram_unit_tests gtest gtest_main)
+target_link_libraries(gram_unit_tests gram_test_fake)
 target_link_libraries(gram_unit_tests gram)
