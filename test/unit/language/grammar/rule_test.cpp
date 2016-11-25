@@ -66,7 +66,7 @@ TEST(rule_test, test_it_recognizes_two_equal_rules) {
   Rule secondRule;
   secondRule.addTerminal(secondTerminal);
 
-  ASSERT_EQ(firstRule, secondRule);
+  ASSERT_TRUE(firstRule == secondRule);
 }
 
 TEST(rule_test, test_it_recognizes_two_different_rules) {
