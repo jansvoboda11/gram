@@ -6,6 +6,14 @@ Genotype::Genotype(std::vector<int> values) : values(values) {
   //
 }
 
+unsigned long Genotype::size() {
+  return values.size();
+}
+
+std::vector<int> Genotype::genes() {
+  return values;
+}
+
 int &Genotype::operator[](int index) {
   return values[index];
 }
