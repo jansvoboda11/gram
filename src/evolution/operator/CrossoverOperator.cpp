@@ -1,10 +1,9 @@
-#include "CrossoverOperator.h"
+#include <evolution/operator/CrossoverOperator.h>
 
 using namespace gram::evolution;
 using namespace gram::population::individual;
 
-CrossoverOperator::CrossoverOperator(Genotype first, Genotype second)
-    : first(first), second(second) {
+CrossoverOperator::CrossoverOperator(Genotype first, Genotype second) : first(first), second(second) {
   //
 }
 

@@ -1,4 +1,4 @@
-#include "Individual.h"
+#include <population/individual/Individual.h>
 
 using namespace gram::language::grammar;
 using namespace gram::population::individual;

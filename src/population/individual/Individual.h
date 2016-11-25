@@ -1,8 +1,8 @@
 #ifndef GRAM_INDIVIDUAL_INDIVIDUAL
 #define GRAM_INDIVIDUAL_INDIVIDUAL
 
-#include "Genotype.h"
-#include "Phenotype.h"
+#include <population/individual/Genotype.h>
+#include <population/individual/Phenotype.h>
 
 namespace gram {
 namespace population {

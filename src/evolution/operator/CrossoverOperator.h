@@ -1,7 +1,7 @@
 #ifndef GRAM_EVOLUTION_CROSSOVER_OPERATOR
 #define GRAM_EVOLUTION_CROSSOVER_OPERATOR
 
-#include "Operator.h"
+#include <evolution/operator/Operator.h>
 
 namespace gram {
 namespace evolution {
@@ -10,8 +10,7 @@ namespace evolution {
  */
 class CrossoverOperator : public Operator {
  public:
-  CrossoverOperator(gram::population::individual::Genotype first,
-                    gram::population::individual::Genotype second);
+  CrossoverOperator(gram::population::individual::Genotype first, gram::population::individual::Genotype second);
   gram::population::individual::Genotype apply();
  private:
   gram::population::individual::Genotype first;

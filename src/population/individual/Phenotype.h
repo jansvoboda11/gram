@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "../../language/grammar/symbol/Terminal.h"
+#include <language/grammar/symbol/Terminal.h>
 
 namespace gram {
 namespace population {

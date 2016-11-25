@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include <language/grammar/Rule.h>
+
 namespace gram {
 namespace language {
 namespace grammar {

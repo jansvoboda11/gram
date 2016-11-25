@@ -1,4 +1,4 @@
-#include "Phenotype.h"
+#include <population/individual/Phenotype.h>
 
 using namespace gram::language::grammar;
 using namespace gram::population::individual;

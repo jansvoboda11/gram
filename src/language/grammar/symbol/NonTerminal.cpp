@@ -1,7 +1,4 @@
-#include <cstdlib>
-
-#include "NonTerminal.h"
-#include "../Rule.h"
+#include <language/grammar/symbol/NonTerminal.h>
 
 using namespace gram::language::grammar;
 

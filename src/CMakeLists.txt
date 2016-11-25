@@ -1,3 +1,5 @@
+include_directories(.)
+
 set(SOURCE_FILES
         evolution/operator/CrossoverOperator.cpp
         evolution/operator/CrossoverOperator.h

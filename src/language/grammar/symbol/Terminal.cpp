@@ -1,4 +1,4 @@
-#include "Terminal.h"
+#include <language/grammar/symbol/Terminal.h>
 
 using namespace gram::language::grammar;
 

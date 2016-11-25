@@ -1,4 +1,4 @@
-#include "Genotype.h"
+#include <population/individual/Genotype.h>
 
 using namespace gram::population::individual;
 

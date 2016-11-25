@@ -1,7 +1,7 @@
 #ifndef GRAM_EVOLUTION_OPERATOR
 #define GRAM_EVOLUTION_OPERATOR
 
-#include "../../population/individual/Genotype.h"
+#include <population/individual/Genotype.h>
 
 namespace gram {
 namespace evolution {

@@ -1,8 +1,5 @@
 #include <gtest/gtest.h>
 
-#include <language/grammar/symbol/Terminal.h>
-#include <language/grammar/symbol/NonTerminal.h>
-#include <language/grammar/Rule.h>
 #include <language/grammar/Grammar.h>
 
 using namespace gram::language::grammar;

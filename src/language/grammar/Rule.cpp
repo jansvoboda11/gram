@@ -1,4 +1,4 @@
-#include "Rule.h"
+#include <language/grammar/Rule.h>
 
 using namespace gram::language::grammar;
 

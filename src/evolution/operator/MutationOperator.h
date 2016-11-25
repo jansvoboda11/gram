@@ -1,7 +1,7 @@
 #ifndef GRAM_EVOLUTION_MUTATION_OPERATOR
 #define GRAM_EVOLUTION_MUTATION_OPERATOR
 
-#include "Operator.h"
+#include <evolution/operator/Operator.h>
 
 namespace gram {
 namespace evolution {

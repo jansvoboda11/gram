@@ -1,9 +1,7 @@
 #ifndef GRAM_POPULATION_INITIALIZER
 #define GRAM_POPULATION_INITIALIZER
 
-#include <memory>
-
-#include "Population.h"
+#include <population/Population.h>
 
 namespace gram {
 namespace population {

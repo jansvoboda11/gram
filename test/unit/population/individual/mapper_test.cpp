@@ -1,8 +1,5 @@
 #include <gtest/gtest.h>
 
-#include <language/grammar/symbol/NonTerminal.h>
-#include <language/grammar/Grammar.h>
-#include <population/individual/Genotype.h>
 #include <population/individual/Mapper.h>
 
 using namespace gram::language::grammar;

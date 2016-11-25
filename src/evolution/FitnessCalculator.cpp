@@ -1,4 +1,4 @@
-#include "FitnessCalculator.h"
+#include <evolution/FitnessCalculator.h>
 
 using namespace gram::evolution;
 
