@@ -11,14 +11,11 @@ Genotype Crossover::apply(Genotype first, Genotype second) {
   unsigned long smallerSize = std::min(first.size(), second.size());
   unsigned long point = generator.generate() % (smallerSize + 1);
 
-  std::vector<int> firstGenes = first.genes();
-  std::vector<int> secondGenes = second.genes();
+  Genotype firstPart(first.begin(), first.begin() + point);
+  Genotype secondPart(second.begin() + point, second.end());
 
-  std::vector<int> firstPart(firstGenes.begin(), firstGenes.begin() + point);
-  std::vector<int> secondPart(secondGenes.begin() + point, secondGenes.end());
+  Genotype newGenotype(firstPart);
+  newGenotype.insert(newGenotype.end(), secondPart.begin(), secondPart.end());
 
-  std::vector<int> newGenes(firstPart);
-  newGenes.insert(newGenes.end(), secondPart.begin(), secondPart.end());
-
-  return Genotype(newGenes);
+  return newGenotype;
 }

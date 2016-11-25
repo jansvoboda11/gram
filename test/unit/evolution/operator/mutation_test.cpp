@@ -10,11 +10,8 @@ using namespace gram::population::individual;
 using namespace gram::fake::util;
 
 TEST(mutation_operator_test, test_it_mutates_one_gene) {
-  std::vector<int> genes{1, 1, 1};
-  Genotype genotype(genes);
-
-  std::vector<int> expectedGenes{1, 1, 2};
-  Genotype expectedGenotype(expectedGenes);
+  Genotype genotype{1, 1, 1};
+  Genotype expectedGenotype{1, 1, 2};
 
   FakeNumberGenerator numberGenerator;
 

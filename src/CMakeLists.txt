@@ -24,7 +24,6 @@ set(SOURCE_FILES
         language/grammar/Rule.cpp
         language/grammar/Rule.h
         language/Evaluator.h
-        population/individual/Genotype.cpp
         population/individual/Genotype.h
         population/individual/Individual.cpp
         population/individual/Individual.h

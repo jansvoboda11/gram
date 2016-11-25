@@ -13,8 +13,7 @@ TEST(mapper_test, test_it_maps_one_terminal) {
 
   Grammar grammar(startRule);
 
-  std::vector<int> numbers{0};
-  Genotype genotype(numbers);
+  Genotype genotype{0};
 
   Phenotype phenotype;
   phenotype.addTerminal(terminal);
@@ -44,8 +43,7 @@ TEST(mapper_test, test_it_maps_nonterminal) {
 
   Grammar grammar(startRule);
 
-  std::vector<int> numbers{1};
-  Genotype genotype(numbers);
+  Genotype genotype{1};
 
   Phenotype phenotype;
   phenotype.addTerminal(secondTerminal);

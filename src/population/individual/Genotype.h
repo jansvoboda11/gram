@@ -9,17 +9,7 @@ namespace individual {
 /**
  * Class.
  */
-struct Genotype {
- public:
-  Genotype(std::vector<int> values);
-  std::vector<int> genes();
-  unsigned long size();
-  int &operator[](int index);
-  bool operator==(const Genotype &genotype) const;
-  bool operator!=(const Genotype &genotype) const;
- private:
-  std::vector<int> values;
-};
+typedef std::vector<int> Genotype;
 }
 }
 }
