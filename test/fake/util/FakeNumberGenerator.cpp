@@ -2,7 +2,7 @@
 
 using namespace gram::fake::util;
 
-FakeNumberGenerator::FakeNumberGenerator(std::vector<int> numbers) : numbers(numbers), count(0) {
+FakeNumberGenerator::FakeNumberGenerator(std::initializer_list<int> numbers) : numbers(numbers), count(0) {
   //
 }
 

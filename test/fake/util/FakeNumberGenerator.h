@@ -13,7 +13,7 @@ namespace util {
  */
 class FakeNumberGenerator : public gram::util::NumberGenerator {
  public:
-  FakeNumberGenerator(std::vector<int> numbers);
+  FakeNumberGenerator(std::initializer_list<int> numbers);
   int generate();
   std::vector<int> generate(int count);
  private:

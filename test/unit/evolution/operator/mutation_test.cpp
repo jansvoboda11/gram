@@ -11,8 +11,7 @@ TEST(mutation_operator_test, test_it_mutates_one_gene) {
   Genotype genotype{1, 1, 1};
   Genotype expectedGenotype{1, 1, 3};
 
-  std::vector<int> generatedNumbers{2, 3};
-  FakeNumberGenerator numberGenerator(generatedNumbers);
+  FakeNumberGenerator numberGenerator{2, 3};
 
   Mutation mutation(numberGenerator);
   Genotype mutatedGenotype = mutation.apply(genotype);
