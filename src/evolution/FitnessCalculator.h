@@ -8,7 +8,10 @@ namespace evolution {
  */
 class FitnessCalculator {
  public:
-  double calculate();
+  FitnessCalculator(double width);
+  double calculate(int desired, int actual);
+ private:
+  double width;
 };
 }
 }

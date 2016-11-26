@@ -2,6 +2,12 @@
 
 using namespace gram::evolution;
 
-double FitnessCalculator::calculate() {
-  return 0.0;
+FitnessCalculator::FitnessCalculator(double width) : width(width) {
+  //
+}
+
+double FitnessCalculator::calculate(int desired, int actual) {
+  double base = (1 / width) * (actual + desired);
+
+  return base * base;
 }
