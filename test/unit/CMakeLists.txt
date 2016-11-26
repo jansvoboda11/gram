@@ -19,6 +19,7 @@ add_executable(gram_unit_tests
         language/grammar/rule_test.cpp
         language/evaluator_test.cpp
         population/individual/genotype_test.cpp
+        population/individual/individual_test.cpp.cpp
         population/individual/mapper_test.cpp
         population/individual/phenotype_test.cpp
         population/initializer_test.cpp

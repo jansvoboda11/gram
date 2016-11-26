@@ -2,6 +2,7 @@
 #define GRAM_POPULATION_INITIALIZER
 
 #include <population/Population.h>
+#include <util/NumberGenerator.h>
 
 namespace gram {
 namespace population {
@@ -10,7 +11,11 @@ namespace population {
  */
 class Initializer {
  public:
-  virtual Population initialize();
+  Initializer(gram::util::NumberGenerator &generator, int individualSize);
+  virtual Population initialize(int individualCount);
+ private:
+  gram::util::NumberGenerator &generator;
+  int individualSize;
 };
 }
 }

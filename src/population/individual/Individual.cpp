@@ -3,6 +3,14 @@
 using namespace gram::language::grammar;
 using namespace gram::population::individual;
 
-Individual::Individual() : genotype{0}, phenotype() {
+Individual::Individual(Genotype genotype) : genotype(genotype), phenotype() {
   //
+}
+
+bool Individual::operator==(const Individual &individual) const {
+  return genotype == individual.genotype;
+}
+
+bool Individual::operator!=(const Individual &individual) const {
+  return !operator==(individual);
 }

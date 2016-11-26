@@ -15,6 +15,7 @@ class FakeNumberGenerator : public gram::util::NumberGenerator {
  public:
   FakeNumberGenerator(std::vector<int> numbers);
   int generate();
+  std::vector<int> generate(int count);
  private:
   std::vector<int> numbers;
   unsigned long count;

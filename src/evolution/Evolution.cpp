@@ -11,5 +11,7 @@ Individual Evolution::run() {
   // apply operators
   // repeat until criteria are met
 
-  return Individual();
+  Genotype genotype;
+
+  return Individual(genotype);
 }

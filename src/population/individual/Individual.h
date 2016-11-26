@@ -12,7 +12,9 @@ namespace individual {
  */
 class Individual {
  public:
-  Individual();
+  Individual(Genotype genotype);
+  bool operator==(const Individual &individual) const;
+  bool operator!=(const Individual &individual) const;
  private:
   Genotype genotype;
   Phenotype phenotype;

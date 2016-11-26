@@ -9,6 +9,7 @@ namespace util {
 class NumberGenerator {
  public:
   virtual int generate() = 0;
+  virtual std::vector<int> generate(int count) = 0;
 };
 }
 }

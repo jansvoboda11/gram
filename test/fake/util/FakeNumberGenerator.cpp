@@ -13,3 +13,13 @@ int FakeNumberGenerator::generate() {
 
   return number;
 }
+
+std::vector<int> FakeNumberGenerator::generate(int count) {
+  std::vector<int> numbers;
+
+  for (int i = 0; i < count; i++) {
+    numbers.push_back(generate());
+  }
+
+  return numbers;
+}
