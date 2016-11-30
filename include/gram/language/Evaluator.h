@@ -1,18 +1,18 @@
-#ifndef GRAM_INDIVIDUAL_EVALUATOR
-#define GRAM_INDIVIDUAL_EVALUATOR
+#ifndef GRAM_LANGUAGE_EVALUATOR
+#define GRAM_LANGUAGE_EVALUATOR
 
-#include <gram/population/individual/Individual.h>
+#include <gram/individual/Individual.h>
 
 namespace gram {
-namespace individual {
+namespace language {
 /**
  * Class.
  */
 class Evaluator {
  public:
-  virtual int evaluate(gram::population::individual::Individual individual) = 0;
+  virtual int evaluate(gram::individual::Individual individual) = 0;
 };
 }
 }
 
-#endif // GRAM_INDIVIDUAL_EVALUATOR
+#endif // GRAM_LANGUAGE_EVALUATOR

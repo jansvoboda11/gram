@@ -3,7 +3,7 @@
 #include <gram/population/Population.h>
 
 using namespace gram::population;
-using namespace gram::population::individual;
+using namespace gram::individual;
 
 TEST(population_test, test_it_accepts_individuals) {
   Genotype firstGenotype{1, 2, 3};

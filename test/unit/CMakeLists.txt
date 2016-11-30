@@ -12,16 +12,16 @@ add_executable(gram_unit_tests
         evolution/fitness_calculator_test.cpp
         evolution/individual_selector_test.cpp
         fake/util/number_generator_test.cpp
-        language/grammar/rule_parser/bnf_rule_parser_test.cpp
-        language/grammar/symbol/non_terminal_symbol_test.cpp
-        language/grammar/symbol/terminal_symbol_test.cpp
-        language/grammar/grammar_test.cpp
-        language/grammar/rule_test.cpp
+        grammar/rule_parser/bnf_rule_parser_test.cpp
+        grammar/symbol/non_terminal_symbol_test.cpp
+        grammar/symbol/terminal_symbol_test.cpp
+        grammar/grammar_test.cpp
+        grammar/rule_test.cpp
+        individual/genotype_test.cpp
+        individual/individual_test.cpp
+        individual/mapper_test.cpp
+        individual/phenotype_test.cpp
         language/evaluator_test.cpp
-        population/individual/genotype_test.cpp
-        population/individual/individual_test.cpp
-        population/individual/mapper_test.cpp
-        population/individual/phenotype_test.cpp
         population/initializer_test.cpp
         population/population_test.cpp
         )

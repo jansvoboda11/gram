@@ -4,7 +4,7 @@
 #include <gram/fake/util/FakeNumberGenerator.h>
 
 using namespace gram::evolution;
-using namespace gram::population::individual;
+using namespace gram::individual;
 using namespace gram::fake::util;
 
 TEST(mutation_operator_test, test_it_mutates_one_gene) {

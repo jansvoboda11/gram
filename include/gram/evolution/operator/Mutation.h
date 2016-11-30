@@ -1,7 +1,7 @@
-#ifndef GRAM_EVOLUTION_MUTATION_OPERATOR
-#define GRAM_EVOLUTION_MUTATION_OPERATOR
+#ifndef GRAM_EVOLUTION_OPERATOR_MUTATION
+#define GRAM_EVOLUTION_OPERATOR_MUTATION
 
-#include <gram/population/individual/Genotype.h>
+#include <gram/individual/Genotype.h>
 #include <gram/util/NumberGenerator.h>
 
 namespace gram {
@@ -12,11 +12,11 @@ namespace evolution {
 class Mutation {
  public:
   Mutation(gram::util::NumberGenerator &generator);
-  gram::population::individual::Genotype apply(gram::population::individual::Genotype genotype);
+  gram::individual::Genotype apply(gram::individual::Genotype genotype);
  private:
   gram::util::NumberGenerator &generator;
 };
 }
 }
 
-#endif // GRAM_EVOLUTION_MUTATION_OPERATOR
+#endif // GRAM_EVOLUTION_OPERATOR_MUTATION

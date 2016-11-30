@@ -1,7 +1,7 @@
 #include <gram/population/Initializer.h>
 
 using namespace gram::population;
-using namespace gram::population::individual;
+using namespace gram::individual;
 using namespace gram::util;
 
 Initializer::Initializer(NumberGenerator &generator, int individualSize)

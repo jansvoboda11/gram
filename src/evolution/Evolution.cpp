@@ -1,7 +1,7 @@
 #include <gram/evolution/Evolution.h>
 
 using namespace gram::evolution;
-using namespace gram::population::individual;
+using namespace gram::individual;
 
 Individual Evolution::run() {
   // initialize first population

@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include <gram/population/individual/Individual.h>
+#include <gram/individual/Individual.h>
 
 namespace gram {
 namespace evolution {
@@ -12,7 +12,7 @@ namespace evolution {
  */
 class Evolution {
  public:
-  gram::population::individual::Individual run();
+  gram::individual::Individual run();
 };
 }
 }

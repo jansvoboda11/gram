@@ -1,7 +1,7 @@
 #include <gram/evolution/operator/Crossover.h>
 
 using namespace gram::evolution;
-using namespace gram::population::individual;
+using namespace gram::individual;
 
 Crossover::Crossover(gram::util::NumberGenerator &generator) : generator(generator) {
   //

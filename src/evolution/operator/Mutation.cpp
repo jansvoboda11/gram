@@ -1,7 +1,7 @@
 #include <gram/evolution/operator/Mutation.h>
 
 using namespace gram::evolution;
-using namespace gram::population::individual;
+using namespace gram::individual;
 using namespace gram::util;
 
 Mutation::Mutation(NumberGenerator &generator) : generator(generator) {

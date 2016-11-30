@@ -4,7 +4,7 @@
 #include <gram/fake/util/FakeNumberGenerator.h>
 
 using namespace gram::population;
-using namespace gram::population::individual;
+using namespace gram::individual;
 using namespace gram::fake::util;
 
 TEST(initializer_test, test_it_initializes_individuals_with_random_genotype) {
