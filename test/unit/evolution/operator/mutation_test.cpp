@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include <evolution/operator/Mutation.h>
-#include <util/FakeNumberGenerator.h>
+#include <gram/evolution/operator/Mutation.h>
+#include <gram/fake/util/FakeNumberGenerator.h>
 
 using namespace gram::evolution;
 using namespace gram::population::individual;

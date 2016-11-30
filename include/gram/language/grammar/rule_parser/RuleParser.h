@@ -1,7 +1,7 @@
 #ifndef GRAM_GRAMMAR_RULE_PARSER
 #define GRAM_GRAMMAR_RULE_PARSER
 
-#include <language/grammar/Grammar.h>
+#include <gram/language/grammar/Grammar.h>
 
 namespace gram {
 namespace language {

@@ -3,8 +3,8 @@
 
 #include <unordered_map>
 
-#include <language/grammar/symbol/NonTerminal.h>
-#include <language/grammar/symbol/Terminal.h>
+#include <gram/language/grammar/symbol/NonTerminal.h>
+#include <gram/language/grammar/symbol/Terminal.h>
 
 namespace gram {
 namespace language {

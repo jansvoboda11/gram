@@ -1,4 +1,4 @@
-#include <language/grammar/rule_parser/BnfRuleParser.h>
+#include <gram/language/grammar/rule_parser/BnfRuleParser.h>
 
 using namespace gram::language::grammar;
 

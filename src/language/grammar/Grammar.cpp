@@ -1,4 +1,4 @@
-#include <language/grammar/Grammar.h>
+#include <gram/language/grammar/Grammar.h>
 
 using namespace gram::language::grammar;
 

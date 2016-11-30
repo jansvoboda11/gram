@@ -1,8 +1,8 @@
 #ifndef GRAM_POPULATION_INITIALIZER
 #define GRAM_POPULATION_INITIALIZER
 
-#include <population/Population.h>
-#include <util/NumberGenerator.h>
+#include <gram/population/Population.h>
+#include <gram/util/NumberGenerator.h>
 
 namespace gram {
 namespace population {

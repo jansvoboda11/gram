@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include <language/grammar/Rule.h>
+#include <gram/language/grammar/Rule.h>
 
 namespace gram {
 namespace language {

@@ -1,8 +1,8 @@
-include_directories(.)
+include_directories(../../include)
+include_directories(include)
 
 set(SOURCE_FILES
-        util/FakeNumberGenerator.cpp
-        util/FakeNumberGenerator.h
+        src/util/FakeNumberGenerator.cpp
         )
 
 add_library(gram_test_fake STATIC ${SOURCE_FILES})

@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <language/grammar/symbol/Terminal.h>
+#include <gram/language/grammar/symbol/Terminal.h>
 
 using namespace gram::language::grammar;
 

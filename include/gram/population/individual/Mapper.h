@@ -1,9 +1,9 @@
 #ifndef GRAM_INDIVIDUAL_MAPPER
 #define GRAM_INDIVIDUAL_MAPPER
 
-#include <language/grammar/Grammar.h>
-#include <population/individual/Genotype.h>
-#include <population/individual/Phenotype.h>
+#include <gram/language/grammar/Grammar.h>
+#include <gram/population/individual/Genotype.h>
+#include <gram/population/individual/Phenotype.h>
 
 namespace gram {
 namespace population {

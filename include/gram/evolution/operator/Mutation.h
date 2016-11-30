@@ -1,8 +1,8 @@
 #ifndef GRAM_EVOLUTION_MUTATION_OPERATOR
 #define GRAM_EVOLUTION_MUTATION_OPERATOR
 
-#include <population/individual/Genotype.h>
-#include <util/NumberGenerator.h>
+#include <gram/population/individual/Genotype.h>
+#include <gram/util/NumberGenerator.h>
 
 namespace gram {
 namespace evolution {

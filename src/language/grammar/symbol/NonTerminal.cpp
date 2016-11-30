@@ -1,4 +1,4 @@
-#include <language/grammar/symbol/NonTerminal.h>
+#include <gram/language/grammar/symbol/NonTerminal.h>
 
 using namespace gram::language::grammar;
 

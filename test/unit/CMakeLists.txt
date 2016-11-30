@@ -1,8 +1,8 @@
 set(GTEST_ROOT ../lib/googletest/googletest)
 
 include_directories(GTEST_ROOT GTEST_ROOT/include)
-include_directories(../../src)
-include_directories(../fake)
+include_directories(../../include)
+include_directories(../fake/include)
 
 add_executable(gram_unit_tests
         evolution/operator/crossover_test.cpp

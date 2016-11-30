@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <population/Population.h>
+#include <gram/population/Population.h>
 
 using namespace gram::population;
 using namespace gram::population::individual;

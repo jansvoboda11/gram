@@ -1,41 +1,21 @@
-include_directories(.)
+include_directories(../include)
 
 set(SOURCE_FILES
         evolution/operator/Crossover.cpp
-        evolution/operator/Crossover.h
         evolution/operator/Mutation.cpp
-        evolution/operator/Mutation.h
         evolution/Evolution.cpp
-        evolution/Evolution.h
         evolution/EvolutionBuilder.cpp
-        evolution/EvolutionBuilder.h
         evolution/FitnessCalculator.cpp
-        evolution/FitnessCalculator.h
-        evolution/IndividualSelector.h
         language/grammar/rule_parser/BnfRuleParser.cpp
-        language/grammar/rule_parser/BnfRuleParser.h
-        language/grammar/rule_parser/RuleParser.h
         language/grammar/symbol/NonTerminal.cpp
-        language/grammar/symbol/NonTerminal.h
         language/grammar/symbol/Terminal.cpp
-        language/grammar/symbol/Terminal.h
         language/grammar/Grammar.cpp
-        language/grammar/Grammar.h
         language/grammar/Rule.cpp
-        language/grammar/Rule.h
-        language/Evaluator.h
-        population/individual/Genotype.h
         population/individual/Individual.cpp
-        population/individual/Individual.h
         population/individual/Mapper.cpp
-        population/individual/Mapper.h
         population/individual/Phenotype.cpp
-        population/individual/Phenotype.h
         population/Initializer.cpp
-        population/Initializer.h
         population/Population.cpp
-        population/Population.h
-        util/NumberGenerator.h
         )
 
 add_library(gram STATIC ${SOURCE_FILES})

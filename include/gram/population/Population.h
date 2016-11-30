@@ -1,7 +1,7 @@
 #ifndef GRAM_POPULATION_POPULATION
 #define GRAM_POPULATION_POPULATION
 
-#include <population/individual/Individual.h>
+#include <gram/population/individual/Individual.h>
 
 namespace gram {
 namespace population {

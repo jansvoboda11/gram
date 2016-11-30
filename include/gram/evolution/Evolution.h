@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include <population/individual/Individual.h>
+#include <gram/population/individual/Individual.h>
 
 namespace gram {
 namespace evolution {

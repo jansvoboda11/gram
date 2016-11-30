@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <population/individual/Phenotype.h>
+#include <gram/population/individual/Phenotype.h>
 
 using namespace gram::population::individual;
 using namespace gram::language::grammar;

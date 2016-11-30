@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <util/FakeNumberGenerator.h>
+#include <gram/fake/util/FakeNumberGenerator.h>
 
 using namespace gram::fake::util;
 

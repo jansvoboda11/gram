@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <evolution/FitnessCalculator.h>
+#include <gram/evolution/FitnessCalculator.h>
 
 TEST(fitness_calculator_test, test_exact_match_has_best_possible_fitness) {
   gram::evolution::FitnessCalculator calculator(10);

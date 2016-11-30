@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <population/individual/Genotype.h>
+#include <gram/population/individual/Genotype.h>
 
 using namespace gram::population::individual;
 

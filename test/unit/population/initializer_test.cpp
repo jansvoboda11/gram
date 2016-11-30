@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include <population/Initializer.h>
-#include <util/FakeNumberGenerator.h>
+#include <gram/population/Initializer.h>
+#include <gram/fake/util/FakeNumberGenerator.h>
 
 using namespace gram::population;
 using namespace gram::population::individual;

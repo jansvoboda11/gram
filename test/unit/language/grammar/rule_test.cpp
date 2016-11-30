@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <language/grammar/Rule.h>
+#include <gram/language/grammar/Rule.h>
 
 using namespace gram::language::grammar;
 

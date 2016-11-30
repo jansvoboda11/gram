@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include <util/NumberGenerator.h>
+#include <gram/util/NumberGenerator.h>
 
 namespace gram {
 namespace fake {
