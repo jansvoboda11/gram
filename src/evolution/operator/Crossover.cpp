@@ -14,8 +14,8 @@ Genotype Crossover::apply(Genotype first, Genotype second) {
   Genotype firstPart(first.begin(), first.begin() + point);
   Genotype secondPart(second.begin() + point, second.end());
 
-  Genotype newGenotype(firstPart);
-  newGenotype.insert(newGenotype.end(), secondPart.begin(), secondPart.end());
+  Genotype createdGenotype(firstPart);
+  createdGenotype.insert(createdGenotype.end(), secondPart.begin(), secondPart.end());
 
-  return newGenotype;
+  return createdGenotype;
 }
