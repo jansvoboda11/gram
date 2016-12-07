@@ -3,6 +3,8 @@ include_directories(../include)
 set(SOURCE_FILES
         evolution/operator/Crossover.cpp
         evolution/operator/Mutation.cpp
+        evolution/selector/IndividualSelector.cpp
+        evolution/selector/TournamentSelector.cpp
         evolution/Evolution.cpp
         evolution/EvolutionBuilder.cpp
         evolution/FitnessCalculator.cpp
@@ -15,7 +17,6 @@ set(SOURCE_FILES
         individual/Mapper.cpp
         individual/Phenotype.cpp
         population/Initializer.cpp
-        population/Population.cpp
         )
 
 add_library(gram STATIC ${SOURCE_FILES})

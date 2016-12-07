@@ -8,13 +8,7 @@ namespace population {
 /**
  * Class.
  */
-class Population {
- public:
-  Population(std::vector<gram::individual::Individual> individuals);
-  gram::individual::Individual &operator[](int index);
- private:
-  std::vector<gram::individual::Individual> individuals;
-};
+typedef std::vector<gram::individual::Individual> Population;
 }
 }
 

@@ -12,11 +12,14 @@ namespace individual {
 class Individual {
  public:
   Individual(Genotype genotype);
+  void setFitness(double calculatedFitness);
+  double getFitness();
   bool operator==(const Individual &individual) const;
   bool operator!=(const Individual &individual) const;
  private:
   Genotype genotype;
   Phenotype phenotype;
+  double fitness;
 };
 }
 }
