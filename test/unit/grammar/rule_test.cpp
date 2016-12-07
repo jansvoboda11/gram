@@ -21,11 +21,11 @@ TEST(rule_test, test_it_accepts_terminals) {
 TEST(rule_test, test_it_accepts_nonterminals) {
   Terminal terminal("terminal");
 
-  Rule innerRule;
-  innerRule.addTerminal(terminal);
+  auto innerRule = std::make_shared<Rule>();
+  innerRule->addTerminal(terminal);
 
-  NonTerminal nonTerminal;
-  nonTerminal.addRule(innerRule);
+  auto nonTerminal = std::make_shared<NonTerminal>();
+  nonTerminal->addRule(innerRule);
 
   Rule rule;
   rule.addNonTerminal(nonTerminal);
@@ -38,11 +38,11 @@ TEST(rule_test, test_it_accepts_both_terminals_and_nonterminals) {
   Terminal terminal("regular");
   Terminal innerTerminal("inner");
 
-  Rule innerRule;
-  innerRule.addTerminal(innerTerminal);
+  auto innerRule = std::make_shared<Rule>();
+  innerRule->addTerminal(innerTerminal);
 
-  NonTerminal nonTerminal;
-  nonTerminal.addRule(innerRule);
+  auto nonTerminal = std::make_shared<NonTerminal>();
+  nonTerminal->addRule(innerRule);
 
   Rule rule;
   rule.addTerminal(terminal);

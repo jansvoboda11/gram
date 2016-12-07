@@ -10,10 +10,10 @@ namespace grammar {
  */
 class Grammar {
  public:
-  Grammar(Rule startRule);
-  Rule getStartRule();
+  Grammar(std::weak_ptr<Rule> startRule);
+  std::shared_ptr<Rule> getStartRule();
  private:
-  Rule startRule;
+  std::weak_ptr<Rule> startRule;
 };
 }
 }

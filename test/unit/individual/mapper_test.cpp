@@ -8,8 +8,8 @@ using namespace gram::individual;
 TEST(mapper_test, test_it_maps_one_terminal) {
   Terminal terminal("test");
 
-  Rule startRule;
-  startRule.addTerminal(terminal);
+  auto startRule = std::make_shared<Rule>();
+  startRule->addTerminal(terminal);
 
   Grammar grammar(startRule);
 
@@ -28,18 +28,18 @@ TEST(mapper_test, test_it_maps_nonterminal) {
   Terminal firstTerminal("first");
   Terminal secondTerminal("second");
 
-  Rule firstRule;
-  firstRule.addTerminal(firstTerminal);
+  auto firstRule = std::make_shared<Rule>();
+  firstRule->addTerminal(firstTerminal);
 
-  Rule secondRule;
-  secondRule.addTerminal(secondTerminal);
+  auto secondRule = std::make_shared<Rule>();
+  secondRule->addTerminal(secondTerminal);
 
-  NonTerminal nonTerminal;
-  nonTerminal.addRule(firstRule);
-  nonTerminal.addRule(secondRule);
+  auto nonTerminal = std::make_shared<NonTerminal>();
+  nonTerminal->addRule(firstRule);
+  nonTerminal->addRule(secondRule);
 
-  Rule startRule;
-  startRule.addNonTerminal(nonTerminal);
+  auto startRule = std::make_shared<Rule>();
+  startRule->addNonTerminal(nonTerminal);
 
   Grammar grammar(startRule);
 

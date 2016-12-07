@@ -2,12 +2,12 @@
 
 using namespace gram::grammar;
 
-void NonTerminal::addRule(Rule &rule) {
-  rules.push_back(&rule);
+void NonTerminal::addRule(std::weak_ptr<Rule> rule) {
+  rules.push_back(rule);
 }
 
-Rule &NonTerminal::ruleAt(int index) {
-  return *rules[index];
+std::shared_ptr<Rule> NonTerminal::ruleAt(int index) {
+  return rules[index].lock();
 }
 
 bool NonTerminal::operator==(const NonTerminal &nonTerminal) const {
@@ -18,10 +18,10 @@ bool NonTerminal::operator==(const NonTerminal &nonTerminal) const {
   size_t size = rules.size();
 
   for (int i = 0; i < size; i++) {
-    Rule firstRule = *rules[i];
-    Rule secondRule = *nonTerminal.rules[i];
+    std::shared_ptr<Rule> firstRule = rules[i].lock();
+    std::shared_ptr<Rule> secondRule = nonTerminal.rules[i].lock();
 
-    if (firstRule != secondRule) {
+    if (*firstRule != *secondRule) {
       return false;
     }
   }

@@ -2,10 +2,10 @@
 
 using namespace gram::grammar;
 
-Grammar::Grammar(Rule startRule) : startRule(startRule) {
+Grammar::Grammar(std::weak_ptr<Rule> startRule) : startRule(startRule) {
   //
 }
 
-Rule Grammar::getStartRule() {
-  return startRule;
+std::shared_ptr<Rule> Grammar::getStartRule() {
+  return startRule.lock();
 }

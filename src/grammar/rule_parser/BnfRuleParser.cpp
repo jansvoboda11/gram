@@ -7,7 +7,7 @@ BnfRuleParser::BnfRuleParser(std::string rules) : input(rules) {
 }
 
 Grammar BnfRuleParser::parse() {
-  Rule rule;
+  std::weak_ptr<Rule> rule;
 
   return Grammar(rule);
 }

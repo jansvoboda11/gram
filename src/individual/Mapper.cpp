@@ -9,22 +9,24 @@ Mapper::Mapper(Genotype genotype, gram::grammar::Grammar grammar)
 }
 
 Phenotype Mapper::map() {
-  Rule rule = grammar.getStartRule();
+  std::weak_ptr<Rule> rule = grammar.getStartRule();
 
   return recursiveMap(rule);
 }
 
-Phenotype Mapper::recursiveMap(Rule rule) {
-  for (int i = 0; i < rule.size(); i++) {
-    if (rule.hasTerminalAt(i)) {
-      phenotype.addTerminal(rule.terminalAt(i));
+Phenotype Mapper::recursiveMap(std::weak_ptr<Rule> rule) {
+  std::shared_ptr<Rule> sharedRule = rule.lock();
+
+  for (int i = 0; i < sharedRule->size(); i++) {
+    if (sharedRule->hasTerminalAt(i)) {
+      phenotype.addTerminal(sharedRule->terminalAt(i));
     } else {
-      NonTerminal &nonTerminal = rule.nonTerminalAt(i);
+      std::shared_ptr<NonTerminal> nonTerminal = sharedRule->nonTerminalAt(i);
 
       int gene = genotype[geneCount];
       geneCount += 1;
 
-      recursiveMap(nonTerminal.ruleAt(gene));
+      recursiveMap(nonTerminal->ruleAt(gene));
     }
   }
 

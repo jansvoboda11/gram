@@ -14,12 +14,12 @@ class Rule;
  */
 class NonTerminal {
  public:
-  void addRule(Rule &rule);
-  Rule &ruleAt(int index);
+  void addRule(std::weak_ptr<Rule> rule);
+  std::shared_ptr<Rule> ruleAt(int index);
   bool operator==(const NonTerminal &nonTerminal) const;
   bool operator!=(const NonTerminal &nonTerminal) const;
  private:
-  std::vector<Rule *> rules;
+  std::vector<std::weak_ptr<Rule>> rules;
 };
 }
 }

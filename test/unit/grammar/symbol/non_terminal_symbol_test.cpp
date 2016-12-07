@@ -7,8 +7,8 @@ using namespace gram::grammar;
 TEST(non_terminal_symbol_test, test_it_accepts_rule) {
   Terminal terminal("test");
 
-  Rule rule;
-  rule.addTerminal(terminal);
+  auto rule = std::make_shared<Rule>();
+  rule->addTerminal(terminal);
 
   NonTerminal nonTerminal;
   nonTerminal.addRule(rule);
@@ -16,14 +16,29 @@ TEST(non_terminal_symbol_test, test_it_accepts_rule) {
   ASSERT_EQ(rule, nonTerminal.ruleAt(0));
 }
 
+TEST(non_terminal_symbol_test, test_it_handles_recursive_rule) {
+  Terminal terminal("test");
+
+  auto rule = std::make_shared<Rule>();
+  rule->addTerminal(terminal);
+
+  auto nonTerminal = std::make_shared<NonTerminal>();
+  nonTerminal->addRule(rule);
+
+  rule->addNonTerminal(nonTerminal);
+
+  ASSERT_TRUE(nonTerminal->ruleAt(0)->hasNonTerminalAt(1));
+  ASSERT_EQ(nonTerminal, nonTerminal->ruleAt(0)->nonTerminalAt(1));
+}
+
 TEST(non_terminal_symbol_test, test_it_recognizes_two_equal_objects) {
   Terminal firstTerminal("test");
   Terminal secondTerminal("test");
 
-  Rule firstRule;
-  firstRule.addTerminal(firstTerminal);
-  Rule secondRule;
-  secondRule.addTerminal(secondTerminal);
+  auto firstRule = std::make_shared<Rule>();
+  firstRule->addTerminal(firstTerminal);
+  auto secondRule = std::make_shared<Rule>();
+  secondRule->addTerminal(secondTerminal);
 
   NonTerminal firstNonTerminal;
   firstNonTerminal.addRule(firstRule);
@@ -37,15 +52,15 @@ TEST(non_terminal_symbol_test, test_it_recognizes_two_different_objects) {
   Terminal firstTerminal("first");
   Terminal secondTerminal("second");
 
-  Rule firstRule;
-  firstRule.addTerminal(firstTerminal);
-  Rule secondRule;
-  secondRule.addTerminal(secondTerminal);
+  auto firstRule = std::make_shared<Rule>();
+  firstRule->addTerminal(firstTerminal);
+  auto secondRule = std::make_shared<Rule>();
+  secondRule->addTerminal(secondTerminal);
 
-  NonTerminal firstNonTerminal;
-  firstNonTerminal.addRule(firstRule);
-  NonTerminal secondNonTerminal;
-  secondNonTerminal.addRule(secondRule);
+  auto firstNonTerminal = std::make_shared<NonTerminal>();
+  firstNonTerminal->addRule(firstRule);
+  auto secondNonTerminal = std::make_shared<NonTerminal>();
+  secondNonTerminal->addRule(secondRule);
 
   ASSERT_TRUE(firstNonTerminal != secondNonTerminal);
 }

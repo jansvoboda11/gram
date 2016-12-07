@@ -19,7 +19,7 @@ class Mapper {
   Genotype genotype;
   gram::grammar::Grammar grammar;
   int geneCount;
-  Phenotype recursiveMap(gram::grammar::Rule rule);
+  Phenotype recursiveMap(std::weak_ptr<gram::grammar::Rule> rule);
 };
 }
 }
