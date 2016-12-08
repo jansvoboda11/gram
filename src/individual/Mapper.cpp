@@ -24,7 +24,7 @@ Phenotype &Mapper::recursiveMap(Phenotype &phenotype, std::shared_ptr<Rule> rule
     } else {
       std::shared_ptr<NonTerminal> nonTerminal = rule->nonTerminalAt(i);
 
-      int gene = genotype[geneCount];
+      unsigned long gene = genotype[geneCount] % nonTerminal->ruleCount();
       geneCount += 1;
 
       recursiveMap(phenotype, nonTerminal->ruleAt(gene));
