@@ -3,17 +3,21 @@
 using namespace gram::grammar;
 using namespace gram::individual;
 
-Mapper::Mapper(gram::grammar::Grammar grammar) : grammar(grammar), phenotype() {
+Mapper::Mapper(gram::grammar::Grammar grammar) : grammar(grammar), genotype(), geneCount(0) {
   //
 }
 
-Phenotype Mapper::map(Genotype genotype) {
+Phenotype Mapper::map(Genotype mappedGenotype) {
+  genotype = mappedGenotype;
+  geneCount = 0;
+
+  Phenotype phenotype;
   std::shared_ptr<Rule> rule = grammar.getStartRule();
 
-  return recursiveMap(genotype, 0, rule);
+  return recursiveMap(phenotype, rule);
 }
 
-Phenotype Mapper::recursiveMap(Genotype genotype, int geneCount, std::shared_ptr<Rule> rule) {
+Phenotype &Mapper::recursiveMap(Phenotype &phenotype, std::shared_ptr<Rule> rule) {
   for (int i = 0; i < rule->size(); i++) {
     if (rule->hasTerminalAt(i)) {
       phenotype.addTerminal(rule->terminalAt(i));
@@ -23,7 +27,7 @@ Phenotype Mapper::recursiveMap(Genotype genotype, int geneCount, std::shared_ptr
       int gene = genotype[geneCount];
       geneCount += 1;
 
-      recursiveMap(genotype, geneCount, nonTerminal->ruleAt(gene));
+      recursiveMap(phenotype, nonTerminal->ruleAt(gene));
     }
   }
 
