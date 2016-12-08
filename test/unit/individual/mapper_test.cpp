@@ -18,8 +18,8 @@ TEST(mapper_test, test_it_maps_one_terminal) {
   Phenotype phenotype;
   phenotype.addTerminal(terminal);
 
-  Mapper mapper(genotype, grammar);
-  Phenotype mapped = mapper.map();
+  Mapper mapper(grammar);
+  Phenotype mapped = mapper.map(genotype);
 
   ASSERT_EQ(phenotype, mapped);
 }
@@ -48,8 +48,8 @@ TEST(mapper_test, test_it_maps_nonterminal) {
   Phenotype phenotype;
   phenotype.addTerminal(secondTerminal);
 
-  Mapper mapper(genotype, grammar);
-  Phenotype mapped = mapper.map();
+  Mapper mapper(grammar);
+  Phenotype mapped = mapper.map(genotype);
 
   ASSERT_EQ(phenotype, mapped);
 }

@@ -12,14 +12,12 @@ namespace individual {
  */
 class Mapper {
  public:
-  Mapper(Genotype genotype, gram::grammar::Grammar grammar);
-  Phenotype map();
+  Mapper(gram::grammar::Grammar grammar);
+  Phenotype map(Genotype genotype);
  private:
-  Phenotype phenotype;
-  Genotype genotype;
   gram::grammar::Grammar grammar;
-  int geneCount;
-  Phenotype recursiveMap(std::weak_ptr<gram::grammar::Rule> rule);
+  Phenotype phenotype;
+  Phenotype recursiveMap(Genotype genotype, int geneCount, std::shared_ptr<gram::grammar::Rule> rule);
 };
 }
 }
