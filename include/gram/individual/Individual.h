@@ -12,6 +12,8 @@ namespace individual {
 class Individual {
  public:
   Individual(Genotype genotype);
+  Genotype getGenotype();
+  void setPhenotype(Phenotype newPhenotype);
   void setFitness(double calculatedFitness);
   double getFitness();
   bool operator==(const Individual &individual) const;

@@ -9,6 +9,14 @@ Individual::Individual(Genotype genotype) : genotype(genotype), phenotype(), fit
   //
 }
 
+Genotype Individual::getGenotype() {
+  return genotype;
+}
+
+void Individual::setPhenotype(Phenotype newPhenotype) {
+  phenotype = newPhenotype;
+}
+
 void Individual::setFitness(double calculatedFitness) {
   if (calculatedFitness < 0) {
     throw std::logic_error("Fitness of an individual cannot be negative.");
