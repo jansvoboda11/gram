@@ -17,8 +17,7 @@ Individual Evolution::run(int populationSize, int iterationCount) {
   processGeneration(population);
 
   for (int i = 0; i < iterationCount; i++) {
-    // todo: get the best fitness
-    if (population[0].getFitness() == 0) {
+    if (population.bestIndividual().getFitness() == 0) {
       break;
     }
 
@@ -26,8 +25,7 @@ Individual Evolution::run(int populationSize, int iterationCount) {
     processGeneration(population);
   }
 
-  // todo: return the fittest individual
-  return population[0];
+  return population.bestIndividual();
 }
 
 void Evolution::setCalculator(FitnessCalculator *newCalculator) {
@@ -85,8 +83,8 @@ Population Evolution::generateGeneration(Population &population) {
     Individual firstChild(firstGenotype);
     Individual secondChild(secondGenotype);
 
-    generated.push_back(firstChild);
-    generated.push_back(secondChild);
+    generated.addIndividual(firstChild);
+    generated.addIndividual(secondChild);
   }
 
   // todo: mutate generated individuals

@@ -16,6 +16,7 @@ set(SOURCE_FILES
         individual/Mapper.cpp
         individual/Phenotype.cpp
         population/Initializer.cpp
+        population/Population.cpp
         )
 
 add_library(gram STATIC ${SOURCE_FILES})
