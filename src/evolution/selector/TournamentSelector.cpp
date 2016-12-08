@@ -1,4 +1,5 @@
 #include <gram/evolution/selector/TournamentSelector.h>
+
 #include <algorithm>
 #include <stdexcept>
 
@@ -10,7 +11,6 @@ using namespace gram::util;
 TournamentSelector::TournamentSelector(NumberGenerator &generator) : generator(generator) {
   //
 }
-
 
 Individual TournamentSelector::select(gram::population::Population population) {
   if (population.size() == 0) {
