@@ -12,11 +12,13 @@ TEST(population_test, test_it_does_not_return_best_individual_when_empty) {
 }
 
 TEST(population_test, test_it_returns_best_individual) {
-  Genotype genotype;
+  Genotype firstGenotype{0};
+  Genotype secondGenotype{1};
+  Genotype thirdGenotype{2};
 
-  Individual firstIndividual({1});
-  Individual secondIndividual(genotype);
-  Individual thirdIndividual(genotype);
+  Individual firstIndividual(firstGenotype);
+  Individual secondIndividual(secondGenotype);
+  Individual thirdIndividual(thirdGenotype);
 
   firstIndividual.setFitness(1.0);
   secondIndividual.setFitness(0.5);
