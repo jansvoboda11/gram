@@ -15,7 +15,8 @@ class Rule;
 class NonTerminal {
  public:
   void addRule(std::weak_ptr<Rule> rule);
-  std::shared_ptr<Rule> ruleAt(int index);
+  std::shared_ptr<Rule> ruleAt(unsigned long index);
+  unsigned long ruleCount();
   bool operator==(const NonTerminal &nonTerminal) const;
   bool operator!=(const NonTerminal &nonTerminal) const;
  private:

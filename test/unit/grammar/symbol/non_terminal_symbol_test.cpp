@@ -31,6 +31,17 @@ TEST(non_terminal_symbol_test, test_it_handles_recursive_rule) {
   ASSERT_EQ(nonTerminal, nonTerminal->ruleAt(0)->nonTerminalAt(1));
 }
 
+TEST(non_terminal_symbol_test, test_it_returns_rule_count) {
+  auto firstRule = std::make_shared<Rule>();
+  auto secondRule = std::make_shared<Rule>();
+
+  NonTerminal nonTerminal;
+  nonTerminal.addRule(firstRule);
+  nonTerminal.addRule(secondRule);
+
+  ASSERT_EQ(2, nonTerminal.ruleCount());
+}
+
 TEST(non_terminal_symbol_test, test_it_recognizes_two_equal_objects) {
   Terminal firstTerminal("test");
   Terminal secondTerminal("test");

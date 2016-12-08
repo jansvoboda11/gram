@@ -6,8 +6,12 @@ void NonTerminal::addRule(std::weak_ptr<Rule> rule) {
   rules.push_back(rule);
 }
 
-std::shared_ptr<Rule> NonTerminal::ruleAt(int index) {
+std::shared_ptr<Rule> NonTerminal::ruleAt(unsigned long index) {
   return rules[index].lock();
+}
+
+unsigned long NonTerminal::ruleCount() {
+  return rules.size();
 }
 
 bool NonTerminal::operator==(const NonTerminal &nonTerminal) const {
