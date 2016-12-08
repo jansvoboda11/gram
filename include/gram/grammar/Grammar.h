@@ -1,7 +1,7 @@
 #ifndef GRAM_GRAMMAR_GRAMMAR
 #define GRAM_GRAMMAR_GRAMMAR
 
-#include <gram/grammar/Rule.h>
+#include <gram/grammar/symbol/Option.h>
 
 namespace gram {
 namespace grammar {
@@ -10,10 +10,10 @@ namespace grammar {
  */
 class Grammar {
  public:
-  Grammar(std::weak_ptr<Rule> startRule);
-  std::shared_ptr<Rule> getStartRule();
+  Grammar(std::shared_ptr<NonTerminal> startSymbol);
+  std::shared_ptr<NonTerminal> getStartSymbol();
  private:
-  std::weak_ptr<Rule> startRule;
+  std::weak_ptr<NonTerminal> startSymbol;
 };
 }
 }

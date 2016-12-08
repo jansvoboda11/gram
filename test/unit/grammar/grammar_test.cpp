@@ -4,13 +4,10 @@
 
 using namespace gram::grammar;
 
-TEST(grammar_test, test_it_accepts_start_rule) {
-  Terminal terminal("test");
+TEST(grammar_test, test_it_accepts_start_symbol) {
+  auto startSymbol = std::make_shared<NonTerminal>();
 
-  auto rule = std::make_shared<Rule>();
-  rule->addTerminal(terminal);
+  Grammar grammar(startSymbol);
 
-  Grammar grammar(rule);
-
-  ASSERT_EQ(rule, grammar.getStartRule());
+  ASSERT_EQ(startSymbol, grammar.getStartSymbol());
 }

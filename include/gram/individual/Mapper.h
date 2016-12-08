@@ -18,7 +18,7 @@ class Mapper {
   gram::grammar::Grammar grammar;
   Genotype genotype;
   int geneCount;
-  Phenotype &recursiveMap(Phenotype &phenotype, std::shared_ptr<gram::grammar::Rule> rule);
+  Phenotype &recursiveMap(Phenotype &phenotype, std::shared_ptr<gram::grammar::NonTerminal> nonTerminal);
 };
 }
 }

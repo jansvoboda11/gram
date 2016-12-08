@@ -4,57 +4,57 @@
 
 using namespace gram::grammar;
 
-TEST(non_terminal_symbol_test, test_it_accepts_rule) {
+TEST(non_terminal_symbol_test, test_it_accepts_option) {
   Terminal terminal("test");
 
-  auto rule = std::make_shared<Rule>();
-  rule->addTerminal(terminal);
+  auto option = std::make_shared<Option>();
+  option->addTerminal(terminal);
 
   NonTerminal nonTerminal;
-  nonTerminal.addRule(rule);
+  nonTerminal.addOption(option);
 
-  ASSERT_EQ(rule, nonTerminal.ruleAt(0));
+  ASSERT_EQ(option, nonTerminal.optionAt(0));
 }
 
-TEST(non_terminal_symbol_test, test_it_handles_recursive_rule) {
+TEST(non_terminal_symbol_test, test_it_handles_recursive_option) {
   Terminal terminal("test");
 
-  auto rule = std::make_shared<Rule>();
-  rule->addTerminal(terminal);
+  auto option = std::make_shared<Option>();
+  option->addTerminal(terminal);
 
   auto nonTerminal = std::make_shared<NonTerminal>();
-  nonTerminal->addRule(rule);
+  nonTerminal->addOption(option);
 
-  rule->addNonTerminal(nonTerminal);
+  option->addNonTerminal(nonTerminal);
 
-  ASSERT_TRUE(nonTerminal->ruleAt(0)->hasNonTerminalAt(1));
-  ASSERT_EQ(nonTerminal, nonTerminal->ruleAt(0)->nonTerminalAt(1));
+  ASSERT_TRUE(nonTerminal->optionAt(0)->hasNonTerminalAt(1));
+  ASSERT_EQ(nonTerminal, nonTerminal->optionAt(0)->nonTerminalAt(1));
 }
 
-TEST(non_terminal_symbol_test, test_it_returns_rule_count) {
-  auto firstRule = std::make_shared<Rule>();
-  auto secondRule = std::make_shared<Rule>();
+TEST(non_terminal_symbol_test, test_it_returns_option_count) {
+  auto firstOption = std::make_shared<Option>();
+  auto secondOption = std::make_shared<Option>();
 
   NonTerminal nonTerminal;
-  nonTerminal.addRule(firstRule);
-  nonTerminal.addRule(secondRule);
+  nonTerminal.addOption(firstOption);
+  nonTerminal.addOption(secondOption);
 
-  ASSERT_EQ(2, nonTerminal.ruleCount());
+  ASSERT_EQ(2, nonTerminal.optionCount());
 }
 
 TEST(non_terminal_symbol_test, test_it_recognizes_two_equal_objects) {
   Terminal firstTerminal("test");
   Terminal secondTerminal("test");
 
-  auto firstRule = std::make_shared<Rule>();
-  firstRule->addTerminal(firstTerminal);
-  auto secondRule = std::make_shared<Rule>();
-  secondRule->addTerminal(secondTerminal);
+  auto firstOption = std::make_shared<Option>();
+  firstOption->addTerminal(firstTerminal);
+  auto secondOption = std::make_shared<Option>();
+  secondOption->addTerminal(secondTerminal);
 
   NonTerminal firstNonTerminal;
-  firstNonTerminal.addRule(firstRule);
+  firstNonTerminal.addOption(firstOption);
   NonTerminal secondNonTerminal;
-  secondNonTerminal.addRule(secondRule);
+  secondNonTerminal.addOption(secondOption);
 
   ASSERT_TRUE(firstNonTerminal == secondNonTerminal);
 }
@@ -63,15 +63,15 @@ TEST(non_terminal_symbol_test, test_it_recognizes_two_different_objects) {
   Terminal firstTerminal("first");
   Terminal secondTerminal("second");
 
-  auto firstRule = std::make_shared<Rule>();
-  firstRule->addTerminal(firstTerminal);
-  auto secondRule = std::make_shared<Rule>();
-  secondRule->addTerminal(secondTerminal);
+  auto firstOption = std::make_shared<Option>();
+  firstOption->addTerminal(firstTerminal);
+  auto secondOption = std::make_shared<Option>();
+  secondOption->addTerminal(secondTerminal);
 
   auto firstNonTerminal = std::make_shared<NonTerminal>();
-  firstNonTerminal->addRule(firstRule);
+  firstNonTerminal->addOption(firstOption);
   auto secondNonTerminal = std::make_shared<NonTerminal>();
-  secondNonTerminal->addRule(secondRule);
+  secondNonTerminal->addOption(secondOption);
 
   ASSERT_TRUE(firstNonTerminal != secondNonTerminal);
 }

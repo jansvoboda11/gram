@@ -2,30 +2,30 @@
 
 using namespace gram::grammar;
 
-void NonTerminal::addRule(std::weak_ptr<Rule> rule) {
-  rules.push_back(rule);
+void NonTerminal::addOption(std::weak_ptr<Option> option) {
+  options.push_back(option);
 }
 
-std::shared_ptr<Rule> NonTerminal::ruleAt(unsigned long index) {
-  return rules[index].lock();
+std::shared_ptr<Option> NonTerminal::optionAt(unsigned long index) {
+  return options[index].lock();
 }
 
-unsigned long NonTerminal::ruleCount() {
-  return rules.size();
+unsigned long NonTerminal::optionCount() {
+  return options.size();
 }
 
 bool NonTerminal::operator==(const NonTerminal &nonTerminal) const {
-  if (rules.size() != nonTerminal.rules.size()) {
+  if (options.size() != nonTerminal.options.size()) {
     return false;
   }
 
-  size_t size = rules.size();
+  size_t size = options.size();
 
   for (int i = 0; i < size; i++) {
-    std::shared_ptr<Rule> firstRule = rules[i].lock();
-    std::shared_ptr<Rule> secondRule = nonTerminal.rules[i].lock();
+    std::shared_ptr<Option> firstOption = options[i].lock();
+    std::shared_ptr<Option> secondOption = nonTerminal.options[i].lock();
 
-    if (*firstRule != *secondRule) {
+    if (*firstOption != *secondOption) {
       return false;
     }
   }

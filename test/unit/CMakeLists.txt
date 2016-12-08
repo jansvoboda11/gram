@@ -15,9 +15,9 @@ add_executable(gram_unit_tests
         fake/util/number_generator_test.cpp
         grammar/rule_parser/bnf_rule_parser_test.cpp
         grammar/symbol/non_terminal_symbol_test.cpp
+        grammar/symbol/option_test.cpp
         grammar/symbol/terminal_symbol_test.cpp
         grammar/grammar_test.cpp
-        grammar/rule_test.cpp
         individual/genotype_test.cpp
         individual/individual_test.cpp
         individual/mapper_test.cpp

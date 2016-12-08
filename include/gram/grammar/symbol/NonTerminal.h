@@ -3,24 +3,24 @@
 
 #include <vector>
 
-#include <gram/grammar/Rule.h>
+#include <gram/grammar/symbol/Option.h>
 
 namespace gram {
 namespace grammar {
 // Forward declaration.
-class Rule;
+class Option;
 /**
  * Class.
  */
 class NonTerminal {
  public:
-  void addRule(std::weak_ptr<Rule> rule);
-  std::shared_ptr<Rule> ruleAt(unsigned long index);
-  unsigned long ruleCount();
+  void addOption(std::weak_ptr<Option> option);
+  std::shared_ptr<Option> optionAt(unsigned long index);
+  unsigned long optionCount();
   bool operator==(const NonTerminal &nonTerminal) const;
   bool operator!=(const NonTerminal &nonTerminal) const;
  private:
-  std::vector<std::weak_ptr<Rule>> rules;
+  std::vector<std::weak_ptr<Option>> options;
 };
 }
 }

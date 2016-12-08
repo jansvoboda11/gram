@@ -8,10 +8,13 @@ using namespace gram::individual;
 TEST(mapper_test, test_it_maps_one_terminal) {
   Terminal terminal("test");
 
-  auto startRule = std::make_shared<Rule>();
-  startRule->addTerminal(terminal);
+  auto option = std::make_shared<Option>();
+  option->addTerminal(terminal);
 
-  Grammar grammar(startRule);
+  auto startSymbol = std::make_shared<NonTerminal>();
+  startSymbol->addOption(option);
+
+  Grammar grammar(startSymbol);
 
   Genotype genotype{0};
 
@@ -28,20 +31,17 @@ TEST(mapper_test, test_it_maps_nonterminal) {
   Terminal firstTerminal("first");
   Terminal secondTerminal("second");
 
-  auto firstRule = std::make_shared<Rule>();
-  firstRule->addTerminal(firstTerminal);
+  auto firstOption = std::make_shared<Option>();
+  firstOption->addTerminal(firstTerminal);
 
-  auto secondRule = std::make_shared<Rule>();
+  auto secondRule = std::make_shared<Option>();
   secondRule->addTerminal(secondTerminal);
 
-  auto nonTerminal = std::make_shared<NonTerminal>();
-  nonTerminal->addRule(firstRule);
-  nonTerminal->addRule(secondRule);
+  auto startSymbol = std::make_shared<NonTerminal>();
+  startSymbol->addOption(firstOption);
+  startSymbol->addOption(secondRule);
 
-  auto startRule = std::make_shared<Rule>();
-  startRule->addNonTerminal(nonTerminal);
-
-  Grammar grammar(startRule);
+  Grammar grammar(startSymbol);
 
   Genotype genotype{1};
 

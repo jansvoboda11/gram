@@ -9,9 +9,9 @@ set(SOURCE_FILES
         evolution/FitnessCalculator.cpp
         grammar/rule_parser/BnfRuleParser.cpp
         grammar/symbol/NonTerminal.cpp
+        grammar/symbol/Option.cpp
         grammar/symbol/Terminal.cpp
         grammar/Grammar.cpp
-        grammar/Rule.cpp
         individual/Individual.cpp
         individual/Mapper.cpp
         individual/Phenotype.cpp

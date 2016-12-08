@@ -7,7 +7,7 @@ BnfRuleParser::BnfRuleParser(std::string rules) : input(rules) {
 }
 
 Grammar BnfRuleParser::parse() {
-  std::weak_ptr<Rule> rule;
+  std::shared_ptr<NonTerminal> startSymbol;
 
-  return Grammar(rule);
+  return Grammar(startSymbol);
 }

@@ -12,22 +12,22 @@ Phenotype Mapper::map(Genotype mappedGenotype) {
   geneCount = 0;
 
   Phenotype phenotype;
-  std::shared_ptr<Rule> rule = grammar.getStartRule();
+  std::shared_ptr<NonTerminal> nonTerminal = grammar.getStartSymbol();
 
-  return recursiveMap(phenotype, rule);
+  return recursiveMap(phenotype, nonTerminal);
 }
 
-Phenotype &Mapper::recursiveMap(Phenotype &phenotype, std::shared_ptr<Rule> rule) {
-  for (int i = 0; i < rule->size(); i++) {
-    if (rule->hasTerminalAt(i)) {
-      phenotype.addTerminal(rule->terminalAt(i));
+Phenotype &Mapper::recursiveMap(Phenotype &phenotype, std::shared_ptr<NonTerminal> nonTerminal) {
+  unsigned long gene = genotype[geneCount] % nonTerminal->optionCount();
+  geneCount += 1;
+
+  std::shared_ptr<Option> option = nonTerminal->optionAt(gene);
+
+  for (unsigned long i = 0; i < option->size(); i++) {
+    if (option->hasTerminalAt(i)) {
+      phenotype.addTerminal(option->terminalAt(i));
     } else {
-      std::shared_ptr<NonTerminal> nonTerminal = rule->nonTerminalAt(i);
-
-      unsigned long gene = genotype[geneCount] % nonTerminal->ruleCount();
-      geneCount += 1;
-
-      recursiveMap(phenotype, nonTerminal->ruleAt(gene));
+      recursiveMap(phenotype, option->nonTerminalAt(gene));
     }
   }
 
