@@ -7,13 +7,12 @@ using namespace gram::individual;
 using namespace gram::population;
 using namespace gram::util;
 
-TournamentSelector::TournamentSelector(Population population, NumberGenerator &generator)
-    : IndividualSelector(population, generator) {
+TournamentSelector::TournamentSelector(NumberGenerator &generator) : generator(generator) {
   //
 }
 
 
-Individual TournamentSelector::select() {
+Individual TournamentSelector::select(gram::population::Population population) {
   if (population.size() == 0) {
     throw std::logic_error("Cannot select an individual from an empty population.");
   }

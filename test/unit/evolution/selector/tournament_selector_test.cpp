@@ -12,9 +12,9 @@ TEST(tournament_selector_test, test_it_handles_empty_population) {
   Population population{};
   FakeNumberGenerator generator{};
 
-  TournamentSelector selector(population, generator);
+  TournamentSelector selector(generator);
 
-  ASSERT_THROW(selector.select(), std::logic_error);
+  ASSERT_THROW(selector.select(population), std::logic_error);
 }
 
 TEST(tournament_selector_test, test_it_select_the_only_individual) {
@@ -24,9 +24,9 @@ TEST(tournament_selector_test, test_it_select_the_only_individual) {
 
   FakeNumberGenerator generator{};
 
-  TournamentSelector selector(population, generator);
+  TournamentSelector selector(generator);
 
-  ASSERT_EQ(individual, selector.select());
+  ASSERT_EQ(individual, selector.select(population));
 }
 
 TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_selected_group) {
@@ -50,7 +50,7 @@ TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_sel
   Population population{firstIndividual, secondIndividual, thirdIndividual, fourthIndividual};
   FakeNumberGenerator generator{1, 3};
 
-  TournamentSelector selector(population, generator);
+  TournamentSelector selector(generator);
 
-  ASSERT_EQ(secondIndividual, selector.select());
+  ASSERT_EQ(secondIndividual, selector.select(population));
 }

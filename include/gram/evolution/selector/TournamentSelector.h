@@ -10,8 +10,10 @@ namespace evolution {
  */
 class TournamentSelector : public IndividualSelector {
  public:
-  TournamentSelector(gram::population::Population population, gram::util::NumberGenerator &generator);
-  gram::individual::Individual select();
+  TournamentSelector(gram::util::NumberGenerator &generator);
+  gram::individual::Individual select(gram::population::Population population);
+ private:
+  gram::util::NumberGenerator &generator;
 };
 }
 }
