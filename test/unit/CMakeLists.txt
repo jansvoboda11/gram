@@ -12,6 +12,7 @@ add_executable(gram_unit_tests
         evolution/fitness_calculator_test.cpp
         evolution/selector/individual_selector_test.cpp
         evolution/selector/tournament_selector_test.cpp
+        fake/util/bool_generator_test.cpp
         fake/util/number_generator_test.cpp
         grammar/rule_parser/bnf_rule_parser_test.cpp
         grammar/symbol/non_terminal_symbol_test.cpp

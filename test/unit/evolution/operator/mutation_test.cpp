@@ -1,20 +1,32 @@
 #include <gtest/gtest.h>
 
 #include <gram/evolution/operator/Mutation.h>
+#include <gram/fake/util/FakeBoolGenerator.h>
 #include <gram/fake/util/FakeNumberGenerator.h>
 
 using namespace gram::evolution;
 using namespace gram::individual;
 using namespace gram::fake::util;
 
+TEST(mutation_operator_test, test_it_does_not_always_mutate) {
+  Genotype genotype{1, 1, 1};
+
+  FakeBoolGenerator boolGenerator{false};
+  FakeNumberGenerator numberGenerator{2, 3};
+
+  Mutation mutation(boolGenerator, numberGenerator);
+
+  ASSERT_EQ(genotype, mutation.apply(genotype));
+}
+
 TEST(mutation_operator_test, test_it_mutates_one_gene) {
   Genotype genotype{1, 1, 1};
   Genotype expectedGenotype{1, 1, 3};
 
+  FakeBoolGenerator boolGenerator{true};
   FakeNumberGenerator numberGenerator{2, 3};
 
-  Mutation mutation(numberGenerator);
-  Genotype mutatedGenotype = mutation.apply(genotype);
+  Mutation mutation(boolGenerator, numberGenerator);
 
-  ASSERT_EQ(expectedGenotype, mutatedGenotype);
+  ASSERT_EQ(expectedGenotype, mutation.apply(genotype));
 }

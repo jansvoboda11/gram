@@ -2,6 +2,7 @@
 #define GRAM_EVOLUTION_OPERATOR_MUTATION
 
 #include <gram/individual/Genotype.h>
+#include <gram/util/BoolGenerator.h>
 #include <gram/util/NumberGenerator.h>
 
 namespace gram {
@@ -11,10 +12,11 @@ namespace evolution {
  */
 class Mutation {
  public:
-  Mutation(gram::util::NumberGenerator &generator);
+  Mutation(gram::util::BoolGenerator &boolGenerator, gram::util::NumberGenerator &numberGenerator);
   gram::individual::Genotype apply(gram::individual::Genotype genotype);
  private:
-  gram::util::NumberGenerator &generator;
+  gram::util::BoolGenerator &boolGenerator;
+  gram::util::NumberGenerator &numberGenerator;
 };
 }
 }

@@ -4,13 +4,18 @@ using namespace gram::evolution;
 using namespace gram::individual;
 using namespace gram::util;
 
-Mutation::Mutation(NumberGenerator &generator) : generator(generator) {
+Mutation::Mutation(BoolGenerator &boolGenerator, NumberGenerator &numberGenerator)
+    : boolGenerator(boolGenerator), numberGenerator(numberGenerator) {
   //
 }
 
 Genotype Mutation::apply(Genotype genotype) {
-  int index = generator.generate();
-  int value = generator.generate();
+  if (!boolGenerator.generate()) {
+    return genotype;
+  }
+
+  int index = numberGenerator.generate();
+  int value = numberGenerator.generate();
 
   genotype[index] = value;
 

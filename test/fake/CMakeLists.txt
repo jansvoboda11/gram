@@ -2,6 +2,7 @@ include_directories(../../include)
 include_directories(include)
 
 set(SOURCE_FILES
+        src/util/FakeBoolGenerator.cpp
         src/util/FakeNumberGenerator.cpp
         )
 
