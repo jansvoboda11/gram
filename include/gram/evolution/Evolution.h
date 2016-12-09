@@ -8,7 +8,7 @@
 #include <gram/individual/Individual.h>
 #include <gram/individual/Mapper.h>
 #include <gram/language/Evaluator.h>
-#include <gram/population/Initializer.h>
+#include <gram/population/initializer/Initializer.h>
 #include <gram/population/Population.h>
 #include <gram/util/NumberGenerator.h>
 

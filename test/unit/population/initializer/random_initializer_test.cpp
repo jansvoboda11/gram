@@ -1,13 +1,13 @@
 #include <gtest/gtest.h>
 
-#include <gram/population/Initializer.h>
+#include <gram/population/initializer/RandomInitializer.h>
 #include <gram/fake/util/FakeNumberGenerator.h>
 
 using namespace gram::population;
 using namespace gram::individual;
 using namespace gram::fake::util;
 
-TEST(initializer_test, test_it_initializes_individuals_with_random_genotype) {
+TEST(random_initializer_test, test_it_initializes_individuals_with_random_genotype) {
   FakeNumberGenerator numberGenerator{0, 1, 2, 3};
 
   Genotype firstGenotype{0, 1, 2};
@@ -18,7 +18,7 @@ TEST(initializer_test, test_it_initializes_individuals_with_random_genotype) {
   Individual secondIndividual(secondGenotype);
   Individual thirdIndividual(thirdGenotype);
 
-  Initializer initializer(numberGenerator, 3);
+  RandomInitializer initializer(numberGenerator, 3);
   Population population = initializer.initialize(3);
 
   ASSERT_EQ(firstIndividual, population[0]);

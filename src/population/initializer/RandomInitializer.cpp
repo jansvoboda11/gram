@@ -1,15 +1,15 @@
-#include <gram/population/Initializer.h>
+#include <gram/population/initializer/RandomInitializer.h>
 
 using namespace gram::population;
 using namespace gram::individual;
 using namespace gram::util;
 
-Initializer::Initializer(NumberGenerator &generator, int individualSize)
+RandomInitializer::RandomInitializer(NumberGenerator &generator, int individualSize)
     : generator(generator), individualSize(individualSize) {
   //
 }
 
-Population Initializer::initialize(int individualCount) {
+Population RandomInitializer::initialize(int individualCount) {
   std::vector<Individual> individuals;
 
   for (int i = 0; i < individualCount; i++) {

@@ -15,7 +15,7 @@ set(SOURCE_FILES
         individual/Individual.cpp
         individual/Mapper.cpp
         individual/Phenotype.cpp
-        population/Initializer.cpp
+        population/initializer/RandomInitializer.cpp
         population/Population.cpp
         )
 
