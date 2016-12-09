@@ -5,11 +5,11 @@ include_directories(../../include)
 include_directories(../fake/include)
 
 add_executable(gram_unit_tests
+        evolution/fitness_calculator/parabola_fitness_calculator_test.cpp
         evolution/operator/crossover_test.cpp
         evolution/operator/mutation_test.cpp
         evolution/evolution_builder_test.cpp
         evolution/evolution_test.cpp
-        evolution/fitness_calculator_test.cpp
         evolution/selector/individual_selector_test.cpp
         evolution/selector/tournament_selector_test.cpp
         fake/util/bool_generator_test.cpp
