@@ -11,6 +11,7 @@
 #include <gram/population/initializer/Initializer.h>
 #include <gram/population/Population.h>
 #include <gram/util/NumberGenerator.h>
+#include <gram/population/generator/Generator.h>
 
 namespace gram {
 namespace evolution {
@@ -20,23 +21,18 @@ namespace evolution {
 class Evolution {
  public:
   gram::individual::Individual run(int populationSize, int iterationCount);
+  void setGenerator(gram::population::Generator *newGenerator);
   void setEvaluator(gram::language::Evaluator *newEvaluator);
   void setCalculator(FitnessCalculator *newCalculator);
-  void setSelector(IndividualSelector *newSelector);
   void setMapper(gram::individual::Mapper *newMapper);
   void setInitializer(gram::population::Initializer *newInitializer);
-  void setCrossover(Crossover *newCrossover);
-  void setMutation(Mutation *newMutation);
  private:
+  gram::population::Generator *generator;
   gram::language::Evaluator *evaluator;
   FitnessCalculator *calculator;
-  IndividualSelector *selector;
   gram::individual::Mapper *mapper;
   gram::population::Initializer *initializer;
-  Crossover *crossover;
-  Mutation *mutation;
   void processGeneration(gram::population::Population &population);
-  gram::population::Population generateGeneration(gram::population::Population &population);
 };
 }
 }

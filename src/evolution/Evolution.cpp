@@ -1,11 +1,9 @@
 #include <gram/evolution/Evolution.h>
 
 using namespace gram::evolution;
-using namespace gram::grammar;
 using namespace gram::individual;
 using namespace gram::language;
 using namespace gram::population;
-using namespace gram::util;
 
 Individual Evolution::run(int populationSize, int iterationCount) {
   Population population = initializer->initialize(populationSize);
@@ -16,39 +14,12 @@ Individual Evolution::run(int populationSize, int iterationCount) {
       break;
     }
 
-    population = generateGeneration(population);
+    population = generator->generateSuccessor(population);
+
     processGeneration(population);
   }
 
   return population.bestIndividual();
-}
-
-void Evolution::setEvaluator(Evaluator *newEvaluator) {
-  evaluator = newEvaluator;
-}
-
-void Evolution::setCalculator(FitnessCalculator *newCalculator) {
-  calculator = newCalculator;
-}
-
-void Evolution::setSelector(IndividualSelector *newSelector) {
-  selector = newSelector;
-}
-
-void Evolution::setMapper(gram::individual::Mapper *newMapper) {
-  mapper = newMapper;
-}
-
-void Evolution::setInitializer(Initializer *newInitializer) {
-  initializer = newInitializer;
-}
-
-void Evolution::setCrossover(Crossover *newCrossover) {
-  crossover = newCrossover;
-}
-
-void Evolution::setMutation(Mutation *newMutation) {
-  mutation = newMutation;
 }
 
 void Evolution::processGeneration(Population &population) {
@@ -62,36 +33,22 @@ void Evolution::processGeneration(Population &population) {
   }
 }
 
-Population Evolution::generateGeneration(Population &population) {
-  std::vector<Individual> parents;
+void Evolution::setGenerator(Generator *newGenerator) {
+  generator = newGenerator;
+}
 
-  for (int i = 0; i < population.size(); i++) {
-    Individual parent = selector->select(population);
-    parents.push_back(parent);
-  }
+void Evolution::setEvaluator(Evaluator *newEvaluator) {
+  evaluator = newEvaluator;
+}
 
-  Population generated;
+void Evolution::setCalculator(FitnessCalculator *newCalculator) {
+  calculator = newCalculator;
+}
 
-  for (int i = 0; i < population.size() - 1; i += 2) {
-    Individual firstParent = parents[i];
-    Individual secondParent = parents[i + 1];
+void Evolution::setMapper(gram::individual::Mapper *newMapper) {
+  mapper = newMapper;
+}
 
-    Genotype firstGenotype = crossover->apply(firstParent.getGenotype(), secondParent.getGenotype());
-    Genotype secondGenotype = crossover->apply(secondParent.getGenotype(), firstParent.getGenotype());
-
-    Individual firstChild(firstGenotype);
-    Individual secondChild(secondGenotype);
-
-    generated.addIndividual(firstChild);
-    generated.addIndividual(secondChild);
-  }
-
-  for (auto &individual : generated) {
-    Genotype oldGenotype = individual.getGenotype();
-    Genotype mutatedGenotype = mutation->apply(oldGenotype);
-
-    individual.setGenotype(mutatedGenotype);
-  }
-
-  return generated;
+void Evolution::setInitializer(Initializer *newInitializer) {
+  initializer = newInitializer;
 }
