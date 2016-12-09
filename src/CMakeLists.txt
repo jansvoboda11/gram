@@ -17,6 +17,7 @@ set(SOURCE_FILES
         individual/Phenotype.cpp
         population/generator/Generator.cpp
         population/initializer/RandomInitializer.cpp
+        population/processor/Processor.cpp
         population/Population.cpp
         )
 

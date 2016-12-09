@@ -2,12 +2,11 @@
 
 using namespace gram::evolution;
 using namespace gram::individual;
-using namespace gram::language;
 using namespace gram::population;
 
 Individual Evolution::run(int populationSize, int iterationCount) {
   Population population = initializer->initialize(populationSize);
-  processGeneration(population);
+  processor->process(population);
 
   for (int i = 0; i < iterationCount; i++) {
     if (population.bestIndividual().getFitness() == 0) {
@@ -16,39 +15,20 @@ Individual Evolution::run(int populationSize, int iterationCount) {
 
     population = generator->generateSuccessor(population);
 
-    processGeneration(population);
+    processor->process(population);
   }
 
   return population.bestIndividual();
 }
 
-void Evolution::processGeneration(Population &population) {
-  for (auto &individual : population) {
-    Phenotype phenotype = mapper->map(individual.getGenotype());
-    individual.setPhenotype(phenotype);
+void Evolution::setInitializer(Initializer *newInitializer) {
+  initializer = newInitializer;
+}
 
-    int result = evaluator->evaluate(individual);
-    double fitness = calculator->calculate(5, result);
-    individual.setFitness(fitness);
-  }
+void Evolution::setProcessor(Processor *newProcessor) {
+  processor = newProcessor;
 }
 
 void Evolution::setGenerator(Generator *newGenerator) {
   generator = newGenerator;
-}
-
-void Evolution::setEvaluator(Evaluator *newEvaluator) {
-  evaluator = newEvaluator;
-}
-
-void Evolution::setCalculator(FitnessCalculator *newCalculator) {
-  calculator = newCalculator;
-}
-
-void Evolution::setMapper(gram::individual::Mapper *newMapper) {
-  mapper = newMapper;
-}
-
-void Evolution::setInitializer(Initializer *newInitializer) {
-  initializer = newInitializer;
 }

@@ -26,6 +26,7 @@ add_executable(gram_unit_tests
         language/evaluator_test.cpp
         population/generator/generator_test.cpp
         population/initializer/random_initializer_test.cpp
+        population/processor/processor_test.cpp
         population/population_test.cpp
         )
 
