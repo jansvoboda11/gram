@@ -87,7 +87,12 @@ Population Evolution::generateGeneration(Population &population) {
     generated.addIndividual(secondChild);
   }
 
-  // todo: mutate generated individuals
+  for (auto &individual : generated) {
+    Genotype oldGenotype = individual.getGenotype();
+    Genotype mutatedGenotype = mutation->apply(oldGenotype);
+
+    individual.setGenotype(mutatedGenotype);
+  }
 
   return generated;
 }

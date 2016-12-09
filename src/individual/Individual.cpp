@@ -13,6 +13,10 @@ Genotype Individual::getGenotype() {
   return genotype;
 }
 
+void Individual::setGenotype(Genotype newGenotype) {
+  genotype = newGenotype;
+}
+
 void Individual::setPhenotype(Phenotype newPhenotype) {
   phenotype = newPhenotype;
 }
