@@ -1,14 +1,21 @@
 #include <gtest/gtest.h>
 
 #include <gram/population/initializer/RandomInitializer.h>
-#include <gram/fake/util/FakeNumberGenerator.h>
+#include <gram/util/NumberGeneratorMock.h>
 
 using namespace gram::population;
 using namespace gram::individual;
-using namespace gram::fake::util;
+using namespace gram::util;
+
+using ::testing::Return;
 
 TEST(random_initializer_test, test_it_initializes_individuals_with_random_genotype) {
-  FakeNumberGenerator numberGenerator{0, 1, 2, 3};
+  NumberGeneratorMock numberGenerator;
+  EXPECT_CALL(numberGenerator, generate(3))
+      .Times(3)
+      .WillOnce(Return(std::vector<int>{0, 1, 2}))
+      .WillOnce(Return(std::vector<int>{3, 0, 1}))
+      .WillOnce(Return(std::vector<int>{2, 3, 0}));
 
   Genotype firstGenotype{0, 1, 2};
   Genotype secondGenotype{3, 0, 1};

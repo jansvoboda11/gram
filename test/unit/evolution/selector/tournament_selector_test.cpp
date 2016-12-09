@@ -1,16 +1,21 @@
 #include <gtest/gtest.h>
 
 #include <gram/evolution/selector/TournamentSelector.h>
-#include <gram/fake/util/FakeNumberGenerator.h>
+#include <gram/util/NumberGeneratorMock.h>
 
 using namespace gram::evolution;
-using namespace gram::fake::util;
 using namespace gram::individual;
 using namespace gram::population;
+using namespace gram::util;
+
+using ::testing::Return;
 
 TEST(tournament_selector_test, test_it_handles_empty_population) {
   Population population{};
-  FakeNumberGenerator generator{};
+
+  NumberGeneratorMock generator;
+  EXPECT_CALL(generator, generate())
+      .Times(0);
 
   TournamentSelector selector(generator);
 
@@ -22,7 +27,9 @@ TEST(tournament_selector_test, test_it_select_the_only_individual) {
   Individual individual(genotype);
   Population population{individual};
 
-  FakeNumberGenerator generator{};
+  NumberGeneratorMock generator;
+  EXPECT_CALL(generator, generate())
+      .Times(0);
 
   TournamentSelector selector(generator);
 
@@ -48,7 +55,12 @@ TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_sel
   fourthIndividual.setFitness(2.0);
 
   Population population{firstIndividual, secondIndividual, thirdIndividual, fourthIndividual};
-  FakeNumberGenerator generator{1, 3};
+
+  NumberGeneratorMock generator;
+  EXPECT_CALL(generator, generate())
+      .Times(2)
+      .WillOnce(Return(1))
+      .WillOnce(Return(3));
 
   TournamentSelector selector(generator);
 
