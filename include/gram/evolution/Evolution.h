@@ -4,8 +4,7 @@
 #include <gram/evolution/operator/Crossover.h>
 #include <gram/evolution/operator/Mutation.h>
 #include <gram/evolution/selector/IndividualSelector.h>
-#include <gram/evolution/FitnessCalculator.h>
-#include <gram/grammar/Grammar.h>
+#include <gram/evolution/fitness_calculator/FitnessCalculator.h>
 #include <gram/individual/Individual.h>
 #include <gram/individual/Mapper.h>
 #include <gram/language/Evaluator.h>
@@ -20,8 +19,8 @@ namespace evolution {
  */
 class Evolution {
  public:
-  Evolution(gram::grammar::Grammar &grammar, gram::language::Evaluator &evaluator);
   gram::individual::Individual run(int populationSize, int iterationCount);
+  void setEvaluator(gram::language::Evaluator *newEvaluator);
   void setCalculator(FitnessCalculator *newCalculator);
   void setSelector(IndividualSelector *newSelector);
   void setMapper(gram::individual::Mapper *newMapper);
@@ -29,8 +28,7 @@ class Evolution {
   void setCrossover(Crossover *newCrossover);
   void setMutation(Mutation *newMutation);
  private:
-  gram::grammar::Grammar &grammar;
-  gram::language::Evaluator &evaluator;
+  gram::language::Evaluator *evaluator;
   FitnessCalculator *calculator;
   IndividualSelector *selector;
   gram::individual::Mapper *mapper;

@@ -7,11 +7,6 @@ using namespace gram::language;
 using namespace gram::population;
 using namespace gram::util;
 
-Evolution::Evolution(gram::grammar::Grammar &grammar, gram::language::Evaluator &evaluator)
-    : grammar(grammar), evaluator(evaluator) {
-  //
-}
-
 Individual Evolution::run(int populationSize, int iterationCount) {
   Population population = initializer->initialize(populationSize);
   processGeneration(population);
@@ -26,6 +21,10 @@ Individual Evolution::run(int populationSize, int iterationCount) {
   }
 
   return population.bestIndividual();
+}
+
+void Evolution::setEvaluator(Evaluator *newEvaluator) {
+  evaluator = newEvaluator;
 }
 
 void Evolution::setCalculator(FitnessCalculator *newCalculator) {
@@ -57,7 +56,7 @@ void Evolution::processGeneration(Population &population) {
     Phenotype phenotype = mapper->map(individual.getGenotype());
     individual.setPhenotype(phenotype);
 
-    int result = evaluator.evaluate(individual);
+    int result = evaluator->evaluate(individual);
     double fitness = calculator->calculate(5, result);
     individual.setFitness(fitness);
   }
