@@ -13,7 +13,7 @@ namespace individual {
 class Mapper {
  public:
   Mapper(gram::grammar::Grammar grammar);
-  Phenotype map(Genotype genotype);
+  virtual Phenotype map(Genotype genotype);
  private:
   gram::grammar::Grammar grammar;
   Genotype genotype;
