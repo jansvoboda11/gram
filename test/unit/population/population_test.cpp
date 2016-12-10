@@ -32,5 +32,7 @@ TEST(population_test, test_it_returns_best_individual) {
 
   Population population{individual1, individual2, individual3};
 
-  ASSERT_EQ(individual2, population.bestIndividual());
+  std::shared_ptr<Individual> bestIndividual = population.bestIndividual();
+
+  ASSERT_EQ(individual2, bestIndividual);
 }
