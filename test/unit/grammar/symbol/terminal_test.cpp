@@ -4,14 +4,6 @@
 
 using namespace gram::grammar;
 
-TEST(terminal_test, test_it_creates_object_with_string) {
-  std::string value("value");
-
-  Terminal terminal(value);
-
-  ASSERT_EQ(value, terminal.getValue());
-}
-
 TEST(terminal_test, test_it_recognizes_two_equal_objects) {
   Terminal terminal1("test");
   Terminal terminal2("test");
