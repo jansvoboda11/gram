@@ -24,12 +24,14 @@ TEST(mutation_operator_test, test_it_does_not_always_mutate) {
 
   Mutation mutation(boolGenerator, numberGenerator);
 
-  ASSERT_EQ(genotype, mutation.apply(genotype));
+  Genotype mutatedGenotype = mutation.apply(genotype);
+
+  Genotype expectedGenotype{1, 1, 1};
+  ASSERT_EQ(expectedGenotype, mutatedGenotype);
 }
 
 TEST(mutation_operator_test, test_it_mutates_one_gene) {
   Genotype genotype{1, 1, 1};
-  Genotype expectedGenotype{1, 1, 3};
 
   BoolGeneratorMock boolGenerator;
   EXPECT_CALL(boolGenerator, generate())
@@ -44,5 +46,8 @@ TEST(mutation_operator_test, test_it_mutates_one_gene) {
 
   Mutation mutation(boolGenerator, numberGenerator);
 
-  ASSERT_EQ(expectedGenotype, mutation.apply(genotype));
+  Genotype mutatedGenotype = mutation.apply(genotype);
+
+  Genotype expectedGenotype{1, 1, 3};
+  ASSERT_EQ(expectedGenotype, mutatedGenotype);
 }
