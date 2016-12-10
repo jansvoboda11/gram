@@ -5,29 +5,30 @@
 using namespace gram::grammar;
 
 TEST(option_test, test_it_accepts_terminals) {
-  Terminal firstTerminal("first");
-  Terminal secondTerminal("second");
+  Terminal terminal1("first");
+  Terminal terminal2("second");
 
   Option option;
-  option.addTerminal(firstTerminal);
-  option.addTerminal(secondTerminal);
+  option.addTerminal(terminal1);
+  option.addTerminal(terminal2);
 
   ASSERT_TRUE(option.hasTerminalAt(0));
   ASSERT_TRUE(option.hasTerminalAt(1));
-  ASSERT_EQ(firstTerminal, option.terminalAt(0));
-  ASSERT_EQ(secondTerminal, option.terminalAt(1));
+  ASSERT_EQ(terminal1, option.terminalAt(0));
+  ASSERT_EQ(terminal2, option.terminalAt(1));
 }
 
 TEST(option_test, test_it_accepts_nonterminals) {
   Terminal terminal("terminal");
 
   auto innerOption = std::make_shared<Option>();
-  innerOption->addTerminal(terminal);
-
   auto nonTerminal = std::make_shared<NonTerminal>();
+
+  innerOption->addTerminal(terminal);
   nonTerminal->addOption(innerOption);
 
   Option option;
+
   option.addNonTerminal(nonTerminal);
 
   ASSERT_TRUE(option.hasNonTerminalAt(0));
@@ -39,12 +40,13 @@ TEST(option_test, test_it_accepts_both_terminals_and_nonterminals) {
   Terminal innerTerminal("inner");
 
   auto innerOption = std::make_shared<Option>();
-  innerOption->addTerminal(innerTerminal);
-
   auto nonTerminal = std::make_shared<NonTerminal>();
+
+  innerOption->addTerminal(innerTerminal);
   nonTerminal->addOption(innerOption);
 
   Option option;
+
   option.addTerminal(terminal);
   option.addNonTerminal(nonTerminal);
 
@@ -55,27 +57,27 @@ TEST(option_test, test_it_accepts_both_terminals_and_nonterminals) {
 }
 
 TEST(option_test, test_it_recognizes_two_equal_options) {
-  Terminal firstTerminal("test");
-  Terminal secondTerminal("test");
+  Terminal terminal1("test");
+  Terminal terminal2("test");
 
-  Option firstOption;
-  firstOption.addTerminal(firstTerminal);
+  Option option1;
+  Option option2;
 
-  Option secondOption;
-  secondOption.addTerminal(secondTerminal);
+  option1.addTerminal(terminal1);
+  option2.addTerminal(terminal2);
 
-  ASSERT_TRUE(firstOption == secondOption);
+  ASSERT_TRUE(option1 == option2);
 }
 
 TEST(option_test, test_it_recognizes_two_different_options) {
-  Terminal firstTerminal("first");
-  Terminal secondTerminal("second");
+  Terminal terminal1("first");
+  Terminal terminal2("second");
 
-  Option firstOption;
-  firstOption.addTerminal(firstTerminal);
+  Option option1;
+  Option option2;
 
-  Option secondOption;
-  secondOption.addTerminal(secondTerminal);
+  option1.addTerminal(terminal1);
+  option2.addTerminal(terminal2);
 
-  ASSERT_TRUE(firstOption != secondOption);
+  ASSERT_TRUE(option1 != option2);
 }

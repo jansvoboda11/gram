@@ -13,15 +13,15 @@ TEST(terminal_test, test_it_creates_object_with_string) {
 }
 
 TEST(terminal_test, test_it_recognizes_two_equal_objects) {
-  Terminal firstTerminal("test");
-  Terminal secondTerminal("test");
+  Terminal terminal1("test");
+  Terminal terminal2("test");
 
-  ASSERT_TRUE(firstTerminal == secondTerminal);
+  ASSERT_TRUE(terminal1 == terminal2);
 }
 
 TEST(terminal_test, test_it_recognizes_two_different_objects) {
-  Terminal firstTerminal("first");
-  Terminal secondTerminal("second");
+  Terminal terminal1("first");
+  Terminal terminal2("second");
 
-  ASSERT_TRUE(firstTerminal != secondTerminal);
+  ASSERT_TRUE(terminal1 != terminal2);
 }

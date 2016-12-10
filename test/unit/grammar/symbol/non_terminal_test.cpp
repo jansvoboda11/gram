@@ -11,6 +11,7 @@ TEST(non_terminal_test, test_it_accepts_option) {
   option->addTerminal(terminal);
 
   NonTerminal nonTerminal;
+
   nonTerminal.addOption(option);
 
   ASSERT_EQ(option, nonTerminal.optionAt(0));
@@ -23,8 +24,8 @@ TEST(non_terminal_test, test_it_handles_recursive_option) {
   option->addTerminal(terminal);
 
   auto nonTerminal = std::make_shared<NonTerminal>();
-  nonTerminal->addOption(option);
 
+  nonTerminal->addOption(option);
   option->addNonTerminal(nonTerminal);
 
   ASSERT_TRUE(nonTerminal->optionAt(0)->hasNonTerminalAt(1));
@@ -32,46 +33,51 @@ TEST(non_terminal_test, test_it_handles_recursive_option) {
 }
 
 TEST(non_terminal_test, test_it_returns_option_count) {
-  auto firstOption = std::make_shared<Option>();
-  auto secondOption = std::make_shared<Option>();
+  auto option1 = std::make_shared<Option>();
+  auto option2 = std::make_shared<Option>();
 
   NonTerminal nonTerminal;
-  nonTerminal.addOption(firstOption);
-  nonTerminal.addOption(secondOption);
+
+  nonTerminal.addOption(option1);
+  nonTerminal.addOption(option2);
 
   ASSERT_EQ(2, nonTerminal.optionCount());
 }
 
 TEST(non_terminal_test, test_it_recognizes_two_equal_objects) {
-  Terminal firstTerminal("test");
-  Terminal secondTerminal("test");
+  Terminal terminal1("test");
+  Terminal terminal2("test");
 
-  auto firstOption = std::make_shared<Option>();
-  firstOption->addTerminal(firstTerminal);
-  auto secondOption = std::make_shared<Option>();
-  secondOption->addTerminal(secondTerminal);
+  auto option1 = std::make_shared<Option>();
+  auto option2 = std::make_shared<Option>();
 
-  NonTerminal firstNonTerminal;
-  firstNonTerminal.addOption(firstOption);
-  NonTerminal secondNonTerminal;
-  secondNonTerminal.addOption(secondOption);
+  option1->addTerminal(terminal1);
+  option2->addTerminal(terminal2);
 
-  ASSERT_TRUE(firstNonTerminal == secondNonTerminal);
+  NonTerminal nonTerminal1;
+  NonTerminal nonTerminal2;
+
+  nonTerminal1.addOption(option1);
+  nonTerminal2.addOption(option2);
+
+  ASSERT_TRUE(nonTerminal1 == nonTerminal2);
 }
 
 TEST(non_terminal_test, test_it_recognizes_two_different_objects) {
-  Terminal firstTerminal("first");
-  Terminal secondTerminal("second");
+  Terminal terminal1("first");
+  Terminal terminal2("second");
 
-  auto firstOption = std::make_shared<Option>();
-  firstOption->addTerminal(firstTerminal);
-  auto secondOption = std::make_shared<Option>();
-  secondOption->addTerminal(secondTerminal);
+  auto option1 = std::make_shared<Option>();
+  auto option2 = std::make_shared<Option>();
 
-  auto firstNonTerminal = std::make_shared<NonTerminal>();
-  firstNonTerminal->addOption(firstOption);
-  auto secondNonTerminal = std::make_shared<NonTerminal>();
-  secondNonTerminal->addOption(secondOption);
+  option1->addTerminal(terminal1);
+  option2->addTerminal(terminal2);
 
-  ASSERT_TRUE(firstNonTerminal != secondNonTerminal);
+  NonTerminal nonTerminal1;
+  NonTerminal nonTerminal2;
+
+  nonTerminal1.addOption(option1);
+  nonTerminal2.addOption(option2);
+
+  ASSERT_TRUE(nonTerminal1 != nonTerminal2);
 }

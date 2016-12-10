@@ -17,18 +17,18 @@ TEST(random_initializer_test, test_it_initializes_individuals_with_random_genoty
       .WillOnce(Return(std::vector<int>{3, 0, 1}))
       .WillOnce(Return(std::vector<int>{2, 3, 0}));
 
-  Genotype firstGenotype{0, 1, 2};
-  Genotype secondGenotype{3, 0, 1};
-  Genotype thirdGenotype{2, 3, 0};
+  Genotype genotype1{0, 1, 2};
+  Genotype genotype2{3, 0, 1};
+  Genotype genotype3{2, 3, 0};
 
-  Individual firstIndividual(firstGenotype);
-  Individual secondIndividual(secondGenotype);
-  Individual thirdIndividual(thirdGenotype);
+  Individual individual1(genotype1);
+  Individual individual2(genotype2);
+  Individual individual3(genotype3);
 
   RandomInitializer initializer(numberGenerator, 3);
   Population population = initializer.initialize(3);
 
-  ASSERT_EQ(firstIndividual, *population[0]);
-  ASSERT_EQ(secondIndividual, *population[1]);
-  ASSERT_EQ(thirdIndividual, *population[2]);
+  ASSERT_EQ(individual1, *population[0]);
+  ASSERT_EQ(individual2, *population[1]);
+  ASSERT_EQ(individual3, *population[2]);
 }

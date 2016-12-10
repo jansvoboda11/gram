@@ -7,49 +7,47 @@ using namespace gram::individual;
 
 TEST(mapper_test, test_it_maps_one_terminal) {
   Terminal terminal("test");
-
   auto option = std::make_shared<Option>();
-  option->addTerminal(terminal);
-
   auto startSymbol = std::make_shared<NonTerminal>();
+
+  option->addTerminal(terminal);
   startSymbol->addOption(option);
 
   Grammar grammar(startSymbol);
-
   Genotype genotype{0};
 
-  Phenotype phenotype;
-  phenotype.addTerminal(terminal);
-
   Mapper mapper(grammar);
+
   Phenotype mapped = mapper.map(genotype);
 
-  ASSERT_EQ(phenotype, mapped);
+  Phenotype expectedPhenotype;
+  expectedPhenotype.addTerminal(terminal);
+  ASSERT_EQ(expectedPhenotype, mapped);
 }
 
 TEST(mapper_test, test_it_maps_nonterminal) {
-  Terminal firstTerminal("first");
-  Terminal secondTerminal("second");
+  Terminal terminal1("first");
+  Terminal terminal2("second");
 
-  auto firstOption = std::make_shared<Option>();
-  firstOption->addTerminal(firstTerminal);
+  auto option1 = std::make_shared<Option>();
+  auto option2 = std::make_shared<Option>();
 
-  auto secondRule = std::make_shared<Option>();
-  secondRule->addTerminal(secondTerminal);
+  option1->addTerminal(terminal1);
+  option2->addTerminal(terminal2);
 
   auto startSymbol = std::make_shared<NonTerminal>();
-  startSymbol->addOption(firstOption);
-  startSymbol->addOption(secondRule);
+
+  startSymbol->addOption(option1);
+  startSymbol->addOption(option2);
 
   Grammar grammar(startSymbol);
-
   Genotype genotype{1};
 
-  Phenotype phenotype;
-  phenotype.addTerminal(secondTerminal);
-
   Mapper mapper(grammar);
+
   Phenotype mapped = mapper.map(genotype);
 
-  ASSERT_EQ(phenotype, mapped);
+  Phenotype expectedPhenotype;
+  expectedPhenotype.addTerminal(terminal2);
+  ASSERT_EQ(expectedPhenotype, mapped);
 }

@@ -47,19 +47,17 @@ TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_sel
       .WillOnce(Return(3));
 
   auto individual1 = std::make_shared<IndividualMock>();
+  auto individual2 = std::make_shared<IndividualMock>();
+  auto individual3 = std::make_shared<IndividualMock>();
+  auto individual4 = std::make_shared<IndividualMock>();
+
   EXPECT_CALL(*individual1, getFitness())
       .Times(0);
-
-  auto individual2 = std::make_shared<IndividualMock>();
   EXPECT_CALL(*individual2, getFitness())
       .Times(1)
       .WillOnce(Return(1.0));
-
-  auto individual3 = std::make_shared<IndividualMock>();
   EXPECT_CALL(*individual3, getFitness())
       .Times(0);
-
-  auto individual4 = std::make_shared<IndividualMock>();
   EXPECT_CALL(*individual4, getFitness())
       .Times(1)
       .WillOnce(Return(2.0));
