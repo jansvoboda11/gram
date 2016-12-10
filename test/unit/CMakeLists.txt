@@ -8,18 +8,16 @@ add_executable(gram_unit_tests
         evolution/operator/mutation_test.cpp
         evolution/evolution_builder_test.cpp
         evolution/evolution_test.cpp
-        evolution/selector/individual_selector_test.cpp
         evolution/selector/tournament_selector_test.cpp
         grammar/rule_parser/bnf_rule_parser_test.cpp
-        grammar/symbol/non_terminal_symbol_test.cpp
+        grammar/symbol/non_terminal_test.cpp
         grammar/symbol/option_test.cpp
-        grammar/symbol/terminal_symbol_test.cpp
+        grammar/symbol/terminal_test.cpp
         grammar/grammar_test.cpp
         individual/genotype_test.cpp
         individual/individual_test.cpp
         individual/mapper_test.cpp
         individual/phenotype_test.cpp
-        language/evaluator_test.cpp
         population/generator/generator_test.cpp
         population/initializer/random_initializer_test.cpp
         population/processor/processor_test.cpp

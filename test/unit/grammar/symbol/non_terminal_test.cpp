@@ -4,7 +4,7 @@
 
 using namespace gram::grammar;
 
-TEST(non_terminal_symbol_test, test_it_accepts_option) {
+TEST(non_terminal_test, test_it_accepts_option) {
   Terminal terminal("test");
 
   auto option = std::make_shared<Option>();
@@ -16,7 +16,7 @@ TEST(non_terminal_symbol_test, test_it_accepts_option) {
   ASSERT_EQ(option, nonTerminal.optionAt(0));
 }
 
-TEST(non_terminal_symbol_test, test_it_handles_recursive_option) {
+TEST(non_terminal_test, test_it_handles_recursive_option) {
   Terminal terminal("test");
 
   auto option = std::make_shared<Option>();
@@ -31,7 +31,7 @@ TEST(non_terminal_symbol_test, test_it_handles_recursive_option) {
   ASSERT_EQ(nonTerminal, nonTerminal->optionAt(0)->nonTerminalAt(1));
 }
 
-TEST(non_terminal_symbol_test, test_it_returns_option_count) {
+TEST(non_terminal_test, test_it_returns_option_count) {
   auto firstOption = std::make_shared<Option>();
   auto secondOption = std::make_shared<Option>();
 
@@ -42,7 +42,7 @@ TEST(non_terminal_symbol_test, test_it_returns_option_count) {
   ASSERT_EQ(2, nonTerminal.optionCount());
 }
 
-TEST(non_terminal_symbol_test, test_it_recognizes_two_equal_objects) {
+TEST(non_terminal_test, test_it_recognizes_two_equal_objects) {
   Terminal firstTerminal("test");
   Terminal secondTerminal("test");
 
@@ -59,7 +59,7 @@ TEST(non_terminal_symbol_test, test_it_recognizes_two_equal_objects) {
   ASSERT_TRUE(firstNonTerminal == secondNonTerminal);
 }
 
-TEST(non_terminal_symbol_test, test_it_recognizes_two_different_objects) {
+TEST(non_terminal_test, test_it_recognizes_two_different_objects) {
   Terminal firstTerminal("first");
   Terminal secondTerminal("second");
 
