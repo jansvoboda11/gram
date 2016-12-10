@@ -16,7 +16,7 @@ class Individual {
   void setGenotype(Genotype newGenotype);
   void setPhenotype(Phenotype newPhenotype);
   void setFitness(double calculatedFitness);
-  double getFitness();
+  virtual double getFitness();
   bool operator==(const Individual &individual) const;
   bool operator!=(const Individual &individual) const;
  private:

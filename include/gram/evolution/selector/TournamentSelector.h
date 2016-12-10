@@ -11,7 +11,7 @@ namespace evolution {
 class TournamentSelector : public IndividualSelector {
  public:
   TournamentSelector(gram::util::NumberGenerator &generator);
-  gram::individual::Individual select(gram::population::Population population);
+  std::shared_ptr<gram::individual::Individual> select(gram::population::Population population);
  private:
   gram::util::NumberGenerator &generator;
 };

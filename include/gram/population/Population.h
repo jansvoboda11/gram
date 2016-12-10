@@ -1,6 +1,7 @@
 #ifndef GRAM_POPULATION_POPULATION
 #define GRAM_POPULATION_POPULATION
 
+#include <memory>
 #include <vector>
 
 #include <gram/individual/Individual.h>
@@ -13,16 +14,16 @@ namespace population {
 class Population {
  public:
   Population();
-  Population(std::vector<gram::individual::Individual> individuals);
-  Population(std::initializer_list<gram::individual::Individual> individuals);
-  gram::individual::Individual &bestIndividual();
-  void addIndividual(gram::individual::Individual individual);
+  Population(std::vector<std::shared_ptr<gram::individual::Individual>> individuals);
+  Population(std::initializer_list<std::shared_ptr<gram::individual::Individual>> individuals);
+  std::shared_ptr<gram::individual::Individual> bestIndividual();
+  void addIndividual(std::shared_ptr<gram::individual::Individual> individual);
   unsigned long size();
-  gram::individual::Individual &operator[](unsigned long index);
-  std::vector<gram::individual::Individual>::iterator begin() noexcept;
-  std::vector<gram::individual::Individual>::iterator end() noexcept;
+  std::shared_ptr<gram::individual::Individual> operator[](unsigned long index);
+  std::vector<std::shared_ptr<gram::individual::Individual>>::iterator begin() noexcept;
+  std::vector<std::shared_ptr<gram::individual::Individual>>::iterator end() noexcept;
  private:
-  std::vector<gram::individual::Individual> individuals;
+  std::vector<std::shared_ptr<gram::individual::Individual>> individuals;
 };
 }
 }

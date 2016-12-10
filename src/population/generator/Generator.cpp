@@ -10,22 +10,22 @@ Generator::Generator(IndividualSelector &selector, Crossover &crossover, Mutatio
 }
 
 Population Generator::generateSuccessor(Population &population) {
-  std::vector<Individual> parents = selectParents(population);
+  std::vector<std::shared_ptr<Individual>> parents = selectParents(population);
 
-  std::vector<Individual> children = createChildren(parents);
+  std::vector<std::shared_ptr<Individual>> children = createChildren(parents);
 
   mutateChildren(children);
 
   return Population(children);
 }
 
-std::vector<Individual> Generator::selectParents(Population &oldPopulation) {
-  std::vector<Individual> parents;
+std::vector<std::shared_ptr<Individual>> Generator::selectParents(Population &oldPopulation) {
+  std::vector<std::shared_ptr<Individual>> parents;
 
   unsigned long size = oldPopulation.size();
 
   for (unsigned long i = 0; i < size; i++) {
-    Individual parent = selector.select(oldPopulation);
+    std::shared_ptr<Individual> parent = selector.select(oldPopulation);
 
     parents.push_back(parent);
   }
@@ -33,20 +33,20 @@ std::vector<Individual> Generator::selectParents(Population &oldPopulation) {
   return parents;
 }
 
-std::vector<Individual> Generator::createChildren(std::vector<Individual> parents) {
-  std::vector<Individual> children;
+std::vector<std::shared_ptr<Individual>> Generator::createChildren(std::vector<std::shared_ptr<Individual>> parents) {
+  std::vector<std::shared_ptr<Individual>> children;
 
   unsigned long size = parents.size();
 
   for (unsigned long i = 0; i < size; i++) {
-    Individual &firstParent = parents[i];
-    Individual &secondParent = parents[i + 1];
+    std::shared_ptr<Individual> firstParent = parents[i];
+    std::shared_ptr<Individual> secondParent = parents[i + 1];
 
-    Genotype firstGenotype = crossover.apply(firstParent.getGenotype(), secondParent.getGenotype());
-    Genotype secondGenotype = crossover.apply(secondParent.getGenotype(), firstParent.getGenotype());
+    Genotype firstGenotype = crossover.apply(firstParent->getGenotype(), secondParent->getGenotype());
+    Genotype secondGenotype = crossover.apply(secondParent->getGenotype(), firstParent->getGenotype());
 
-    Individual firstChild(firstGenotype);
-    Individual secondChild(secondGenotype);
+    auto firstChild = std::make_shared<Individual>(firstGenotype);
+    auto secondChild = std::make_shared<Individual>(secondGenotype);
 
     children.push_back(firstChild);
     children.push_back(secondChild);
@@ -55,11 +55,11 @@ std::vector<Individual> Generator::createChildren(std::vector<Individual> parent
   return children;
 }
 
-void Generator::mutateChildren(std::vector<gram::individual::Individual> &children) {
+void Generator::mutateChildren(std::vector<std::shared_ptr<Individual>> children) {
   for (auto &child : children) {
-    Genotype oldGenotype = child.getGenotype();
+    Genotype oldGenotype = child->getGenotype();
     Genotype mutatedGenotype = mutation.apply(oldGenotype);
 
-    child.setGenotype(mutatedGenotype);
+    child->setGenotype(mutatedGenotype);
   }
 }

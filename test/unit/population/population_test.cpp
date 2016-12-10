@@ -16,13 +16,13 @@ TEST(population_test, test_it_returns_best_individual) {
   Genotype secondGenotype{1};
   Genotype thirdGenotype{2};
 
-  Individual firstIndividual(firstGenotype);
-  Individual secondIndividual(secondGenotype);
-  Individual thirdIndividual(thirdGenotype);
+  auto firstIndividual = std::make_shared<Individual>(firstGenotype);
+  auto secondIndividual = std::make_shared<Individual>(secondGenotype);
+  auto thirdIndividual = std::make_shared<Individual>(thirdGenotype);
 
-  firstIndividual.setFitness(1.0);
-  secondIndividual.setFitness(0.5);
-  thirdIndividual.setFitness(2.0);
+  firstIndividual->setFitness(1.0);
+  secondIndividual->setFitness(0.5);
+  thirdIndividual->setFitness(2.0);
 
   Population population{firstIndividual, secondIndividual, thirdIndividual};
 

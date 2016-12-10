@@ -9,23 +9,23 @@ Population::Population() : individuals() {
   //
 }
 
-Population::Population(std::vector<Individual> individuals) : individuals(individuals) {
+Population::Population(std::vector<std::shared_ptr<Individual>> individuals) : individuals(individuals) {
   //
 }
 
-Population::Population(std::initializer_list<Individual> individuals) : individuals{individuals} {
+Population::Population(std::initializer_list<std::shared_ptr<Individual>> individuals) : individuals{individuals} {
   //
 }
 
-Individual &Population::bestIndividual() {
+std::shared_ptr<Individual> Population::bestIndividual() {
   if (individuals.size() == 0) {
     throw std::logic_error("The population is empty.");
   }
 
-  Individual &best = individuals[0];
+  std::shared_ptr<Individual> best = individuals[0];
 
   for (int i = 1; i < individuals.size(); i++) {
-    if (individuals[i].getFitness() < best.getFitness()) {
+    if (individuals[i]->getFitness() < best->getFitness()) {
       best = individuals[i];
     }
   }
@@ -33,7 +33,7 @@ Individual &Population::bestIndividual() {
   return best;
 }
 
-void Population::addIndividual(Individual individual) {
+void Population::addIndividual(std::shared_ptr<Individual> individual) {
   individuals.push_back(individual);
 }
 
@@ -41,14 +41,14 @@ unsigned long Population::size() {
   return individuals.size();
 }
 
-gram::individual::Individual &Population::operator[](unsigned long index) {
+std::shared_ptr<Individual> Population::operator[](unsigned long index) {
   return individuals[index];
 }
 
-std::vector<Individual>::iterator Population::begin() noexcept {
+std::vector<std::shared_ptr<Individual>>::iterator Population::begin() noexcept {
   return individuals.begin();
 }
 
-std::vector<Individual>::iterator Population::end() noexcept {
+std::vector<std::shared_ptr<Individual>>::iterator Population::end() noexcept {
   return individuals.end();
 }

@@ -12,7 +12,7 @@ namespace evolution {
  */
 class IndividualSelectorMock : public IndividualSelector {
  public:
-  MOCK_METHOD1(select, gram::individual::Individual(gram::population::Population population));
+  MOCK_METHOD1(select, std::shared_ptr<gram::individual::Individual>(gram::population::Population population));
 };
 }
 }

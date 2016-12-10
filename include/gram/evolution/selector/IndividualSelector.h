@@ -11,7 +11,7 @@ namespace evolution {
  */
 class IndividualSelector {
  public:
-  virtual gram::individual::Individual select(gram::population::Population population) = 0;
+  virtual std::shared_ptr<gram::individual::Individual> select(gram::population::Population population) = 0;
 };
 }
 }

@@ -12,7 +12,7 @@ TournamentSelector::TournamentSelector(NumberGenerator &generator) : generator(g
   //
 }
 
-Individual TournamentSelector::select(gram::population::Population population) {
+std::shared_ptr<Individual> TournamentSelector::select(gram::population::Population population) {
   if (population.size() == 0) {
     throw std::logic_error("Cannot select an individual from an empty population.");
   }
@@ -21,7 +21,7 @@ Individual TournamentSelector::select(gram::population::Population population) {
     return population[0];
   }
 
-  std::vector<Individual> preSelected;
+  std::vector<std::shared_ptr<Individual>> preSelected;
   std::vector<long int> preSelectedIds;
 
   for (int i = 0; i < population.size() / 2; i++) {
@@ -36,10 +36,10 @@ Individual TournamentSelector::select(gram::population::Population population) {
     preSelectedIds.push_back(id);
   }
 
-  Individual best = preSelected[0];
+  std::shared_ptr<Individual> best = preSelected[0];
 
   for (int i = 1; i < preSelected.size(); i++) {
-    if (preSelected[i].getFitness() < best.getFitness()) {
+    if (preSelected[i]->getFitness() < best->getFitness()) {
       best = preSelected[i];
     }
   }

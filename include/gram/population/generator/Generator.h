@@ -1,6 +1,8 @@
 #ifndef GRAM_POPULATION_GENERATOR
 #define GRAM_POPULATION_GENERATOR
 
+#include <memory>
+
 #include <gram/population/Population.h>
 #include <gram/evolution/selector/IndividualSelector.h>
 #include <gram/evolution/operator/Crossover.h>
@@ -21,9 +23,9 @@ class Generator {
   gram::evolution::IndividualSelector &selector;
   gram::evolution::Crossover &crossover;
   gram::evolution::Mutation &mutation;
-  std::vector<gram::individual::Individual> selectParents(Population &oldPopulation);
-  std::vector<gram::individual::Individual> createChildren(std::vector<gram::individual::Individual> parents);
-  void mutateChildren(std::vector<gram::individual::Individual> &children);
+  std::vector<std::shared_ptr<gram::individual::Individual>> selectParents(Population &oldPopulation);
+  std::vector<std::shared_ptr<gram::individual::Individual>> createChildren(std::vector<std::shared_ptr<gram::individual::Individual>> parents);
+  void mutateChildren(std::vector<std::shared_ptr<gram::individual::Individual>> children);
 };
 }
 }

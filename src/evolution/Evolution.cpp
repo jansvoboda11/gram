@@ -9,7 +9,7 @@ Individual Evolution::run(int populationSize, int iterationCount) {
   processor->process(population);
 
   for (int i = 0; i < iterationCount; i++) {
-    if (population.bestIndividual().getFitness() == 0) {
+    if (population.bestIndividual()->getFitness() == 0) {
       break;
     }
 
@@ -18,7 +18,7 @@ Individual Evolution::run(int populationSize, int iterationCount) {
     processor->process(population);
   }
 
-  return population.bestIndividual();
+  return *population.bestIndividual();
 }
 
 void Evolution::setInitializer(Initializer *newInitializer) {

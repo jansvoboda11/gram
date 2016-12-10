@@ -2,6 +2,7 @@
 
 #include <gram/evolution/selector/TournamentSelector.h>
 #include <gram/util/NumberGeneratorMock.h>
+#include <gram/individual/IndividualMock.h>
 
 using namespace gram::evolution;
 using namespace gram::individual;
@@ -23,8 +24,8 @@ TEST(tournament_selector_test, test_it_handles_empty_population) {
 }
 
 TEST(tournament_selector_test, test_it_select_the_only_individual) {
-  Genotype genotype{0};
-  Individual individual(genotype);
+  Genotype genotype{};
+  auto individual = std::make_shared<Individual>(genotype);
   Population population{individual};
 
   NumberGeneratorMock generator;
@@ -33,36 +34,41 @@ TEST(tournament_selector_test, test_it_select_the_only_individual) {
 
   TournamentSelector selector(generator);
 
-  ASSERT_EQ(individual, selector.select(population));
+  std::shared_ptr<Individual> selectedIndividual = selector.select(population);
+
+  ASSERT_EQ(individual, selectedIndividual);
 }
 
 TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_selected_group) {
-  Genotype firstGenotype{0};
-  Genotype secondGenotype{1};
-  Genotype thirdGenotype{2};
-  Genotype fourthGenotype{3};
-  Genotype fifthGenotype{4};
-
-  Individual firstIndividual(firstGenotype);
-  Individual secondIndividual(secondGenotype);
-  Individual thirdIndividual(thirdGenotype);
-  Individual fourthIndividual(fourthGenotype);
-  Individual fifthIndividual(fifthGenotype);
-
-  firstIndividual.setFitness(1.5);
-  secondIndividual.setFitness(1.0);
-  thirdIndividual.setFitness(0.5);
-  fourthIndividual.setFitness(2.0);
-
-  Population population{firstIndividual, secondIndividual, thirdIndividual, fourthIndividual};
-
   NumberGeneratorMock generator;
   EXPECT_CALL(generator, generate())
       .Times(2)
       .WillOnce(Return(1))
       .WillOnce(Return(3));
 
+  auto individual1 = std::make_shared<IndividualMock>();
+  EXPECT_CALL(*individual1, getFitness())
+      .Times(0);
+
+  auto individual2 = std::make_shared<IndividualMock>();
+  EXPECT_CALL(*individual2, getFitness())
+      .Times(1)
+      .WillOnce(Return(1.0));
+
+  auto individual3 = std::make_shared<IndividualMock>();
+  EXPECT_CALL(*individual3, getFitness())
+      .Times(0);
+
+  auto individual4 = std::make_shared<IndividualMock>();
+  EXPECT_CALL(*individual4, getFitness())
+      .Times(1)
+      .WillOnce(Return(2.0));
+
+  Population population{individual1, individual2, individual3, individual4};
+
   TournamentSelector selector(generator);
 
-  ASSERT_EQ(secondIndividual, selector.select(population));
+  std::shared_ptr<Individual> selectedIndividual = selector.select(population);
+
+  ASSERT_EQ(individual2, selectedIndividual);
 }

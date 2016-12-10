@@ -10,7 +10,7 @@ namespace language {
  */
 class Evaluator {
  public:
-  virtual int evaluate(gram::individual::Individual individual) = 0;
+  virtual int evaluate(std::shared_ptr<gram::individual::Individual> individual) = 0;
 };
 }
 }
