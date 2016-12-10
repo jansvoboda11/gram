@@ -7,7 +7,7 @@ ParabolaFitnessCalculator::ParabolaFitnessCalculator(double width) : width(width
 }
 
 double ParabolaFitnessCalculator::calculate(int desired, int actual) {
-  double base = (1 / width) * (actual + desired);
+  double base = (1 / width) * (actual - desired);
 
   return base * base;
 }
