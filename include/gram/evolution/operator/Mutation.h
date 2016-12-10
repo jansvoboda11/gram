@@ -13,7 +13,7 @@ namespace evolution {
 class Mutation {
  public:
   Mutation(gram::util::BoolGenerator &boolGenerator, gram::util::NumberGenerator &numberGenerator);
-  gram::individual::Genotype apply(gram::individual::Genotype genotype);
+  virtual gram::individual::Genotype apply(gram::individual::Genotype genotype);
  private:
   gram::util::BoolGenerator &boolGenerator;
   gram::util::NumberGenerator &numberGenerator;
