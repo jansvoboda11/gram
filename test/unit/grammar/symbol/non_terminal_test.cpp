@@ -13,8 +13,9 @@ TEST(non_terminal_test, test_it_accepts_option) {
   NonTerminal nonTerminal;
 
   nonTerminal.addOption(option);
+  std::shared_ptr<Option> acceptedOption = nonTerminal.optionAt(0);
 
-  ASSERT_EQ(option, nonTerminal.optionAt(0));
+  ASSERT_EQ(option, acceptedOption);
 }
 
 TEST(non_terminal_test, test_it_handles_recursive_option) {
@@ -41,7 +42,9 @@ TEST(non_terminal_test, test_it_returns_option_count) {
   nonTerminal.addOption(option1);
   nonTerminal.addOption(option2);
 
-  ASSERT_EQ(2, nonTerminal.optionCount());
+  unsigned long optionCount = nonTerminal.optionCount();
+
+  ASSERT_EQ(2, optionCount);
 }
 
 TEST(non_terminal_test, test_it_recognizes_two_equal_objects) {
