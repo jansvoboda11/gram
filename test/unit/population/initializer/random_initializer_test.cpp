@@ -7,6 +7,7 @@ using namespace gram::population;
 using namespace gram::individual;
 using namespace gram::util;
 
+using ::testing::NiceMock;
 using ::testing::Return;
 
 TEST(random_initializer_test, test_it_initializes_individuals_with_random_genotype) {
@@ -18,9 +19,8 @@ TEST(random_initializer_test, test_it_initializes_individuals_with_random_genoty
   Individual individual2(genotype2);
   Individual individual3(genotype3);
 
-  NumberGeneratorMock numberGenerator;
+  NiceMock<NumberGeneratorMock> numberGenerator;
   EXPECT_CALL(numberGenerator, generate(3))
-      .Times(3)
       .WillOnce(Return(std::vector<int>{0, 1, 2}))
       .WillOnce(Return(std::vector<int>{3, 0, 1}))
       .WillOnce(Return(std::vector<int>{2, 3, 0}));

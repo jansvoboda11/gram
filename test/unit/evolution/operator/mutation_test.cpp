@@ -8,19 +8,17 @@ using namespace gram::evolution;
 using namespace gram::individual;
 using namespace gram::util;
 
+using ::testing::NiceMock;
 using ::testing::Return;
 
 TEST(mutation_operator_test, test_it_does_not_always_mutate) {
   Genotype genotype{1, 1, 1};
 
-  BoolGeneratorMock boolGenerator;
-  EXPECT_CALL(boolGenerator, generate())
-      .Times(1)
-      .WillOnce(Return(false));
+  NiceMock<BoolGeneratorMock> boolGenerator;
+  ON_CALL(boolGenerator, generate())
+      .WillByDefault(Return(false));
 
-  NumberGeneratorMock numberGenerator;
-  EXPECT_CALL(numberGenerator, generate())
-      .Times(0);
+  NiceMock<NumberGeneratorMock> numberGenerator;
 
   Mutation mutation(boolGenerator, numberGenerator);
 
@@ -33,14 +31,12 @@ TEST(mutation_operator_test, test_it_does_not_always_mutate) {
 TEST(mutation_operator_test, test_it_mutates_one_gene) {
   Genotype genotype{1, 1, 1};
 
-  BoolGeneratorMock boolGenerator;
-  EXPECT_CALL(boolGenerator, generate())
-      .Times(1)
-      .WillOnce(Return(true));
+  NiceMock<BoolGeneratorMock> boolGenerator;
+  ON_CALL(boolGenerator, generate())
+      .WillByDefault(Return(true));
 
-  NumberGeneratorMock numberGenerator;
+  NiceMock<NumberGeneratorMock> numberGenerator;
   EXPECT_CALL(numberGenerator, generate())
-      .Times(2)
       .WillOnce(Return(2))
       .WillOnce(Return(3));
 
