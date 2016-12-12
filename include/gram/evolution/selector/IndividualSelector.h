@@ -2,7 +2,7 @@
 #define GRAM_EVOLUTION_INDIVIDUAL_SELECTOR
 
 #include <gram/population/Population.h>
-#include <gram/util/NumberGenerator.h>
+#include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {
 namespace evolution {

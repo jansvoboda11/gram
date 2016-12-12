@@ -3,7 +3,7 @@
 
 #include <gmock/gmock.h>
 
-#include <gram/util/BoolGenerator.h>
+#include <gram/util/bool_generator/BoolGenerator.h>
 
 namespace gram {
 namespace util {

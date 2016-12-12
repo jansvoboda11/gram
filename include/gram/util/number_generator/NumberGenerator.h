@@ -8,8 +8,8 @@ namespace util {
  */
 class NumberGenerator {
  public:
-  virtual int generate() = 0;
-  virtual std::vector<int> generate(int count) = 0;
+  virtual unsigned long generate() = 0;
+  virtual std::vector<unsigned long> generate(int count) = 0;
 };
 }
 }

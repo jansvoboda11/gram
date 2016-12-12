@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
 #include <gram/evolution/operator/Mutation.h>
-#include <gram/util/BoolGeneratorMock.h>
-#include <gram/util/NumberGeneratorMock.h>
+#include <gram/util/bool_generator/BoolGeneratorMock.h>
+#include <gram/util/number_generator/NumberGeneratorMock.h>
 
 using namespace gram::evolution;
 using namespace gram::individual;

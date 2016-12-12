@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 #include <gram/evolution/selector/TournamentSelector.h>
-#include <gram/util/NumberGeneratorMock.h>
+#include <gram/util/number_generator/NumberGeneratorMock.h>
 #include <gram/individual/IndividualMock.h>
 
 using namespace gram::evolution;

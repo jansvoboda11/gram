@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 #include <gram/population/initializer/RandomInitializer.h>
-#include <gram/util/NumberGeneratorMock.h>
+#include <gram/util/number_generator/NumberGeneratorMock.h>
 
 using namespace gram::population;
 using namespace gram::individual;
@@ -21,9 +21,9 @@ TEST(random_initializer_test, test_it_initializes_individuals_with_random_genoty
 
   NiceMock<NumberGeneratorMock> numberGenerator;
   EXPECT_CALL(numberGenerator, generate(3))
-      .WillOnce(Return(std::vector<int>{0, 1, 2}))
-      .WillOnce(Return(std::vector<int>{3, 0, 1}))
-      .WillOnce(Return(std::vector<int>{2, 3, 0}));
+      .WillOnce(Return(std::vector<unsigned long>{0, 1, 2}))
+      .WillOnce(Return(std::vector<unsigned long>{3, 0, 1}))
+      .WillOnce(Return(std::vector<unsigned long>{2, 3, 0}));
 
   RandomInitializer initializer(numberGenerator, 3);
 

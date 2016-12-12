@@ -3,7 +3,7 @@
 
 #include <gmock/gmock.h>
 
-#include <gram/util/NumberGenerator.h>
+#include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {
 namespace util {
@@ -12,8 +12,8 @@ namespace util {
  */
 class NumberGeneratorMock : public NumberGenerator {
  public:
-  MOCK_METHOD0(generate, int());
-  MOCK_METHOD1(generate, std::vector<int>(int count));
+  MOCK_METHOD0(generate, unsigned long());
+  MOCK_METHOD1(generate, std::vector<unsigned long>(int count));
 };
 }
 }

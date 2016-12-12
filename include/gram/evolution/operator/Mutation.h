@@ -2,8 +2,8 @@
 #define GRAM_EVOLUTION_OPERATOR_MUTATION
 
 #include <gram/individual/Genotype.h>
-#include <gram/util/BoolGenerator.h>
-#include <gram/util/NumberGenerator.h>
+#include <gram/util/bool_generator/BoolGenerator.h>
+#include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {
 namespace evolution {

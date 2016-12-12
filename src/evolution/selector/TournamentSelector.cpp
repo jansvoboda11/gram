@@ -22,10 +22,10 @@ std::shared_ptr<Individual> TournamentSelector::select(gram::population::Populat
   }
 
   std::vector<std::shared_ptr<Individual>> preSelected;
-  std::vector<long int> preSelectedIds;
+  std::vector<long> preSelectedIds;
 
   for (int i = 0; i < population.size() / 2; i++) {
-    long int id = generator.generate() % population.size();
+    long id = generator.generate() % population.size();
 
     if (std::find(preSelectedIds.begin(), preSelectedIds.end(), id) != preSelectedIds.end()) {
       i -= 1;

@@ -14,8 +14,8 @@ Genotype Mutation::apply(Genotype genotype) {
     return genotype;
   }
 
-  int index = numberGenerator.generate();
-  int value = numberGenerator.generate();
+  unsigned long index = numberGenerator.generate();
+  unsigned long value = numberGenerator.generate();
 
   genotype[index] = value;
 

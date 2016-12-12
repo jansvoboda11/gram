@@ -19,6 +19,7 @@ set(SOURCE_FILES
         population/initializer/RandomInitializer.cpp
         population/processor/Processor.cpp
         population/Population.cpp
+        util/number_generator/TwisterNumberGenerator.cpp
         )
 
 add_library(gram STATIC ${SOURCE_FILES})

@@ -2,7 +2,7 @@
 #define GRAM_EVOLUTION_OPERATOR_CROSSOVER
 
 #include <gram/individual/Genotype.h>
-#include <gram/util/NumberGenerator.h>
+#include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {
 namespace evolution {

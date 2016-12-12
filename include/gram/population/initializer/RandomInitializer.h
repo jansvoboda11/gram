@@ -2,7 +2,7 @@
 #define GRAM_POPULATION_INITIALIZER_RANDOM
 
 #include <gram/population/initializer/Initializer.h>
-#include <gram/util/NumberGenerator.h>
+#include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {
 namespace population {

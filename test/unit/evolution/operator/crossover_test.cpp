@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 #include <gram/evolution/operator/Crossover.h>
-#include <gram/util/NumberGeneratorMock.h>
+#include <gram/util/number_generator/NumberGeneratorMock.h>
 
 using namespace gram::evolution;
 using namespace gram::individual;

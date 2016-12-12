@@ -8,7 +8,7 @@ namespace individual {
 /**
  * Class.
  */
-typedef std::vector<int> Genotype;
+typedef std::vector<unsigned long> Genotype;
 }
 }
 
