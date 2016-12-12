@@ -1,6 +1,8 @@
 #ifndef GRAM_UTIL_BOOL_GENERATOR
 #define GRAM_UTIL_BOOL_GENERATOR
 
+#include <vector>
+
 namespace gram {
 namespace util {
 /**
