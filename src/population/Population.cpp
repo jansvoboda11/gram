@@ -41,7 +41,7 @@ unsigned long Population::size() {
   return individuals.size();
 }
 
-std::shared_ptr<Individual> Population::operator[](unsigned long index) {
+std::shared_ptr<Individual> &Population::operator[](unsigned long index) {
   return individuals[index];
 }
 

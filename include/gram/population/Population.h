@@ -19,7 +19,7 @@ class Population {
   std::shared_ptr<gram::individual::Individual> bestIndividual();
   void addIndividual(std::shared_ptr<gram::individual::Individual> individual);
   unsigned long size();
-  std::shared_ptr<gram::individual::Individual> operator[](unsigned long index);
+  std::shared_ptr<gram::individual::Individual> &operator[](unsigned long index);
   std::vector<std::shared_ptr<gram::individual::Individual>>::iterator begin() noexcept;
   std::vector<std::shared_ptr<gram::individual::Individual>>::iterator end() noexcept;
  private:
