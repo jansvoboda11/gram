@@ -1,6 +1,8 @@
 #ifndef GRAM_LANGUAGE_EVALUATOR
 #define GRAM_LANGUAGE_EVALUATOR
 
+#include <memory>
+
 #include <gram/individual/Individual.h>
 
 namespace gram {
