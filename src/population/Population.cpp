@@ -1,7 +1,5 @@
 #include <gram/population/Population.h>
 
-#include <stdexcept>
-
 using namespace gram::individual;
 using namespace gram::population;
 
