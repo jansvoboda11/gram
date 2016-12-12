@@ -31,10 +31,6 @@ std::shared_ptr<Individual> Population::bestIndividual() {
   return best;
 }
 
-void Population::addIndividual(std::shared_ptr<Individual> individual) {
-  individuals.push_back(individual);
-}
-
 unsigned long Population::size() {
   return individuals.size();
 }
