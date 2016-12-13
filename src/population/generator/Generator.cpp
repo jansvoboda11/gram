@@ -38,7 +38,7 @@ std::vector<std::shared_ptr<Individual>> Generator::createChildren(std::vector<s
 
   unsigned long size = parents.size();
 
-  for (unsigned long i = 0; i < size; i++) {
+  for (unsigned long i = 0; i < size; i += 2) {
     std::shared_ptr<Individual> firstParent = parents[i];
     std::shared_ptr<Individual> secondParent = parents[i + 1];
 
