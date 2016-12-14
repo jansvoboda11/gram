@@ -19,10 +19,10 @@ std::string Phenotype::serialize() {
   std::string serialized;
 
   for (auto &terminal : terminals) {
-    serialized += terminal.getValue() + " ";
+    serialized += terminal.getValue();
   }
 
-  return serialized.substr(0, serialized.length() - 1);
+  return serialized;
 }
 
 bool Phenotype::operator==(const Phenotype &phenotype) const {

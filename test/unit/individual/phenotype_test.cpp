@@ -26,7 +26,7 @@ TEST(phenotype_test, test_it_serializes_terminals) {
 
   std::string serialized = phenotype.serialize();
 
-  ASSERT_EQ("hello world", serialized);
+  ASSERT_EQ("helloworld", serialized);
 }
 
 TEST(phenotype_test, test_it_recognizes_two_equal_objects) {
