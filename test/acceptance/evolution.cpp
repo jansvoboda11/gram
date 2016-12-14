@@ -35,7 +35,7 @@ class FakeEvaluator : public Evaluator {
 class FakeFitnessCalculator : public FitnessCalculator {
  public:
   double calculate(int desired, int actual) {
-    return std::abs(111111 - actual);
+    return std::abs(123 - actual);
   };
 };
 
@@ -43,7 +43,7 @@ TEST(evolution_test, test_something) {
   TwisterNumberGenerator numberGenerator(29);
   TournamentSelector selector(numberGenerator);
   Crossover crossover(numberGenerator);
-  TwisterBoolGenerator boolGenerator(1.0);
+  TwisterBoolGenerator boolGenerator(0.1);
   Mutation mutation(boolGenerator, numberGenerator);
   Generator generator(selector, crossover, mutation);
 
@@ -85,8 +85,8 @@ TEST(evolution_test, test_something) {
   auto digit = std::make_shared<NonTerminal>();
 //  digit->addOption(option0);
   digit->addOption(option1);
-//  digit->addOption(option2);
-//  digit->addOption(option3);
+  digit->addOption(option2);
+  digit->addOption(option3);
 //  digit->addOption(option4);
 //  digit->addOption(option5);
 //  digit->addOption(option6);
@@ -117,7 +117,7 @@ TEST(evolution_test, test_something) {
   evolution.setInitializer(&initializer);
   evolution.setProcessor(&processor);
 
-  Individual result = evolution.run(10000, 0);
+  Individual result = evolution.run(50, 100);
 
   double fitness = result.getFitness();
 
