@@ -13,6 +13,7 @@ class Individual {
  public:
   Individual(Genotype genotype);
   Genotype getGenotype();
+  Phenotype getPhenotype();
   void setGenotype(Genotype newGenotype);
   void setPhenotype(Phenotype newPhenotype);
   void setFitness(double calculatedFitness);
