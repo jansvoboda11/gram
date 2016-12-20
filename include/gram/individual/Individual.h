@@ -2,6 +2,7 @@
 #define GRAM_INDIVIDUAL_INDIVIDUAL
 
 #include <gram/individual/Genotype.h>
+#include <gram/individual/Mapper.h>
 #include <gram/individual/Phenotype.h>
 
 namespace gram {
@@ -12,10 +13,10 @@ namespace individual {
 class Individual {
  public:
   Individual(Genotype genotype);
+  void map(Mapper mapper);
   Genotype getGenotype();
   Phenotype getPhenotype();
   void setGenotype(Genotype newGenotype);
-  void setPhenotype(Phenotype newPhenotype);
   void setFitness(double calculatedFitness);
   virtual double getFitness();
   bool operator==(const Individual &individual) const;

@@ -1,12 +1,14 @@
 #include <gram/individual/Individual.h>
 
-#include <stdexcept>
-
 using namespace gram::grammar;
 using namespace gram::individual;
 
 Individual::Individual(Genotype genotype) : genotype(genotype), phenotype(), fitness(-1.0) {
   //
+}
+
+void Individual::map(Mapper mapper) {
+  phenotype = mapper.map(genotype);
 }
 
 Genotype Individual::getGenotype() {
@@ -19,10 +21,6 @@ Phenotype Individual::getPhenotype() {
 
 void Individual::setGenotype(Genotype newGenotype) {
   genotype = newGenotype;
-}
-
-void Individual::setPhenotype(Phenotype newPhenotype) {
-  phenotype = newPhenotype;
 }
 
 void Individual::setFitness(double calculatedFitness) {

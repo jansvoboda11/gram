@@ -12,8 +12,7 @@ Processor::Processor(Mapper &mapper, Evaluator &evaluator, FitnessCalculator &ca
 
 void Processor::process(Population &population) {
   for (auto &individual : population) {
-    Phenotype phenotype = mapper.map(individual->getGenotype());
-    individual->setPhenotype(phenotype);
+    individual->map(mapper);
 
     int result = evaluator.evaluate(individual);
     double fitness = calculator.calculate(5, result);
