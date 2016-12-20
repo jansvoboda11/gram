@@ -42,11 +42,8 @@ std::vector<std::shared_ptr<Individual>> Generator::createChildren(std::vector<s
     std::shared_ptr<Individual> firstParent = parents[i];
     std::shared_ptr<Individual> secondParent = parents[i + 1];
 
-    Genotype firstGenotype = crossover.apply(firstParent->getGenotype(), secondParent->getGenotype());
-    Genotype secondGenotype = crossover.apply(secondParent->getGenotype(), firstParent->getGenotype());
-
-    auto firstChild = std::make_shared<Individual>(firstGenotype);
-    auto secondChild = std::make_shared<Individual>(secondGenotype);
+    auto firstChild = firstParent->mateWith(secondParent, crossover);
+    auto secondChild = firstParent->mateWith(secondParent, crossover);
 
     children.push_back(firstChild);
     children.push_back(secondChild);

@@ -1,5 +1,6 @@
 #include <gram/individual/Individual.h>
 
+using namespace gram::evolution;
 using namespace gram::grammar;
 using namespace gram::individual;
 
@@ -9,6 +10,12 @@ Individual::Individual(Genotype genotype) : genotype(genotype), phenotype(), fit
 
 void Individual::map(Mapper mapper) {
   phenotype = mapper.map(genotype);
+}
+
+std::shared_ptr<Individual> Individual::mateWith(std::shared_ptr<Individual> partner, Crossover &crossover) {
+  Genotype childGenotype = crossover.apply(genotype, partner->genotype);
+
+  return std::make_shared<Individual>(childGenotype);
 }
 
 Genotype Individual::getGenotype() {
