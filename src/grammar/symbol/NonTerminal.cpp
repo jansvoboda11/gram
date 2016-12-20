@@ -10,18 +10,16 @@ std::shared_ptr<Option> NonTerminal::optionAt(unsigned long index) {
   return options[index].lock();
 }
 
-unsigned long NonTerminal::size() {
+unsigned long NonTerminal::size() const {
   return options.size();
 }
 
 bool NonTerminal::operator==(const NonTerminal &nonTerminal) const {
-  if (options.size() != nonTerminal.options.size()) {
+  if (size() != nonTerminal.size()) {
     return false;
   }
 
-  size_t size = options.size();
-
-  for (int i = 0; i < size; i++) {
+  for (int i = 0; i < size(); i++) {
     std::shared_ptr<Option> firstOption = options[i].lock();
     std::shared_ptr<Option> secondOption = nonTerminal.options[i].lock();
 
