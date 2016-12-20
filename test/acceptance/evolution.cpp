@@ -20,7 +20,7 @@ using ::testing::_;
 
 class FakeEvaluator : public Evaluator {
   int evaluate(std::shared_ptr<gram::individual::Individual> individual) {
-    std::string serialized = individual->getPhenotype().serialize();
+    std::string serialized = individual->serialize();
 
     unsigned long length = serialized.length();
 

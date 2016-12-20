@@ -18,7 +18,7 @@ class Individual {
   void map(Mapper mapper);
   std::shared_ptr<Individual> mateWith(std::shared_ptr<Individual> partner, gram::evolution::Crossover &crossover);
   void mutate(gram::evolution::Mutation &mutation);
-  Phenotype getPhenotype();
+  std::string serialize();
   void setFitness(double calculatedFitness);
   virtual double getFitness();
   bool operator==(const Individual &individual) const;

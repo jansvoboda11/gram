@@ -22,8 +22,8 @@ void Individual::mutate(Mutation &mutation) {
   genotype = mutation.apply(genotype);
 }
 
-Phenotype Individual::getPhenotype() {
-  return phenotype;
+std::string Individual::serialize() {
+  return phenotype.serialize();
 }
 
 void Individual::setFitness(double calculatedFitness) {
