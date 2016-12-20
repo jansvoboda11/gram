@@ -1,7 +1,6 @@
 #include <gram/evolution/selector/TournamentSelector.h>
 
 #include <algorithm>
-#include <stdexcept>
 
 using namespace gram::evolution;
 using namespace gram::individual;
