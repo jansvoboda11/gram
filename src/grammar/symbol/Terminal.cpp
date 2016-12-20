@@ -2,16 +2,16 @@
 
 using namespace gram::grammar;
 
-Terminal::Terminal(std::string value) : value(value) {
+Terminal::Terminal(std::string value) : val(value) {
   //
 }
 
-std::string Terminal::getValue() {
-  return value;
+std::string Terminal::value() {
+  return val;
 }
 
 bool Terminal::operator==(const Terminal &terminal) const {
-  return value == terminal.value;
+  return val == terminal.val;
 }
 
 bool Terminal::operator!=(const Terminal &terminal) const {

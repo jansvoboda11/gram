@@ -19,7 +19,7 @@ std::string Phenotype::serialize() {
   std::string serialized;
 
   for (auto &terminal : terminals) {
-    serialized += terminal.getValue();
+    serialized += terminal.value();
   }
 
   return serialized;

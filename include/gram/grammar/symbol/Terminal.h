@@ -11,11 +11,11 @@ namespace grammar {
 class Terminal {
  public:
   Terminal(std::string value);
-  std::string getValue();
+  std::string value();
   bool operator==(const Terminal &terminal) const;
   bool operator!=(const Terminal &terminal) const;
  private:
-  std::string value;
+  std::string val;
 };
 }
 }
