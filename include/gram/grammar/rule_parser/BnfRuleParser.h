@@ -10,10 +10,7 @@ namespace grammar {
  */
 class BnfRuleParser : public RuleParser {
  public:
-  BnfRuleParser(std::string rules);
-  Grammar parse();
- private:
-  std::string input;
+  Grammar parse(std::string rules);
 };
 }
 }

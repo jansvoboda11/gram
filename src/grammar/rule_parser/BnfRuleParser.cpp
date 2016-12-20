@@ -2,11 +2,7 @@
 
 using namespace gram::grammar;
 
-BnfRuleParser::BnfRuleParser(std::string rules) : input(rules) {
-  //
-}
-
-Grammar BnfRuleParser::parse() {
+Grammar BnfRuleParser::parse(std::string rules) {
   std::shared_ptr<NonTerminal> startSymbol;
 
   return Grammar(startSymbol);
