@@ -18,6 +18,10 @@ std::shared_ptr<Individual> Individual::mateWith(std::shared_ptr<Individual> par
   return std::make_shared<Individual>(childGenotype);
 }
 
+void Individual::mutate(Mutation &mutation) {
+  genotype = mutation.apply(genotype);
+}
+
 Genotype Individual::getGenotype() {
   return genotype;
 }

@@ -54,9 +54,6 @@ std::vector<std::shared_ptr<Individual>> Generator::createChildren(std::vector<s
 
 void Generator::mutateChildren(std::vector<std::shared_ptr<Individual>> children) {
   for (auto &child : children) {
-    Genotype oldGenotype = child->getGenotype();
-    Genotype mutatedGenotype = mutation.apply(oldGenotype);
-
-    child->setGenotype(mutatedGenotype);
+    child->mutate(mutation);
   }
 }

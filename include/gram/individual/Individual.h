@@ -2,6 +2,7 @@
 #define GRAM_INDIVIDUAL_INDIVIDUAL
 
 #include <gram/evolution/operator/Crossover.h>
+#include <gram/evolution/operator/Mutation.h>
 #include <gram/individual/Genotype.h>
 #include <gram/individual/Mapper.h>
 #include <gram/individual/Phenotype.h>
@@ -16,6 +17,7 @@ class Individual {
   Individual(Genotype genotype);
   void map(Mapper mapper);
   std::shared_ptr<Individual> mateWith(std::shared_ptr<Individual> partner, gram::evolution::Crossover &crossover);
+  void mutate(gram::evolution::Mutation &mutation);
   Genotype getGenotype();
   Phenotype getPhenotype();
   void setGenotype(Genotype newGenotype);
