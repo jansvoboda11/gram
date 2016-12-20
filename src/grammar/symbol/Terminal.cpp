@@ -6,7 +6,7 @@ Terminal::Terminal(std::string value) : val(value) {
   //
 }
 
-std::string Terminal::value() {
+std::string Terminal::value() const {
   return val;
 }
 
