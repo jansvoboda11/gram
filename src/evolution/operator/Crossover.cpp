@@ -2,8 +2,9 @@
 
 using namespace gram::evolution;
 using namespace gram::individual;
+using namespace gram::util;
 
-Crossover::Crossover(gram::util::NumberGenerator &generator) : generator(generator) {
+Crossover::Crossover(NumberGenerator &generator) : generator(generator) {
   //
 }
 

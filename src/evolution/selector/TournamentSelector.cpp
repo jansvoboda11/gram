@@ -12,7 +12,7 @@ TournamentSelector::TournamentSelector(NumberGenerator &generator) : generator(g
   //
 }
 
-std::shared_ptr<Individual> TournamentSelector::select(gram::population::Population population) {
+std::shared_ptr<Individual> TournamentSelector::select(Population population) {
   if (population.size() == 0) {
     throw std::logic_error("Cannot select an individual from an empty population.");
   }

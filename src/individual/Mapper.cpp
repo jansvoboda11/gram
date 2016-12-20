@@ -3,7 +3,7 @@
 using namespace gram::grammar;
 using namespace gram::individual;
 
-Mapper::Mapper(gram::grammar::Grammar grammar) : grammar(grammar), genotype(), geneCount(0) {
+Mapper::Mapper(Grammar grammar) : grammar(grammar), genotype(), geneCount(0) {
   //
 }
 
