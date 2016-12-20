@@ -14,7 +14,6 @@ namespace individual {
 class Phenotype {
  public:
   void addTerminal(gram::grammar::Terminal terminal);
-  gram::grammar::Terminal terminalAt(int index);
   std::string serialize();
   bool operator==(const Phenotype &phenotype) const;
   bool operator!=(const Phenotype &phenotype) const;

@@ -5,17 +5,6 @@
 using namespace gram::individual;
 using namespace gram::grammar;
 
-TEST(phenotype_test, test_it_accepts_terminal) {
-  Terminal terminal("terminal");
-
-  Phenotype phenotype;
-  phenotype.addTerminal(terminal);
-
-  Terminal acceptedTerminal = phenotype.terminalAt(0);
-
-  ASSERT_EQ(terminal, acceptedTerminal);
-}
-
 TEST(phenotype_test, test_it_serializes_terminals) {
   Terminal terminal("hello");
   Terminal terminal2("world");

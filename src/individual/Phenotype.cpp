@@ -7,10 +7,6 @@ void Phenotype::addTerminal(Terminal terminal) {
   terminals.push_back(terminal);
 }
 
-Terminal Phenotype::terminalAt(int index) {
-  return terminals[index];
-}
-
 std::string Phenotype::serialize() {
   if (terminals.empty()) {
     return "";
