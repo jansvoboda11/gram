@@ -16,7 +16,7 @@ class NonTerminal {
  public:
   void addOption(std::weak_ptr<Option> option);
   std::shared_ptr<Option> optionAt(unsigned long index);
-  unsigned long optionCount();
+  unsigned long size();
   bool operator==(const NonTerminal &nonTerminal) const;
   bool operator!=(const NonTerminal &nonTerminal) const;
  private:

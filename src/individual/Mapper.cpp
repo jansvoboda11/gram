@@ -18,7 +18,7 @@ Phenotype Mapper::map(Genotype mappedGenotype) {
 }
 
 Phenotype &Mapper::recursiveMap(Phenotype &phenotype, std::shared_ptr<NonTerminal> nonTerminal) {
-  unsigned long gene = genotype[geneCount] % nonTerminal->optionCount();
+  unsigned long gene = genotype[geneCount] % nonTerminal->size();
   geneCount += 1;
 
   std::shared_ptr<Option> option = nonTerminal->optionAt(gene);

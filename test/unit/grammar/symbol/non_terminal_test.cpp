@@ -42,7 +42,7 @@ TEST(non_terminal_test, test_it_returns_option_count) {
   nonTerminal.addOption(option1);
   nonTerminal.addOption(option2);
 
-  unsigned long optionCount = nonTerminal.optionCount();
+  unsigned long optionCount = nonTerminal.size();
 
   ASSERT_EQ(2, optionCount);
 }

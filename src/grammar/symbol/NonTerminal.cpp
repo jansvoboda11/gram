@@ -10,7 +10,7 @@ std::shared_ptr<Option> NonTerminal::optionAt(unsigned long index) {
   return options[index].lock();
 }
 
-unsigned long NonTerminal::optionCount() {
+unsigned long NonTerminal::size() {
   return options.size();
 }
 
