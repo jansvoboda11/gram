@@ -12,7 +12,7 @@ Phenotype Mapper::map(Genotype mappedGenotype) {
   geneCount = 0;
 
   Phenotype phenotype;
-  std::shared_ptr<NonTerminal> nonTerminal = grammar.getStartSymbol();
+  std::shared_ptr<NonTerminal> nonTerminal = grammar.startSymbol();
 
   return recursiveMap(phenotype, nonTerminal);
 }
