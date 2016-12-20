@@ -22,16 +22,8 @@ void Individual::mutate(Mutation &mutation) {
   genotype = mutation.apply(genotype);
 }
 
-Genotype Individual::getGenotype() {
-  return genotype;
-}
-
 Phenotype Individual::getPhenotype() {
   return phenotype;
-}
-
-void Individual::setGenotype(Genotype newGenotype) {
-  genotype = newGenotype;
 }
 
 void Individual::setFitness(double calculatedFitness) {
