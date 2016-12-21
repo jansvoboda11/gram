@@ -7,7 +7,7 @@
 namespace gram {
 namespace population {
 /**
- * Class.
+ * Interface.
  */
 class Initializer {
  public:

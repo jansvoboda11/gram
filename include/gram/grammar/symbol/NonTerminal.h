@@ -1,6 +1,7 @@
 #ifndef GRAM_GRAMMAR_SYMBOL_NON_TERMINAL
 #define GRAM_GRAMMAR_SYMBOL_NON_TERMINAL
 
+#include <memory>
 #include <vector>
 
 #include <gram/grammar/symbol/Option.h>

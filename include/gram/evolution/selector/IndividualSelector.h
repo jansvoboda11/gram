@@ -1,13 +1,15 @@
 #ifndef GRAM_EVOLUTION_INDIVIDUAL_SELECTOR
 #define GRAM_EVOLUTION_INDIVIDUAL_SELECTOR
 
+#include <memory>
+
 #include <gram/population/Population.h>
 #include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {
 namespace evolution {
 /**
- * Class.
+ * Interface.
  */
 class IndividualSelector {
  public:

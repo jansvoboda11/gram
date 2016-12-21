@@ -16,6 +16,7 @@ namespace individual {
 class Individual {
  public:
   Individual(Genotype genotype, const gram::language::Language &language);
+  virtual ~Individual() = default;
   std::shared_ptr<Individual> mateWith(std::shared_ptr<Individual> partner, gram::evolution::Crossover &crossover);
   void mutate(gram::evolution::Mutation &mutation);
   std::string serialize();

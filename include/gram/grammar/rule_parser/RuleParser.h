@@ -6,7 +6,7 @@
 namespace gram {
 namespace grammar {
 /**
- * Class.
+ * Interface.
  */
 class RuleParser {
  public:

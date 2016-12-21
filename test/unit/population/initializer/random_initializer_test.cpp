@@ -1,7 +1,8 @@
 #include <gtest/gtest.h>
 
 #include <gram/population/initializer/RandomInitializer.h>
-#include <gram/util/number_generator/NumberGeneratorMock.h>
+
+#include "../../../lib/fakeit/fakeit.hpp"
 
 using namespace gram::population;
 using namespace gram::individual;
@@ -9,8 +10,7 @@ using namespace gram::util;
 using namespace gram::grammar;
 using namespace gram::language;
 
-using ::testing::NiceMock;
-using ::testing::Return;
+using namespace fakeit;
 
 TEST(random_initializer_test, test_it_initializes_individuals_with_random_genotype) {
   Terminal terminal("hello");
@@ -30,13 +30,16 @@ TEST(random_initializer_test, test_it_initializes_individuals_with_random_genoty
   Individual individual2(genotype2, language);
   Individual individual3(genotype3, language);
 
-  NiceMock<NumberGeneratorMock> numberGenerator;
-  EXPECT_CALL(numberGenerator, generate(3))
-      .WillOnce(Return(std::vector<unsigned long>{0, 1, 2}))
-      .WillOnce(Return(std::vector<unsigned long>{3, 0, 1}))
-      .WillOnce(Return(std::vector<unsigned long>{2, 3, 0}));
+  Mock<NumberGenerator> numberGeneratorMock;
+  Fake(Dtor(numberGeneratorMock));
+  When(Method(numberGeneratorMock, generateMany))
+      .Return(std::vector<unsigned long>{0, 1, 2})
+      .Return(std::vector<unsigned long>{3, 0, 1})
+      .Return(std::vector<unsigned long>{2, 3, 0});
 
-  RandomInitializer initializer(numberGenerator, language, 3);
+  auto numberGenerator = std::unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
+
+  RandomInitializer initializer(std::move(numberGenerator), language, 3);
 
   Population population = initializer.initialize(3);
 

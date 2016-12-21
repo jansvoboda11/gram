@@ -1,26 +1,30 @@
 #include <gtest/gtest.h>
 
 #include <gram/evolution/operator/Mutation.h>
-#include <gram/util/bool_generator/BoolGeneratorMock.h>
-#include <gram/util/number_generator/NumberGeneratorMock.h>
+
+#include "../../../lib/fakeit/fakeit.hpp"
 
 using namespace gram::evolution;
 using namespace gram::individual;
 using namespace gram::util;
 
-using ::testing::NiceMock;
-using ::testing::Return;
+using namespace fakeit;
 
 TEST(mutation_operator_test, test_it_does_not_always_mutate) {
   Genotype genotype{1, 1, 1};
 
-  NiceMock<BoolGeneratorMock> boolGenerator;
-  ON_CALL(boolGenerator, generate())
-      .WillByDefault(Return(false));
+  Mock<BoolGenerator> boolGeneratorMock;
+  Fake(Dtor(boolGeneratorMock));
+  When(Method(boolGeneratorMock,generate)).Return(false);
 
-  NiceMock<NumberGeneratorMock> numberGenerator;
+  auto boolGenerator = std::unique_ptr<BoolGenerator>(&boolGeneratorMock.get());
 
-  Mutation mutation(boolGenerator, numberGenerator);
+  Mock<NumberGenerator> numberGeneratorMock;
+  Fake(Dtor(numberGeneratorMock));
+
+  auto numberGenerator = std::unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
+
+  Mutation mutation(std::move(boolGenerator), std::move(numberGenerator));
 
   Genotype mutatedGenotype = mutation.apply(genotype);
 
@@ -31,16 +35,19 @@ TEST(mutation_operator_test, test_it_does_not_always_mutate) {
 TEST(mutation_operator_test, test_it_mutates_one_gene) {
   Genotype genotype{1, 1, 1};
 
-  NiceMock<BoolGeneratorMock> boolGenerator;
-  ON_CALL(boolGenerator, generate())
-      .WillByDefault(Return(true));
+  Mock<BoolGenerator> boolGeneratorMock;
+  Fake(Dtor(boolGeneratorMock));
+  When(Method(boolGeneratorMock,generate)).Return(true);
 
-  NiceMock<NumberGeneratorMock> numberGenerator;
-  EXPECT_CALL(numberGenerator, generate())
-      .WillOnce(Return(2))
-      .WillOnce(Return(3));
+  auto boolGenerator = std::unique_ptr<BoolGenerator>(&boolGeneratorMock.get());
 
-  Mutation mutation(boolGenerator, numberGenerator);
+  Mock<NumberGenerator> numberGeneratorMock;
+  Fake(Dtor(numberGeneratorMock));
+  When(Method(numberGeneratorMock, generate)).Return(2).Return(3);
+
+  auto numberGenerator = std::unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
+
+  Mutation mutation(std::move(boolGenerator), std::move(numberGenerator));
 
   Genotype mutatedGenotype = mutation.apply(genotype);
 

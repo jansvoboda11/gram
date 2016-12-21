@@ -6,12 +6,13 @@
 namespace gram {
 namespace util {
 /**
- * Class.
+ * Interface.
  */
 class BoolGenerator {
  public:
+  virtual ~BoolGenerator() = default;
   virtual bool generate() = 0;
-  virtual std::vector<bool> generate(int count) = 0;
+  virtual std::vector<bool> generateMany(int count) = 0;
 };
 }
 }

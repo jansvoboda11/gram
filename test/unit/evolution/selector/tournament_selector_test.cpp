@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
 #include <gram/evolution/selector/TournamentSelector.h>
-#include <gram/util/number_generator/NumberGeneratorMock.h>
-#include <gram/individual/IndividualMock.h>
+
+#include "../../../lib/fakeit/fakeit.hpp"
 
 using namespace gram::evolution;
 using namespace gram::individual;
@@ -11,77 +11,73 @@ using namespace gram::util;
 using namespace gram::language;
 using namespace gram::grammar;
 
-using ::testing::NiceMock;
-using ::testing::Return;
+using namespace fakeit;
 
 TEST(tournament_selector_test, test_it_handles_empty_population) {
   Population population{};
 
-  NiceMock<NumberGeneratorMock> generator;
+  Mock<NumberGenerator> mock;
+  Fake(Dtor(mock));
 
-  TournamentSelector selector(generator);
+  auto numberGenerator = std::unique_ptr<NumberGenerator>(&mock.get());
+
+  TournamentSelector selector(std::move(numberGenerator));
 
   ASSERT_THROW(selector.select(population), std::logic_error);
 }
 
 TEST(tournament_selector_test, test_it_select_the_only_individual) {
-  Terminal terminal("hello");
-  auto option = std::make_shared<Option>();
-  option->addTerminal(terminal);
-  auto start = std::make_shared<NonTerminal>();
-  start->addOption(option);
-  Grammar grammar(start);
-  Mapper mapper(grammar);
-  Language language(grammar, mapper);
-
   Genotype genotype{0};
 
-  auto individual = std::make_shared<NiceMock<Individual>>(genotype, language);
-  Population population{individual};
+  Mock<Individual> individual;
+  Fake(Dtor(individual));
 
-  NiceMock<NumberGeneratorMock> generator;
+  auto sharedIndividual = std::shared_ptr<Individual>(&individual.get());
 
-  TournamentSelector selector(generator);
+  Mock<NumberGenerator> mock;
+  Fake(Dtor(mock));
+
+  auto numberGenerator = std::unique_ptr<NumberGenerator>(&mock.get());
+
+  Population population{sharedIndividual};
+
+  TournamentSelector selector(std::move(numberGenerator));
 
   std::shared_ptr<Individual> selectedIndividual = selector.select(population);
 
-  ASSERT_EQ(individual, selectedIndividual);
+  ASSERT_EQ(individual.get(), *selectedIndividual);
 }
 
 TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_selected_group) {
-  Terminal terminal("hello");
-  auto option = std::make_shared<Option>();
-  option->addTerminal(terminal);
-  auto start = std::make_shared<NonTerminal>();
-  start->addOption(option);
-  Grammar grammar(start);
-  Mapper mapper(grammar);
-  Language language(grammar, mapper);
+  Mock<NumberGenerator> numberGeneratorMock;
+  Fake(Dtor(numberGeneratorMock));
+  When(Method(numberGeneratorMock, generate)).Return(1).Return(3);
 
-  Genotype genotype{0};
+  auto numberGenerator = std::unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
-  NiceMock<NumberGeneratorMock> generator;
-  EXPECT_CALL(generator, generate())
-      .WillOnce(Return(1))
-      .WillOnce(Return(3));
+  Mock<Individual> individual1Mock;
+  Mock<Individual> individual2Mock;
+  Mock<Individual> individual3Mock;
+  Mock<Individual> individual4Mock;
 
-  auto individual1 = std::make_shared<NiceMock<IndividualMock>>(genotype, language);
-  auto individual2 = std::make_shared<NiceMock<IndividualMock>>(genotype, language);
-  auto individual3 = std::make_shared<NiceMock<IndividualMock>>(genotype, language);
-  auto individual4 = std::make_shared<NiceMock<IndividualMock>>(genotype, language);
+  Fake(Dtor(individual1Mock));
+  Fake(Dtor(individual2Mock));
+  Fake(Dtor(individual3Mock));
+  Fake(Dtor(individual4Mock));
 
-  ON_CALL(*individual1, getFitness())
-      .WillByDefault(Return(0.0));
-  ON_CALL(*individual2, getFitness())
-      .WillByDefault(Return(1.0));
-  ON_CALL(*individual3, getFitness())
-      .WillByDefault(Return(2.0));
-  ON_CALL(*individual4, getFitness())
-      .WillByDefault(Return(3.0));
+  When(Method(individual1Mock, getFitness)).Return(0.0);
+  When(Method(individual2Mock, getFitness)).Return(1.0);
+  When(Method(individual3Mock, getFitness)).Return(2.0);
+  When(Method(individual4Mock, getFitness)).Return(3.0);
+
+  auto individual1 = std::shared_ptr<Individual>(&individual1Mock.get());
+  auto individual2 = std::shared_ptr<Individual>(&individual2Mock.get());
+  auto individual3 = std::shared_ptr<Individual>(&individual3Mock.get());
+  auto individual4 = std::shared_ptr<Individual>(&individual4Mock.get());
 
   Population population{individual1, individual2, individual3, individual4};
 
-  TournamentSelector selector(generator);
+  TournamentSelector selector(std::move(numberGenerator));
 
   std::shared_ptr<Individual> selectedIndividual = selector.select(population);
 

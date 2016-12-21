@@ -4,7 +4,7 @@
 namespace gram {
 namespace evolution {
 /**
- * Class.
+ * Interface.
  */
 class FitnessCalculator {
  public:

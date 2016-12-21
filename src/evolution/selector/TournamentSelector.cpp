@@ -7,7 +7,7 @@ using namespace gram::individual;
 using namespace gram::population;
 using namespace gram::util;
 
-TournamentSelector::TournamentSelector(NumberGenerator &generator) : generator(generator) {
+TournamentSelector::TournamentSelector(std::unique_ptr<NumberGenerator> generator) : generator(std::move(generator)) {
   //
 }
 
@@ -24,7 +24,7 @@ std::shared_ptr<Individual> TournamentSelector::select(Population population) {
   std::vector<long> preSelectedIds;
 
   for (int i = 0; i < population.size() / 2; i++) {
-    long id = generator.generate() % population.size();
+    long id = generator->generate() % population.size();
 
     if (std::find(preSelectedIds.begin(), preSelectedIds.end(), id) != preSelectedIds.end()) {
       i -= 1;

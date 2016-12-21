@@ -15,7 +15,7 @@ unsigned long TwisterNumberGenerator::generate() {
   return distribution(generator);
 }
 
-std::vector<unsigned long> TwisterNumberGenerator::generate(int count) {
+std::vector<unsigned long> TwisterNumberGenerator::generateMany(int count) {
   std::vector<unsigned long> numbers;
 
   for (int i = 0; i < count; i++) {

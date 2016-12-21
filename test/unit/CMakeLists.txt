@@ -1,6 +1,5 @@
 include_directories(../lib/googletest/googlemock/include)
 include_directories(../../include)
-include_directories(../mock)
 
 add_executable(gram_unit_tests
         evolution/fitness_calculator/parabola_fitness_calculator_test.cpp
