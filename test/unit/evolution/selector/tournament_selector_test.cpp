@@ -8,6 +8,8 @@ using namespace gram::evolution;
 using namespace gram::individual;
 using namespace gram::population;
 using namespace gram::util;
+using namespace gram::language;
+using namespace gram::grammar;
 
 using ::testing::NiceMock;
 using ::testing::Return;
@@ -23,8 +25,18 @@ TEST(tournament_selector_test, test_it_handles_empty_population) {
 }
 
 TEST(tournament_selector_test, test_it_select_the_only_individual) {
-  Genotype genotype{};
-  auto individual = std::make_shared<NiceMock<Individual>>(genotype);
+  Terminal terminal("hello");
+  auto option = std::make_shared<Option>();
+  option->addTerminal(terminal);
+  auto start = std::make_shared<NonTerminal>();
+  start->addOption(option);
+  Grammar grammar(start);
+  Mapper mapper(grammar);
+  Language language(grammar, mapper);
+
+  Genotype genotype{0};
+
+  auto individual = std::make_shared<NiceMock<Individual>>(genotype, language);
   Population population{individual};
 
   NiceMock<NumberGeneratorMock> generator;
@@ -37,15 +49,26 @@ TEST(tournament_selector_test, test_it_select_the_only_individual) {
 }
 
 TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_selected_group) {
+  Terminal terminal("hello");
+  auto option = std::make_shared<Option>();
+  option->addTerminal(terminal);
+  auto start = std::make_shared<NonTerminal>();
+  start->addOption(option);
+  Grammar grammar(start);
+  Mapper mapper(grammar);
+  Language language(grammar, mapper);
+
+  Genotype genotype{0};
+
   NiceMock<NumberGeneratorMock> generator;
   EXPECT_CALL(generator, generate())
       .WillOnce(Return(1))
       .WillOnce(Return(3));
 
-  auto individual1 = std::make_shared<NiceMock<IndividualMock>>();
-  auto individual2 = std::make_shared<NiceMock<IndividualMock>>();
-  auto individual3 = std::make_shared<NiceMock<IndividualMock>>();
-  auto individual4 = std::make_shared<NiceMock<IndividualMock>>();
+  auto individual1 = std::make_shared<NiceMock<IndividualMock>>(genotype, language);
+  auto individual2 = std::make_shared<NiceMock<IndividualMock>>(genotype, language);
+  auto individual3 = std::make_shared<NiceMock<IndividualMock>>(genotype, language);
+  auto individual4 = std::make_shared<NiceMock<IndividualMock>>(genotype, language);
 
   ON_CALL(*individual1, getFitness())
       .WillByDefault(Return(0.0));

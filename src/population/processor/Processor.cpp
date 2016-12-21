@@ -5,15 +5,13 @@ using namespace gram::individual;
 using namespace gram::language;
 using namespace gram::evolution;
 
-Processor::Processor(Mapper &mapper, Evaluator &evaluator, FitnessCalculator &calculator)
-    : mapper(mapper), evaluator(evaluator), calculator(calculator) {
+Processor::Processor(Evaluator &evaluator, FitnessCalculator &calculator) 
+    : evaluator(evaluator), calculator(calculator) {
   //
 }
 
 void Processor::process(Population &population) {
   for (auto &individual : population) {
-    individual->map(mapper);
-
     int result = evaluator.evaluate(individual);
     double fitness = calculator.calculate(5, result);
     individual->setFitness(fitness);

@@ -4,18 +4,15 @@ using namespace gram::evolution;
 using namespace gram::grammar;
 using namespace gram::individual;
 
-Individual::Individual(Genotype genotype) : genotype(genotype), phenotype(), fitness(-1.0) {
-  //
-}
-
-void Individual::map(Mapper mapper) {
-  phenotype = mapper.map(genotype);
+Individual::Individual(Genotype genotype, const gram::language::Language &language)
+    : genotype(genotype), language(language), phenotype(), fitness(-1.0) {
+  phenotype = language.expand(genotype);
 }
 
 std::shared_ptr<Individual> Individual::mateWith(std::shared_ptr<Individual> partner, Crossover &crossover) {
   Genotype childGenotype = crossover.apply(genotype, partner->genotype);
 
-  return std::make_shared<Individual>(childGenotype);
+  return std::make_shared<Individual>(childGenotype, language);
 }
 
 void Individual::mutate(Mutation &mutation) {

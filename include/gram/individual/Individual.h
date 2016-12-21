@@ -6,6 +6,7 @@
 #include <gram/individual/Genotype.h>
 #include <gram/individual/Mapper.h>
 #include <gram/individual/Phenotype.h>
+#include <gram/language/Language.h>
 
 namespace gram {
 namespace individual {
@@ -14,8 +15,7 @@ namespace individual {
  */
 class Individual {
  public:
-  Individual(Genotype genotype);
-  void map(Mapper mapper);
+  Individual(Genotype genotype, const gram::language::Language &language);
   std::shared_ptr<Individual> mateWith(std::shared_ptr<Individual> partner, gram::evolution::Crossover &crossover);
   void mutate(gram::evolution::Mutation &mutation);
   std::string serialize();
@@ -25,6 +25,7 @@ class Individual {
   bool operator!=(const Individual &individual) const;
  private:
   Genotype genotype;
+  const gram::language::Language &language;
   Phenotype phenotype;
   double fitness;
 };

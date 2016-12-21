@@ -13,12 +13,10 @@ namespace population {
  */
 class Processor {
  public:
-  Processor(gram::individual::Mapper &mapper,
-            gram::language::Evaluator &evaluator,
+  Processor(gram::language::Evaluator &evaluator,
             gram::evolution::FitnessCalculator &calculator);
   void process(Population &population);
  private:
-  gram::individual::Mapper &mapper;
   gram::language::Evaluator &evaluator;
   gram::evolution::FitnessCalculator &calculator;
 };

@@ -3,23 +3,19 @@
 using namespace gram::grammar;
 using namespace gram::individual;
 
-Mapper::Mapper(Grammar grammar) : grammar(grammar), genotype(), geneCount(0) {
+Mapper::Mapper(const Grammar &grammar) : grammar(grammar) {
   //
 }
 
-Phenotype Mapper::map(Genotype mappedGenotype) {
-  genotype = mappedGenotype;
-  geneCount = 0;
-
+Phenotype Mapper::map(Genotype mappedGenotype) const {
   Phenotype phenotype;
   std::shared_ptr<NonTerminal> nonTerminal = grammar.startSymbol();
 
-  return recursiveMap(phenotype, nonTerminal);
+  return recursiveMap(phenotype, nonTerminal, mappedGenotype, 0);
 }
 
-Phenotype &Mapper::recursiveMap(Phenotype &phenotype, std::shared_ptr<NonTerminal> nonTerminal) {
+Phenotype &Mapper::recursiveMap(Phenotype &phenotype, std::shared_ptr<NonTerminal> nonTerminal, Genotype genotype, int geneCount) const {
   unsigned long gene = genotype[geneCount] % nonTerminal->size();
-  geneCount += 1;
 
   std::shared_ptr<Option> option = nonTerminal->optionAt(gene);
 
@@ -27,7 +23,7 @@ Phenotype &Mapper::recursiveMap(Phenotype &phenotype, std::shared_ptr<NonTermina
     if (option->hasTerminalAt(i)) {
       phenotype.addTerminal(option->terminalAt(i));
     } else {
-      recursiveMap(phenotype, option->nonTerminalAt(gene));
+      recursiveMap(phenotype, option->nonTerminalAt(gene), genotype, geneCount + 1);
     }
   }
 

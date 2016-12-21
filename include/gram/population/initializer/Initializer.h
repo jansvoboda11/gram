@@ -2,6 +2,7 @@
 #define GRAM_POPULATION_INITIALIZER
 
 #include <gram/population/Population.h>
+#include <gram/language/Language.h>
 
 namespace gram {
 namespace population {

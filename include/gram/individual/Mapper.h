@@ -12,13 +12,11 @@ namespace individual {
  */
 class Mapper {
  public:
-  Mapper(gram::grammar::Grammar grammar);
-  virtual Phenotype map(Genotype genotype);
+  Mapper(const gram::grammar::Grammar &grammar);
+  virtual Phenotype map(Genotype genotype) const;
  private:
-  gram::grammar::Grammar grammar;
-  Genotype genotype;
-  int geneCount;
-  Phenotype &recursiveMap(Phenotype &phenotype, std::shared_ptr<gram::grammar::NonTerminal> nonTerminal);
+  const gram::grammar::Grammar &grammar;
+  Phenotype &recursiveMap(Phenotype &phenotype, std::shared_ptr<gram::grammar::NonTerminal> nonTerminal, Genotype genotype, int geneCount) const;
 };
 }
 }

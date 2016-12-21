@@ -11,10 +11,11 @@ namespace population {
  */
 class RandomInitializer : public Initializer {
  public:
-  RandomInitializer(gram::util::NumberGenerator &generator, int individualSize);
+  RandomInitializer(gram::util::NumberGenerator &generator, gram::language::Language &language, int individualSize);
   Population initialize(int individualCount);
  private:
   gram::util::NumberGenerator &generator;
+  gram::language::Language &language;
   int individualSize;
 };
 }

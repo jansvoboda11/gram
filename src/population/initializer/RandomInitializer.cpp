@@ -4,8 +4,8 @@ using namespace gram::population;
 using namespace gram::individual;
 using namespace gram::util;
 
-RandomInitializer::RandomInitializer(NumberGenerator &generator, int individualSize)
-    : generator(generator), individualSize(individualSize) {
+RandomInitializer::RandomInitializer(NumberGenerator &generator, gram::language::Language &language, int individualSize)
+    : generator(generator), language(language), individualSize(individualSize) {
   //
 }
 
@@ -15,7 +15,7 @@ Population RandomInitializer::initialize(int individualCount) {
   for (int i = 0; i < individualCount; i++) {
     Genotype genotype = generator.generate(individualSize);
 
-    auto individual = std::make_shared<Individual>(genotype);
+    auto individual = std::make_shared<Individual>(genotype, language);
 
     individuals.push_back(individual);
   }

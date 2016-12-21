@@ -15,6 +15,7 @@ set(SOURCE_FILES
         individual/Individual.cpp
         individual/Mapper.cpp
         individual/Phenotype.cpp
+        language/Language.cpp
         population/generator/Generator.cpp
         population/initializer/RandomInitializer.cpp
         population/processor/Processor.cpp
