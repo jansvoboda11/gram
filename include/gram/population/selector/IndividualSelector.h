@@ -1,5 +1,5 @@
-#ifndef GRAM_EVOLUTION_INDIVIDUAL_SELECTOR
-#define GRAM_EVOLUTION_INDIVIDUAL_SELECTOR
+#ifndef GRAM_POPULATION_INDIVIDUAL_SELECTOR
+#define GRAM_POPULATION_INDIVIDUAL_SELECTOR
 
 #include <memory>
 
@@ -7,15 +7,15 @@
 #include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {
-namespace evolution {
+namespace population {
 /**
  * Interface.
  */
 class IndividualSelector {
  public:
-  virtual std::shared_ptr<gram::individual::Individual> select(gram::population::Population population) = 0;
+  virtual std::shared_ptr<gram::individual::Individual> select(Population population) = 0;
 };
 }
 }
 
-#endif // GRAM_EVOLUTION_INDIVIDUAL_SELECTOR
+#endif // GRAM_POPULATION_INDIVIDUAL_SELECTOR

@@ -1,6 +1,5 @@
 #include <gram/population/generator/Generator.h>
 
-using namespace gram::evolution;
 using namespace gram::population;
 using namespace gram::individual;
 

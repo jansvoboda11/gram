@@ -15,12 +15,12 @@ namespace population {
  */
 class Generator {
  public:
-  Generator(gram::evolution::IndividualSelector &selector,
+  Generator(IndividualSelector &selector,
             gram::individual::Crossover &crossover,
             gram::individual::Mutation &mutation);
   virtual Population generateSuccessor(Population &population);
  private:
-  gram::evolution::IndividualSelector &selector;
+  IndividualSelector &selector;
   gram::individual::Crossover &crossover;
   gram::individual::Mutation &mutation;
   std::vector<std::shared_ptr<gram::individual::Individual>> selectParents(Population &oldPopulation);

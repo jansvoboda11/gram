@@ -1,5 +1,5 @@
-#ifndef GRAM_POPULATION_POPULATION
-#define GRAM_POPULATION_POPULATION
+#ifndef GRAM_POPULATION
+#define GRAM_POPULATION
 
 #include <memory>
 #include <vector>
@@ -27,4 +27,4 @@ class Population {
 }
 }
 
-#endif // GRAM_POPULATION_POPULATION
+#endif // GRAM_POPULATION

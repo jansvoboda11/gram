@@ -2,7 +2,6 @@
 
 #include <algorithm>
 
-using namespace gram::evolution;
 using namespace gram::individual;
 using namespace gram::population;
 using namespace gram::util;
