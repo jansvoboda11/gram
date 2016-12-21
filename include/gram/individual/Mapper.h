@@ -1,7 +1,7 @@
 #ifndef GRAM_INDIVIDUAL_MAPPER
 #define GRAM_INDIVIDUAL_MAPPER
 
-#include <gram/grammar/Grammar.h>
+#include <gram/language/Grammar.h>
 #include <gram/individual/Genotype.h>
 #include <gram/individual/Phenotype.h>
 

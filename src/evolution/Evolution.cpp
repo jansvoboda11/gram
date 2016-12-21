@@ -1,4 +1,4 @@
-#include <gram/evolution/Evolution.h>
+#include <gram/Evolution.h>
 
 using namespace gram::evolution;
 using namespace gram::individual;

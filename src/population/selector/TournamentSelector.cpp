@@ -1,4 +1,4 @@
-#include <gram/evolution/selector/TournamentSelector.h>
+#include <gram/population/selector/TournamentSelector.h>
 
 #include <algorithm>
 

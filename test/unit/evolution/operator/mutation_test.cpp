@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <gram/evolution/operator/Mutation.h>
+#include <gram/individual/operator/Mutation.h>
 
 #include "../../../lib/fakeit/fakeit.hpp"
 

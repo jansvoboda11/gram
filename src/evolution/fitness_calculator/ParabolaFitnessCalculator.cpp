@@ -1,4 +1,4 @@
-#include <gram/evolution/fitness_calculator/ParabolaFitnessCalculator.h>
+#include <gram/individual/fitness/ParabolaFitnessCalculator.h>
 
 using namespace gram::evolution;
 

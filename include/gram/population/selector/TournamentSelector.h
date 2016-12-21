@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include <gram/evolution/selector/IndividualSelector.h>
+#include <gram/population/selector/IndividualSelector.h>
 
 namespace gram {
 namespace evolution {

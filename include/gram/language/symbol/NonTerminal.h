@@ -4,7 +4,7 @@
 #include <memory>
 #include <vector>
 
-#include <gram/grammar/symbol/Option.h>
+#include <gram/language/symbol/Option.h>
 
 namespace gram {
 namespace grammar {

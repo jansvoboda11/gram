@@ -4,7 +4,7 @@
 #include <gram/population/Population.h>
 #include <gram/individual/Mapper.h>
 #include <gram/language/Evaluator.h>
-#include <gram/evolution/fitness_calculator/FitnessCalculator.h>
+#include <gram/individual/fitness/FitnessCalculator.h>
 
 namespace gram {
 namespace population {

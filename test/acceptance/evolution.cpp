@@ -1,6 +1,6 @@
 #include <gmock/gmock.h>
 
-#include <gram/evolution/Evolution.h>
+#include <gram/Evolution.h>
 #include <gram/evolution/selector/TournamentSelector.h>
 #include <gram/util/number_generator/TwisterNumberGenerator.h>
 #include <gram/util/bool_generator/TwisterBoolGenerator.h>

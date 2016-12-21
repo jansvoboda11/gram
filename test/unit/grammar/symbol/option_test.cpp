@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <gram/grammar/symbol/Option.h>
+#include <gram/language/symbol/Option.h>
 
 using namespace gram::grammar;
 

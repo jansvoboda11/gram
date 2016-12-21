@@ -1,8 +1,8 @@
 #ifndef GRAM_INDIVIDUAL_INDIVIDUAL
 #define GRAM_INDIVIDUAL_INDIVIDUAL
 
-#include <gram/evolution/operator/Crossover.h>
-#include <gram/evolution/operator/Mutation.h>
+#include <gram/individual/operator/Crossover.h>
+#include <gram/individual/operator/Mutation.h>
 #include <gram/individual/Genotype.h>
 #include <gram/individual/Mapper.h>
 #include <gram/individual/Phenotype.h>

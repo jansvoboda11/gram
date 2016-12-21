@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include <gram/grammar/symbol/Terminal.h>
+#include <gram/language/symbol/Terminal.h>
 
 namespace gram {
 namespace individual {

@@ -7,7 +7,7 @@ add_executable(gram_unit_tests
         evolution/operator/mutation_test.cpp
         evolution/evolution_builder_test.cpp
         evolution/evolution_test.cpp
-        evolution/selector/tournament_selector_test.cpp
+        population/selector/tournament_selector_test.cpp
         grammar/rule_parser/bnf_rule_parser_test.cpp
         grammar/symbol/non_terminal_test.cpp
         grammar/symbol/option_test.cpp

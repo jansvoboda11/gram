@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <gram/evolution/selector/TournamentSelector.h>
+#include <gram/population/selector/TournamentSelector.h>
 
 #include "../../../lib/fakeit/fakeit.hpp"
 

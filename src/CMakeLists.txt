@@ -4,7 +4,7 @@ set(SOURCE_FILES
         evolution/fitness_calculator/ParabolaFitnessCalculator.cpp
         evolution/operator/Crossover.cpp
         evolution/operator/Mutation.cpp
-        evolution/selector/TournamentSelector.cpp
+        population/selector/TournamentSelector.cpp
         evolution/Evolution.cpp
         evolution/EvolutionBuilder.cpp
         grammar/rule_parser/BnfRuleParser.cpp

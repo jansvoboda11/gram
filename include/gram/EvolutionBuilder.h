@@ -1,7 +1,7 @@
 #ifndef GRAM_EVOLUTION_EVOLUTION_BUILDER
 #define GRAM_EVOLUTION_EVOLUTION_BUILDER
 
-#include <gram/evolution/Evolution.h>
+#include <gram/Evolution.h>
 
 namespace gram {
 namespace evolution {

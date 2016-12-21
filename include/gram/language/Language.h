@@ -1,7 +1,7 @@
 #ifndef GRAM_LANGUAGE
 #define GRAM_LANGUAGE
 
-#include <gram/grammar/Grammar.h>
+#include <gram/language/Grammar.h>
 #include <gram/individual/Mapper.h>
 
 namespace gram {

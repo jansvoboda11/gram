@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <gram/evolution/operator/Crossover.h>
+#include <gram/individual/operator/Crossover.h>
 #include <gram/util/number_generator/TwisterNumberGenerator.h>
 
 #include "../../../lib/fakeit/fakeit.hpp"

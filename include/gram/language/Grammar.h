@@ -1,7 +1,7 @@
 #ifndef GRAM_GRAMMAR_GRAMMAR
 #define GRAM_GRAMMAR_GRAMMAR
 
-#include <gram/grammar/symbol/Option.h>
+#include <gram/language/symbol/Option.h>
 
 namespace gram {
 namespace grammar {

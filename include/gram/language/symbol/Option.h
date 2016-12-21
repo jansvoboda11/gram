@@ -4,8 +4,8 @@
 #include <memory>
 #include <unordered_map>
 
-#include <gram/grammar/symbol/NonTerminal.h>
-#include <gram/grammar/symbol/Terminal.h>
+#include <gram/language/symbol/NonTerminal.h>
+#include <gram/language/symbol/Terminal.h>
 
 namespace gram {
 namespace grammar {

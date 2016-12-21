@@ -1,7 +1,7 @@
 #ifndef GRAM_GRAMMAR_RULE_PARSER_BFN
 #define GRAM_GRAMMAR_RULE_PARSER_BFN
 
-#include <gram/grammar/rule_parser/RuleParser.h>
+#include <gram/language/rule_parser/RuleParser.h>
 
 namespace gram {
 namespace grammar {

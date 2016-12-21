@@ -4,9 +4,9 @@
 #include <memory>
 
 #include <gram/population/Population.h>
-#include <gram/evolution/selector/IndividualSelector.h>
-#include <gram/evolution/operator/Crossover.h>
-#include <gram/evolution/operator/Mutation.h>
+#include <gram/population/selector/IndividualSelector.h>
+#include <gram/individual/operator/Crossover.h>
+#include <gram/individual/operator/Mutation.h>
 
 namespace gram {
 namespace population {

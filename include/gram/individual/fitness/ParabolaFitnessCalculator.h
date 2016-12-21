@@ -1,7 +1,7 @@
 #ifndef GRAM_EVOLUTION_FITNESS_CALCULATOR_PARABOLA
 #define GRAM_EVOLUTION_FITNESS_CALCULATOR_PARABOLA
 
-#include <gram/evolution/fitness_calculator/FitnessCalculator.h>
+#include <gram/individual/fitness/FitnessCalculator.h>
 
 namespace gram {
 namespace evolution {
