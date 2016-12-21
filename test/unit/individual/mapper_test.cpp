@@ -2,8 +2,12 @@
 
 #include <gram/individual/Mapper.h>
 
+#include "../../lib/fakeit/fakeit.hpp"
+
 using namespace gram::grammar;
 using namespace gram::individual;
+
+using namespace fakeit;
 
 TEST(mapper_test, test_it_maps_one_terminal) {
   Terminal terminal("test");
@@ -13,11 +17,11 @@ TEST(mapper_test, test_it_maps_one_terminal) {
   option->addTerminal(terminal);
   startSymbol->addOption(option);
 
-  Grammar grammar(startSymbol);
-  Genotype genotype{0};
+  auto grammar = std::make_shared<Grammar>(startSymbol);
 
   Mapper mapper(grammar);
 
+  Genotype genotype{0};
   Phenotype mapped = mapper.map(genotype);
 
   Phenotype expectedPhenotype;
@@ -40,11 +44,11 @@ TEST(mapper_test, test_it_maps_nonterminal) {
   startSymbol->addOption(option1);
   startSymbol->addOption(option2);
 
-  Grammar grammar(startSymbol);
-  Genotype genotype{1};
+  auto grammar = std::make_shared<Grammar>(startSymbol);
 
   Mapper mapper(grammar);
 
+  Genotype genotype{1};
   Phenotype mapped = mapper.map(genotype);
 
   Phenotype expectedPhenotype;

@@ -3,13 +3,13 @@
 using namespace gram::grammar;
 using namespace gram::individual;
 
-Mapper::Mapper(const Grammar &grammar) : grammar(grammar) {
+Mapper::Mapper(std::shared_ptr<Grammar> grammar) : grammar(grammar) {
   //
 }
 
 Phenotype Mapper::map(Genotype mappedGenotype) const {
   Phenotype phenotype;
-  std::shared_ptr<NonTerminal> nonTerminal = grammar.startSymbol();
+  std::shared_ptr<NonTerminal> nonTerminal = grammar->startSymbol();
 
   return recursiveMap(phenotype, nonTerminal, mappedGenotype, 0);
 }

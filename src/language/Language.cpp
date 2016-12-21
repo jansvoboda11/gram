@@ -4,7 +4,8 @@ using namespace gram::language;
 using namespace gram::grammar;
 using namespace gram::individual;
 
-Language::Language(Grammar const &grammar, Mapper const &mapper) : grammar(grammar), mapper(mapper) {
+Language::Language(std::shared_ptr<gram::grammar::Grammar> grammar, Mapper const &mapper)
+    : grammar(grammar), mapper(mapper) {
   //
 }
 

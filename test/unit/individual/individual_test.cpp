@@ -2,21 +2,24 @@
 
 #include <gram/individual/Individual.h>
 
+#include "../../lib/fakeit/fakeit.hpp"
+
 using namespace gram::individual;
 using namespace gram::language;
 using namespace gram::grammar;
 
+using namespace fakeit;
+
 TEST(individual_test, test_it_returns_valid_fitness) {
   Terminal terminal("hello");
-  auto option = std::make_shared<Option>();
-  option->addTerminal(terminal);
-  auto start = std::make_shared<NonTerminal>();
-  start->addOption(option);
-  Grammar grammar(start);
-  Mapper mapper(grammar);
-  Language language(grammar, mapper);
+  Phenotype phenotype;
+  phenotype.addTerminal(terminal);
+  Mock<Language> languageMock;
+  Fake(Dtor(languageMock));
+  When(Method(languageMock, expand)).Return(phenotype);
+  auto language = std::shared_ptr<Language>(&languageMock.get());
 
-  Genotype genotype{1, 2, 3};
+  Genotype genotype{0};
 
   Individual individual(genotype, language);
 
@@ -28,15 +31,14 @@ TEST(individual_test, test_it_returns_valid_fitness) {
 
 TEST(individual_test, test_it_rejects_negative_fitness) {
   Terminal terminal("hello");
-  auto option = std::make_shared<Option>();
-  option->addTerminal(terminal);
-  auto start = std::make_shared<NonTerminal>();
-  start->addOption(option);
-  Grammar grammar(start);
-  Mapper mapper(grammar);
-  Language language(grammar, mapper);
+  Phenotype phenotype;
+  phenotype.addTerminal(terminal);
+  Mock<Language> languageMock;
+  Fake(Dtor(languageMock));
+  When(Method(languageMock, expand)).Return(phenotype);
+  auto language = std::shared_ptr<Language>(&languageMock.get());
 
-  Genotype genotype{1, 2, 3};
+  Genotype genotype{0};
 
   Individual individual(genotype, language);
 
@@ -45,15 +47,14 @@ TEST(individual_test, test_it_rejects_negative_fitness) {
 
 TEST(individual_test, test_it_does_not_return_fitness_if_not_calculated) {
   Terminal terminal("hello");
-  auto option = std::make_shared<Option>();
-  option->addTerminal(terminal);
-  auto start = std::make_shared<NonTerminal>();
-  start->addOption(option);
-  Grammar grammar(start);
-  Mapper mapper(grammar);
-  Language language(grammar, mapper);
+  Phenotype phenotype;
+  phenotype.addTerminal(terminal);
+  Mock<Language> languageMock;
+  Fake(Dtor(languageMock));
+  When(Method(languageMock, expand)).Return(phenotype);
+  auto language = std::shared_ptr<Language>(&languageMock.get());
 
-  Genotype genotype{1, 2, 3};
+  Genotype genotype{0};
 
   Individual individual(genotype, language);
 
@@ -62,13 +63,12 @@ TEST(individual_test, test_it_does_not_return_fitness_if_not_calculated) {
 
 TEST(individual_test, test_it_recognizes_two_equal_objects) {
   Terminal terminal("hello");
-  auto option = std::make_shared<Option>();
-  option->addTerminal(terminal);
-  auto start = std::make_shared<NonTerminal>();
-  start->addOption(option);
-  Grammar grammar(start);
-  Mapper mapper(grammar);
-  Language language(grammar, mapper);
+  Phenotype phenotype;
+  phenotype.addTerminal(terminal);
+  Mock<Language> languageMock;
+  Fake(Dtor(languageMock));
+  When(Method(languageMock, expand)).Return(phenotype).Return(phenotype);
+  auto language = std::shared_ptr<Language>(&languageMock.get());
 
   Genotype genotype{1, 2, 3};
 
@@ -79,14 +79,16 @@ TEST(individual_test, test_it_recognizes_two_equal_objects) {
 }
 
 TEST(individual_test, test_it_recognizes_two_different_objects) {
-  Terminal terminal("hello");
-  auto option = std::make_shared<Option>();
-  option->addTerminal(terminal);
-  auto start = std::make_shared<NonTerminal>();
-  start->addOption(option);
-  Grammar grammar(start);
-  Mapper mapper(grammar);
-  Language language(grammar, mapper);
+  Terminal hello("hello");
+  Terminal world("world");
+  Phenotype phenotype1;
+  Phenotype phenotype2;
+  phenotype1.addTerminal(hello);
+  phenotype2.addTerminal(world);
+  Mock<Language> languageMock;
+  Fake(Dtor(languageMock));
+  When(Method(languageMock, expand)).Return(phenotype1).Return(phenotype2);
+  auto language = std::shared_ptr<Language>(&languageMock.get());
 
   Genotype genotype1{1, 2, 3};
   Genotype genotype2{3, 2, 1};

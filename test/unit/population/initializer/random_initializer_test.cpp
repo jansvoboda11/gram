@@ -18,9 +18,9 @@ TEST(random_initializer_test, test_it_initializes_individuals_with_random_genoty
   option->addTerminal(terminal);
   auto start = std::make_shared<NonTerminal>();
   start->addOption(option);
-  Grammar grammar(start);
+  auto grammar = std::make_shared<Grammar>(start);
   Mapper mapper(grammar);
-  Language language(grammar, mapper);
+  auto language = std::make_shared<Language>(grammar, mapper);
 
   Genotype genotype1{0, 1, 2};
   Genotype genotype2{3, 0, 1};

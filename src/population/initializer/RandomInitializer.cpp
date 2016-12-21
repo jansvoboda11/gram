@@ -4,7 +4,7 @@ using namespace gram::population;
 using namespace gram::individual;
 using namespace gram::util;
 
-RandomInitializer::RandomInitializer(std::unique_ptr<NumberGenerator> generator, gram::language::Language &language, int individualSize)
+RandomInitializer::RandomInitializer(std::unique_ptr<NumberGenerator> generator, std::shared_ptr<gram::language::Language> language, int individualSize)
     : generator(std::move(generator)), language(language), individualSize(individualSize) {
   //
 }

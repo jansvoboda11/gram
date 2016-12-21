@@ -4,9 +4,9 @@ using namespace gram::evolution;
 using namespace gram::grammar;
 using namespace gram::individual;
 
-Individual::Individual(Genotype genotype, const gram::language::Language &language)
+Individual::Individual(Genotype genotype, std::shared_ptr<gram::language::Language> language)
     : genotype(genotype), language(language), phenotype(), fitness(-1.0) {
-  phenotype = language.expand(genotype);
+  phenotype = language->expand(genotype);
 }
 
 std::shared_ptr<Individual> Individual::mateWith(std::shared_ptr<Individual> partner, Crossover &crossover) {
