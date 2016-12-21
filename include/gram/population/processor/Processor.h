@@ -14,11 +14,11 @@ namespace population {
 class Processor {
  public:
   Processor(gram::language::Evaluator &evaluator,
-            gram::evolution::FitnessCalculator &calculator);
+            gram::individual::FitnessCalculator &calculator);
   void process(Population &population);
  private:
   gram::language::Evaluator &evaluator;
-  gram::evolution::FitnessCalculator &calculator;
+  gram::individual::FitnessCalculator &calculator;
 };
 }
 }

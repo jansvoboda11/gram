@@ -1,10 +1,10 @@
-#ifndef GRAM_EVOLUTION_FITNESS_CALCULATOR_PARABOLA
-#define GRAM_EVOLUTION_FITNESS_CALCULATOR_PARABOLA
+#ifndef GRAM_INDIVIDUAL_PARABOLA_FITNESS_CALCULATOR
+#define GRAM_INDIVIDUAL_PARABOLA_FITNESS_CALCULATOR
 
 #include <gram/individual/fitness/FitnessCalculator.h>
 
 namespace gram {
-namespace evolution {
+namespace individual {
 /**
  * Class.
  */
@@ -18,4 +18,4 @@ class ParabolaFitnessCalculator : public FitnessCalculator {
 }
 }
 
-#endif // GRAM_EVOLUTION_FITNESS_CALCULATOR_PARABOLA
+#endif // GRAM_INDIVIDUAL_PARABOLA_FITNESS_CALCULATOR

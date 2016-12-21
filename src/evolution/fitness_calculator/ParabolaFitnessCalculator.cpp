@@ -1,6 +1,6 @@
 #include <gram/individual/fitness/ParabolaFitnessCalculator.h>
 
-using namespace gram::evolution;
+using namespace gram::individual;
 
 ParabolaFitnessCalculator::ParabolaFitnessCalculator(double width) : width(width) {
   //

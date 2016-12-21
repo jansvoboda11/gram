@@ -3,7 +3,6 @@
 using namespace gram::population;
 using namespace gram::individual;
 using namespace gram::language;
-using namespace gram::evolution;
 
 Processor::Processor(Evaluator &evaluator, FitnessCalculator &calculator) 
     : evaluator(evaluator), calculator(calculator) {

@@ -1,8 +1,8 @@
-#ifndef GRAM_EVOLUTION_FITNESS_CALCULATOR
-#define GRAM_EVOLUTION_FITNESS_CALCULATOR
+#ifndef GRAM_INDIVIDUAL_FITNESS_CALCULATOR
+#define GRAM_INDIVIDUAL_FITNESS_CALCULATOR
 
 namespace gram {
-namespace evolution {
+namespace individual {
 /**
  * Interface.
  */
@@ -13,4 +13,4 @@ class FitnessCalculator {
 }
 }
 
-#endif // GRAM_EVOLUTION_FITNESS_CALCULATOR
+#endif // GRAM_INDIVIDUAL_FITNESS_CALCULATOR
