@@ -1,6 +1,6 @@
 #include <gram/language/symbol/Option.h>
 
-using namespace gram::grammar;
+using namespace gram::language;
 
 Option::Option() : symbolCount(0) {
   //

@@ -4,7 +4,7 @@
 
 #include "../../lib/fakeit/fakeit.hpp"
 
-using namespace gram::grammar;
+using namespace gram::language;
 using namespace gram::individual;
 
 using namespace fakeit;

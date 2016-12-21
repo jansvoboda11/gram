@@ -3,7 +3,7 @@
 #include <gram/individual/Phenotype.h>
 
 using namespace gram::individual;
-using namespace gram::grammar;
+using namespace gram::language;
 
 TEST(phenotype_test, test_it_serializes_terminals) {
   Terminal terminal("hello");

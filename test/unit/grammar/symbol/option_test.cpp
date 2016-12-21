@@ -2,7 +2,7 @@
 
 #include <gram/language/symbol/Option.h>
 
-using namespace gram::grammar;
+using namespace gram::language;
 
 TEST(option_test, test_it_accepts_terminals) {
   Terminal terminal1("first");

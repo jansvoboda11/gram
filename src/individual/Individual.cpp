@@ -1,6 +1,6 @@
 #include <gram/individual/Individual.h>
 
-using namespace gram::grammar;
+using namespace gram::language;
 using namespace gram::individual;
 
 Individual::Individual(Genotype genotype, std::shared_ptr<gram::language::Language> language)

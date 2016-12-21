@@ -1,10 +1,10 @@
-#ifndef GRAM_GRAMMAR_RULE_PARSER
-#define GRAM_GRAMMAR_RULE_PARSER
+#ifndef GRAM_LANGUAGE_RULE_PARSER
+#define GRAM_LANGUAGE_RULE_PARSER
 
 #include <gram/language/Grammar.h>
 
 namespace gram {
-namespace grammar {
+namespace language {
 /**
  * Interface.
  */
@@ -15,4 +15,4 @@ class RuleParser {
 }
 }
 
-#endif // GRAM_GRAMMAR_RULE_PARSER
+#endif // GRAM_LANGUAGE_RULE_PARSER

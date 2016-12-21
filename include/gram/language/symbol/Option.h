@@ -1,5 +1,5 @@
-#ifndef GRAM_GRAMMAR_SYMBOL_OPTION
-#define GRAM_GRAMMAR_SYMBOL_OPTION
+#ifndef GRAM_LANGUAGE_OPTION
+#define GRAM_LANGUAGE_OPTION
 
 #include <memory>
 #include <unordered_map>
@@ -8,7 +8,7 @@
 #include <gram/language/symbol/Terminal.h>
 
 namespace gram {
-namespace grammar {
+namespace language {
 // Forward declaration.
 class NonTerminal;
 /**
@@ -34,4 +34,4 @@ class Option {
 }
 }
 
-#endif // GRAM_GRAMMAR_SYMBOL_OPTION
+#endif // GRAM_LANGUAGE_OPTION

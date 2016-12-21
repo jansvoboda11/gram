@@ -1,6 +1,6 @@
-#include <gram/language/rule_parser/BnfRuleParser.h>
+#include <gram/language/parser/BnfRuleParser.h>
 
-using namespace gram::grammar;
+using namespace gram::language;
 
 Grammar BnfRuleParser::parse(std::string rules) {
   std::shared_ptr<NonTerminal> startSymbol;

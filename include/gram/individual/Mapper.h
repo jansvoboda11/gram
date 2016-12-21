@@ -12,12 +12,12 @@ namespace individual {
  */
 class Mapper {
  public:
-  Mapper(std::shared_ptr<gram::grammar::Grammar> grammar);
+  Mapper(std::shared_ptr<gram::language::Grammar> grammar);
   virtual Phenotype map(Genotype genotype) const;
  private:
-  std::shared_ptr<gram::grammar::Grammar> grammar;
+  std::shared_ptr<gram::language::Grammar> grammar;
   Phenotype &recursiveMap(Phenotype &phenotype,
-                          std::shared_ptr<gram::grammar::NonTerminal> nonTerminal,
+                          std::shared_ptr<gram::language::NonTerminal> nonTerminal,
                           Genotype genotype,
                           int geneCount) const;
 };

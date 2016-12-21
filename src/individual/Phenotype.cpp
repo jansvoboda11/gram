@@ -1,6 +1,6 @@
 #include <gram/individual/Phenotype.h>
 
-using namespace gram::grammar;
+using namespace gram::language;
 using namespace gram::individual;
 
 void Phenotype::addTerminal(Terminal terminal) {

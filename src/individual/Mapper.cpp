@@ -1,6 +1,6 @@
 #include <gram/individual/Mapper.h>
 
-using namespace gram::grammar;
+using namespace gram::language;
 using namespace gram::individual;
 
 Mapper::Mapper(std::shared_ptr<Grammar> grammar) : grammar(grammar) {

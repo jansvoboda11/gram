@@ -1,6 +1,6 @@
 #include <gram/language/symbol/Terminal.h>
 
-using namespace gram::grammar;
+using namespace gram::language;
 
 Terminal::Terminal(std::string value) : val(value) {
   //

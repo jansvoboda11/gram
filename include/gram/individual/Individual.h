@@ -1,5 +1,5 @@
-#ifndef GRAM_INDIVIDUAL_INDIVIDUAL
-#define GRAM_INDIVIDUAL_INDIVIDUAL
+#ifndef GRAM_INDIVIDUAL
+#define GRAM_INDIVIDUAL
 
 #include <gram/individual/operator/Crossover.h>
 #include <gram/individual/operator/Mutation.h>
@@ -33,4 +33,4 @@ class Individual {
 }
 }
 
-#endif // GRAM_INDIVIDUAL_INDIVIDUAL
+#endif // GRAM_INDIVIDUAL

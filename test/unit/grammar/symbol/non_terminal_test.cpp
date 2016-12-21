@@ -2,7 +2,7 @@
 
 #include <gram/language/symbol/NonTerminal.h>
 
-using namespace gram::grammar;
+using namespace gram::language;
 
 TEST(non_terminal_test, test_it_accepts_option) {
   Terminal terminal("test");

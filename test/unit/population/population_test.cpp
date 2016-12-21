@@ -7,7 +7,6 @@
 using namespace gram::individual;
 using namespace gram::population;
 using namespace gram::language;
-using namespace gram::grammar;
 
 using namespace fakeit;
 

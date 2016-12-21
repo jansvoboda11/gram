@@ -2,7 +2,7 @@
 
 #include <gram/language/Grammar.h>
 
-using namespace gram::grammar;
+using namespace gram::language;
 
 TEST(grammar_test, test_something) {
   //

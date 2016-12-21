@@ -1,10 +1,10 @@
-#ifndef GRAM_GRAMMAR_SYMBOL_TERMINAL
-#define GRAM_GRAMMAR_SYMBOL_TERMINAL
+#ifndef GRAM_LANGUAGE_TERMINAL_SYMBOL
+#define GRAM_LANGUAGE_TERMINAL_SYMBOL
 
 #include <string>
 
 namespace gram {
-namespace grammar {
+namespace language {
 /**
  * Class.
  */
@@ -20,4 +20,4 @@ class Terminal {
 }
 }
 
-#endif // GRAM_GRAMMAR_SYMBOL_TERMINAL
+#endif // GRAM_LANGUAGE_TERMINAL_SYMBOL

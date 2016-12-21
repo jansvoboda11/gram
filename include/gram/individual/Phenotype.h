@@ -13,12 +13,12 @@ namespace individual {
  */
 class Phenotype {
  public:
-  void addTerminal(gram::grammar::Terminal terminal);
+  void addTerminal(gram::language::Terminal terminal);
   std::string serialize();
   bool operator==(const Phenotype &phenotype) const;
   bool operator!=(const Phenotype &phenotype) const;
  private:
-  std::vector<gram::grammar::Terminal> terminals;
+  std::vector<gram::language::Terminal> terminals;
 };
 }
 }

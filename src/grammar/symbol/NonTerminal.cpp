@@ -1,6 +1,6 @@
 #include <gram/language/symbol/NonTerminal.h>
 
-using namespace gram::grammar;
+using namespace gram::language;
 
 void NonTerminal::addOption(std::weak_ptr<Option> option) {
   options.push_back(option);

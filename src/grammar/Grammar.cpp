@@ -1,6 +1,6 @@
 #include <gram/language/Grammar.h>
 
-using namespace gram::grammar;
+using namespace gram::language;
 
 Grammar::Grammar(std::shared_ptr<NonTerminal> startSymbol) : start(startSymbol) {
   //

@@ -1,10 +1,10 @@
-#ifndef GRAM_GRAMMAR_GRAMMAR
-#define GRAM_GRAMMAR_GRAMMAR
+#ifndef GRAM_LANGUAGE_GRAMMAR
+#define GRAM_LANGUAGE_GRAMMAR
 
 #include <gram/language/symbol/Option.h>
 
 namespace gram {
-namespace grammar {
+namespace language {
 /**
  * Class.
  */
@@ -18,4 +18,4 @@ class Grammar {
 }
 }
 
-#endif // GRAM_GRAMMAR_GRAMMAR
+#endif // GRAM_LANGUAGE_GRAMMAR
