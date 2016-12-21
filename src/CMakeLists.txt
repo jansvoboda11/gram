@@ -1,17 +1,17 @@
 include_directories(../include)
 
 set(SOURCE_FILES
-        evolution/fitness_calculator/ParabolaFitnessCalculator.cpp
-        evolution/operator/Crossover.cpp
-        evolution/operator/Mutation.cpp
+        individual/fitness/ParabolaFitnessCalculator.cpp
+        individual/operator/Crossover.cpp
+        individual/operator/Mutation.cpp
         population/selector/TournamentSelector.cpp
-        evolution/Evolution.cpp
-        evolution/EvolutionBuilder.cpp
-        grammar/rule_parser/BnfRuleParser.cpp
-        grammar/symbol/NonTerminal.cpp
-        grammar/symbol/Option.cpp
-        grammar/symbol/Terminal.cpp
-        grammar/Grammar.cpp
+        Evolution.cpp
+        EvolutionBuilder.cpp
+        language/parser/BnfRuleParser.cpp
+        language/symbol/NonTerminal.cpp
+        language/symbol/Option.cpp
+        language/symbol/Terminal.cpp
+        language/Grammar.cpp
         individual/Individual.cpp
         individual/Mapper.cpp
         individual/Phenotype.cpp
