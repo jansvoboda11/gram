@@ -17,8 +17,8 @@ class Individual {
  public:
   Individual(Genotype genotype, std::shared_ptr<gram::language::Language> language);
   virtual ~Individual() = default;
-  std::shared_ptr<Individual> mateWith(std::shared_ptr<Individual> partner, gram::evolution::Crossover &crossover);
-  void mutate(gram::evolution::Mutation &mutation);
+  std::shared_ptr<Individual> mateWith(std::shared_ptr<Individual> partner, Crossover &crossover);
+  void mutate(Mutation &mutation);
   std::string serialize();
   void setFitness(double calculatedFitness);
   virtual double getFitness();

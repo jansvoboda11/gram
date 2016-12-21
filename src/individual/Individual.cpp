@@ -1,6 +1,5 @@
 #include <gram/individual/Individual.h>
 
-using namespace gram::evolution;
 using namespace gram::grammar;
 using namespace gram::individual;
 

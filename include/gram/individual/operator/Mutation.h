@@ -1,5 +1,5 @@
-#ifndef GRAM_EVOLUTION_OPERATOR_MUTATION
-#define GRAM_EVOLUTION_OPERATOR_MUTATION
+#ifndef GRAM_INDIVIDUAL_MUTATION_OPERATOR
+#define GRAM_INDIVIDUAL_MUTATION_OPERATOR
 
 #include <memory>
 
@@ -8,7 +8,7 @@
 #include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {
-namespace evolution {
+namespace individual {
 /**
  * Class.
  */
@@ -16,7 +16,7 @@ class Mutation {
  public:
   Mutation(std::unique_ptr<gram::util::BoolGenerator> boolGenerator,
            std::unique_ptr<gram::util::NumberGenerator> numberGenerator);
-  virtual gram::individual::Genotype apply(gram::individual::Genotype genotype);
+  virtual Genotype apply(Genotype genotype);
  private:
   std::unique_ptr<gram::util::BoolGenerator> boolGenerator;
   std::unique_ptr<gram::util::NumberGenerator> numberGenerator;
@@ -24,4 +24,4 @@ class Mutation {
 }
 }
 
-#endif // GRAM_EVOLUTION_OPERATOR_MUTATION
+#endif // GRAM_INDIVIDUAL_MUTATION_OPERATOR

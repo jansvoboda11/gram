@@ -1,10 +1,9 @@
 #include <gram/individual/operator/Crossover.h>
 
-using namespace gram::evolution;
 using namespace gram::individual;
 using namespace gram::util;
 
-Crossover::Crossover(std::unique_ptr<gram::util::NumberGenerator> generator) : generator(std::move(generator)) {
+Crossover::Crossover(std::unique_ptr<NumberGenerator> generator) : generator(std::move(generator)) {
   //
 }
 
