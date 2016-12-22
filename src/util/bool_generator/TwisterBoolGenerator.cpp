@@ -14,10 +14,10 @@ bool TwisterBoolGenerator::generate() {
   return number <= probability * max;
 }
 
-std::vector<bool> TwisterBoolGenerator::generateMany(int count) {
+std::vector<bool> TwisterBoolGenerator::generateMany(unsigned long count) {
   std::vector<bool> values;
 
-  for (int i = 0; i < count; i++) {
+  for (unsigned long i = 0; i < count; i++) {
     values.push_back(generate());
   }
 

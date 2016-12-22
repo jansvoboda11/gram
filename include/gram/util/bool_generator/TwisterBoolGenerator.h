@@ -15,7 +15,7 @@ class TwisterBoolGenerator : public BoolGenerator {
  public:
   TwisterBoolGenerator(double probability);
   bool generate();
-  std::vector<bool> generateMany(int count);
+  std::vector<bool> generateMany(unsigned long count);
  private:
   std::unique_ptr<NumberGenerator> generator;
   double probability;

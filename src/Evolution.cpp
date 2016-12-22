@@ -4,31 +4,18 @@ using namespace gram::evolution;
 using namespace gram::individual;
 using namespace gram::population;
 
-Individual Evolution::run(int populationSize, int iterationCount) {
-  Population population = initializer->initialize(populationSize);
-  processor->process(population);
+Evolution::Evolution(std::shared_ptr<gram::individual::Processor> processor) : processor(processor) {
+  //
+}
 
-  for (int i = 0; i < iterationCount; i++) {
-    if (population.bestIndividual()->getFitness() == 0.0) {
-      break;
-    }
+Individual Evolution::run(Population &population, int goal) {
+  population.process(processor, goal);
 
-    population = generator->generateSuccessor(population);
+  while (population.bestFitness() > 0.0) {
+    population = population.successor();
 
-    processor->process(population);
+    population.process(processor, goal);
   }
 
-  return *population.bestIndividual();
-}
-
-void Evolution::setInitializer(Initializer *newInitializer) {
-  initializer = newInitializer;
-}
-
-void Evolution::setProcessor(Processor *newProcessor) {
-  processor = newProcessor;
-}
-
-void Evolution::setGenerator(Generator *newGenerator) {
-  generator = newGenerator;
+  return Individual(*population.bestIndividual());
 }

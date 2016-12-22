@@ -18,7 +18,7 @@ set(SOURCE_FILES
         language/Language.cpp
         population/generator/Generator.cpp
         population/initializer/RandomInitializer.cpp
-        population/processor/Processor.cpp
+        individual/processor/Processor.cpp
         population/Population.cpp
         util/bool_generator/TwisterBoolGenerator.cpp
         util/number_generator/TwisterNumberGenerator.cpp

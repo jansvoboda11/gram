@@ -3,6 +3,7 @@
 
 #include <memory>
 
+#include <gram/individual/Individual.h>
 #include <gram/population/selector/IndividualSelector.h>
 
 namespace gram {
@@ -13,7 +14,7 @@ namespace population {
 class TournamentSelector : public IndividualSelector {
  public:
   TournamentSelector(std::unique_ptr<gram::util::NumberGenerator> generator);
-  std::shared_ptr<gram::individual::Individual> select(Population population);
+  std::shared_ptr<gram::individual::Individual> select(std::vector<std::shared_ptr<gram::individual::Individual>> individuals);
  private:
   std::unique_ptr<gram::util::NumberGenerator> generator;
 };

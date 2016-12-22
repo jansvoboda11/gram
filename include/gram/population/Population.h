@@ -5,6 +5,8 @@
 #include <vector>
 
 #include <gram/individual/Individual.h>
+#include <gram/population/generator/Generator.h>
+#include <gram/individual/processor/Processor.h>
 
 namespace gram {
 namespace population {
@@ -13,16 +15,16 @@ namespace population {
  */
 class Population {
  public:
-  Population();
-  Population(std::vector<std::shared_ptr<gram::individual::Individual>> individuals);
-  Population(std::initializer_list<std::shared_ptr<gram::individual::Individual>> individuals);
+  Population(std::vector<std::shared_ptr<gram::individual::Individual>> individuals, std::shared_ptr<Generator> generator);
+  double bestFitness();
   std::shared_ptr<gram::individual::Individual> bestIndividual();
-  unsigned long size();
+  void process(std::shared_ptr<gram::individual::Processor> processor, int goal);
+  Population successor();
   std::shared_ptr<gram::individual::Individual> &operator[](unsigned long index);
-  std::vector<std::shared_ptr<gram::individual::Individual>>::iterator begin() noexcept;
-  std::vector<std::shared_ptr<gram::individual::Individual>>::iterator end() noexcept;
  private:
-  std::vector<std::shared_ptr<gram::individual::Individual>> individuals;
+  std::vector<std::shared_ptr<gram::individual::Individual>> individuals_;
+  std::shared_ptr<gram::individual::Individual> bestIndividual_;
+  std::shared_ptr<gram::population::Generator> generator_;
 };
 }
 }

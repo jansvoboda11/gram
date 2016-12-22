@@ -4,7 +4,7 @@ using namespace gram::language;
 using namespace gram::individual;
 
 Individual::Individual(Genotype genotype, std::shared_ptr<Language> language)
-    : genotype_(genotype), language(language), fitness(-1.0) {
+    : genotype_(genotype), language(language), fitness_(-1.0) {
   //
 }
 
@@ -18,6 +18,18 @@ void Individual::mutate(Mutation &mutation) {
   genotype_ = mutation.apply(genotype_);
 }
 
+void Individual::process(std::shared_ptr<Processor> processor, int goal) {
+  std::string program = serialize();
+
+  double fitness = processor->process(program, goal);
+
+  if (fitness < 0) {
+    throw std::logic_error("Fitness cannot be negative.");
+  }
+
+  fitness_ = fitness;
+}
+
 std::string Individual::serialize() {
   return language->serialize(genotype_);
 }
@@ -26,20 +38,12 @@ Genotype Individual::genotype() {
   return genotype_;
 }
 
-void Individual::setFitness(double calculatedFitness) {
-  if (calculatedFitness < 0) {
-    throw std::logic_error("Fitness of an individual cannot be negative.");
-  }
-
-  fitness = calculatedFitness;
-}
-
-double Individual::getFitness() {
-  if (fitness < 0) {
+double Individual::fitness() {
+  if (fitness_ < 0) {
     throw std::logic_error("Fitness of the individual has not been calculated yet.");
   }
 
-  return fitness;
+  return fitness_;
 }
 
 bool Individual::operator==(const Individual &individual) const {

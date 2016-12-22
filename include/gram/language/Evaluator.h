@@ -1,9 +1,7 @@
 #ifndef GRAM_LANGUAGE_EVALUATOR
 #define GRAM_LANGUAGE_EVALUATOR
 
-#include <memory>
-
-#include <gram/individual/Individual.h>
+#include <string>
 
 namespace gram {
 namespace language {
@@ -12,7 +10,7 @@ namespace language {
  */
 class Evaluator {
  public:
-  virtual int evaluate(std::shared_ptr<gram::individual::Individual> individual) = 0;
+  virtual int evaluate(std::string program) = 0;
 };
 }
 }

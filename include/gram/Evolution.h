@@ -1,9 +1,10 @@
 #ifndef GRAM_EVOLUTION_EVOLUTION
 #define GRAM_EVOLUTION_EVOLUTION
 
-#include <gram/population/generator/Generator.h>
-#include <gram/population/initializer/Initializer.h>
-#include <gram/population/processor/Processor.h>
+#include <memory>
+
+#include <gram/individual/processor/Processor.h>
+#include <gram/population/Population.h>
 
 namespace gram {
 namespace evolution {
@@ -12,14 +13,10 @@ namespace evolution {
  */
 class Evolution {
  public:
-  gram::individual::Individual run(int populationSize, int iterationCount);
-  void setInitializer(gram::population::Initializer *newInitializer);
-  void setProcessor(gram::population::Processor *newProcessor);
-  void setGenerator(gram::population::Generator *newGenerator);
+  Evolution(std::shared_ptr<gram::individual::Processor> processor);
+  gram::individual::Individual run(gram::population::Population &population, int goal);
  private:
-  gram::population::Initializer *initializer;
-  gram::population::Processor *processor;
-  gram::population::Generator *generator;
+  std::shared_ptr<gram::individual::Processor> processor;
 };
 }
 }

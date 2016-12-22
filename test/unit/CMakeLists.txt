@@ -21,9 +21,10 @@ add_executable(gram_unit_tests
         individual/phenotype_test.cpp
         population/generator/generator_test.cpp
         population/initializer/random_initializer_test.cpp
-        population/processor/processor_test.cpp
+        individual/processor/processor_test.cpp
         population/population_test.cpp
-        language/language_test.cpp)
+        language/language_test.cpp
+        )
 
 add_dependencies(gram_unit_tests fakeit)
 

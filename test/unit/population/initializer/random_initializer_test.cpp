@@ -32,9 +32,13 @@ TEST(random_initializer_test, test_it_initializes_individuals) {
       .Return(std::vector<unsigned long>({2, 3, 0}));
   auto numberGenerator = std::unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
+  Mock<Generator> generatorMock;
+  Fake(Dtor(generatorMock));
+  auto generator = std::shared_ptr<Generator>(&generatorMock.get());
+
   RandomInitializer initializer(std::move(numberGenerator), language, 3);
 
-  Population population = initializer.initialize(3);
+  Population population = initializer.initialize(3, generator);
 
   ASSERT_EQ(individual1, *population[0]);
   ASSERT_EQ(individual2, *population[1]);

@@ -10,7 +10,7 @@ class NumberGenerator {
  public:
   virtual ~NumberGenerator() = default;
   virtual unsigned long generate() = 0;
-  virtual std::vector<unsigned long> generateMany(int count) = 0;
+  virtual std::vector<unsigned long> generateMany(unsigned long count) = 0;
 };
 }
 }

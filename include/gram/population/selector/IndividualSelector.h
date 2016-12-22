@@ -2,9 +2,9 @@
 #define GRAM_POPULATION_INDIVIDUAL_SELECTOR
 
 #include <memory>
+#include <vector>
 
-#include <gram/population/Population.h>
-#include <gram/util/number_generator/NumberGenerator.h>
+#include <gram/individual/Individual.h>
 
 namespace gram {
 namespace population {
@@ -13,7 +13,7 @@ namespace population {
  */
 class IndividualSelector {
  public:
-  virtual std::shared_ptr<gram::individual::Individual> select(Population population) = 0;
+  virtual std::shared_ptr<gram::individual::Individual> select(std::vector<std::shared_ptr<gram::individual::Individual>> population) = 0;
 };
 }
 }

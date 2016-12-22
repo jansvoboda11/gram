@@ -59,34 +59,6 @@ TEST(individual_test, test_it_serializes) {
   ASSERT_EQ("hello world", individual.serialize());
 }
 
-TEST(individual_test, test_it_returns_valid_fitness) {
-  Mock<Language> languageMock;
-  Fake(Dtor(languageMock));
-  When(Method(languageMock, expand)).Return(Phenotype());
-  auto language = std::shared_ptr<Language>(&languageMock.get());
-
-  Genotype genotype({0});
-
-  Individual individual(genotype, language);
-
-  individual.setFitness(1.5);
-
-  ASSERT_EQ(1.5, individual.getFitness());
-}
-
-TEST(individual_test, test_it_rejects_negative_fitness) {
-  Mock<Language> languageMock;
-  Fake(Dtor(languageMock));
-  When(Method(languageMock, expand)).Return(Phenotype());
-  auto language = std::shared_ptr<Language>(&languageMock.get());
-
-  Genotype genotype({0});
-
-  Individual individual(genotype, language);
-
-  ASSERT_THROW(individual.setFitness(-1), std::logic_error);
-}
-
 TEST(individual_test, test_it_does_not_return_fitness_if_not_calculated) {
   Mock<Language> languageMock;
   Fake(Dtor(languageMock));
@@ -97,7 +69,7 @@ TEST(individual_test, test_it_does_not_return_fitness_if_not_calculated) {
 
   Individual individual(genotype, language);
 
-  ASSERT_THROW(individual.getFitness(), std::logic_error);
+  ASSERT_THROW(individual.fitness(), std::logic_error);
 }
 
 TEST(individual_test, test_it_recognizes_two_equal_objects) {

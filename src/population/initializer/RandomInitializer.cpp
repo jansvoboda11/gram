@@ -2,23 +2,24 @@
 
 using namespace gram::population;
 using namespace gram::individual;
+using namespace gram::language;
 using namespace gram::util;
 
-RandomInitializer::RandomInitializer(std::unique_ptr<NumberGenerator> generator, std::shared_ptr<gram::language::Language> language, int individualSize)
-    : generator(std::move(generator)), language(language), individualSize(individualSize) {
+RandomInitializer::RandomInitializer(std::unique_ptr<NumberGenerator> numberGenerator, std::shared_ptr<Language> language, unsigned long individualSize)
+    : numberGenerator(std::move(numberGenerator)), language(language), individualSize(individualSize) {
   //
 }
 
-Population RandomInitializer::initialize(int individualCount) {
+Population RandomInitializer::initialize(unsigned long individualCount, std::shared_ptr<Generator> generator) {
   std::vector<std::shared_ptr<Individual>> individuals;
 
-  for (int i = 0; i < individualCount; i++) {
-    Genotype genotype = generator->generateMany(individualSize);
+  for (unsigned long i = 0; i < individualCount; i++) {
+    Genotype genotype = numberGenerator->generateMany(individualSize);
 
     auto individual = std::make_shared<Individual>(genotype, language);
 
     individuals.push_back(individual);
   }
 
-  return Population(individuals);
+  return Population(individuals, generator);
 }

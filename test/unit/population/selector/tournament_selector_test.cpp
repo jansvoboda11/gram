@@ -11,33 +11,31 @@ using namespace gram::language;
 using namespace fakeit;
 
 TEST(tournament_selector_test, test_it_handles_empty_population) {
-  Population population{};
-
   Mock<NumberGenerator> mock;
   Fake(Dtor(mock));
   auto numberGenerator = std::unique_ptr<NumberGenerator>(&mock.get());
 
+  std::vector<std::shared_ptr<Individual>> individuals;
+
   TournamentSelector selector(std::move(numberGenerator));
 
-  ASSERT_THROW(selector.select(population), std::logic_error);
+  ASSERT_THROW(selector.select(individuals), std::logic_error);
 }
 
 TEST(tournament_selector_test, test_it_select_the_only_individual) {
-  Genotype genotype{0};
+  Mock<NumberGenerator> mock;
+  Fake(Dtor(mock));
+  auto numberGenerator = std::unique_ptr<NumberGenerator>(&mock.get());
 
   Mock<Individual> individual;
   Fake(Dtor(individual));
   auto sharedIndividual = std::shared_ptr<Individual>(&individual.get());
 
-  Mock<NumberGenerator> mock;
-  Fake(Dtor(mock));
-  auto numberGenerator = std::unique_ptr<NumberGenerator>(&mock.get());
-
-  Population population{sharedIndividual};
+  std::vector<std::shared_ptr<Individual>> individuals{sharedIndividual};
 
   TournamentSelector selector(std::move(numberGenerator));
 
-  ASSERT_EQ(*sharedIndividual, *selector.select(population));
+  ASSERT_EQ(*sharedIndividual, *selector.select(individuals));
 }
 
 TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_selected_group) {
@@ -56,19 +54,19 @@ TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_sel
   Fake(Dtor(individual3Mock));
   Fake(Dtor(individual4Mock));
 
-  When(Method(individual1Mock, getFitness)).Return(0.0);
-  When(Method(individual2Mock, getFitness)).Return(1.0);
-  When(Method(individual3Mock, getFitness)).Return(2.0);
-  When(Method(individual4Mock, getFitness)).Return(3.0);
+  When(Method(individual1Mock, fitness)).AlwaysReturn(0.0);
+  When(Method(individual2Mock, fitness)).AlwaysReturn(1.0);
+  When(Method(individual3Mock, fitness)).AlwaysReturn(2.0);
+  When(Method(individual4Mock, fitness)).AlwaysReturn(3.0);
 
   auto individual1 = std::shared_ptr<Individual>(&individual1Mock.get());
   auto individual2 = std::shared_ptr<Individual>(&individual2Mock.get());
   auto individual3 = std::shared_ptr<Individual>(&individual3Mock.get());
   auto individual4 = std::shared_ptr<Individual>(&individual4Mock.get());
 
-  Population population{individual1, individual2, individual3, individual4};
+  std::vector<std::shared_ptr<Individual>> individuals{individual1, individual2, individual3, individual4};
 
   TournamentSelector selector(std::move(numberGenerator));
 
-  ASSERT_EQ(*individual2, *selector.select(population));
+  ASSERT_EQ(*individual2, *selector.select(individuals));
 }

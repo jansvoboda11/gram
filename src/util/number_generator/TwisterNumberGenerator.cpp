@@ -15,10 +15,10 @@ unsigned long TwisterNumberGenerator::generate() {
   return distribution(generator);
 }
 
-std::vector<unsigned long> TwisterNumberGenerator::generateMany(int count) {
+std::vector<unsigned long> TwisterNumberGenerator::generateMany(unsigned long count) {
   std::vector<unsigned long> numbers;
 
-  for (int i = 0; i < count; i++) {
+  for (unsigned long i = 0; i < count; i++) {
     unsigned long number = generate();
 
     numbers.push_back(number);

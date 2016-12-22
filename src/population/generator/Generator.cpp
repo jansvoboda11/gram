@@ -3,28 +3,26 @@
 using namespace gram::population;
 using namespace gram::individual;
 
-Generator::Generator(IndividualSelector &selector, Crossover &crossover, Mutation &mutation)
-    : selector(selector), crossover(crossover), mutation(mutation) {
-  //
-}
+using ::std::vector;
+using ::std::shared_ptr;
 
-Population Generator::generateSuccessor(Population &population) {
-  std::vector<std::shared_ptr<Individual>> parents = selectParents(population);
+vector<shared_ptr<Individual>> Generator::generateSuccessor(vector<shared_ptr<Individual>> individuals) {
+  vector<shared_ptr<Individual>> parents = selectParents(individuals);
 
-  std::vector<std::shared_ptr<Individual>> children = createChildren(parents);
+  vector<shared_ptr<Individual>> children = createChildren(parents);
 
   mutateChildren(children);
 
-  return Population(children);
+  return children;
 }
 
-std::vector<std::shared_ptr<Individual>> Generator::selectParents(Population &oldPopulation) {
-  std::vector<std::shared_ptr<Individual>> parents;
+vector<shared_ptr<Individual>> Generator::selectParents(vector<shared_ptr<Individual>> individuals) {
+  vector<shared_ptr<Individual>> parents;
 
-  unsigned long size = oldPopulation.size();
+  unsigned long size = individuals.size();
 
   for (unsigned long i = 0; i < size; i++) {
-    std::shared_ptr<Individual> parent = selector.select(oldPopulation);
+    shared_ptr<Individual> parent = selector.select(individuals);
 
     parents.push_back(parent);
   }
@@ -32,14 +30,14 @@ std::vector<std::shared_ptr<Individual>> Generator::selectParents(Population &ol
   return parents;
 }
 
-std::vector<std::shared_ptr<Individual>> Generator::createChildren(std::vector<std::shared_ptr<Individual>> parents) {
-  std::vector<std::shared_ptr<Individual>> children;
+vector<shared_ptr<Individual>> Generator::createChildren(vector<shared_ptr<Individual>> parents) {
+  vector<shared_ptr<Individual>> children;
 
   unsigned long size = parents.size();
 
   for (unsigned long i = 0; i < size; i += 2) {
-    std::shared_ptr<Individual> firstParent = parents[i];
-    std::shared_ptr<Individual> secondParent = parents[i + 1];
+    shared_ptr<Individual> firstParent = parents[i];
+    shared_ptr<Individual> secondParent = parents[i + 1];
 
     auto firstChild = firstParent->mateWith(secondParent, crossover);
     auto secondChild = firstParent->mateWith(secondParent, crossover);
@@ -51,7 +49,7 @@ std::vector<std::shared_ptr<Individual>> Generator::createChildren(std::vector<s
   return children;
 }
 
-void Generator::mutateChildren(std::vector<std::shared_ptr<Individual>> children) {
+void Generator::mutateChildren(vector<shared_ptr<Individual>> children) {
   for (auto &child : children) {
     child->mutate(mutation);
   }

@@ -12,7 +12,7 @@ class BoolGenerator {
  public:
   virtual ~BoolGenerator() = default;
   virtual bool generate() = 0;
-  virtual std::vector<bool> generateMany(int count) = 0;
+  virtual std::vector<bool> generateMany(unsigned long count) = 0;
 };
 }
 }

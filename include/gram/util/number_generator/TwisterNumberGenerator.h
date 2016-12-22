@@ -14,7 +14,7 @@ class TwisterNumberGenerator : public NumberGenerator {
  public:
   TwisterNumberGenerator(unsigned long max);
   unsigned long generate();
-  std::vector<unsigned long> generateMany(int count);
+  std::vector<unsigned long> generateMany(unsigned long count);
  private:
   std::mt19937 generator;
   std::uniform_int_distribution<unsigned long> distribution;

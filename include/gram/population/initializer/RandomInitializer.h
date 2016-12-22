@@ -13,14 +13,12 @@ namespace population {
  */
 class RandomInitializer : public Initializer {
  public:
-  RandomInitializer(std::unique_ptr<gram::util::NumberGenerator> generator,
-                    std::shared_ptr<gram::language::Language> language,
-                    int individualSize);
-  Population initialize(int individualCount);
+  RandomInitializer(std::unique_ptr<gram::util::NumberGenerator> numberGenerator, std::shared_ptr<gram::language::Language> language, unsigned long individualSize);
+  Population initialize(unsigned long individualCount, std::shared_ptr<Generator> generator);
  private:
-  std::unique_ptr<gram::util::NumberGenerator> generator;
+  std::unique_ptr<gram::util::NumberGenerator> numberGenerator;
   std::shared_ptr<gram::language::Language> language;
-  int individualSize;
+  unsigned long individualSize;
 };
 }
 }
