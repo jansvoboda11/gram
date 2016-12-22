@@ -9,6 +9,18 @@ using namespace gram::language;
 
 using namespace fakeit;
 
+TEST(individual_test, test_it_mates_with_another_individual) {
+  //
+}
+
+TEST(individual_test, test_it_undergoes_mutation) {
+  //
+}
+
+TEST(individual_test, test_it_serializes) {
+  //
+}
+
 TEST(individual_test, test_it_returns_valid_fitness) {
   Terminal terminal("hello");
   Phenotype phenotype;

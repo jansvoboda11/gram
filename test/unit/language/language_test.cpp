@@ -4,6 +4,6 @@
 
 using namespace gram::language;
 
-TEST(language_test, test_something) {
+TEST(language_test, test_it_expands_genotype) {
   //
 }

@@ -10,7 +10,7 @@ using namespace gram::util;
 
 using namespace fakeit;
 
-TEST(crossover_operator_test, test_it_combines_genotypes_with_the_same_length) {
+TEST(crossover_operator_test, test_it_combines_genotypes_of_the_same_length) {
   Genotype genotype1{0, 1, 2, 3, 4};
   Genotype genotype2{5, 6, 7, 8, 9};
 

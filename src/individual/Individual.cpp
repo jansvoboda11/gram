@@ -3,7 +3,7 @@
 using namespace gram::language;
 using namespace gram::individual;
 
-Individual::Individual(Genotype genotype, std::shared_ptr<gram::language::Language> language)
+Individual::Individual(Genotype genotype, std::shared_ptr<Language> language)
     : genotype(genotype), language(language), phenotype(), fitness(-1.0) {
   phenotype = language->expand(genotype);
 }

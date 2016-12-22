@@ -20,7 +20,7 @@ std::shared_ptr<Individual> TournamentSelector::select(Population population) {
   }
 
   std::vector<std::shared_ptr<Individual>> preSelected;
-  std::vector<long> preSelectedIds;
+  std::vector<unsigned long> preSelectedIds;
 
   for (int i = 0; i < population.size() / 2; i++) {
     long id = generator->generate() % population.size();

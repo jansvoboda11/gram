@@ -11,7 +11,7 @@ using namespace gram::language;
 
 using namespace fakeit;
 
-TEST(random_initializer_test, test_it_initializes_individuals_with_random_genotype) {
+TEST(random_initializer_test, test_it_initializes_individuals) {
   Terminal terminal("hello");
   auto option = std::make_shared<Option>();
   option->addTerminal(terminal);
