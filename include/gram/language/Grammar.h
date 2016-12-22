@@ -11,7 +11,8 @@ namespace language {
 class Grammar {
  public:
   Grammar(std::shared_ptr<NonTerminal> startSymbol);
-  std::shared_ptr<NonTerminal> startSymbol() const;
+  virtual ~Grammar() = default;
+  virtual std::shared_ptr<NonTerminal> startSymbol() const;
  private:
   std::weak_ptr<NonTerminal> start;
 };
