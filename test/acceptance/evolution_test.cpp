@@ -1,53 +1,48 @@
-#include <gmock/gmock.h>
+#include <gtest/gtest.h>
+#include <gtest/fakeit.hpp>
 
 #include <gram/Evolution.h>
-#include <gram/evolution/selector/TournamentSelector.h>
 #include <gram/util/number_generator/TwisterNumberGenerator.h>
+#include <gram/population/selector/TournamentSelector.h>
 #include <gram/util/bool_generator/TwisterBoolGenerator.h>
 #include <gram/population/initializer/RandomInitializer.h>
-#include <gram/evolution/fitness_calculator/ParabolaFitnessCalculator.h>
 
 using namespace gram::evolution;
 using namespace gram::individual;
 using namespace gram::population;
 using namespace gram::language;
 using namespace gram::util;
-using namespace gram::grammar;
-
-using ::testing::NiceMock;
-using ::testing::Return;
-using ::testing::_;
 
 class FakeEvaluator : public Evaluator {
-  int evaluate(std::shared_ptr<gram::individual::Individual> individual) {
-    std::string serialized = individual->serialize();
-
-    unsigned long length = serialized.length();
+  int evaluate(std::string program) {
+    unsigned long length = program.length();
 
     if (length == 0 || length > 9) {
       return 0;
     }
 
-    return std::stoi(serialized);
-  };
+    return std::stoi(program);
+  }
 };
 
 class FakeFitnessCalculator : public FitnessCalculator {
  public:
   double calculate(int desired, int actual) {
-    return std::abs(123 - actual);
-  };
+    return std::abs(desired - actual);
+  }
 };
 
 TEST(evolution_test, test_something) {
-  TwisterNumberGenerator numberGenerator(29);
-  TournamentSelector selector(numberGenerator);
-  Crossover crossover(numberGenerator);
-  TwisterBoolGenerator boolGenerator(0.1);
-  Mutation mutation(boolGenerator, numberGenerator);
-  Generator generator(selector, crossover, mutation);
+  std::unique_ptr<NumberGenerator> numberGenerator1 = std::make_unique<TwisterNumberGenerator>(std::numeric_limits<unsigned long>::max());
+  std::unique_ptr<NumberGenerator> numberGenerator2 = std::make_unique<TwisterNumberGenerator>(29);
+  std::unique_ptr<NumberGenerator> numberGenerator3 = std::make_unique<TwisterNumberGenerator>(11);
+  std::unique_ptr<NumberGenerator> numberGenerator4 = std::make_unique<TwisterNumberGenerator>(11);
+  std::unique_ptr<BoolGenerator> boolGenerator = std::make_unique<TwisterBoolGenerator>(0.1);
 
-  RandomInitializer initializer(numberGenerator, 16);
+  TournamentSelector selector(std::move(numberGenerator1));
+  Mutation mutation(std::move(boolGenerator), std::move(numberGenerator2));
+  Crossover crossover(std::move(numberGenerator3));
+  auto generator = std::make_shared<Generator>(selector, crossover, mutation);
 
   Terminal digit0("0");
   Terminal digit1("1");
@@ -106,20 +101,23 @@ TEST(evolution_test, test_something) {
   startSymbol->addOption(digitOption);
   startSymbol->addOption(numberOption);
 
-  Grammar grammar(startSymbol);
+  auto grammar = std::make_shared<Grammar>(startSymbol);
   Mapper mapper(grammar);
+  auto language = std::make_shared<Language>(grammar, mapper);
+
+  RandomInitializer initializer(std::move(numberGenerator4), language, 16);
+
   FakeEvaluator evaluator;
   FakeFitnessCalculator calculator;
-  Processor processor(mapper, evaluator, calculator);
+  auto processor = std::make_shared<Processor>(evaluator, calculator);
 
-  Evolution evolution;
-  evolution.setGenerator(&generator);
-  evolution.setInitializer(&initializer);
-  evolution.setProcessor(&processor);
+  Evolution evolution(processor);
 
-  Individual result = evolution.run(50, 100);
+  Population population = initializer.initialize(500, generator);
 
-  double fitness = result.getFitness();
+  Individual result = evolution.run(population, 123);
+
+  double fitness = result.fitness();
 
   ASSERT_NEAR(0.0, fitness, 0.001);
 }

@@ -6,6 +6,11 @@ using namespace gram::individual;
 using ::std::vector;
 using ::std::shared_ptr;
 
+Generator::Generator(gram::population::IndividualSelector &selector, gram::individual::Crossover &crossover, gram::individual::Mutation &mutation)
+  : selector(selector), crossover(crossover), mutation(mutation) {
+  //
+}
+
 vector<shared_ptr<Individual>> Generator::generateSuccessor(vector<shared_ptr<Individual>> individuals) {
   vector<shared_ptr<Individual>> parents = selectParents(individuals);
 
