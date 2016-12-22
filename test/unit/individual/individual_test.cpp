@@ -17,13 +17,13 @@ TEST(individual_test, test_it_mates_with_another_individual) {
   Genotype genotype1{0, 0, 0};
   Genotype genotype2{1, 1, 1};
 
-  Individual individual1(genotype1, language);
+  auto individual1 = std::make_shared<Individual>(genotype1, language);
   auto individual2 = std::make_shared<Individual>(genotype2, language);
 
   Mock<Crossover> crossover;
   When(Method(crossover, apply)).Return(Genotype({0, 0, 1}));
 
-  std::shared_ptr<Individual> child = individual1.mateWith(individual2, crossover.get());
+  std::shared_ptr<Individual> child = individual1->mateWith(individual2, crossover.get());
 
   Verify(Method(crossover, apply).Using(genotype1, genotype2));
   ASSERT_EQ(Genotype({0, 0, 1}), child->genotype());
@@ -48,9 +48,8 @@ TEST(individual_test, test_it_returns_valid_fitness) {
   Individual individual(genotype, language);
 
   individual.setFitness(1.5);
-  double fitness = individual.getFitness();
 
-  ASSERT_EQ(1.5, fitness);
+  ASSERT_EQ(1.5, individual.getFitness());
 }
 
 TEST(individual_test, test_it_rejects_negative_fitness) {

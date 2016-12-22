@@ -9,8 +9,6 @@ using namespace gram::util;
 using namespace fakeit;
 
 TEST(mutation_operator_test, test_it_does_not_always_mutate) {
-  Genotype genotype{1, 1, 1};
-
   Mock<BoolGenerator> boolGeneratorMock;
   Fake(Dtor(boolGeneratorMock));
   When(Method(boolGeneratorMock,generate)).Return(false);
@@ -22,15 +20,12 @@ TEST(mutation_operator_test, test_it_does_not_always_mutate) {
 
   Mutation mutation(std::move(boolGenerator), std::move(numberGenerator));
 
-  Genotype mutatedGenotype = mutation.apply(genotype);
+  Genotype genotype{1, 1, 1};
 
-  Genotype expectedGenotype{1, 1, 1};
-  ASSERT_EQ(expectedGenotype, mutatedGenotype);
+  ASSERT_EQ(Genotype({1, 1, 1}), mutation.apply(genotype));
 }
 
 TEST(mutation_operator_test, test_it_mutates_one_gene) {
-  Genotype genotype{1, 1, 1};
-
   Mock<BoolGenerator> boolGeneratorMock;
   Fake(Dtor(boolGeneratorMock));
   When(Method(boolGeneratorMock,generate)).Return(true);
@@ -43,8 +38,7 @@ TEST(mutation_operator_test, test_it_mutates_one_gene) {
 
   Mutation mutation(std::move(boolGenerator), std::move(numberGenerator));
 
-  Genotype mutatedGenotype = mutation.apply(genotype);
+  Genotype genotype{1, 1, 1};
 
-  Genotype expectedGenotype{1, 1, 3};
-  ASSERT_EQ(expectedGenotype, mutatedGenotype);
+  ASSERT_EQ(Genotype({1, 1, 3}), mutation.apply(genotype));
 }

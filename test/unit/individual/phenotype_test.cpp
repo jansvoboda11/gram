@@ -13,9 +13,7 @@ TEST(phenotype_test, test_it_serializes_terminals) {
   phenotype.addTerminal(terminal);
   phenotype.addTerminal(terminal2);
 
-  std::string serialized = phenotype.serialize();
-
-  ASSERT_EQ("helloworld", serialized);
+  ASSERT_EQ("helloworld", phenotype.serialize());
 }
 
 TEST(phenotype_test, test_it_recognizes_two_equal_objects) {

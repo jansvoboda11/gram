@@ -21,11 +21,11 @@ TEST(mapper_test, test_it_maps_one_terminal) {
   Mapper mapper(grammar);
 
   Genotype genotype{0};
-  Phenotype mapped = mapper.map(genotype);
 
   Phenotype expectedPhenotype;
   expectedPhenotype.addTerminal(terminal);
-  ASSERT_EQ(expectedPhenotype, mapped);
+
+  ASSERT_EQ(expectedPhenotype, mapper.map(genotype));
 }
 
 TEST(mapper_test, test_it_maps_nonterminal) {
@@ -48,9 +48,9 @@ TEST(mapper_test, test_it_maps_nonterminal) {
   Mapper mapper(grammar);
 
   Genotype genotype{1};
-  Phenotype mapped = mapper.map(genotype);
 
   Phenotype expectedPhenotype;
   expectedPhenotype.addTerminal(terminal2);
-  ASSERT_EQ(expectedPhenotype, mapped);
+
+  ASSERT_EQ(expectedPhenotype, mapper.map(genotype));
 }

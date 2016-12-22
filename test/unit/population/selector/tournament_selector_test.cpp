@@ -37,9 +37,7 @@ TEST(tournament_selector_test, test_it_select_the_only_individual) {
 
   TournamentSelector selector(std::move(numberGenerator));
 
-  std::shared_ptr<Individual> selectedIndividual = selector.select(population);
-
-  ASSERT_EQ(*sharedIndividual, *selectedIndividual);
+  ASSERT_EQ(*sharedIndividual, *selector.select(population));
 }
 
 TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_selected_group) {
@@ -72,7 +70,5 @@ TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_sel
 
   TournamentSelector selector(std::move(numberGenerator));
 
-  std::shared_ptr<Individual> selectedIndividual = selector.select(population);
-
-  ASSERT_EQ(*individual2, *selectedIndividual);
+  ASSERT_EQ(*individual2, *selector.select(population));
 }
