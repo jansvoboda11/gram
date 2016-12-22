@@ -30,7 +30,22 @@ TEST(individual_test, test_it_mates_with_another_individual) {
 }
 
 TEST(individual_test, test_it_undergoes_mutation) {
-  //
+  Mock<Language> languageMock;
+  Fake(Dtor(languageMock));
+  When(Method(languageMock, expand)).AlwaysReturn(Phenotype());
+  auto language = std::shared_ptr<Language>(&languageMock.get());
+
+  Genotype genotype({0, 0, 0});
+
+  Individual individual(genotype, language);
+
+  Mock<Mutation> mutation;
+  When(Method(mutation, apply)).Return(Genotype({0, 1, 0}));
+
+  individual.mutate(mutation.get());
+
+  Verify(Method(mutation, apply).Using(genotype));
+  ASSERT_EQ(Genotype({0, 1, 0}), individual.genotype());
 }
 
 TEST(individual_test, test_it_serializes) {
