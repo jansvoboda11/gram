@@ -20,7 +20,7 @@ TEST(mutation_operator_test, test_it_does_not_always_mutate) {
 
   Mutation mutation(std::move(boolGenerator), std::move(numberGenerator));
 
-  Genotype genotype{1, 1, 1};
+  Genotype genotype({1, 1, 1});
 
   ASSERT_EQ(Genotype({1, 1, 1}), mutation.apply(genotype));
 }
@@ -38,7 +38,7 @@ TEST(mutation_operator_test, test_it_mutates_one_gene) {
 
   Mutation mutation(std::move(boolGenerator), std::move(numberGenerator));
 
-  Genotype genotype{1, 1, 1};
+  Genotype genotype({1, 1, 1});
 
   ASSERT_EQ(Genotype({1, 1, 3}), mutation.apply(genotype));
 }

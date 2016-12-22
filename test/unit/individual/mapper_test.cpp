@@ -20,7 +20,7 @@ TEST(mapper_test, test_it_maps_one_terminal) {
 
   Mapper mapper(grammar);
 
-  Genotype genotype{0};
+  Genotype genotype({0});
 
   Phenotype expectedPhenotype;
   expectedPhenotype.addTerminal(terminal);

@@ -16,9 +16,9 @@ TEST(random_initializer_test, test_it_initializes_individuals) {
   When(Method(languageMock, expand)).AlwaysReturn(Phenotype());
   auto language = std::shared_ptr<Language>(&languageMock.get());
 
-  Genotype genotype1{0, 1, 2};
-  Genotype genotype2{3, 0, 1};
-  Genotype genotype3{2, 3, 0};
+  Genotype genotype1({0, 1, 2});
+  Genotype genotype2({3, 0, 1});
+  Genotype genotype3({2, 3, 0});
 
   Individual individual1(genotype1, language);
   Individual individual2(genotype2, language);
@@ -27,9 +27,9 @@ TEST(random_initializer_test, test_it_initializes_individuals) {
   Mock<NumberGenerator> numberGeneratorMock;
   Fake(Dtor(numberGeneratorMock));
   When(Method(numberGeneratorMock, generateMany))
-      .Return(std::vector<unsigned long>{0, 1, 2})
-      .Return(std::vector<unsigned long>{3, 0, 1})
-      .Return(std::vector<unsigned long>{2, 3, 0});
+      .Return(std::vector<unsigned long>({0, 1, 2}))
+      .Return(std::vector<unsigned long>({3, 0, 1}))
+      .Return(std::vector<unsigned long>({2, 3, 0}));
   auto numberGenerator = std::unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
   RandomInitializer initializer(std::move(numberGenerator), language, 3);
