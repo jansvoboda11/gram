@@ -1,4 +1,5 @@
 include_directories(../lib/googletest/googlemock/include)
+include_directories(../lib/fakeit/src/fakeit/single_header)
 include_directories(../../include)
 
 add_executable(gram_unit_tests
@@ -24,5 +25,6 @@ add_executable(gram_unit_tests
         population/population_test.cpp
         language/language_test.cpp)
 
-target_link_libraries(gram_unit_tests gtest gmock_main)
-target_link_libraries(gram_unit_tests gram)
+add_dependencies(gram_unit_tests fakeit)
+
+target_link_libraries(gram_unit_tests gram gtest gtest_main)

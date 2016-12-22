@@ -1,8 +1,7 @@
 #include <gtest/gtest.h>
+#include <gtest/fakeit.hpp>
 
 #include <gram/population/Population.h>
-
-#include "../../lib/fakeit/fakeit.hpp"
 
 using namespace gram::individual;
 using namespace gram::population;

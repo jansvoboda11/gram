@@ -1,8 +1,7 @@
 #include <gtest/gtest.h>
+#include <gtest/fakeit.hpp>
 
 #include <gram/individual/operator/Mutation.h>
-
-#include "../../../lib/fakeit/fakeit.hpp"
 
 using namespace gram::individual;
 using namespace gram::util;

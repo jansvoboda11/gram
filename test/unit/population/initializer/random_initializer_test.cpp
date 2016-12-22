@@ -1,8 +1,7 @@
 #include <gtest/gtest.h>
+#include <gtest/fakeit.hpp>
 
 #include <gram/population/initializer/RandomInitializer.h>
-
-#include "../../../lib/fakeit/fakeit.hpp"
 
 using namespace gram::population;
 using namespace gram::individual;

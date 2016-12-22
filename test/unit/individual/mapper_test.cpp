@@ -1,8 +1,7 @@
 #include <gtest/gtest.h>
+#include <gtest/fakeit.hpp>
 
 #include <gram/individual/Mapper.h>
-
-#include "../../lib/fakeit/fakeit.hpp"
 
 using namespace gram::language;
 using namespace gram::individual;

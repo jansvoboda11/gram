@@ -1,9 +1,8 @@
 #include <gtest/gtest.h>
+#include <gtest/fakeit.hpp>
 
 #include <gram/individual/operator/Crossover.h>
 #include <gram/util/number_generator/TwisterNumberGenerator.h>
-
-#include "../../../lib/fakeit/fakeit.hpp"
 
 using namespace gram::individual;
 using namespace gram::util;
