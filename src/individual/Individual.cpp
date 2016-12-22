@@ -4,22 +4,26 @@ using namespace gram::language;
 using namespace gram::individual;
 
 Individual::Individual(Genotype genotype, std::shared_ptr<Language> language)
-    : genotype(genotype), language(language), phenotype(), fitness(-1.0) {
+    : genotype_(genotype), language(language), phenotype(), fitness(-1.0) {
   phenotype = language->expand(genotype);
 }
 
 std::shared_ptr<Individual> Individual::mateWith(std::shared_ptr<Individual> partner, Crossover &crossover) {
-  Genotype childGenotype = crossover.apply(genotype, partner->genotype);
+  Genotype childGenotype = crossover.apply(genotype_, partner->genotype_);
 
   return std::make_shared<Individual>(childGenotype, language);
 }
 
 void Individual::mutate(Mutation &mutation) {
-  genotype = mutation.apply(genotype);
+  genotype_ = mutation.apply(genotype_);
 }
 
 std::string Individual::serialize() {
   return phenotype.serialize();
+}
+
+Genotype Individual::genotype() {
+  return genotype_;
 }
 
 void Individual::setFitness(double calculatedFitness) {
@@ -39,7 +43,7 @@ double Individual::getFitness() {
 }
 
 bool Individual::operator==(const Individual &individual) const {
-  return genotype == individual.genotype;
+  return genotype_ == individual.genotype_;
 }
 
 bool Individual::operator!=(const Individual &individual) const {

@@ -20,12 +20,13 @@ class Individual {
   std::shared_ptr<Individual> mateWith(std::shared_ptr<Individual> partner, Crossover &crossover);
   void mutate(Mutation &mutation);
   std::string serialize();
+  Genotype genotype();
   void setFitness(double calculatedFitness);
   virtual double getFitness();
   bool operator==(const Individual &individual) const;
   bool operator!=(const Individual &individual) const;
  private:
-  Genotype genotype;
+  Genotype genotype_;
   std::shared_ptr<gram::language::Language> language;
   Phenotype phenotype;
   double fitness;

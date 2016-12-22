@@ -9,7 +9,24 @@ using namespace gram::language;
 using namespace fakeit;
 
 TEST(individual_test, test_it_mates_with_another_individual) {
-  //
+  Mock<Language> languageMock;
+  Fake(Dtor(languageMock));
+  When(Method(languageMock, expand)).AlwaysReturn(Phenotype());
+  auto language = std::shared_ptr<Language>(&languageMock.get());
+
+  Genotype genotype1{0, 0, 0};
+  Genotype genotype2{1, 1, 1};
+
+  Individual individual1(genotype1, language);
+  auto individual2 = std::make_shared<Individual>(genotype2, language);
+
+  Mock<Crossover> crossover;
+  When(Method(crossover, apply)).Return(Genotype({0, 0, 1}));
+
+  std::shared_ptr<Individual> child = individual1.mateWith(individual2, crossover.get());
+
+  Verify(Method(crossover, apply).Using(genotype1, genotype2));
+  ASSERT_EQ(Genotype({0, 0, 1}), child->genotype());
 }
 
 TEST(individual_test, test_it_undergoes_mutation) {
