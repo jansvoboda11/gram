@@ -25,14 +25,13 @@ TEST(individual_test, test_it_mates_with_another_individual) {
 
   std::shared_ptr<Individual> child = individual1->mateWith(individual2, crossover.get());
 
-  Verify(Method(crossover, apply).Using(genotype1, genotype2));
   ASSERT_EQ(Genotype({0, 0, 1}), child->genotype());
 }
 
 TEST(individual_test, test_it_undergoes_mutation) {
   Mock<Language> languageMock;
   Fake(Dtor(languageMock));
-  When(Method(languageMock, expand)).AlwaysReturn(Phenotype());
+  When(Method(languageMock, expand)).Return(Phenotype());
   auto language = std::shared_ptr<Language>(&languageMock.get());
 
   Genotype genotype({0, 0, 0});
@@ -44,24 +43,20 @@ TEST(individual_test, test_it_undergoes_mutation) {
 
   individual.mutate(mutation.get());
 
-  Verify(Method(mutation, apply).Using(genotype));
   ASSERT_EQ(Genotype({0, 1, 0}), individual.genotype());
 }
 
 TEST(individual_test, test_it_serializes) {
   Mock<Language> languageMock;
   Fake(Dtor(languageMock));
-  When(Method(languageMock, serialize)).AlwaysReturn("hello world");
+  When(Method(languageMock, serialize)).Return("hello world");
   auto language = std::shared_ptr<Language>(&languageMock.get());
 
   Genotype genotype({0, 0, 0});
 
   Individual individual(genotype, language);
 
-  std::string serialized = individual.serialize();
-
-  Verify(Method(languageMock, serialize).Using(genotype));
-  ASSERT_EQ("hello world", serialized);
+  ASSERT_EQ("hello world", individual.serialize());
 }
 
 TEST(individual_test, test_it_returns_valid_fitness) {

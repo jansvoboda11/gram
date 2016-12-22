@@ -22,10 +22,7 @@ TEST(language_test, test_it_expands_genotype) {
 
   Language language(grammar, mapperMock.get());
 
-  Phenotype expanded = language.expand(Genotype({0, 1, 2}));
-
-  Verify(Method(mapperMock, map).Using(Genotype({0, 1, 2})));
-  ASSERT_EQ(phenotype, expanded);
+  ASSERT_EQ(phenotype, language.expand(Genotype({0, 1, 2})));
 }
 
 TEST(language_test, test_it_serializes_genotype) {
