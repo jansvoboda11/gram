@@ -11,8 +11,6 @@ ExternalProject_Add(fakeit
         INSTALL_COMMAND ""
         )
 
-include_directories(../src)
-
 add_subdirectory(lib/googletest/googlemock)
 add_subdirectory(unit)
 add_subdirectory(acceptance)
