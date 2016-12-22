@@ -11,14 +11,10 @@ using namespace gram::language;
 using namespace fakeit;
 
 TEST(random_initializer_test, test_it_initializes_individuals) {
-  Terminal terminal("hello");
-  auto option = std::make_shared<Option>();
-  option->addTerminal(terminal);
-  auto start = std::make_shared<NonTerminal>();
-  start->addOption(option);
-  auto grammar = std::make_shared<Grammar>(start);
-  Mapper mapper(grammar);
-  auto language = std::make_shared<Language>(grammar, mapper);
+  Mock<Language> languageMock;
+  Fake(Dtor(languageMock));
+  When(Method(languageMock, expand)).AlwaysReturn(Phenotype());
+  auto language = std::shared_ptr<Language>(&languageMock.get());
 
   Genotype genotype1{0, 1, 2};
   Genotype genotype2{3, 0, 1};
@@ -34,7 +30,6 @@ TEST(random_initializer_test, test_it_initializes_individuals) {
       .Return(std::vector<unsigned long>{0, 1, 2})
       .Return(std::vector<unsigned long>{3, 0, 1})
       .Return(std::vector<unsigned long>{2, 3, 0});
-
   auto numberGenerator = std::unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
   RandomInitializer initializer(std::move(numberGenerator), language, 3);

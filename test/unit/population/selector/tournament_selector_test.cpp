@@ -15,7 +15,6 @@ TEST(tournament_selector_test, test_it_handles_empty_population) {
 
   Mock<NumberGenerator> mock;
   Fake(Dtor(mock));
-
   auto numberGenerator = std::unique_ptr<NumberGenerator>(&mock.get());
 
   TournamentSelector selector(std::move(numberGenerator));
@@ -28,12 +27,10 @@ TEST(tournament_selector_test, test_it_select_the_only_individual) {
 
   Mock<Individual> individual;
   Fake(Dtor(individual));
-
   auto sharedIndividual = std::shared_ptr<Individual>(&individual.get());
 
   Mock<NumberGenerator> mock;
   Fake(Dtor(mock));
-
   auto numberGenerator = std::unique_ptr<NumberGenerator>(&mock.get());
 
   Population population{sharedIndividual};
@@ -42,14 +39,13 @@ TEST(tournament_selector_test, test_it_select_the_only_individual) {
 
   std::shared_ptr<Individual> selectedIndividual = selector.select(population);
 
-  ASSERT_EQ(individual.get(), *selectedIndividual);
+  ASSERT_EQ(*sharedIndividual, *selectedIndividual);
 }
 
 TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_selected_group) {
   Mock<NumberGenerator> numberGeneratorMock;
   Fake(Dtor(numberGeneratorMock));
   When(Method(numberGeneratorMock, generate)).Return(1).Return(3);
-
   auto numberGenerator = std::unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
   Mock<Individual> individual1Mock;
@@ -78,5 +74,5 @@ TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_sel
 
   std::shared_ptr<Individual> selectedIndividual = selector.select(population);
 
-  ASSERT_EQ(individual2, selectedIndividual);
+  ASSERT_EQ(*individual2, *selectedIndividual);
 }
