@@ -11,3 +11,7 @@ Language::Language(std::shared_ptr<Grammar> grammar, Mapper const &mapper)
 Phenotype Language::expand(Genotype genotype) const {
   return mapper.map(genotype);
 }
+
+std::string Language::serialize(gram::individual::Genotype genotype) const {
+  return expand(genotype).serialize();
+}

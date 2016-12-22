@@ -4,8 +4,8 @@ using namespace gram::language;
 using namespace gram::individual;
 
 Individual::Individual(Genotype genotype, std::shared_ptr<Language> language)
-    : genotype_(genotype), language(language), phenotype(), fitness(-1.0) {
-  phenotype = language->expand(genotype);
+    : genotype_(genotype), language(language), fitness(-1.0) {
+  //
 }
 
 std::shared_ptr<Individual> Individual::mateWith(std::shared_ptr<Individual> partner, Crossover &crossover) {
@@ -19,7 +19,7 @@ void Individual::mutate(Mutation &mutation) {
 }
 
 std::string Individual::serialize() {
-  return phenotype.serialize();
+  return language->serialize(genotype_);
 }
 
 Genotype Individual::genotype() {

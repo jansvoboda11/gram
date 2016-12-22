@@ -49,7 +49,19 @@ TEST(individual_test, test_it_undergoes_mutation) {
 }
 
 TEST(individual_test, test_it_serializes) {
-  //
+  Mock<Language> languageMock;
+  Fake(Dtor(languageMock));
+  When(Method(languageMock, serialize)).AlwaysReturn("hello world");
+  auto language = std::shared_ptr<Language>(&languageMock.get());
+
+  Genotype genotype({0, 0, 0});
+
+  Individual individual(genotype, language);
+
+  std::string serialized = individual.serialize();
+
+  Verify(Method(languageMock, serialize).Using(genotype));
+  ASSERT_EQ("hello world", serialized);
 }
 
 TEST(individual_test, test_it_returns_valid_fitness) {

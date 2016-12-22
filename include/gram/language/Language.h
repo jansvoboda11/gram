@@ -14,6 +14,7 @@ class Language {
   Language(std::shared_ptr<Grammar> grammar, const gram::individual::Mapper &mapper);
   virtual ~Language() = default;
   virtual gram::individual::Phenotype expand(gram::individual::Genotype genotype) const;
+  virtual std::string serialize(gram::individual::Genotype genotype) const;
  private:
   std::shared_ptr<Grammar> grammar;
   const gram::individual::Mapper &mapper;

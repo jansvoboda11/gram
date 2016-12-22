@@ -28,7 +28,6 @@ class Individual {
  private:
   Genotype genotype_;
   std::shared_ptr<gram::language::Language> language;
-  Phenotype phenotype;
   double fitness;
 };
 }
