@@ -15,3 +15,17 @@ TEST(bnf_rule_parser_test, test_it_parses_rule_with_single_terminal) {
   ASSERT_TRUE(grammar.startSymbol()->optionAt(0)->hasTerminalAt(0));
   ASSERT_EQ("hello", grammar.startSymbol()->optionAt(0)->terminalAt(0).value());
 }
+
+TEST(bnf_rule_parser_test, test_it_parses_rule_with_multiple_terminals) {
+  BnfRuleParser parser;
+
+  std::string rules = "<rule> ::= \"hello\" \"world\"";
+
+  Grammar grammar = parser.parse(rules);
+
+  ASSERT_EQ(1, grammar.startSymbol()->size());
+  ASSERT_TRUE(grammar.startSymbol()->optionAt(0)->hasTerminalAt(0));
+  ASSERT_TRUE(grammar.startSymbol()->optionAt(0)->hasTerminalAt(1));
+  ASSERT_EQ("hello", grammar.startSymbol()->optionAt(0)->terminalAt(0).value());
+  ASSERT_EQ("world", grammar.startSymbol()->optionAt(0)->terminalAt(1).value());
+}

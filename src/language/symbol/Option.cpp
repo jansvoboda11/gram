@@ -10,8 +10,8 @@ int Option::size() {
   return symbolCount;
 }
 
-void Option::addTerminal(Terminal &terminal) {
-  terminals[symbolCount] = &terminal;
+void Option::addTerminal(Terminal terminal) {
+  terminals.emplace(symbolCount, terminal);
 
   symbolCount += 1;
 }
@@ -34,8 +34,8 @@ bool Option::hasTerminalAt(unsigned long index) {
   return hasItem != terminals.end();
 }
 
-Terminal &Option::terminalAt(unsigned long index) {
-  return *terminals[index];
+Terminal Option::terminalAt(unsigned long index) {
+  return terminals.at(index);
 }
 
 std::weak_ptr<NonTerminal> Option::nonTerminalAt(unsigned long index) {
@@ -49,8 +49,8 @@ bool Option::operator==(const Option &option) const {
         return false;
       }
 
-      Terminal firstTerminal = *terminals.at(i);
-      Terminal secondTerminal = *option.terminals.at(i);
+      Terminal firstTerminal = terminals.at(i);
+      Terminal secondTerminal = option.terminals.at(i);
 
       if (firstTerminal != secondTerminal) {
         return false;
