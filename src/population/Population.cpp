@@ -9,7 +9,7 @@ Population::Population(std::vector<std::shared_ptr<Individual>> individuals, std
 }
 
 double Population::bestFitness() {
-  return 0.0;
+  return bestIndividual()->fitness();
 }
 
 std::shared_ptr<Individual> Population::bestIndividual() {
