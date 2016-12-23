@@ -15,13 +15,13 @@ class Option;
  */
 class NonTerminal {
  public:
-  void addOption(std::weak_ptr<Option> option);
+  void addOption(std::shared_ptr<Option> option);
   std::shared_ptr<Option> optionAt(unsigned long index);
   unsigned long size() const;
   bool operator==(const NonTerminal &nonTerminal) const;
   bool operator!=(const NonTerminal &nonTerminal) const;
  private:
-  std::vector<std::weak_ptr<Option>> options;
+  std::vector<std::shared_ptr<Option>> options;
 };
 }
 }

@@ -16,20 +16,20 @@ void Option::addTerminal(Terminal &terminal) {
   symbolCount += 1;
 }
 
-void Option::addNonTerminal(std::shared_ptr<NonTerminal> nonTerminal) {
+void Option::addNonTerminal(std::weak_ptr<NonTerminal> nonTerminal) {
   nonTerminals[symbolCount] = nonTerminal;
 
   symbolCount += 1;
 }
 
 bool Option::hasNonTerminalAt(unsigned long index) {
-  std::unordered_map<unsigned long, std::shared_ptr<NonTerminal>>::const_iterator hasItem = nonTerminals.find(index);
+  auto hasItem = nonTerminals.find(index);
 
   return hasItem != nonTerminals.end();
 }
 
 bool Option::hasTerminalAt(unsigned long index) {
-  std::unordered_map<unsigned long, Terminal *>::const_iterator hasItem = terminals.find(index);
+  auto hasItem = terminals.find(index);
 
   return hasItem != terminals.end();
 }
@@ -38,7 +38,7 @@ Terminal &Option::terminalAt(unsigned long index) {
   return *terminals[index];
 }
 
-std::shared_ptr<NonTerminal> Option::nonTerminalAt(unsigned long index) {
+std::weak_ptr<NonTerminal> Option::nonTerminalAt(unsigned long index) {
   return nonTerminals[index];
 }
 
@@ -62,8 +62,8 @@ bool Option::operator==(const Option &option) const {
         return false;
       }
 
-      NonTerminal firstNonTerminal = *nonTerminals.at(i);
-      NonTerminal secondNonTerminal = *option.nonTerminals.at(i);
+      NonTerminal firstNonTerminal = *nonTerminals.at(i).lock();
+      NonTerminal secondNonTerminal = *option.nonTerminals.at(i).lock();
 
       if (firstNonTerminal != secondNonTerminal) {
         return false;

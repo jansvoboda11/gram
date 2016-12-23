@@ -2,12 +2,12 @@
 
 using namespace gram::language;
 
-void NonTerminal::addOption(std::weak_ptr<Option> option) {
+void NonTerminal::addOption(std::shared_ptr<Option> option) {
   options.push_back(option);
 }
 
 std::shared_ptr<Option> NonTerminal::optionAt(unsigned long index) {
-  return options[index].lock();
+  return options[index];
 }
 
 unsigned long NonTerminal::size() const {
@@ -20,8 +20,8 @@ bool NonTerminal::operator==(const NonTerminal &nonTerminal) const {
   }
 
   for (int i = 0; i < size(); i++) {
-    std::shared_ptr<Option> firstOption = options[i].lock();
-    std::shared_ptr<Option> secondOption = nonTerminal.options[i].lock();
+    std::shared_ptr<Option> firstOption = options[i];
+    std::shared_ptr<Option> secondOption = nonTerminal.options[i];
 
     if (*firstOption != *secondOption) {
       return false;

@@ -17,17 +17,17 @@ class NonTerminal;
 class Option {
  public:
   Option();
-  void addNonTerminal(std::shared_ptr<NonTerminal> nonTerminal);
+  void addNonTerminal(std::weak_ptr<NonTerminal> nonTerminal);
   void addTerminal(Terminal &terminal);
   bool hasNonTerminalAt(unsigned long index);
   bool hasTerminalAt(unsigned long index);
-  std::shared_ptr<NonTerminal> nonTerminalAt(unsigned long index);
+  std::weak_ptr<NonTerminal> nonTerminalAt(unsigned long index);
   Terminal &terminalAt(unsigned long index);
   int size();
   bool operator==(const Option &option) const;
   bool operator!=(const Option &option) const;
  private:
-  std::unordered_map<unsigned long, std::shared_ptr<NonTerminal>> nonTerminals;
+  std::unordered_map<unsigned long, std::weak_ptr<NonTerminal>> nonTerminals;
   std::unordered_map<unsigned long, Terminal *> terminals;
   int symbolCount;
 };

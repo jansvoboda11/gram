@@ -29,7 +29,7 @@ TEST(non_terminal_test, test_it_handles_recursive_option) {
   option->addNonTerminal(nonTerminal);
 
   ASSERT_TRUE(nonTerminal->optionAt(0)->hasNonTerminalAt(1));
-  ASSERT_EQ(nonTerminal, nonTerminal->optionAt(0)->nonTerminalAt(1));
+  ASSERT_EQ(nonTerminal, nonTerminal->optionAt(0)->nonTerminalAt(1).lock());
 }
 
 TEST(non_terminal_test, test_it_returns_option_count) {

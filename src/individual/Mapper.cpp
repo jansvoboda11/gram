@@ -26,7 +26,7 @@ Phenotype &Mapper::recursiveMap(Phenotype &phenotype, std::shared_ptr<NonTermina
     } else {
       geneCount += 1;
 
-      recursiveMap(phenotype, option->nonTerminalAt(i), genotype, geneCount);
+      recursiveMap(phenotype, option->nonTerminalAt(i).lock(), genotype, geneCount);
     }
   }
 
