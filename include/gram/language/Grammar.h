@@ -14,7 +14,7 @@ class Grammar {
   virtual ~Grammar() = default;
   virtual std::shared_ptr<NonTerminal> startSymbol() const;
  private:
-  std::weak_ptr<NonTerminal> start;
+  std::shared_ptr<NonTerminal> start;
 };
 }
 }

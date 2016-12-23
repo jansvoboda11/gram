@@ -7,5 +7,9 @@ Grammar::Grammar(std::shared_ptr<NonTerminal> startSymbol) : start(startSymbol) 
 }
 
 std::shared_ptr<NonTerminal> Grammar::startSymbol() const {
-  return start.lock();
+  if (!start) {
+    throw std::logic_error("The start symbol of grammar is invalid.");
+  }
+
+  return start;
 }
