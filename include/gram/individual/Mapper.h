@@ -19,7 +19,7 @@ class Mapper {
   Phenotype &recursiveMap(Phenotype &phenotype,
                           std::shared_ptr<gram::language::NonTerminal> nonTerminal,
                           Genotype genotype,
-                          int geneCount) const;
+                          unsigned long &geneCount) const;
 };
 }
 }

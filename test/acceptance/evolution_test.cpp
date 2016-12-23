@@ -78,16 +78,16 @@ TEST(evolution_test, test_something) {
   option9->addTerminal(digit9);
 
   auto digit = std::make_shared<NonTerminal>();
-//  digit->addOption(option0);
+  digit->addOption(option0);
   digit->addOption(option1);
   digit->addOption(option2);
   digit->addOption(option3);
-//  digit->addOption(option4);
-//  digit->addOption(option5);
-//  digit->addOption(option6);
-//  digit->addOption(option7);
-//  digit->addOption(option8);
-//  digit->addOption(option9);
+  digit->addOption(option4);
+  digit->addOption(option5);
+  digit->addOption(option6);
+  digit->addOption(option7);
+  digit->addOption(option8);
+  digit->addOption(option9);
 
   auto startSymbol = std::make_shared<NonTerminal>();
 
@@ -113,9 +113,9 @@ TEST(evolution_test, test_something) {
 
   Evolution evolution(processor);
 
-  Population population = initializer.initialize(10, generator);
+  Population population = initializer.initialize(1000, generator);
 
-  Individual result = evolution.run(population, 123);
+  Individual result = evolution.run(population, 1470);
 
   double fitness = result.fitness();
 
