@@ -113,7 +113,7 @@ TEST(evolution_test, test_something) {
 
   Evolution evolution(processor);
 
-  Population population = initializer.initialize(500, generator);
+  Population population = initializer.initialize(10, generator);
 
   Individual result = evolution.run(population, 123);
 
