@@ -17,6 +17,7 @@ class BnfRuleParser : public RuleParser {
   std::string nonTerminal();
   std::string equals();
   std::string terminal();
+  std::string pipe();
 };
 }
 }
