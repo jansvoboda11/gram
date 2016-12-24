@@ -24,6 +24,7 @@ add_executable(gram_unit_tests
         individual/processor/processor_test.cpp
         population/population_test.cpp
         language/language_test.cpp
+        util/helper_test.cpp
         )
 
 add_dependencies(gram_unit_tests fakeit)

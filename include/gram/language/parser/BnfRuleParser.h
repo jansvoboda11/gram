@@ -14,7 +14,6 @@ class BnfRuleParser : public RuleParser {
  public:
   Grammar parse(std::string input);
  private:
-  std::vector<std::string> explode(std::string string, std::string delimiter);
   void parseRule(Grammar &grammar, std::string &line);
   std::shared_ptr<Option> parseOption(Grammar &grammar, std::string &line);
   std::string nonTerminal();

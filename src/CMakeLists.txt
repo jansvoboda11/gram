@@ -22,6 +22,7 @@ set(SOURCE_FILES
         population/Population.cpp
         util/bool_generator/TwisterBoolGenerator.cpp
         util/number_generator/TwisterNumberGenerator.cpp
+        util/helper.cpp
         )
 
 add_library(gram STATIC ${SOURCE_FILES})
