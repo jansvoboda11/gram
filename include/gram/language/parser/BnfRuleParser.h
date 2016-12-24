@@ -12,10 +12,10 @@ namespace language {
  */
 class BnfRuleParser : public RuleParser {
  public:
-  Grammar parse(std::string input);
+  std::shared_ptr<Grammar> parse(std::string input);
  private:
-  void parseRule(Grammar &grammar, std::string &line);
-  std::shared_ptr<Option> parseOption(Grammar &grammar, std::string &line);
+  void parseRule(std::shared_ptr<Grammar> grammar, std::string &line);
+  std::shared_ptr<Option> parseOption(std::shared_ptr<Grammar> grammar, std::string &line);
   std::string nonTerminal();
   std::string equals();
   std::string terminal();

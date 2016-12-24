@@ -5,8 +5,8 @@
 using namespace gram::language;
 using namespace gram::util;
 
-Grammar BnfRuleParser::parse(std::string input) {
-  Grammar grammar;
+std::shared_ptr<Grammar> BnfRuleParser::parse(std::string input) {
+  auto grammar = std::make_shared<Grammar>();
 
   std::vector<std::string> lines = explode(input, "\n");
 
@@ -17,7 +17,7 @@ Grammar BnfRuleParser::parse(std::string input) {
   return grammar;
 }
 
-void BnfRuleParser::parseRule(Grammar &grammar, std::string &line) {
+void BnfRuleParser::parseRule(std::shared_ptr<Grammar> grammar, std::string &line) {
   std::regex nonTerminalPattern(nonTerminal());
   std::regex equalsPattern(equals());
   std::smatch matches;
@@ -27,7 +27,7 @@ void BnfRuleParser::parseRule(Grammar &grammar, std::string &line) {
     name = matches[1];
   }
 
-  std::shared_ptr<NonTerminal> rule = grammar.ruleNamed(name);
+  std::shared_ptr<NonTerminal> rule = grammar->ruleNamed(name);
 
   line = line.substr(name.length() + 2);
 
@@ -44,7 +44,7 @@ void BnfRuleParser::parseRule(Grammar &grammar, std::string &line) {
   }
 }
 
-std::shared_ptr<Option> BnfRuleParser::parseOption(Grammar &grammar, std::string &line) {
+std::shared_ptr<Option> BnfRuleParser::parseOption(std::shared_ptr<Grammar> grammar, std::string &line) {
   auto option = std::make_shared<Option>();
 
   std::regex terminalPattern(terminal());
@@ -63,7 +63,7 @@ std::shared_ptr<Option> BnfRuleParser::parseOption(Grammar &grammar, std::string
     } else if (std::regex_search(line, matches, nonTerminalPattern)) {
       std::string name = matches[1];
 
-      std::shared_ptr<NonTerminal> nonTerm = grammar.ruleNamed(name);
+      std::shared_ptr<NonTerminal> nonTerm = grammar->ruleNamed(name);
       option->addNonTerminal(nonTerm);
 
       line = line.substr(name.length() + 3);

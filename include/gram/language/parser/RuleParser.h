@@ -10,7 +10,7 @@ namespace language {
  */
 class RuleParser {
  public:
-  virtual Grammar parse(std::string rules) = 0;
+  virtual std::shared_ptr<Grammar> parse(std::string input) = 0;
 };
 }
 }
