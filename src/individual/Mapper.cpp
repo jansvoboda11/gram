@@ -9,7 +9,7 @@ Mapper::Mapper(std::shared_ptr<Grammar> grammar) : grammar(grammar) {
 
 Phenotype Mapper::map(Genotype mappedGenotype) const {
   Phenotype phenotype;
-  std::shared_ptr<NonTerminal> nonTerminal = grammar->startSymbol();
+  std::shared_ptr<NonTerminal> nonTerminal = grammar->startRule();
   unsigned long geneCount = 0;
 
   return recursiveMap(phenotype, nonTerminal, mappedGenotype, geneCount);

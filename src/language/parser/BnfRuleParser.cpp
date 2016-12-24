@@ -3,9 +3,9 @@
 using namespace gram::language;
 
 Grammar BnfRuleParser::parse(std::string rules) {
-  std::vector<std::string> lines = explode(rules, "\n");
+  Grammar grammar;
 
-  std::unordered_map<std::string, std::shared_ptr<NonTerminal>> nonTerminals;
+  std::vector<std::string> lines = explode(rules, "\n");
 
   std::string nonTermi = "^" + nonTerminal();
   std::regex nonTerm(nonTermi);
@@ -16,20 +16,19 @@ Grammar BnfRuleParser::parse(std::string rules) {
   }
 
   auto nonT = std::make_shared<NonTerminal>();
-  auto start = nonT;
 
-  nonTerminals[name] = nonT;
+  grammar.addRule(name, nonT);
 
   for (auto &rule : lines) {
     if (std::regex_search(rule, matches, nonTerm)) {
       name = matches[1];
     }
 
-    if (nonTerminals.find(name) == nonTerminals.end()) {
-      nonT = std::make_shared<NonTerminal>();
-      nonTerminals[name] = nonT;
+    if (grammar.hasRuleNamed(name)) {
+      nonT = grammar.ruleNamed(name);
     } else {
-      nonT = nonTerminals[name];
+      nonT = std::make_shared<NonTerminal>();
+      grammar.addRule(name, nonT);
     }
 
     rule = rule.substr(name.length() + 2);
@@ -76,14 +75,11 @@ Grammar BnfRuleParser::parse(std::string rules) {
 
         std::shared_ptr<NonTerminal> encountered;
 
-        if (nonTerminals.find(name) == nonTerminals.end()) {
-          // does not contain the encountered non-terminal
-
-          encountered = std::make_shared<NonTerminal>();
-
-          nonTerminals[name] = encountered;
+        if (grammar.hasRuleNamed(name)) {
+          encountered = grammar.ruleNamed(name);
         } else {
-          encountered = nonTerminals[name];
+          encountered = std::make_shared<NonTerminal>();
+          grammar.addRule(name, encountered);
         }
 
         option->addNonTerminal(encountered);
@@ -91,7 +87,7 @@ Grammar BnfRuleParser::parse(std::string rules) {
     }
   }
 
-  return Grammar(start, nonTerminals);
+  return grammar;
 }
 
 std::string BnfRuleParser::nonTerminal() {

@@ -101,7 +101,10 @@ TEST(evolution_test, test_something) {
   startSymbol->addOption(digitOption);
   startSymbol->addOption(numberOption);
 
-  auto grammar = std::make_shared<Grammar>(startSymbol);
+  auto grammar = std::make_shared<Grammar>();
+  grammar->addRule("start", startSymbol);
+  grammar->addRule("digit", digit);
+
   Mapper mapper(grammar);
   auto language = std::make_shared<Language>(grammar, mapper);
 

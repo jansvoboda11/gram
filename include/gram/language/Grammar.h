@@ -10,9 +10,12 @@ namespace language {
  */
 class Grammar {
  public:
-  Grammar(std::shared_ptr<NonTerminal> startSymbol, std::unordered_map<std::string, std::shared_ptr<NonTerminal>> rules);
+  Grammar();
   virtual ~Grammar() = default;
-  virtual std::shared_ptr<NonTerminal> startSymbol() const;
+  void addRule(std::string name, std::shared_ptr<NonTerminal> rule);
+  bool hasRuleNamed(std::string name);
+  std::shared_ptr<NonTerminal> ruleNamed(std::string name);
+  virtual std::shared_ptr<NonTerminal> startRule();
  private:
   std::shared_ptr<NonTerminal> start;
   std::unordered_map<std::string, std::shared_ptr<NonTerminal>> rules;
