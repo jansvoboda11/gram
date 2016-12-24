@@ -12,8 +12,15 @@ namespace language {
  */
 class BnfRuleParser : public RuleParser {
  public:
-  Grammar parse(std::string rules);
+  Grammar parse(std::string input);
  private:
+  Grammar grammar;
+  std::vector<std::string> lines;
+  std::string line;
+  std::shared_ptr<NonTerminal> rule;
+  std::shared_ptr<NonTerminal> parseRule();
+  std::shared_ptr<Option> parseOption();
+
   std::string nonTerminal();
   std::string equals();
   std::string terminal();

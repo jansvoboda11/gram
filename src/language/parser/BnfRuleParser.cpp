@@ -2,92 +2,96 @@
 
 using namespace gram::language;
 
-Grammar BnfRuleParser::parse(std::string rules) {
-  Grammar grammar;
+Grammar BnfRuleParser::parse(std::string input) {
+  lines = explode(input, "\n");
 
-  std::vector<std::string> lines = explode(rules, "\n");
+  for (auto inputLine : lines) {
+    line = inputLine;
 
-  std::string nonTermi = "^" + nonTerminal();
-  std::regex nonTerm(nonTermi);
-
-  std::string equ = "^" + equals();
-  std::regex eq(equ);
-
-  std::string termi = "^" + terminal();
-  std::regex term(termi);
-
-  std::string pi = "^" + pipe();
-  std::regex pip(pi);
-
-  std::string name;
-  std::smatch matches;
-
-  std::shared_ptr<NonTerminal> nonT;
-
-  for (auto &rule : lines) {
-    if (std::regex_search(rule, matches, nonTerm)) {
-      name = matches[1];
-    }
-
-    nonT = grammar.ruleNamed(name);
-
-    rule = rule.substr(name.length() + 2);
-
-    if (!std::regex_search(rule, matches, eq)) {
-      throw std::logic_error("Rule does not contain equals.");
-    }
-
-    rule = rule.substr(4);
-
-    auto option = std::make_shared<Option>();
-    nonT->addOption(option);
-
-    while (rule.length() > 0) {
-      std::string value;
-
-      if (std::regex_search(rule, matches, term)) {
-        value = matches[1];
-
-        unsigned long offset = std::min(value.length() + 3, rule.length());
-
-        rule = rule.substr(offset);
-
-        Terminal terminal1(value);
-        option->addTerminal(terminal1);
-      } else if (std::regex_search(rule, matches, pip)) {
-        rule = rule.substr(2);
-
-        option = std::make_shared<Option>();
-        nonT->addOption(option);
-      } else if (std::regex_search(rule, matches, nonTerm)) {
-        name = matches[1];
-
-        rule = rule.substr(name.length() + 3);
-
-        std::shared_ptr<NonTerminal> encountered = grammar.ruleNamed(name);
-
-        option->addNonTerminal(encountered);
-      }
-    }
+    parseRule();
   }
 
   return grammar;
 }
 
+std::shared_ptr<NonTerminal> BnfRuleParser::parseRule() {
+  std::regex nonTerminalPattern(nonTerminal());
+  std::regex equalsPattern(equals());
+  std::smatch matches;
+  std::string name;
+
+  if (std::regex_search(line, matches, nonTerminalPattern)) {
+    name = matches[1];
+  }
+
+  rule = grammar.ruleNamed(name);
+
+  line = line.substr(name.length() + 2);
+
+  if (!std::regex_search(line, matches, equalsPattern)) {
+    throw std::logic_error("Rule start could not be parsed.");
+  }
+
+  line = line.substr(4);
+
+  while (line.length() > 0) {
+    std::shared_ptr<Option> option = parseOption();
+
+    rule->addOption(option);
+  }
+
+  return rule;
+}
+
+std::shared_ptr<Option> BnfRuleParser::parseOption() {
+  auto option = std::make_shared<Option>();
+
+  std::regex terminalPatter(terminal());
+  std::regex nonTerminalPatter(nonTerminal());
+  std::regex delimiterPattern(pipe());
+  std::smatch matches;
+
+  while (line.length() > 0) {
+    if (std::regex_search(line, matches, terminalPatter)) {
+      std::string value = matches[1];
+
+      Terminal term(value);
+      option->addTerminal(term);
+
+      line = line.substr(std::min(value.length() + 3, line.length()));
+    } else if (std::regex_search(line, matches, nonTerminalPatter)) {
+      std::string name = matches[1];
+
+      std::shared_ptr<NonTerminal> nonTerm = grammar.ruleNamed(name);
+      option->addNonTerminal(nonTerm);
+
+      line = line.substr(name.length() + 3);
+    } else if (std::regex_search(line, matches, delimiterPattern)) {
+      line = line.substr(2);
+
+      break;
+    } else {
+      throw std::logic_error("Rule option could not be parsed.");
+    }
+  }
+
+  return option;
+}
+
 std::string BnfRuleParser::nonTerminal() {
-  return std::string(" *<([a-zA-Z][a-zA-Z0-9-]*)> *");
+  return std::string("^ *<([a-zA-Z][a-zA-Z0-9-]*)> *");
 }
 
 std::string BnfRuleParser::equals() {
-  return std::string(" *::= *");
+  return std::string("^ *::= *");
 }
 
 std::string BnfRuleParser::terminal() {
-  return std::string(" *\"([a-zA-Z0-9| -!#$%&\\(\\)\\*\\+,-\\./:;<=>?@\\[\\\\\\]\\^_`{}~]+)\" *");
+  return std::string("^ *\"([a-zA-Z0-9| -!#$%&\\(\\)\\*\\+,-\\./:;<=>?@\\[\\\\\\]\\^_`{}~]+)\" *");
 }
 
 std::string BnfRuleParser::pipe() {
-  return std::string(" *\\| *");
+  return std::string("^ *\\| *");
 }
 
 std::vector<std::string> BnfRuleParser::explode(std::string string, std::string delimiter) {
