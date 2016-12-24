@@ -21,6 +21,12 @@ bool Grammar::hasRuleNamed(std::string name) {
 }
 
 std::shared_ptr<NonTerminal> Grammar::ruleNamed(std::string name) {
+  if (!hasRuleNamed(name)) {
+    auto rule = std::make_shared<NonTerminal>();
+
+    addRule(name, rule);
+  }
+
   return rules[name];
 }
 

@@ -29,12 +29,7 @@ Grammar BnfRuleParser::parse(std::string rules) {
       name = matches[1];
     }
 
-    if (grammar.hasRuleNamed(name)) {
-      nonT = grammar.ruleNamed(name);
-    } else {
-      nonT = std::make_shared<NonTerminal>();
-      grammar.addRule(name, nonT);
-    }
+    nonT = grammar.ruleNamed(name);
 
     rule = rule.substr(name.length() + 2);
 
@@ -69,14 +64,7 @@ Grammar BnfRuleParser::parse(std::string rules) {
 
         rule = rule.substr(name.length() + 3);
 
-        std::shared_ptr<NonTerminal> encountered;
-
-        if (grammar.hasRuleNamed(name)) {
-          encountered = grammar.ruleNamed(name);
-        } else {
-          encountered = std::make_shared<NonTerminal>();
-          grammar.addRule(name, encountered);
-        }
+        std::shared_ptr<NonTerminal> encountered = grammar.ruleNamed(name);
 
         option->addNonTerminal(encountered);
       }
