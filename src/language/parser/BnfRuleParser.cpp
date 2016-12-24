@@ -3,58 +3,95 @@
 using namespace gram::language;
 
 Grammar BnfRuleParser::parse(std::string rules) {
-  std::smatch matches;
+  std::vector<std::string> lines = explode(rules, "\n");
+
+  std::unordered_map<std::string, std::shared_ptr<NonTerminal>> nonTerminals;
 
   std::string nonTermi = "^" + nonTerminal();
   std::regex nonTerm(nonTermi);
   std::string name;
-
+  std::smatch matches;
   if (std::regex_search(rules, matches, nonTerm)) {
     name = matches[1];
   }
 
-  rules = rules.substr(name.length() + 2);
+  auto nonT = std::make_shared<NonTerminal>();
+  auto start = nonT;
 
-  std::string equ = "^" + equals();
-  std::regex eq(equ);
+  nonTerminals[name] = nonT;
 
-  if (!std::regex_search(rules, matches, eq)) {
-    throw std::logic_error("Rule does not contain equals.");
-  }
+  for (auto &rule : lines) {
+    if (std::regex_search(rule, matches, nonTerm)) {
+      name = matches[1];
+    }
 
-  rules = rules.substr(4);
+    if (nonTerminals.find(name) == nonTerminals.end()) {
+      nonT = std::make_shared<NonTerminal>();
+      nonTerminals[name] = nonT;
+    } else {
+      nonT = nonTerminals[name];
+    }
 
-  std::string termi = "^" + terminal();
-  std::regex term(termi);
+    rule = rule.substr(name.length() + 2);
 
-  std::string pi = "^" + pipe();
-  std::regex pip(pi);
+    std::string equ = "^" + equals();
+    std::regex eq(equ);
 
-  auto startSymbol = std::make_shared<NonTerminal>();
-  auto option = std::make_shared<Option>();
-  startSymbol->addOption(option);
+    if (!std::regex_search(rule, matches, eq)) {
+      throw std::logic_error("Rule does not contain equals.");
+    }
 
-  while (rules.length() > 0) {
-    std::string value;
+    rule = rule.substr(4);
 
-    if (std::regex_search(rules, matches, term)) {
-      value = matches[1];
+    std::string termi = "^" + terminal();
+    std::regex term(termi);
 
-      unsigned long offset = std::min(value.length() + 3, rules.length());
+    std::string pi = "^" + pipe();
+    std::regex pip(pi);
 
-      rules = rules.substr(offset);
+    auto option = std::make_shared<Option>();
+    nonT->addOption(option);
 
-      Terminal terminal1(value);
-      option->addTerminal(terminal1);
-    } else if (std::regex_search(rules, matches, pip)) {
-      rules = rules.substr(2);
+    while (rule.length() > 0) {
+      std::string value;
 
-      option = std::make_shared<Option>();
-      startSymbol->addOption(option);
+      if (std::regex_search(rule, matches, term)) {
+        value = matches[1];
+
+        unsigned long offset = std::min(value.length() + 3, rule.length());
+
+        rule = rule.substr(offset);
+
+        Terminal terminal1(value);
+        option->addTerminal(terminal1);
+      } else if (std::regex_search(rule, matches, pip)) {
+        rule = rule.substr(2);
+
+        option = std::make_shared<Option>();
+        nonT->addOption(option);
+      } else if (std::regex_search(rule, matches, nonTerm)) {
+        name = matches[1];
+
+        rule = rule.substr(name.length() + 3);
+
+        std::shared_ptr<NonTerminal> encountered;
+
+        if (nonTerminals.find(name) == nonTerminals.end()) {
+          // does not contain the encountered non-terminal
+
+          encountered = std::make_shared<NonTerminal>();
+
+          nonTerminals[name] = encountered;
+        } else {
+          encountered = nonTerminals[name];
+        }
+
+        option->addNonTerminal(encountered);
+      }
     }
   }
 
-  return Grammar(startSymbol);
+  return Grammar(start, nonTerminals);
 }
 
 std::string BnfRuleParser::nonTerminal() {
@@ -70,5 +107,23 @@ std::string BnfRuleParser::terminal() {
 }
 
 std::string BnfRuleParser::pipe() {
-  return std::string(" *| *");
+  return std::string(" *\\| *");
+}
+
+std::vector<std::string> BnfRuleParser::explode(std::string string, std::string delimiter) {
+  std::vector<std::string> pieces;
+
+  unsigned long end = string.find(delimiter);
+
+  while (end != std::string::npos) {
+    pieces.push_back(string.substr(0, end));
+
+    string = string.substr(end + delimiter.length());
+
+    end = string.find(delimiter);
+  }
+
+  pieces.push_back(string);
+
+  return pieces;
 }

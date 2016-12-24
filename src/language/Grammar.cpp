@@ -2,7 +2,8 @@
 
 using namespace gram::language;
 
-Grammar::Grammar(std::shared_ptr<NonTerminal> startSymbol) : start(startSymbol) {
+Grammar::Grammar(std::shared_ptr<NonTerminal> startSymbol, std::unordered_map<std::string, std::shared_ptr<NonTerminal>> rules)
+    : start(startSymbol), rules(rules) {
   //
 }
 

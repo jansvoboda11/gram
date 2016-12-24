@@ -18,6 +18,7 @@ class BnfRuleParser : public RuleParser {
   std::string equals();
   std::string terminal();
   std::string pipe();
+  std::vector<std::string> explode(std::string string, std::string delimiter);
 };
 }
 }

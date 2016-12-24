@@ -16,7 +16,9 @@ TEST(mapper_test, test_it_maps_one_terminal) {
   option->addTerminal(terminal);
   startSymbol->addOption(option);
 
-  auto grammar = std::make_shared<Grammar>(startSymbol);
+  std::unordered_map<std::string, std::shared_ptr<NonTerminal>> nonTerminals;
+
+  auto grammar = std::make_shared<Grammar>(startSymbol, nonTerminals);
 
   Mapper mapper(grammar);
 
@@ -43,7 +45,9 @@ TEST(mapper_test, test_it_maps_nonterminal) {
   startSymbol->addOption(option1);
   startSymbol->addOption(option2);
 
-  auto grammar = std::make_shared<Grammar>(startSymbol);
+  std::unordered_map<std::string, std::shared_ptr<NonTerminal>> nonTerminals;
+
+  auto grammar = std::make_shared<Grammar>(startSymbol, nonTerminals);
 
   Mapper mapper(grammar);
 
@@ -113,7 +117,9 @@ TEST(mapper_test, test_it_maps_linear_grammar) {
   startSymbol->addOption(digitOption);
   startSymbol->addOption(numberOption);
 
-  auto grammar = std::make_shared<Grammar>(startSymbol);
+  std::unordered_map<std::string, std::shared_ptr<NonTerminal>> nonTerminals;
+
+  auto grammar = std::make_shared<Grammar>(startSymbol, nonTerminals);
 
   Mapper mapper(grammar);
 
