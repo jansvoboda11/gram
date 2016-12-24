@@ -3,18 +3,18 @@
 using namespace gram::language;
 
 Grammar BnfRuleParser::parse(std::string input) {
-  lines = explode(input, "\n");
+  Grammar grammar;
 
-  for (auto inputLine : lines) {
-    line = inputLine;
+  std::vector<std::string> lines = explode(input, "\n");
 
-    parseRule();
+  for (auto line : lines) {
+    parseRule(grammar, line);
   }
 
   return grammar;
 }
 
-std::shared_ptr<NonTerminal> BnfRuleParser::parseRule() {
+void BnfRuleParser::parseRule(Grammar &grammar, std::string &line) {
   std::regex nonTerminalPattern(nonTerminal());
   std::regex equalsPattern(equals());
   std::smatch matches;
@@ -24,7 +24,7 @@ std::shared_ptr<NonTerminal> BnfRuleParser::parseRule() {
     name = matches[1];
   }
 
-  rule = grammar.ruleNamed(name);
+  std::shared_ptr<NonTerminal> rule = grammar.ruleNamed(name);
 
   line = line.substr(name.length() + 2);
 
@@ -35,31 +35,29 @@ std::shared_ptr<NonTerminal> BnfRuleParser::parseRule() {
   line = line.substr(4);
 
   while (line.length() > 0) {
-    std::shared_ptr<Option> option = parseOption();
+    std::shared_ptr<Option> option = parseOption(grammar, line);
 
     rule->addOption(option);
   }
-
-  return rule;
 }
 
-std::shared_ptr<Option> BnfRuleParser::parseOption() {
+std::shared_ptr<Option> BnfRuleParser::parseOption(Grammar &grammar, std::string &line) {
   auto option = std::make_shared<Option>();
 
-  std::regex terminalPatter(terminal());
-  std::regex nonTerminalPatter(nonTerminal());
+  std::regex terminalPattern(terminal());
+  std::regex nonTerminalPattern(nonTerminal());
   std::regex delimiterPattern(pipe());
   std::smatch matches;
 
   while (line.length() > 0) {
-    if (std::regex_search(line, matches, terminalPatter)) {
+    if (std::regex_search(line, matches, terminalPattern)) {
       std::string value = matches[1];
 
       Terminal term(value);
       option->addTerminal(term);
 
       line = line.substr(std::min(value.length() + 3, line.length()));
-    } else if (std::regex_search(line, matches, nonTerminalPatter)) {
+    } else if (std::regex_search(line, matches, nonTerminalPattern)) {
       std::string name = matches[1];
 
       std::shared_ptr<NonTerminal> nonTerm = grammar.ruleNamed(name);
