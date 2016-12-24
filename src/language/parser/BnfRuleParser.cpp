@@ -9,15 +9,20 @@ Grammar BnfRuleParser::parse(std::string rules) {
 
   std::string nonTermi = "^" + nonTerminal();
   std::regex nonTerm(nonTermi);
+
+  std::string equ = "^" + equals();
+  std::regex eq(equ);
+
+  std::string termi = "^" + terminal();
+  std::regex term(termi);
+
+  std::string pi = "^" + pipe();
+  std::regex pip(pi);
+
   std::string name;
   std::smatch matches;
-  if (std::regex_search(rules, matches, nonTerm)) {
-    name = matches[1];
-  }
 
-  auto nonT = std::make_shared<NonTerminal>();
-
-  grammar.addRule(name, nonT);
+  std::shared_ptr<NonTerminal> nonT;
 
   for (auto &rule : lines) {
     if (std::regex_search(rule, matches, nonTerm)) {
@@ -33,20 +38,11 @@ Grammar BnfRuleParser::parse(std::string rules) {
 
     rule = rule.substr(name.length() + 2);
 
-    std::string equ = "^" + equals();
-    std::regex eq(equ);
-
     if (!std::regex_search(rule, matches, eq)) {
       throw std::logic_error("Rule does not contain equals.");
     }
 
     rule = rule.substr(4);
-
-    std::string termi = "^" + terminal();
-    std::regex term(termi);
-
-    std::string pi = "^" + pipe();
-    std::regex pip(pi);
 
     auto option = std::make_shared<Option>();
     nonT->addOption(option);
