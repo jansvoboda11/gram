@@ -4,7 +4,6 @@
 #include <vector>
 
 namespace gram {
-namespace util {
 /**
  * Interface.
  */
@@ -14,7 +13,6 @@ class BoolGenerator {
   virtual bool generate() = 0;
   virtual std::vector<bool> generateMany(unsigned long count) = 0;
 };
-}
 }
 
 #endif // GRAM_UTIL_BOOL_GENERATOR

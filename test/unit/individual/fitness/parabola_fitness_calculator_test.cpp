@@ -2,7 +2,7 @@
 
 #include <gram/individual/fitness/ParabolaFitnessCalculator.h>
 
-using namespace gram::individual;
+using namespace gram;
 
 TEST(parabola_fitness_calculator_test, test_exact_match_has_best_possible_fitness) {
   ParabolaFitnessCalculator calculator(10);

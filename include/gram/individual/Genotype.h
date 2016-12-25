@@ -4,12 +4,10 @@
 #include <vector>
 
 namespace gram {
-namespace individual {
 /**
  * Class.
  */
 typedef std::vector<unsigned long> Genotype;
-}
 }
 
 #endif // GRAM_INDIVIDUAL_GENOTYPE

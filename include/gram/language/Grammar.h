@@ -4,7 +4,6 @@
 #include <gram/language/symbol/Option.h>
 
 namespace gram {
-namespace language {
 /**
  * Class.
  */
@@ -20,7 +19,6 @@ class Grammar {
   std::shared_ptr<NonTerminal> start;
   std::unordered_map<std::string, std::shared_ptr<NonTerminal>> rules;
 };
-}
 }
 
 #endif // GRAM_LANGUAGE_GRAMMAR

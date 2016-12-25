@@ -5,12 +5,10 @@
 #include <vector>
 
 namespace gram {
-namespace util {
 /**
  * Function.
  */
-std::vector<std::string> explode(std::string string, std::string delimiter);
-}
+std::vector<std::string> explode(std::string input, std::string delimiter);
 }
 
 #endif // GRAM_UTIL_HELPER

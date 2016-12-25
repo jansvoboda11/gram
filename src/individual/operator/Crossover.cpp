@@ -1,14 +1,14 @@
 #include <gram/individual/operator/Crossover.h>
 
-using namespace gram::individual;
-using namespace gram::util;
+using namespace gram;
+using namespace std;
 
-Crossover::Crossover(std::unique_ptr<NumberGenerator> generator) : generator(std::move(generator)) {
+Crossover::Crossover(unique_ptr<NumberGenerator> generator) : generator(move(generator)) {
   //
 }
 
 Genotype Crossover::apply(Genotype first, Genotype second) {
-  unsigned long smallerSize = std::min(first.size(), second.size());
+  unsigned long smallerSize = min(first.size(), second.size());
   unsigned long point = generator->generate() % (smallerSize + 1);
 
   Genotype firstPart(first.begin(), first.begin() + point);

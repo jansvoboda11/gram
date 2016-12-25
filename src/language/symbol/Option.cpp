@@ -1,6 +1,7 @@
 #include <gram/language/symbol/Option.h>
 
-using namespace gram::language;
+using namespace gram;
+using namespace std;
 
 Option::Option() : symbolCount(0) {
   //
@@ -16,7 +17,7 @@ void Option::addTerminal(Terminal terminal) {
   symbolCount += 1;
 }
 
-void Option::addNonTerminal(std::weak_ptr<NonTerminal> nonTerminal) {
+void Option::addNonTerminal(weak_ptr<NonTerminal> nonTerminal) {
   nonTerminals.emplace(symbolCount, nonTerminal);
 
   symbolCount += 1;
@@ -34,7 +35,7 @@ Terminal Option::terminalAt(unsigned long index) {
   return terminals.at(index);
 }
 
-std::weak_ptr<NonTerminal> Option::nonTerminalAt(unsigned long index) {
+weak_ptr<NonTerminal> Option::nonTerminalAt(unsigned long index) {
   return nonTerminals.at(index);
 }
 

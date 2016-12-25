@@ -4,7 +4,6 @@
 #include <gram/individual/fitness/FitnessCalculator.h>
 
 namespace gram {
-namespace individual {
 /**
  * Class.
  */
@@ -15,7 +14,6 @@ class ParabolaFitnessCalculator : public FitnessCalculator {
  private:
   double width;
 };
-}
 }
 
 #endif // GRAM_INDIVIDUAL_PARABOLA_FITNESS_CALCULATOR

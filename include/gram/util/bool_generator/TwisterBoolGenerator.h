@@ -7,7 +7,6 @@
 #include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {
-namespace util {
 /**
  * Class.
  */
@@ -21,7 +20,6 @@ class TwisterBoolGenerator : public BoolGenerator {
   double probability;
   unsigned long max;
 };
-}
 }
 
 #endif // GRAM_UTIL_BOOL_GENERATOR_TWISTER

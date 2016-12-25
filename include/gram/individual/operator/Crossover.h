@@ -7,18 +7,16 @@
 #include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {
-namespace individual {
 /**
  * Class.
  */
 class Crossover {
  public:
-  Crossover(std::unique_ptr<gram::util::NumberGenerator> generator);
+  Crossover(std::unique_ptr<NumberGenerator> generator);
   virtual Genotype apply(Genotype first, Genotype second);
  private:
-  std::unique_ptr<gram::util::NumberGenerator> generator;
+  std::unique_ptr<NumberGenerator> generator;
 };
-}
 }
 
 #endif // GRAM_INDIVIDUAL_CROSSOVER_OPERATOR

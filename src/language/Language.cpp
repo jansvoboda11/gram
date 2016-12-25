@@ -1,9 +1,9 @@
 #include <gram/language/Language.h>
 
-using namespace gram::language;
-using namespace gram::individual;
+using namespace gram;
+using namespace std;
 
-Language::Language(std::shared_ptr<Grammar> grammar, Mapper const &mapper)
+Language::Language(shared_ptr<Grammar> grammar, Mapper const &mapper)
     : grammar(grammar), mapper(mapper) {
   //
 }

@@ -1,10 +1,9 @@
 #include <gram/Evolution.h>
 
-using namespace gram::evolution;
-using namespace gram::individual;
-using namespace gram::population;
+using namespace gram;
+using namespace std;
 
-Evolution::Evolution(std::shared_ptr<Processor> processor) : processor(processor) {
+Evolution::Evolution(shared_ptr<Processor> processor) : processor(processor) {
   //
 }
 

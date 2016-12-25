@@ -5,20 +5,18 @@
 #include <gram/individual/Mapper.h>
 
 namespace gram {
-namespace language {
 /**
  * Class.
  */
 class Language {
  public:
-  Language(std::shared_ptr<Grammar> grammar, const gram::individual::Mapper &mapper);
+  Language(std::shared_ptr<Grammar> grammar, const Mapper &mapper);
   virtual ~Language() = default;
-  virtual gram::individual::Phenotype expand(gram::individual::Genotype genotype) const;
+  virtual Phenotype expand(Genotype genotype) const;
  private:
   std::shared_ptr<Grammar> grammar;
-  const gram::individual::Mapper &mapper;
+  const Mapper &mapper;
 };
-}
 }
 
 #endif // GRAM_LANGUAGE

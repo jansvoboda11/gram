@@ -3,10 +3,8 @@
 
 #include <gram/individual/processor/Processor.h>
 
-using namespace gram::individual;
-using namespace gram::language;
-
 using namespace fakeit;
+using namespace gram;
 
 TEST(processor_test, test_it_processes_program) {
   Mock<Evaluator> evaluatorMock;

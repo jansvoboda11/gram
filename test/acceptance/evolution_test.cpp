@@ -8,54 +8,50 @@
 #include <gram/population/initializer/RandomInitializer.h>
 #include <gram/language/parser/BnfRuleParser.h>
 
-using namespace gram::evolution;
-using namespace gram::individual;
-using namespace gram::population;
-using namespace gram::language;
-using namespace gram::util;
-
 using namespace fakeit;
+using namespace gram;
+using namespace std;
 
 TEST(evolution_test, test_something) {
-  unsigned long max = std::numeric_limits<unsigned long>::max();
+  unsigned long max = numeric_limits<unsigned long>::max();
 
-  std::unique_ptr<NumberGenerator> numberGenerator1 = std::make_unique<TwisterNumberGenerator>(max);
-  std::unique_ptr<NumberGenerator> numberGenerator2 = std::make_unique<TwisterNumberGenerator>(29);
-  std::unique_ptr<NumberGenerator> numberGenerator3 = std::make_unique<TwisterNumberGenerator>(11);
-  std::unique_ptr<NumberGenerator> numberGenerator4 = std::make_unique<TwisterNumberGenerator>(11);
-  std::unique_ptr<BoolGenerator> boolGenerator = std::make_unique<TwisterBoolGenerator>(0.1);
+  unique_ptr<NumberGenerator> numberGenerator1 = make_unique<TwisterNumberGenerator>(max);
+  unique_ptr<NumberGenerator> numberGenerator2 = make_unique<TwisterNumberGenerator>(29);
+  unique_ptr<NumberGenerator> numberGenerator3 = make_unique<TwisterNumberGenerator>(11);
+  unique_ptr<NumberGenerator> numberGenerator4 = make_unique<TwisterNumberGenerator>(11);
+  unique_ptr<BoolGenerator> boolGenerator = make_unique<TwisterBoolGenerator>(0.1);
 
-  TournamentSelector selector(std::move(numberGenerator1));
-  Mutation mutation(std::move(boolGenerator), std::move(numberGenerator2));
-  Crossover crossover(std::move(numberGenerator3));
-  auto generator = std::make_shared<Generator>(selector, crossover, mutation);
+  TournamentSelector selector(move(numberGenerator1));
+  Mutation mutation(move(boolGenerator), move(numberGenerator2));
+  Crossover crossover(move(numberGenerator3));
+  auto generator = make_shared<Generator>(selector, crossover, mutation);
 
-  std::string grammarString =
+  string grammarString =
       "<number> ::= <number> <digit> | <digit>\n"
       "<digit> ::= \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"";
 
   BnfRuleParser parser;
 
-  std::shared_ptr<Grammar> grammar = parser.parse(grammarString);
+  shared_ptr<Grammar> grammar = parser.parse(grammarString);
 
   Mapper mapper(grammar);
-  auto language = std::make_shared<Language>(grammar, mapper);
+  auto language = make_shared<Language>(grammar, mapper);
 
-  RandomInitializer initializer(std::move(numberGenerator4), language, 16);
+  RandomInitializer initializer(move(numberGenerator4), language, 16);
 
   Mock<Evaluator> evaluator;
   When(Method(evaluator, evaluate)).AlwaysDo([](auto program) {
     unsigned long length = program.length();
 
-    return (length == 0 || length > 9) ? 0 : std::stoi(program);
+    return (length == 0 || length > 9) ? 0 : stoi(program);
   });
 
   Mock<FitnessCalculator> calculator;
   When(Method(calculator, calculate)).AlwaysDo([](auto desired, auto actual) {
-    return std::abs(desired - actual);
+    return abs(desired - actual);
   });
 
-  auto processor = std::make_shared<Processor>(evaluator.get(), calculator.get());
+  auto processor = make_shared<Processor>(evaluator.get(), calculator.get());
 
   Evolution evolution(processor);
 

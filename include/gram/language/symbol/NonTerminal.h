@@ -7,7 +7,6 @@
 #include <gram/language/symbol/Option.h>
 
 namespace gram {
-namespace language {
 // Forward declaration.
 class Option;
 /**
@@ -23,7 +22,6 @@ class NonTerminal {
  private:
   std::vector<std::shared_ptr<Option>> options;
 };
-}
 }
 
 #endif // GRAM_LANGUAGE_NON_TERMINAL_SYMBOL

@@ -1,11 +1,12 @@
 #include <gram/util/bool_generator/TwisterBoolGenerator.h>
 #include <gram/util/number_generator/TwisterNumberGenerator.h>
 
-using namespace gram::util;
+using namespace gram;
+using namespace std;
 
 TwisterBoolGenerator::TwisterBoolGenerator(double probability)
-    : probability(probability), max(std::numeric_limits<unsigned long>::max()) {
-  generator = std::make_unique<TwisterNumberGenerator>(max);
+    : probability(probability), max(numeric_limits<unsigned long>::max()) {
+  generator = make_unique<TwisterNumberGenerator>(max);
 }
 
 bool TwisterBoolGenerator::generate() {
@@ -14,8 +15,8 @@ bool TwisterBoolGenerator::generate() {
   return number <= probability * max;
 }
 
-std::vector<bool> TwisterBoolGenerator::generateMany(unsigned long count) {
-  std::vector<bool> values;
+vector<bool> TwisterBoolGenerator::generateMany(unsigned long count) {
+  vector<bool> values;
 
   for (unsigned long i = 0; i < count; i++) {
     values.push_back(generate());

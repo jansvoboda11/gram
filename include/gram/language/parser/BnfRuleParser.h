@@ -6,7 +6,6 @@
 #include <gram/language/parser/RuleParser.h>
 
 namespace gram {
-namespace language {
 /**
  * Class.
  */
@@ -21,7 +20,6 @@ class BnfRuleParser : public RuleParser {
   std::string terminal();
   std::string pipe();
 };
-}
 }
 
 #endif // GRAM_LANGUAGE_BNF_RULE_PARSER

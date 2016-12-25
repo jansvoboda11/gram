@@ -7,18 +7,16 @@
 #include <gram/population/Population.h>
 
 namespace gram {
-namespace evolution {
 /**
  * Class.
  */
 class Evolution {
  public:
-  Evolution(std::shared_ptr<gram::individual::Processor> processor);
-  gram::individual::Individual run(gram::population::Population &population, int goal);
+  Evolution(std::shared_ptr<Processor> processor);
+  Individual run(Population &population, int goal);
  private:
-  std::shared_ptr<gram::individual::Processor> processor;
+  std::shared_ptr<Processor> processor;
 };
-}
 }
 
 #endif // GRAM_EVOLUTION_EVOLUTION

@@ -8,17 +8,16 @@
 #include <gram/individual/processor/Processor.h>
 
 namespace gram {
-namespace individual {
 /**
  * Class.
  */
 class Individual {
  public:
-  Individual(Genotype genotype, std::shared_ptr<gram::language::Language> language);
+  Individual(Genotype genotype, std::shared_ptr<Language> language);
   virtual ~Individual() = default;
   std::shared_ptr<Individual> mateWith(std::shared_ptr<Individual> partner, Crossover &crossover);
   void mutate(Mutation &mutation);
-  void process(std::shared_ptr<gram::individual::Processor> processor, int goal);
+  void process(std::shared_ptr<Processor> processor, int goal);
   std::string serialize();
   Genotype genotype();
   virtual double fitness();
@@ -26,10 +25,9 @@ class Individual {
   bool operator!=(const Individual &individual) const;
  private:
   Genotype genotype_;
-  std::shared_ptr<gram::language::Language> language;
+  std::shared_ptr<Language> language;
   double fitness_;
 };
-}
 }
 
 #endif // GRAM_INDIVIDUAL

@@ -1,19 +1,21 @@
 #include <gram/util/helper.h>
 
-std::vector<std::string> gram::util::explode(std::string string, std::string delimiter) {
-  std::vector<std::string> pieces;
+using namespace std;
 
-  unsigned long end = string.find(delimiter);
+vector<string> gram::explode(string input, string delimiter) {
+  vector<string> pieces;
 
-  while (end != std::string::npos) {
-    pieces.push_back(string.substr(0, end));
+  unsigned long end = input.find(delimiter);
 
-    string = string.substr(end + delimiter.length());
+  while (end != string::npos) {
+    pieces.push_back(input.substr(0, end));
 
-    end = string.find(delimiter);
+    input = input.substr(end + delimiter.length());
+
+    end = input.find(delimiter);
   }
 
-  pieces.push_back(string);
+  pieces.push_back(input);
 
   return pieces;
 }

@@ -2,8 +2,8 @@
 
 #include <gram/individual/Phenotype.h>
 
-using namespace gram::individual;
-using namespace gram::language;
+using namespace gram;
+
 
 TEST(phenotype_test, test_it_serializes_terminals) {
   Terminal terminal("hello");

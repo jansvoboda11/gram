@@ -1,12 +1,13 @@
 #include <gram/language/symbol/NonTerminal.h>
 
-using namespace gram::language;
+using namespace gram;
+using namespace std;
 
-void NonTerminal::addOption(std::shared_ptr<Option> option) {
+void NonTerminal::addOption(shared_ptr<Option> option) {
   options.push_back(option);
 }
 
-std::shared_ptr<Option> NonTerminal::optionAt(unsigned long index) {
+shared_ptr<Option> NonTerminal::optionAt(unsigned long index) {
   return options[index];
 }
 
@@ -20,8 +21,8 @@ bool NonTerminal::operator==(const NonTerminal &nonTerminal) const {
   }
 
   for (int i = 0; i < size(); i++) {
-    std::shared_ptr<Option> firstOption = options[i];
-    std::shared_ptr<Option> secondOption = nonTerminal.options[i];
+    shared_ptr<Option> firstOption = options[i];
+    shared_ptr<Option> secondOption = nonTerminal.options[i];
 
     if (*firstOption != *secondOption) {
       return false;

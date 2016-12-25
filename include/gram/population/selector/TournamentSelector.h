@@ -7,18 +7,16 @@
 #include <gram/population/selector/IndividualSelector.h>
 
 namespace gram {
-namespace population {
 /**
  * Class.
  */
 class TournamentSelector : public IndividualSelector {
  public:
-  TournamentSelector(std::unique_ptr<gram::util::NumberGenerator> generator);
-  std::shared_ptr<gram::individual::Individual> select(std::vector<std::shared_ptr<gram::individual::Individual>> individuals);
+  TournamentSelector(std::unique_ptr<NumberGenerator> generator);
+  std::shared_ptr<Individual> select(std::vector<std::shared_ptr<Individual>> individuals);
  private:
-  std::unique_ptr<gram::util::NumberGenerator> generator;
+  std::unique_ptr<NumberGenerator> generator;
 };
-}
 }
 
 #endif // GRAM_EVOLUTION_SELECTOR_TOURNAMENT

@@ -2,7 +2,8 @@
 
 #include <gram/language/symbol/Option.h>
 
-using namespace gram::language;
+using namespace gram;
+using namespace std;
 
 TEST(option_test, test_it_accepts_terminals) {
   Terminal terminal1("first");
@@ -21,8 +22,8 @@ TEST(option_test, test_it_accepts_terminals) {
 TEST(option_test, test_it_accepts_nonterminals) {
   Terminal terminal("terminal");
 
-  auto innerOption = std::make_shared<Option>();
-  auto nonTerminal = std::make_shared<NonTerminal>();
+  auto innerOption = make_shared<Option>();
+  auto nonTerminal = make_shared<NonTerminal>();
 
   innerOption->addTerminal(terminal);
   nonTerminal->addOption(innerOption);
@@ -39,8 +40,8 @@ TEST(option_test, test_it_accepts_both_terminals_and_nonterminals) {
   Terminal terminal("regular");
   Terminal innerTerminal("inner");
 
-  auto innerOption = std::make_shared<Option>();
-  auto nonTerminal = std::make_shared<NonTerminal>();
+  auto innerOption = make_shared<Option>();
+  auto nonTerminal = make_shared<NonTerminal>();
 
   innerOption->addTerminal(innerTerminal);
   nonTerminal->addOption(innerOption);

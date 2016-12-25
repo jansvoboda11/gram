@@ -7,19 +7,17 @@
 #include <gram/individual/fitness/FitnessCalculator.h>
 
 namespace gram {
-namespace individual {
 /**
  * Class.
  */
 class Processor {
  public:
-  Processor(gram::language::Evaluator &evaluator, FitnessCalculator &calculator);
+  Processor(Evaluator &evaluator, FitnessCalculator &calculator);
   double process(std::string program, int goal);
  private:
-  gram::language::Evaluator &evaluator;
+  Evaluator &evaluator;
   FitnessCalculator &calculator;
 };
-}
 }
 
 #endif // GRAM_INDIVIDUAL_PROCESSOR

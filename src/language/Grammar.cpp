@@ -1,12 +1,13 @@
 #include <gram/language/Grammar.h>
 
-using namespace gram::language;
+using namespace gram;
+using namespace std;
 
 Grammar::Grammar() : start(), rules() {
   //
 }
 
-void Grammar::addRule(std::string name, std::shared_ptr<NonTerminal> rule) {
+void Grammar::addRule(string name, shared_ptr<NonTerminal> rule) {
   if (!start) {
     start = rule;
   }
@@ -14,15 +15,15 @@ void Grammar::addRule(std::string name, std::shared_ptr<NonTerminal> rule) {
   rules[name] = rule;
 }
 
-bool Grammar::hasRuleNamed(std::string name) {
+bool Grammar::hasRuleNamed(string name) {
   auto found = rules.find(name);
 
   return found != rules.end();
 }
 
-std::shared_ptr<NonTerminal> Grammar::ruleNamed(std::string name) {
+shared_ptr<NonTerminal> Grammar::ruleNamed(string name) {
   if (!hasRuleNamed(name)) {
-    auto rule = std::make_shared<NonTerminal>();
+    auto rule = make_shared<NonTerminal>();
 
     addRule(name, rule);
   }
@@ -30,9 +31,9 @@ std::shared_ptr<NonTerminal> Grammar::ruleNamed(std::string name) {
   return rules[name];
 }
 
-std::shared_ptr<NonTerminal> Grammar::startRule() {
+shared_ptr<NonTerminal> Grammar::startRule() {
   if (!start) {
-    throw std::logic_error("The start symbol of grammar is invalid.");
+    throw logic_error("The start symbol of grammar is invalid.");
   }
 
   return start;

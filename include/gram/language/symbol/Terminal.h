@@ -4,7 +4,6 @@
 #include <string>
 
 namespace gram {
-namespace language {
 /**
  * Class.
  */
@@ -17,7 +16,6 @@ class Terminal {
  private:
   std::string val;
 };
-}
 }
 
 #endif // GRAM_LANGUAGE_TERMINAL_SYMBOL

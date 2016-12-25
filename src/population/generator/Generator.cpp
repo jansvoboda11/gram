@@ -1,12 +1,9 @@
 #include <gram/population/generator/Generator.h>
 
-using namespace gram::population;
-using namespace gram::individual;
+using namespace gram;
+using namespace std;
 
-using ::std::vector;
-using ::std::shared_ptr;
-
-Generator::Generator(gram::population::IndividualSelector &selector, gram::individual::Crossover &crossover, gram::individual::Mutation &mutation)
+Generator::Generator(IndividualSelector &selector, Crossover &crossover, Mutation &mutation)
   : selector(selector), crossover(crossover), mutation(mutation) {
   //
 }

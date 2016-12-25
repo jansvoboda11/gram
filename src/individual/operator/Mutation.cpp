@@ -1,10 +1,10 @@
 #include <gram/individual/operator/Mutation.h>
 
-using namespace gram::individual;
-using namespace gram::util;
+using namespace gram;
+using namespace std;
 
-Mutation::Mutation(std::unique_ptr<BoolGenerator> boolGenerator, std::unique_ptr<NumberGenerator> numberGenerator)
-    : boolGenerator(std::move(boolGenerator)), numberGenerator(std::move(numberGenerator)) {
+Mutation::Mutation(unique_ptr<BoolGenerator> boolGenerator, unique_ptr<NumberGenerator> numberGenerator)
+    : boolGenerator(move(boolGenerator)), numberGenerator(move(numberGenerator)) {
   //
 }
 

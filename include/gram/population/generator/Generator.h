@@ -10,24 +10,22 @@
 #include <gram/individual/operator/Mutation.h>
 
 namespace gram {
-namespace population {
 /**
  * Class.
  */
 class Generator {
  public:
-  Generator(gram::population::IndividualSelector &selector, gram::individual::Crossover &crossover, gram::individual::Mutation &mutation);
+  Generator(IndividualSelector &selector, Crossover &crossover, Mutation &mutation);
   virtual ~Generator() = default;
-  virtual std::vector<std::shared_ptr<gram::individual::Individual>> generateSuccessor(std::vector<std::shared_ptr<gram::individual::Individual>> individuals);
+  virtual std::vector<std::shared_ptr<Individual>> generateSuccessor(std::vector<std::shared_ptr<Individual>> individuals);
  private:
-  gram::population::IndividualSelector &selector;
-  gram::individual::Crossover &crossover;
-  gram::individual::Mutation &mutation;
-  std::vector<std::shared_ptr<gram::individual::Individual>> selectParents(std::vector<std::shared_ptr<gram::individual::Individual>> individuals);
-  std::vector<std::shared_ptr<gram::individual::Individual>> createChildren(std::vector<std::shared_ptr<gram::individual::Individual>> parents);
-  void mutateChildren(std::vector<std::shared_ptr<gram::individual::Individual>> children);
+  IndividualSelector &selector;
+  Crossover &crossover;
+  Mutation &mutation;
+  std::vector<std::shared_ptr<Individual>> selectParents(std::vector<std::shared_ptr<Individual>> individuals);
+  std::vector<std::shared_ptr<Individual>> createChildren(std::vector<std::shared_ptr<Individual>> parents);
+  void mutateChildren(std::vector<std::shared_ptr<Individual>> children);
 };
-}
 }
 
 #endif // GRAM_POPULATION_GENERATOR

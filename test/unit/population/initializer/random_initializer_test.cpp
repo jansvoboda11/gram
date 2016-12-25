@@ -3,18 +3,15 @@
 
 #include <gram/population/initializer/RandomInitializer.h>
 
-using namespace gram::population;
-using namespace gram::individual;
-using namespace gram::util;
-using namespace gram::language;
-
 using namespace fakeit;
+using namespace gram;
+using namespace std;
 
 TEST(random_initializer_test, test_it_initializes_individuals) {
   Mock<Language> languageMock;
   Fake(Dtor(languageMock));
   When(Method(languageMock, expand)).AlwaysReturn(Phenotype());
-  auto language = std::shared_ptr<Language>(&languageMock.get());
+  auto language = shared_ptr<Language>(&languageMock.get());
 
   Genotype genotype1({0, 1, 2});
   Genotype genotype2({3, 0, 1});
@@ -27,16 +24,16 @@ TEST(random_initializer_test, test_it_initializes_individuals) {
   Mock<NumberGenerator> numberGeneratorMock;
   Fake(Dtor(numberGeneratorMock));
   When(Method(numberGeneratorMock, generateMany))
-      .Return(std::vector<unsigned long>({0, 1, 2}))
-      .Return(std::vector<unsigned long>({3, 0, 1}))
-      .Return(std::vector<unsigned long>({2, 3, 0}));
-  auto numberGenerator = std::unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
+      .Return(vector<unsigned long>({0, 1, 2}))
+      .Return(vector<unsigned long>({3, 0, 1}))
+      .Return(vector<unsigned long>({2, 3, 0}));
+  auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
   Mock<Generator> generatorMock;
   Fake(Dtor(generatorMock));
-  auto generator = std::shared_ptr<Generator>(&generatorMock.get());
+  auto generator = shared_ptr<Generator>(&generatorMock.get());
 
-  RandomInitializer initializer(std::move(numberGenerator), language, 3);
+  RandomInitializer initializer(move(numberGenerator), language, 3);
 
   Population population = initializer.initialize(3, generator);
 

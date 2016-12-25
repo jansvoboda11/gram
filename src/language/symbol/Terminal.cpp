@@ -1,12 +1,13 @@
 #include <gram/language/symbol/Terminal.h>
 
-using namespace gram::language;
+using namespace gram;
+using namespace std;
 
-Terminal::Terminal(std::string value) : val(value) {
+Terminal::Terminal(string value) : val(value) {
   //
 }
 
-std::string Terminal::value() const {
+string Terminal::value() const {
   return val;
 }
 

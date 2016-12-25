@@ -1,18 +1,18 @@
 #include <gram/individual/Phenotype.h>
 
-using namespace gram::language;
-using namespace gram::individual;
+using namespace gram;
+using namespace std;
 
 void Phenotype::addTerminal(Terminal terminal) {
   terminals.push_back(terminal);
 }
 
-std::string Phenotype::serialize() {
+string Phenotype::serialize() {
   if (terminals.empty()) {
     return "";
   }
 
-  std::string serialized;
+  string serialized;
 
   for (auto &terminal : terminals) {
     serialized += terminal.value();

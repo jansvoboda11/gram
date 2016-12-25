@@ -8,7 +8,6 @@
 #include <gram/language/symbol/Terminal.h>
 
 namespace gram {
-namespace language {
 // Forward declaration.
 class NonTerminal;
 /**
@@ -31,7 +30,6 @@ class Option {
   std::unordered_map<unsigned long, Terminal> terminals;
   unsigned long symbolCount;
 };
-}
 }
 
 #endif // GRAM_LANGUAGE_OPTION

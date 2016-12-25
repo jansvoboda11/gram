@@ -2,7 +2,6 @@
 #define GRAM_UTIL_NUMBER_GENERATOR
 
 namespace gram {
-namespace util {
 /**
  * Interface.
  */
@@ -12,7 +11,6 @@ class NumberGenerator {
   virtual unsigned long generate() = 0;
   virtual std::vector<unsigned long> generateMany(unsigned long count) = 0;
 };
-}
 }
 
 #endif // GRAM_UTIL_NUMBER_GENERATOR

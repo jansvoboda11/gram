@@ -2,7 +2,7 @@
 
 #include <gram/language/symbol/Terminal.h>
 
-using namespace gram::language;
+using namespace gram;
 
 TEST(terminal_test, test_it_recognizes_two_equal_objects) {
   Terminal terminal1("test");
