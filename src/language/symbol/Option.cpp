@@ -39,7 +39,7 @@ Terminal Option::terminalAt(unsigned long index) {
 }
 
 std::weak_ptr<NonTerminal> Option::nonTerminalAt(unsigned long index) {
-  return nonTerminals[index];
+  return nonTerminals.at(index);
 }
 
 bool Option::operator==(const Option &option) const {
