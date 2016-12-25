@@ -34,7 +34,9 @@ class FakeFitnessCalculator : public FitnessCalculator {
 };
 
 TEST(evolution_test, test_something) {
-  std::unique_ptr<NumberGenerator> numberGenerator1 = std::make_unique<TwisterNumberGenerator>(std::numeric_limits<unsigned long>::max());
+  unsigned long max = std::numeric_limits<unsigned long>::max();
+  
+  std::unique_ptr<NumberGenerator> numberGenerator1 = std::make_unique<TwisterNumberGenerator>(max);
   std::unique_ptr<NumberGenerator> numberGenerator2 = std::make_unique<TwisterNumberGenerator>(29);
   std::unique_ptr<NumberGenerator> numberGenerator3 = std::make_unique<TwisterNumberGenerator>(11);
   std::unique_ptr<NumberGenerator> numberGenerator4 = std::make_unique<TwisterNumberGenerator>(11);
