@@ -5,5 +5,5 @@
 using namespace gram::population;
 
 TEST(generator_test, test_something) {
-  //
+  // todo: write tests
 }

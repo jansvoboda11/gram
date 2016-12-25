@@ -29,6 +29,7 @@ void BnfRuleParser::parseRule(std::shared_ptr<Grammar> grammar, std::string &lin
 
   std::shared_ptr<NonTerminal> rule = grammar->ruleNamed(name);
 
+  // todo: improve whitespace handling
   line = line.substr(name.length() + 2);
 
   if (!std::regex_search(line, matches, equalsPattern)) {
