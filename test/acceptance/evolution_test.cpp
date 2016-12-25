@@ -51,7 +51,7 @@ TEST(evolution_test, test_something) {
 
   BnfRuleParser parser;
 
-  Grammar grammar = parser.parse(grammarString);
+  std::shared_ptr<Grammar> grammar = parser.parse(grammarString);
 
   Mapper mapper(grammar);
   auto language = std::make_shared<Language>(grammar, mapper);
