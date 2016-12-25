@@ -23,13 +23,13 @@ class Option {
   bool hasTerminalAt(unsigned long index);
   std::weak_ptr<NonTerminal> nonTerminalAt(unsigned long index);
   Terminal terminalAt(unsigned long index);
-  int size();
+  unsigned long size();
   bool operator==(const Option &option) const;
   bool operator!=(const Option &option) const;
  private:
   std::unordered_map<unsigned long, std::weak_ptr<NonTerminal>> nonTerminals;
   std::unordered_map<unsigned long, Terminal> terminals;
-  int symbolCount;
+  unsigned long symbolCount;
 };
 }
 }

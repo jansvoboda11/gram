@@ -6,7 +6,7 @@ Option::Option() : symbolCount(0) {
   //
 }
 
-int Option::size() {
+unsigned long Option::size() {
   return symbolCount;
 }
 
@@ -17,21 +17,17 @@ void Option::addTerminal(Terminal terminal) {
 }
 
 void Option::addNonTerminal(std::weak_ptr<NonTerminal> nonTerminal) {
-  nonTerminals[symbolCount] = nonTerminal;
+  nonTerminals.emplace(symbolCount, nonTerminal);
 
   symbolCount += 1;
 }
 
 bool Option::hasNonTerminalAt(unsigned long index) {
-  auto hasItem = nonTerminals.find(index);
-
-  return hasItem != nonTerminals.end();
+  return nonTerminals.find(index) != nonTerminals.end();
 }
 
 bool Option::hasTerminalAt(unsigned long index) {
-  auto hasItem = terminals.find(index);
-
-  return hasItem != terminals.end();
+  return terminals.find(index) != terminals.end();
 }
 
 Terminal Option::terminalAt(unsigned long index) {
@@ -49,10 +45,7 @@ bool Option::operator==(const Option &option) const {
         return false;
       }
 
-      Terminal firstTerminal = terminals.at(i);
-      Terminal secondTerminal = option.terminals.at(i);
-
-      if (firstTerminal != secondTerminal) {
+      if (terminals.at(i) != option.terminals.at(i)) {
         return false;
       }
     }
@@ -62,10 +55,7 @@ bool Option::operator==(const Option &option) const {
         return false;
       }
 
-      NonTerminal firstNonTerminal = *nonTerminals.at(i).lock();
-      NonTerminal secondNonTerminal = *option.nonTerminals.at(i).lock();
-
-      if (firstNonTerminal != secondNonTerminal) {
+      if (*nonTerminals.at(i).lock() != *option.nonTerminals.at(i).lock()) {
         return false;
       }
     }
