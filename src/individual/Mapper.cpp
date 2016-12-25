@@ -12,11 +12,18 @@ Phenotype Mapper::map(Genotype mappedGenotype) const {
   std::shared_ptr<NonTerminal> nonTerminal = grammar->startRule();
   unsigned long geneCount = 0;
 
+  // todo: convert to iterative algorithm
   return recursiveMap(phenotype, nonTerminal, mappedGenotype, geneCount);
 }
 
 Phenotype &Mapper::recursiveMap(Phenotype &phenotype, std::shared_ptr<NonTerminal> nonTerminal, Genotype genotype, unsigned long &geneCount) const {
-  unsigned long gene = genotype[geneCount] % nonTerminal->size();
+  // todo: handle infinite genotype more gracefully
+  if (geneCount > 100) {
+    return phenotype;
+  }
+
+  unsigned long geneIndex = geneCount % genotype.size();
+  unsigned long gene = genotype[geneIndex] % nonTerminal->size();
 
   std::shared_ptr<Option> option = nonTerminal->optionAt(gene);
 
