@@ -4,7 +4,7 @@ using namespace gram::evolution;
 using namespace gram::individual;
 using namespace gram::population;
 
-Evolution::Evolution(std::shared_ptr<gram::individual::Processor> processor) : processor(processor) {
+Evolution::Evolution(std::shared_ptr<Processor> processor) : processor(processor) {
   //
 }
 
@@ -17,5 +17,5 @@ Individual Evolution::run(Population &population, int goal) {
     population.process(processor, goal);
   }
 
-  return Individual(*population.bestIndividual());
+  return *population.bestIndividual();
 }
