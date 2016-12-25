@@ -14,28 +14,11 @@ using namespace gram::population;
 using namespace gram::language;
 using namespace gram::util;
 
-class FakeEvaluator : public Evaluator {
-  int evaluate(std::string program) {
-    unsigned long length = program.length();
-
-    if (length == 0 || length > 9) {
-      return 0;
-    }
-
-    return std::stoi(program);
-  }
-};
-
-class FakeFitnessCalculator : public FitnessCalculator {
- public:
-  double calculate(int desired, int actual) {
-    return std::abs(desired - actual);
-  }
-};
+using namespace fakeit;
 
 TEST(evolution_test, test_something) {
   unsigned long max = std::numeric_limits<unsigned long>::max();
-  
+
   std::unique_ptr<NumberGenerator> numberGenerator1 = std::make_unique<TwisterNumberGenerator>(max);
   std::unique_ptr<NumberGenerator> numberGenerator2 = std::make_unique<TwisterNumberGenerator>(29);
   std::unique_ptr<NumberGenerator> numberGenerator3 = std::make_unique<TwisterNumberGenerator>(11);
@@ -60,9 +43,19 @@ TEST(evolution_test, test_something) {
 
   RandomInitializer initializer(std::move(numberGenerator4), language, 16);
 
-  FakeEvaluator evaluator;
-  FakeFitnessCalculator calculator;
-  auto processor = std::make_shared<Processor>(evaluator, calculator);
+  Mock<Evaluator> evaluator;
+  When(Method(evaluator, evaluate)).AlwaysDo([](auto program) {
+    unsigned long length = program.length();
+
+    return (length == 0 || length > 9) ? 0 : std::stoi(program);
+  });
+
+  Mock<FitnessCalculator> calculator;
+  When(Method(calculator, calculate)).AlwaysDo([](auto desired, auto actual) {
+    return std::abs(desired - actual);
+  });
+
+  auto processor = std::make_shared<Processor>(evaluator.get(), calculator.get());
 
   Evolution evolution(processor);
 
