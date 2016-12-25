@@ -47,16 +47,20 @@ TEST(individual_test, test_it_undergoes_mutation) {
 }
 
 TEST(individual_test, test_it_serializes) {
+  Terminal terminal("hello");
+  Phenotype phenotype;
+  phenotype.addTerminal(terminal);
+
   Mock<Language> languageMock;
   Fake(Dtor(languageMock));
-  When(Method(languageMock, serialize)).Return("hello world");
+  When(Method(languageMock, expand)).Return(phenotype);
   auto language = std::shared_ptr<Language>(&languageMock.get());
 
   Genotype genotype({0, 0, 0});
 
   Individual individual(genotype, language);
 
-  ASSERT_EQ("hello world", individual.serialize());
+  ASSERT_EQ("hello", individual.serialize());
 }
 
 TEST(individual_test, test_it_does_not_return_fitness_if_not_calculated) {

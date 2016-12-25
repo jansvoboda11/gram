@@ -31,7 +31,9 @@ void Individual::process(std::shared_ptr<Processor> processor, int goal) {
 }
 
 std::string Individual::serialize() {
-  return language->serialize(genotype_);
+  Phenotype phenotype = language->expand(genotype_);
+
+  return phenotype.serialize();
 }
 
 Genotype Individual::genotype() {

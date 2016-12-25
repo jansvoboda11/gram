@@ -24,7 +24,3 @@ TEST(language_test, test_it_expands_genotype) {
 
   ASSERT_EQ(phenotype, language.expand(Genotype({0, 1, 2})));
 }
-
-TEST(language_test, test_it_serializes_genotype) {
-  //
-}
