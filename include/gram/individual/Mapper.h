@@ -14,6 +14,7 @@ namespace gram {
 class Mapper {
  public:
   Mapper(std::shared_ptr<Grammar> grammar);
+  virtual ~Mapper() = default;
   virtual Phenotype map(Genotype genotype) const;
  private:
   std::shared_ptr<Grammar> grammar;

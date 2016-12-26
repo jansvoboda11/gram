@@ -17,9 +17,11 @@ TEST(language_test, test_it_expands_genotype) {
   phenotype.addTerminal(terminal);
 
   Mock<Mapper> mapperMock;
+  Fake(Dtor(mapperMock));
   When(Method(mapperMock, map)).Return(phenotype);
+  unique_ptr<Mapper> mapper(&mapperMock.get());
 
-  Language language(grammar, mapperMock.get());
+  Language language(grammar, move(mapper));
 
   ASSERT_EQ(phenotype, language.expand(Genotype({0, 1, 2})));
 }

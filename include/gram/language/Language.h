@@ -10,12 +10,12 @@ namespace gram {
  */
 class Language {
  public:
-  Language(std::shared_ptr<Grammar> grammar, const Mapper &mapper);
+  Language(std::shared_ptr<Grammar> grammar, std::unique_ptr<Mapper> mapper);
   virtual ~Language() = default;
   virtual Phenotype expand(Genotype genotype) const;
  private:
   std::shared_ptr<Grammar> grammar;
-  const Mapper &mapper;
+  std::unique_ptr<Mapper> mapper;
 };
 }
 

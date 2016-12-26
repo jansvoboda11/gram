@@ -34,8 +34,8 @@ TEST(evolution_test, test_something) {
 
   shared_ptr<Grammar> grammar = parser.parse(grammarString);
 
-  Mapper mapper(grammar);
-  auto language = make_shared<Language>(grammar, mapper);
+  auto mapper = make_unique<Mapper>(grammar);
+  auto language = make_shared<Language>(grammar, move(mapper));
 
   RandomInitializer initializer(move(numberGenerator4), language, 16);
 
