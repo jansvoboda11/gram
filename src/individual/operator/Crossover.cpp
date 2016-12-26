@@ -7,7 +7,7 @@ Crossover::Crossover(unique_ptr<NumberGenerator> generator) : generator(move(gen
   //
 }
 
-Genotype Crossover::apply(Genotype first, Genotype second) const {
+Genotype Crossover::apply(const Genotype& first, const Genotype& second) const {
   unsigned long smallerSize = min(first.size(), second.size());
   unsigned long point = generator->generate() % (smallerSize + 1);
 

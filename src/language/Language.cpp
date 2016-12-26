@@ -8,6 +8,6 @@ Language::Language(shared_ptr<Grammar> grammar, unique_ptr<Mapper> mapper)
   //
 }
 
-Phenotype Language::expand(Genotype genotype) const {
+Phenotype Language::expand(const Genotype& genotype) const {
   return mapper->map(genotype);
 }

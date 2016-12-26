@@ -7,7 +7,7 @@ Mapper::Mapper(shared_ptr<Grammar> grammar) : grammar(grammar) {
   //
 }
 
-Phenotype Mapper::map(Genotype mappedGenotype) const {
+Phenotype Mapper::map(const Genotype& mappedGenotype) const {
   Phenotype phenotype;
   NonTerminal nonTerminal = *grammar->startRule();
   unsigned long geneCount = 0;
@@ -18,7 +18,7 @@ Phenotype Mapper::map(Genotype mappedGenotype) const {
 
 Phenotype& Mapper::recursiveMap(Phenotype& phenotype,
                                 const NonTerminal& nonTerminal,
-                                Genotype genotype,
+                                const Genotype& genotype,
                                 unsigned long& geneCount) const {
   // todo: handle infinite genotype more gracefully
   if (geneCount > 100) {

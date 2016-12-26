@@ -12,7 +12,7 @@ class Language {
  public:
   Language(std::shared_ptr<Grammar> grammar, std::unique_ptr<Mapper> mapper);
   virtual ~Language() = default;
-  virtual Phenotype expand(Genotype genotype) const;
+  virtual Phenotype expand(const Genotype& genotype) const;
  private:
   std::shared_ptr<Grammar> grammar;
   std::unique_ptr<Mapper> mapper;
