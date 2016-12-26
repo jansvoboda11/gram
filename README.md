@@ -1,3 +1,3 @@
 # Gram
 
-**Grammatical evolution** library written in modern C++.
+Lightweight **grammatical evolution** library written in modern C++.
