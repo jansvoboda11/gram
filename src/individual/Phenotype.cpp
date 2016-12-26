@@ -8,10 +8,6 @@ void Phenotype::addTerminal(Terminal terminal) {
 }
 
 string Phenotype::serialize() const {
-  if (terminals.empty()) {
-    return "";
-  }
-
   string serialized;
 
   for (auto &terminal : terminals) {

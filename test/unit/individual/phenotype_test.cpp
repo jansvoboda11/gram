@@ -4,6 +4,12 @@
 
 using namespace gram;
 
+TEST(phenotype_test, test_it_serializes_empty_string) {
+  Phenotype phenotype;
+
+  ASSERT_EQ("", phenotype.serialize());
+}
+
 TEST(phenotype_test, test_it_serializes_terminals) {
   Terminal terminal("hello");
   Terminal terminal2("world");
