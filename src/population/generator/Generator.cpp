@@ -3,8 +3,10 @@
 using namespace gram;
 using namespace std;
 
-Generator::Generator(IndividualSelector &selector, Crossover &crossover, Mutation &mutation)
-    : selector(selector), crossover(crossover), mutation(mutation) {
+Generator::Generator(unique_ptr<IndividualSelector> selector,
+                     unique_ptr<Crossover> crossover,
+                     unique_ptr<Mutation> mutation)
+    : selector(move(selector)), crossover(move(crossover)), mutation(move(mutation)) {
   //
 }
 
@@ -24,7 +26,7 @@ vector<shared_ptr<Individual>> Generator::selectParents(vector<shared_ptr<Indivi
   unsigned long size = individuals.size();
 
   for (unsigned long i = 0; i < size; i++) {
-    shared_ptr<Individual> parent = selector.select(individuals);
+    shared_ptr<Individual> parent = selector->select(individuals);
 
     parents.push_back(parent);
   }
@@ -41,8 +43,8 @@ vector<shared_ptr<Individual>> Generator::createChildren(vector<shared_ptr<Indiv
     Individual firstParent = *parents[i];
     Individual secondParent = *parents[i + 1];
 
-    Individual firstChild = firstParent.mateWith(secondParent, crossover);
-    Individual secondChild = firstParent.mateWith(secondParent, crossover);
+    Individual firstChild = firstParent.mateWith(secondParent, *crossover);
+    Individual secondChild = firstParent.mateWith(secondParent, *crossover);
 
     children.push_back(make_shared<Individual>(firstChild));
     children.push_back(make_shared<Individual>(secondChild));
@@ -53,6 +55,6 @@ vector<shared_ptr<Individual>> Generator::createChildren(vector<shared_ptr<Indiv
 
 void Generator::mutateChildren(vector<shared_ptr<Individual>> children) const {
   for (auto &child : children) {
-    child->mutate(mutation);
+    child->mutate(*mutation);
   }
 }

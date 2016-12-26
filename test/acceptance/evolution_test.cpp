@@ -21,10 +21,10 @@ TEST(evolution_test, test_something) {
   unique_ptr<NumberGenerator> numberGenerator4 = make_unique<TwisterNumberGenerator>(11);
   unique_ptr<BoolGenerator> boolGenerator = make_unique<TwisterBoolGenerator>(0.1);
 
-  TournamentSelector selector(move(numberGenerator1));
-  Mutation mutation(move(boolGenerator), move(numberGenerator2));
-  Crossover crossover(move(numberGenerator3));
-  auto generator = make_shared<Generator>(selector, crossover, mutation);
+  auto selector = make_unique<TournamentSelector>(move(numberGenerator1));
+  auto mutation = make_unique<Mutation>(move(boolGenerator), move(numberGenerator2));
+  auto crossover = make_unique<Crossover>(move(numberGenerator3));
+  auto generator = make_shared<Generator>(move(selector), move(crossover), move(mutation));
 
   string grammarString =
       "<number> ::= <number> <digit> | <digit>\n"

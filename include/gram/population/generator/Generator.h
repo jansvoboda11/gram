@@ -15,13 +15,15 @@ namespace gram {
  */
 class Generator {
  public:
-  Generator(IndividualSelector &selector, Crossover &crossover, Mutation &mutation);
+  Generator(std::unique_ptr<IndividualSelector> selector,
+            std::unique_ptr<Crossover> crossover,
+            std::unique_ptr<Mutation> mutation);
   virtual ~Generator() = default;
   virtual std::vector<std::shared_ptr<Individual>> generateSuccessor(std::vector<std::shared_ptr<Individual>> individuals) const;
  private:
-  IndividualSelector &selector;
-  Crossover &crossover;
-  Mutation &mutation;
+  std::unique_ptr<IndividualSelector> selector;
+  std::unique_ptr<Crossover> crossover;
+  std::unique_ptr<Mutation> mutation;
   std::vector<std::shared_ptr<Individual>> selectParents(std::vector<std::shared_ptr<Individual>> individuals) const;
   std::vector<std::shared_ptr<Individual>> createChildren(std::vector<std::shared_ptr<Individual>> parents) const;
   void mutateChildren(std::vector<std::shared_ptr<Individual>> children) const;
