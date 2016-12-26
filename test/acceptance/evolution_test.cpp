@@ -39,19 +39,23 @@ TEST(evolution_test, test_something) {
 
   RandomInitializer initializer(move(numberGenerator4), language, 16);
 
-  Mock<Evaluator> evaluator;
-  When(Method(evaluator, evaluate)).AlwaysDo([](auto program) {
+  Mock<Evaluator> evaluatorMock;
+  Fake(Dtor(evaluatorMock));
+  When(Method(evaluatorMock, evaluate)).AlwaysDo([](auto program) {
     unsigned long length = program.length();
 
     return (length == 0 || length > 9) ? 0 : stoi(program);
   });
+  unique_ptr<Evaluator> evaluator(&evaluatorMock.get());
 
-  Mock<FitnessCalculator> calculator;
-  When(Method(calculator, calculate)).AlwaysDo([](auto desired, auto actual) {
+  Mock<FitnessCalculator> calculatorMock;
+  Fake(Dtor(calculatorMock));
+  When(Method(calculatorMock, calculate)).AlwaysDo([](auto desired, auto actual) {
     return abs(desired - actual);
   });
+  unique_ptr<FitnessCalculator> calculator(&calculatorMock.get());
 
-  auto processor = make_unique<Processor>(evaluator.get(), calculator.get());
+  auto processor = make_unique<Processor>(move(evaluator), move(calculator));
 
   Evolution evolution(move(processor));
 

@@ -1,6 +1,8 @@
 #ifndef GRAM_INDIVIDUAL_MAPPER
 #define GRAM_INDIVIDUAL_MAPPER
 
+#include <memory>
+
 #include <gram/individual/Genotype.h>
 #include <gram/individual/Phenotype.h>
 #include <gram/language/Grammar.h>
@@ -16,8 +18,9 @@ class Mapper {
  private:
   std::shared_ptr<Grammar> grammar;
   Phenotype& recursiveMap(Phenotype& phenotype,
-                          std::shared_ptr<NonTerminal> nonTerminal,
-                          Genotype genotype, unsigned long &geneCount) const;
+                          NonTerminal const& nonTerminal,
+                          Genotype genotype,
+                          unsigned long& geneCount) const;
 };
 }
 

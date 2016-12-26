@@ -1,6 +1,7 @@
 #ifndef GRAM_INDIVIDUAL_PROCESSOR
 #define GRAM_INDIVIDUAL_PROCESSOR
 
+#include <memory>
 #include <string>
 
 #include <gram/individual/fitness/FitnessCalculator.h>
@@ -12,11 +13,11 @@ namespace gram {
  */
 class Processor {
  public:
-  Processor(Evaluator &evaluator, FitnessCalculator &calculator);
+  Processor(std::unique_ptr<Evaluator> evaluator, std::unique_ptr<FitnessCalculator> calculator);
   double process(std::string program, int goal) const;
  private:
-  Evaluator &evaluator;
-  FitnessCalculator &calculator;
+  std::unique_ptr<Evaluator> evaluator;
+  std::unique_ptr<FitnessCalculator> calculator;
 };
 }
 
