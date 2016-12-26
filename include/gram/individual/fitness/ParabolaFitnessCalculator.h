@@ -10,7 +10,7 @@ namespace gram {
 class ParabolaFitnessCalculator : public FitnessCalculator {
  public:
   ParabolaFitnessCalculator(double width);
-  double calculate(int desired, int actual);
+  double calculate(int desired, int actual) const;
  private:
   double width;
 };

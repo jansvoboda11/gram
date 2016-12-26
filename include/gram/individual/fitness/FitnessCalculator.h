@@ -7,7 +7,7 @@ namespace gram {
  */
 class FitnessCalculator {
  public:
-  virtual double calculate(int desired, int actual) = 0;
+  virtual double calculate(int desired, int actual) const = 0;
 };
 }
 
