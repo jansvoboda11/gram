@@ -19,12 +19,11 @@ class Individual {
   void mutate(Mutation &mutation);
   void process(std::shared_ptr<Processor> processor, int goal);
   std::string serialize();
-  Genotype genotype();
   virtual double fitness();
   bool operator==(const Individual &individual) const;
   bool operator!=(const Individual &individual) const;
  private:
-  Genotype genotype_;
+  Genotype genotype;
   std::shared_ptr<Language> language;
   double fitness_;
 };

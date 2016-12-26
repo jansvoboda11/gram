@@ -24,7 +24,9 @@ TEST(individual_test, test_it_mates_with_another_individual) {
 
   shared_ptr<Individual> child = individual1->mateWith(individual2, crossover.get());
 
-  ASSERT_EQ(Genotype({0, 0, 1}), child->genotype());
+  Genotype desiredGenotype({0, 0, 1});
+  Individual desiredChild(desiredGenotype, language);
+  ASSERT_EQ(desiredChild, *child);
 }
 
 TEST(individual_test, test_it_undergoes_mutation) {
@@ -42,7 +44,9 @@ TEST(individual_test, test_it_undergoes_mutation) {
 
   individual.mutate(mutation.get());
 
-  ASSERT_EQ(Genotype({0, 1, 0}), individual.genotype());
+  Genotype desiredGenotype({0, 1, 0});
+  Individual desired(desiredGenotype, language);
+  ASSERT_EQ(desired, individual);
 }
 
 TEST(individual_test, test_it_serializes) {

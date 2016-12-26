@@ -4,18 +4,18 @@ using namespace gram;
 using namespace std;
 
 Individual::Individual(Genotype genotype, shared_ptr<Language> language)
-    : genotype_(genotype), language(language), fitness_(-1.0) {
+    : genotype(genotype), language(language), fitness_(-1.0) {
   //
 }
 
 shared_ptr<Individual> Individual::mateWith(shared_ptr<Individual> partner, Crossover &crossover) {
-  Genotype childGenotype = crossover.apply(genotype_, partner->genotype_);
+  Genotype childGenotype = crossover.apply(genotype, partner->genotype);
 
   return make_shared<Individual>(childGenotype, language);
 }
 
 void Individual::mutate(Mutation &mutation) {
-  genotype_ = mutation.apply(genotype_);
+  genotype = mutation.apply(genotype);
 }
 
 void Individual::process(shared_ptr<Processor> processor, int goal) {
@@ -31,13 +31,9 @@ void Individual::process(shared_ptr<Processor> processor, int goal) {
 }
 
 string Individual::serialize() {
-  Phenotype phenotype = language->expand(genotype_);
+  Phenotype phenotype = language->expand(genotype);
 
   return phenotype.serialize();
-}
-
-Genotype Individual::genotype() {
-  return genotype_;
 }
 
 double Individual::fitness() {
@@ -49,7 +45,7 @@ double Individual::fitness() {
 }
 
 bool Individual::operator==(const Individual &individual) const {
-  return genotype_ == individual.genotype_;
+  return genotype == individual.genotype;
 }
 
 bool Individual::operator!=(const Individual &individual) const {
