@@ -3,25 +3,38 @@
 using namespace gram;
 using namespace std;
 
-Individual::Individual(Genotype genotype, shared_ptr<Language> language)
+Individual::Individual(Individual const& individual)
+    : genotype(individual.genotype), language(individual.language), fitness_(individual.fitness_) {
+  //
+}
+
+Individual::Individual(Genotype const& genotype, shared_ptr<Language> language)
     : genotype(genotype), language(language), fitness_(-1.0) {
   //
 }
 
-shared_ptr<Individual> Individual::mateWith(shared_ptr<Individual> partner, Crossover &crossover) {
-  Genotype childGenotype = crossover.apply(genotype, partner->genotype);
+Individual& Individual::operator=(const Individual& individual) {
+  genotype = individual.genotype;
+  language = individual.language;
+  fitness_ = individual.fitness_;
 
-  return make_shared<Individual>(childGenotype, language);
+  return *this;
 }
 
-void Individual::mutate(Mutation &mutation) {
+Individual Individual::mateWith(Individual const& partner, Crossover const& crossover) const {
+  Genotype childGenotype = crossover.apply(genotype, partner.genotype);
+
+  return Individual(childGenotype, language);
+}
+
+void Individual::mutate(Mutation const& mutation) {
   genotype = mutation.apply(genotype);
 }
 
-void Individual::process(shared_ptr<Processor> processor, int goal) {
+void Individual::process(Processor const& processor, int goal) {
   string program = serialize();
 
-  double fitness = processor->process(program, goal);
+  double fitness = processor.process(program, goal);
 
   if (fitness < 0) {
     throw logic_error("Fitness cannot be negative.");
@@ -30,13 +43,13 @@ void Individual::process(shared_ptr<Processor> processor, int goal) {
   fitness_ = fitness;
 }
 
-string Individual::serialize() {
+string Individual::serialize() const {
   Phenotype phenotype = language->expand(genotype);
 
   return phenotype.serialize();
 }
 
-double Individual::fitness() {
+double Individual::fitness() const {
   if (fitness_ < 0) {
     throw logic_error("Fitness of the individual has not been calculated yet.");
   }
@@ -44,10 +57,10 @@ double Individual::fitness() {
   return fitness_;
 }
 
-bool Individual::operator==(const Individual &individual) const {
+bool Individual::operator==(const Individual& individual) const {
   return genotype == individual.genotype;
 }
 
-bool Individual::operator!=(const Individual &individual) const {
+bool Individual::operator!=(const Individual& individual) const {
   return !operator==(individual);
 }

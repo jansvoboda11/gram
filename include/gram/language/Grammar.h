@@ -12,9 +12,9 @@ class Grammar {
   Grammar();
   virtual ~Grammar() = default;
   void addRule(std::string name, std::shared_ptr<NonTerminal> rule);
-  bool hasRuleNamed(std::string name);
+  bool hasRuleNamed(std::string name) const;
   std::shared_ptr<NonTerminal> ruleNamed(std::string name);
-  virtual std::shared_ptr<NonTerminal> startRule();
+  virtual std::shared_ptr<NonTerminal> startRule() const;
  private:
   std::shared_ptr<NonTerminal> start;
   std::unordered_map<std::string, std::shared_ptr<NonTerminal>> rules;

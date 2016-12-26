@@ -9,7 +9,7 @@ namespace gram {
  */
 class RuleParser {
  public:
-  virtual std::shared_ptr<Grammar> parse(std::string input) = 0;
+  virtual std::shared_ptr<Grammar> parse(std::string input) const = 0;
 };
 }
 

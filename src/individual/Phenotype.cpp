@@ -7,7 +7,7 @@ void Phenotype::addTerminal(Terminal terminal) {
   terminals.push_back(terminal);
 }
 
-string Phenotype::serialize() {
+string Phenotype::serialize() const {
   if (terminals.empty()) {
     return "";
   }
@@ -21,7 +21,7 @@ string Phenotype::serialize() {
   return serialized;
 }
 
-bool Phenotype::operator==(const Phenotype &phenotype) const {
+bool Phenotype::operator==(const Phenotype& phenotype) const {
   if (terminals.size() != phenotype.terminals.size()) {
     return false;
   }
@@ -35,6 +35,6 @@ bool Phenotype::operator==(const Phenotype &phenotype) const {
   return true;
 }
 
-bool Phenotype::operator!=(const Phenotype &phenotype) const {
+bool Phenotype::operator!=(const Phenotype& phenotype) const {
   return !operator==(phenotype);
 }

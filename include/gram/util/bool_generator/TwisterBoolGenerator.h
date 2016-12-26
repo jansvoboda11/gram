@@ -13,8 +13,8 @@ namespace gram {
 class TwisterBoolGenerator : public BoolGenerator {
  public:
   TwisterBoolGenerator(double probability);
-  bool generate();
-  std::vector<bool> generateMany(unsigned long count);
+  bool generate() const;
+  std::vector<bool> generateMany(unsigned long count) const;
  private:
   std::unique_ptr<NumberGenerator> generator;
   double probability;

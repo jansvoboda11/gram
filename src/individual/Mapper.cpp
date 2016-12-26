@@ -16,7 +16,7 @@ Phenotype Mapper::map(Genotype mappedGenotype) const {
   return recursiveMap(phenotype, nonTerminal, mappedGenotype, geneCount);
 }
 
-Phenotype &Mapper::recursiveMap(Phenotype &phenotype,
+Phenotype& Mapper::recursiveMap(Phenotype& phenotype,
                                 shared_ptr<NonTerminal> nonTerminal,
                                 Genotype genotype,
                                 unsigned long &geneCount) const {

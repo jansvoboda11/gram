@@ -8,7 +8,7 @@ Processor::Processor(Evaluator &evaluator, FitnessCalculator &calculator)
   //
 }
 
-double Processor::process(string program, int goal) {
+double Processor::process(string program, int goal) const {
   int result = evaluator.evaluate(program);
 
   return calculator.calculate(goal, result);

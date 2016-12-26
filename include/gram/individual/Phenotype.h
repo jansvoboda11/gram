@@ -13,9 +13,9 @@ namespace gram {
 class Phenotype {
  public:
   void addTerminal(Terminal terminal);
-  virtual std::string serialize();
-  bool operator==(const Phenotype &phenotype) const;
-  bool operator!=(const Phenotype &phenotype) const;
+  virtual std::string serialize() const;
+  bool operator==(const Phenotype& phenotype) const;
+  bool operator!=(const Phenotype& phenotype) const;
  private:
   std::vector<Terminal> terminals;
 };

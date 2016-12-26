@@ -7,7 +7,7 @@ TournamentSelector::TournamentSelector(unique_ptr<NumberGenerator> generator) : 
   //
 }
 
-shared_ptr<Individual> TournamentSelector::select(vector<shared_ptr<Individual>> individuals) {
+shared_ptr<Individual> TournamentSelector::select(vector<shared_ptr<Individual>> individuals) const {
   if (individuals.size() == 0) {
     throw logic_error("Cannot select an individual from an empty vector.");
   }

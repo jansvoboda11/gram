@@ -7,10 +7,6 @@ Option::Option() : symbolCount(0) {
   //
 }
 
-unsigned long Option::size() {
-  return symbolCount;
-}
-
 void Option::addTerminal(Terminal terminal) {
   terminals.emplace(symbolCount, terminal);
 
@@ -23,20 +19,24 @@ void Option::addNonTerminal(weak_ptr<NonTerminal> nonTerminal) {
   symbolCount += 1;
 }
 
-bool Option::hasNonTerminalAt(unsigned long index) {
+bool Option::hasNonTerminalAt(unsigned long index) const {
   return nonTerminals.find(index) != nonTerminals.end();
 }
 
-bool Option::hasTerminalAt(unsigned long index) {
+bool Option::hasTerminalAt(unsigned long index) const {
   return terminals.find(index) != terminals.end();
 }
 
-Terminal Option::terminalAt(unsigned long index) {
+Terminal Option::terminalAt(unsigned long index) const {
   return terminals.at(index);
 }
 
-weak_ptr<NonTerminal> Option::nonTerminalAt(unsigned long index) {
+weak_ptr<NonTerminal> Option::nonTerminalAt(unsigned long index) const {
   return nonTerminals.at(index);
+}
+
+unsigned long Option::size() const {
+  return symbolCount;
 }
 
 bool Option::operator==(const Option &option) const {

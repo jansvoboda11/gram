@@ -15,10 +15,10 @@ namespace gram {
 class Population {
  public:
   Population(std::vector<std::shared_ptr<Individual>> individuals, std::shared_ptr<Generator> generator);
-  double bestFitness();
-  std::shared_ptr<Individual> bestIndividual();
-  void process(std::shared_ptr<Processor> processor, int goal);
-  Population successor();
+  double bestFitness() const;
+  std::shared_ptr<Individual> bestIndividual() const;
+  void process(Processor const& processor, int goal);
+  Population successor() const;
   std::shared_ptr<Individual> &operator[](unsigned long index);
  private:
   std::vector<std::shared_ptr<Individual>> individuals_;

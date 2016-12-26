@@ -18,11 +18,11 @@ class Option {
   Option();
   void addNonTerminal(std::weak_ptr<NonTerminal> nonTerminal);
   void addTerminal(Terminal terminal);
-  bool hasNonTerminalAt(unsigned long index);
-  bool hasTerminalAt(unsigned long index);
-  std::weak_ptr<NonTerminal> nonTerminalAt(unsigned long index);
-  Terminal terminalAt(unsigned long index);
-  unsigned long size();
+  bool hasNonTerminalAt(unsigned long index) const;
+  bool hasTerminalAt(unsigned long index) const;
+  std::weak_ptr<NonTerminal> nonTerminalAt(unsigned long index) const;
+  Terminal terminalAt(unsigned long index) const;
+  unsigned long size() const;
   bool operator==(const Option &option) const;
   bool operator!=(const Option &option) const;
  private:

@@ -17,14 +17,14 @@ class Generator {
  public:
   Generator(IndividualSelector &selector, Crossover &crossover, Mutation &mutation);
   virtual ~Generator() = default;
-  virtual std::vector<std::shared_ptr<Individual>> generateSuccessor(std::vector<std::shared_ptr<Individual>> individuals);
+  virtual std::vector<std::shared_ptr<Individual>> generateSuccessor(std::vector<std::shared_ptr<Individual>> individuals) const;
  private:
   IndividualSelector &selector;
   Crossover &crossover;
   Mutation &mutation;
-  std::vector<std::shared_ptr<Individual>> selectParents(std::vector<std::shared_ptr<Individual>> individuals);
-  std::vector<std::shared_ptr<Individual>> createChildren(std::vector<std::shared_ptr<Individual>> parents);
-  void mutateChildren(std::vector<std::shared_ptr<Individual>> children);
+  std::vector<std::shared_ptr<Individual>> selectParents(std::vector<std::shared_ptr<Individual>> individuals) const;
+  std::vector<std::shared_ptr<Individual>> createChildren(std::vector<std::shared_ptr<Individual>> parents) const;
+  void mutateChildren(std::vector<std::shared_ptr<Individual>> children) const;
 };
 }
 

@@ -15,7 +15,7 @@ class Mapper {
   virtual Phenotype map(Genotype genotype) const;
  private:
   std::shared_ptr<Grammar> grammar;
-  Phenotype &recursiveMap(Phenotype &phenotype,
+  Phenotype& recursiveMap(Phenotype& phenotype,
                           std::shared_ptr<NonTerminal> nonTerminal,
                           Genotype genotype, unsigned long &geneCount) const;
 };

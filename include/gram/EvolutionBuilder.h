@@ -9,7 +9,7 @@ namespace gram {
  */
 class EvolutionBuilder {
  public:
-  Evolution build();
+  Evolution build() const;
 };
 }
 

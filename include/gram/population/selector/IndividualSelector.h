@@ -12,7 +12,7 @@ namespace gram {
  */
 class IndividualSelector {
  public:
-  virtual std::shared_ptr<Individual> select(std::vector<std::shared_ptr<Individual>> population) = 0;
+  virtual std::shared_ptr<Individual> select(std::vector<std::shared_ptr<Individual>> population) const = 0;
 };
 }
 

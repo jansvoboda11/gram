@@ -9,7 +9,7 @@ namespace gram {
  */
 class Evaluator {
  public:
-  virtual int evaluate(std::string program) = 0;
+  virtual int evaluate(std::string program) const = 0;
 };
 }
 

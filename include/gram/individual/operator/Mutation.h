@@ -14,7 +14,7 @@ namespace gram {
 class Mutation {
  public:
   Mutation(std::unique_ptr<BoolGenerator> boolGenerator, std::unique_ptr<NumberGenerator> numberGenerator);
-  virtual Genotype apply(Genotype genotype);
+  virtual Genotype apply(Genotype genotype) const;
  private:
   std::unique_ptr<BoolGenerator> boolGenerator;
   std::unique_ptr<NumberGenerator> numberGenerator;

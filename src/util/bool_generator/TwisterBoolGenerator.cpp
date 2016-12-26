@@ -10,13 +10,13 @@ TwisterBoolGenerator::TwisterBoolGenerator(double probability)
   generator = make_unique<TwisterNumberGenerator>(max);
 }
 
-bool TwisterBoolGenerator::generate() {
+bool TwisterBoolGenerator::generate() const {
   unsigned long number = generator->generate();
 
   return number <= probability * max;
 }
 
-vector<bool> TwisterBoolGenerator::generateMany(unsigned long count) {
+vector<bool> TwisterBoolGenerator::generateMany(unsigned long count) const {
   vector<bool> values;
 
   for (unsigned long i = 0; i < count; i++) {

@@ -13,7 +13,7 @@ namespace gram {
 class Processor {
  public:
   Processor(Evaluator &evaluator, FitnessCalculator &calculator);
-  double process(std::string program, int goal);
+  double process(std::string program, int goal) const;
  private:
   Evaluator &evaluator;
   FitnessCalculator &calculator;

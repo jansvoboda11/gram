@@ -15,18 +15,18 @@ TEST(individual_test, test_it_mates_with_another_individual) {
 
   Genotype genotype1({0, 0, 0});
   Genotype genotype2({1, 1, 1});
+  Genotype desiredGenotype({0, 0, 1});
 
-  auto individual1 = make_shared<Individual>(genotype1, language);
-  auto individual2 = make_shared<Individual>(genotype2, language);
+  Individual individual1(genotype1, language);
+  Individual individual2(genotype2, language);
+  Individual desiredChild(desiredGenotype, language);
 
   Mock<Crossover> crossover;
   When(Method(crossover, apply)).Return(Genotype({0, 0, 1}));
 
-  shared_ptr<Individual> child = individual1->mateWith(individual2, crossover.get());
+  Individual child = individual1.mateWith(individual2, crossover.get());
 
-  Genotype desiredGenotype({0, 0, 1});
-  Individual desiredChild(desiredGenotype, language);
-  ASSERT_EQ(desiredChild, *child);
+  ASSERT_EQ(desiredChild, child);
 }
 
 TEST(individual_test, test_it_undergoes_mutation) {
@@ -36,17 +36,17 @@ TEST(individual_test, test_it_undergoes_mutation) {
   auto language = shared_ptr<Language>(&languageMock.get());
 
   Genotype genotype({0, 0, 0});
+  Genotype desiredGenotype({0, 1, 0});
 
   Individual individual(genotype, language);
+  Individual desiredIndividual(desiredGenotype, language);
 
   Mock<Mutation> mutation;
   When(Method(mutation, apply)).Return(Genotype({0, 1, 0}));
 
   individual.mutate(mutation.get());
 
-  Genotype desiredGenotype({0, 1, 0});
-  Individual desired(desiredGenotype, language);
-  ASSERT_EQ(desired, individual);
+  ASSERT_EQ(desiredIndividual, individual);
 }
 
 TEST(individual_test, test_it_serializes) {

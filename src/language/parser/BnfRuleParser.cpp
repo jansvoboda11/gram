@@ -5,7 +5,7 @@
 using namespace gram;
 using namespace std;
 
-shared_ptr<Grammar> BnfRuleParser::parse(string input) {
+shared_ptr<Grammar> BnfRuleParser::parse(string input) const {
   auto grammar = make_shared<Grammar>();
 
   vector<string> lines = explode(input, "\n");
@@ -17,7 +17,7 @@ shared_ptr<Grammar> BnfRuleParser::parse(string input) {
   return grammar;
 }
 
-void BnfRuleParser::parseRule(shared_ptr<Grammar> grammar, string &line) {
+void BnfRuleParser::parseRule(shared_ptr<Grammar> grammar, string& line) const {
   regex nonTerminalPattern(nonTerminal());
   regex equalsPattern(equals());
   smatch matches;
@@ -45,7 +45,7 @@ void BnfRuleParser::parseRule(shared_ptr<Grammar> grammar, string &line) {
   }
 }
 
-shared_ptr<Option> BnfRuleParser::parseOption(shared_ptr<Grammar> grammar, string &line) {
+shared_ptr<Option> BnfRuleParser::parseOption(shared_ptr<Grammar> grammar, string& line) const {
   auto option = make_shared<Option>();
 
   regex terminalPattern(terminal());
@@ -80,18 +80,18 @@ shared_ptr<Option> BnfRuleParser::parseOption(shared_ptr<Grammar> grammar, strin
   return option;
 }
 
-string BnfRuleParser::nonTerminal() {
+string BnfRuleParser::nonTerminal() const {
   return string("^ *<([a-zA-Z][a-zA-Z0-9-]*)> *");
 }
 
-string BnfRuleParser::equals() {
+string BnfRuleParser::equals() const {
   return string("^ *::= *");
 }
 
-string BnfRuleParser::terminal() {
+string BnfRuleParser::terminal() const {
   return string("^ *\"([a-zA-Z0-9| -!#$%&\\(\\)\\*\\+,-\\./:;<=>?@\\[\\\\\\]\\^_`{}~]+)\" *");
 }
 
-string BnfRuleParser::pipe() {
+string BnfRuleParser::pipe() const {
   return string("^ *\\| *");
 }

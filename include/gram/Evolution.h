@@ -12,10 +12,10 @@ namespace gram {
  */
 class Evolution {
  public:
-  Evolution(std::shared_ptr<Processor> processor);
-  Individual run(Population &population, int goal);
+  Evolution(std::unique_ptr<Processor> processor);
+  Individual run(Population &population, int goal) const;
  private:
-  std::shared_ptr<Processor> processor;
+  std::unique_ptr<Processor> processor;
 };
 }
 

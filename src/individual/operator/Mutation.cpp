@@ -8,7 +8,7 @@ Mutation::Mutation(unique_ptr<BoolGenerator> boolGenerator, unique_ptr<NumberGen
   //
 }
 
-Genotype Mutation::apply(Genotype genotype) {
+Genotype Mutation::apply(Genotype genotype) const {
   if (!boolGenerator->generate()) {
     return genotype;
   }

@@ -51,9 +51,9 @@ TEST(evolution_test, test_something) {
     return abs(desired - actual);
   });
 
-  auto processor = make_shared<Processor>(evaluator.get(), calculator.get());
+  auto processor = make_unique<Processor>(evaluator.get(), calculator.get());
 
-  Evolution evolution(processor);
+  Evolution evolution(move(processor));
 
   Population population = initializer.initialize(1000, generator);
 

@@ -8,11 +8,11 @@ Population::Population(vector<shared_ptr<Individual>> individuals, shared_ptr<Ge
   //
 }
 
-double Population::bestFitness() {
+double Population::bestFitness() const {
   return bestIndividual()->fitness();
 }
 
-shared_ptr<Individual> Population::bestIndividual() {
+shared_ptr<Individual> Population::bestIndividual() const {
   if (individuals_.size() == 0) {
     throw logic_error("The population is empty.");
   }
@@ -33,13 +33,13 @@ shared_ptr<Individual> Population::bestIndividual() {
   return best;
 }
 
-void Population::process(shared_ptr<Processor> processor, int goal) {
+void Population::process(Processor const& processor, int goal) {
   for (auto &individual : individuals_) {
     individual->process(processor, goal);
   }
 }
 
-Population Population::successor() {
+Population Population::successor() const {
   vector<shared_ptr<Individual>> individuals = generator_->generateSuccessor(individuals_);
 
   return Population(individuals, generator_);
