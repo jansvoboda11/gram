@@ -10,7 +10,7 @@ using namespace std;
 TEST(mutation_operator_test, test_it_does_not_always_mutate) {
   Mock<BoolGenerator> boolGeneratorMock;
   Fake(Dtor(boolGeneratorMock));
-  When(Method(boolGeneratorMock,generate)).Return(false);
+  When(Method(boolGeneratorMock, generate)).Return(false);
   auto boolGenerator = unique_ptr<BoolGenerator>(&boolGeneratorMock.get());
 
   Mock<NumberGenerator> numberGeneratorMock;
@@ -27,7 +27,7 @@ TEST(mutation_operator_test, test_it_does_not_always_mutate) {
 TEST(mutation_operator_test, test_it_mutates_one_gene) {
   Mock<BoolGenerator> boolGeneratorMock;
   Fake(Dtor(boolGeneratorMock));
-  When(Method(boolGeneratorMock,generate)).Return(true);
+  When(Method(boolGeneratorMock, generate)).Return(true);
   auto boolGenerator = unique_ptr<BoolGenerator>(&boolGeneratorMock.get());
 
   Mock<NumberGenerator> numberGeneratorMock;

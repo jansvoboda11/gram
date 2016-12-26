@@ -3,7 +3,7 @@
 using namespace gram;
 using namespace std;
 
-Processor::Processor(Evaluator &evaluator, FitnessCalculator &calculator) 
+Processor::Processor(Evaluator &evaluator, FitnessCalculator &calculator)
     : evaluator(evaluator), calculator(calculator) {
   //
 }

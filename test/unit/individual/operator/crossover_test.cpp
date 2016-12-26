@@ -2,7 +2,6 @@
 #include <gtest/fakeit.hpp>
 
 #include <gram/individual/operator/Crossover.h>
-#include <gram/util/number_generator/TwisterNumberGenerator.h>
 
 using namespace fakeit;
 using namespace gram;
@@ -11,7 +10,7 @@ using namespace std;
 TEST(crossover_operator_test, test_it_combines_genotypes_of_the_same_length) {
   Mock<NumberGenerator> mock;
   Fake(Dtor(mock));
-  When(Method(mock,generate)).Return(2);
+  When(Method(mock, generate)).Return(2);
   auto numberGenerator = unique_ptr<NumberGenerator>(&mock.get());
 
   Crossover crossover(move(numberGenerator));
@@ -25,7 +24,7 @@ TEST(crossover_operator_test, test_it_combines_genotypes_of_the_same_length) {
 TEST(crossover_operator_test, test_it_combines_short_and_long_genotypes) {
   Mock<NumberGenerator> mock;
   Fake(Dtor(mock));
-  When(Method(mock,generate)).Return(2);
+  When(Method(mock, generate)).Return(2);
   auto numberGenerator = unique_ptr<NumberGenerator>(&mock.get());
 
   Crossover crossover(move(numberGenerator));
@@ -39,7 +38,7 @@ TEST(crossover_operator_test, test_it_combines_short_and_long_genotypes) {
 TEST(crossover_operator_test, test_it_combines_long_and_short_genotypes) {
   Mock<NumberGenerator> mock;
   Fake(Dtor(mock));
-  When(Method(mock,generate)).Return(2);
+  When(Method(mock, generate)).Return(2);
   auto numberGenerator = unique_ptr<NumberGenerator>(&mock.get());
 
   Crossover crossover(move(numberGenerator));

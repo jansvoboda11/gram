@@ -1,7 +1,5 @@
 #include <gram/population/selector/TournamentSelector.h>
 
-#include <algorithm>
-
 using namespace gram;
 using namespace std;
 

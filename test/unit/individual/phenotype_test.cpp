@@ -4,7 +4,6 @@
 
 using namespace gram;
 
-
 TEST(phenotype_test, test_it_serializes_terminals) {
   Terminal terminal("hello");
   Terminal terminal2("world");

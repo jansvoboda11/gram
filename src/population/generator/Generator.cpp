@@ -4,7 +4,7 @@ using namespace gram;
 using namespace std;
 
 Generator::Generator(IndividualSelector &selector, Crossover &crossover, Mutation &mutation)
-  : selector(selector), crossover(crossover), mutation(mutation) {
+    : selector(selector), crossover(crossover), mutation(mutation) {
   //
 }
 

@@ -3,7 +3,9 @@
 using namespace gram;
 using namespace std;
 
-RandomInitializer::RandomInitializer(unique_ptr<NumberGenerator> numberGenerator, shared_ptr<Language> language, unsigned long individualSize)
+RandomInitializer::RandomInitializer(unique_ptr<NumberGenerator> numberGenerator,
+                                     shared_ptr<Language> language,
+                                     unsigned long individualSize)
     : numberGenerator(move(numberGenerator)), language(language), individualSize(individualSize) {
   //
 }

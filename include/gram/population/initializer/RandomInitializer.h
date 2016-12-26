@@ -12,7 +12,9 @@ namespace gram {
  */
 class RandomInitializer : public Initializer {
  public:
-  RandomInitializer(std::unique_ptr<NumberGenerator> numberGenerator, std::shared_ptr<Language> language, unsigned long individualSize);
+  RandomInitializer(std::unique_ptr<NumberGenerator> numberGenerator,
+                    std::shared_ptr<Language> language,
+                    unsigned long individualSize);
   Population initialize(unsigned long individualCount, std::shared_ptr<Generator> generator);
  private:
   std::unique_ptr<NumberGenerator> numberGenerator;

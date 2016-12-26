@@ -28,7 +28,7 @@ TEST(evolution_test, test_something) {
 
   string grammarString =
       "<number> ::= <number> <digit> | <digit>\n"
-      "<digit> ::= \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"";
+          "<digit> ::= \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"";
 
   BnfRuleParser parser;
 
