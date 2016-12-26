@@ -50,8 +50,9 @@ TEST(bnf_rule_parser_test, test_it_parses_rule_with_multiple_terminal_options) {
 TEST(bnf_rule_parser_test, test_it_parses_multiple_rules) {
   BnfRuleParser parser;
 
-  string rules = "<rule1> ::= <rule2>\n"
-      "<rule2> ::= \"hello\"";
+  string rules =
+      "<rule1> ::= <rule2>\n"
+          "<rule2> ::= \"hello\"";
 
   shared_ptr<Grammar> grammar = parser.parse(rules);
 
@@ -68,8 +69,9 @@ TEST(bnf_rule_parser_test, test_it_parses_multiple_rules) {
 TEST(bnf_rule_parser_test, test_it_parses_multiple_rules_with_both_terminals_and_nonterminals) {
   BnfRuleParser parser;
 
-  string rules = "<rule1> ::= <rule2> \"world\" | \"she\" \"said\"\n"
-      "<rule2> ::= \"hello\"";
+  string rules =
+      "<rule1> ::= <rule2> \"world\" | \"she\" \"said\"\n"
+          "<rule2> ::= \"hello\"";
 
   shared_ptr<Grammar> grammar = parser.parse(rules);
 
