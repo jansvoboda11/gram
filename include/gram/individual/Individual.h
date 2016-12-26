@@ -13,13 +13,13 @@ namespace gram {
  */
 class Individual {
  public:
-  Individual(Individual const& individual);
-  Individual(Genotype const& genotype, std::shared_ptr<Language> language);
+  Individual(const Individual& individual);
+  Individual(const Genotype& genotype, std::shared_ptr<Language> language);
   Individual& operator=(const Individual& individual);
   virtual ~Individual() = default;
-  Individual mateWith(Individual const& partner, Crossover const& crossover) const;
-  void mutate(Mutation const& mutation);
-  void process(Processor const& processor, int goal);
+  Individual mateWith(const Individual& partner, const Crossover& crossover) const;
+  void mutate(const Mutation& mutation);
+  void process(const Processor& processor, int goal);
   std::string serialize() const;
   virtual double fitness() const;
   bool operator==(const Individual& individual) const;

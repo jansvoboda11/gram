@@ -3,12 +3,12 @@
 using namespace gram;
 using namespace std;
 
-Individual::Individual(Individual const& individual)
+Individual::Individual(const Individual& individual)
     : genotype(individual.genotype), language(individual.language), fitness_(individual.fitness_) {
   //
 }
 
-Individual::Individual(Genotype const& genotype, shared_ptr<Language> language)
+Individual::Individual(const Genotype& genotype, shared_ptr<Language> language)
     : genotype(genotype), language(language), fitness_(-1.0) {
   //
 }
@@ -21,17 +21,17 @@ Individual& Individual::operator=(const Individual& individual) {
   return *this;
 }
 
-Individual Individual::mateWith(Individual const& partner, Crossover const& crossover) const {
+Individual Individual::mateWith(const Individual& partner, const Crossover& crossover) const {
   Genotype childGenotype = crossover.apply(genotype, partner.genotype);
 
   return Individual(childGenotype, language);
 }
 
-void Individual::mutate(Mutation const& mutation) {
+void Individual::mutate(const Mutation& mutation) {
   genotype = mutation.apply(genotype);
 }
 
-void Individual::process(Processor const& processor, int goal) {
+void Individual::process(const Processor& processor, int goal) {
   string program = serialize();
 
   double fitness = processor.process(program, goal);

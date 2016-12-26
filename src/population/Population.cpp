@@ -33,7 +33,7 @@ shared_ptr<Individual> Population::bestIndividual() const {
   return best;
 }
 
-void Population::process(Processor const& processor, int goal) {
+void Population::process(const Processor& processor, int goal) {
   for (auto &individual : individuals_) {
     individual->process(processor, goal);
   }

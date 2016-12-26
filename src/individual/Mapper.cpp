@@ -17,7 +17,7 @@ Phenotype Mapper::map(Genotype mappedGenotype) const {
 }
 
 Phenotype& Mapper::recursiveMap(Phenotype& phenotype,
-                                NonTerminal const& nonTerminal,
+                                const NonTerminal& nonTerminal,
                                 Genotype genotype,
                                 unsigned long& geneCount) const {
   // todo: handle infinite genotype more gracefully

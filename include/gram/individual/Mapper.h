@@ -19,7 +19,7 @@ class Mapper {
  private:
   std::shared_ptr<Grammar> grammar;
   Phenotype& recursiveMap(Phenotype& phenotype,
-                          NonTerminal const& nonTerminal,
+                          const NonTerminal& nonTerminal,
                           Genotype genotype,
                           unsigned long& geneCount) const;
 };
