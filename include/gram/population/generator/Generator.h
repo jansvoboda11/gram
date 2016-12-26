@@ -4,10 +4,10 @@
 #include <memory>
 #include <vector>
 
-#include <gram/population/selector/IndividualSelector.h>
-#include <gram/individual/Individual.h>
 #include <gram/individual/operator/Crossover.h>
 #include <gram/individual/operator/Mutation.h>
+#include <gram/individual/Individual.h>
+#include <gram/population/selector/IndividualSelector.h>
 
 namespace gram {
 /**

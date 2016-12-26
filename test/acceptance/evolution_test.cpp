@@ -1,12 +1,12 @@
 #include <gtest/gtest.h>
 #include <gtest/fakeit.hpp>
 
-#include <gram/Evolution.h>
-#include <gram/util/number_generator/TwisterNumberGenerator.h>
+#include <gram/language/parser/BnfRuleParser.h>
+#include <gram/population/initializer/RandomInitializer.h>
 #include <gram/population/selector/TournamentSelector.h>
 #include <gram/util/bool_generator/TwisterBoolGenerator.h>
-#include <gram/population/initializer/RandomInitializer.h>
-#include <gram/language/parser/BnfRuleParser.h>
+#include <gram/util/number_generator/TwisterNumberGenerator.h>
+#include <gram/Evolution.h>
 
 using namespace fakeit;
 using namespace gram;

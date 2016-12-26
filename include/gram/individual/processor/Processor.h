@@ -3,8 +3,8 @@
 
 #include <string>
 
-#include <gram/language/Evaluator.h>
 #include <gram/individual/fitness/FitnessCalculator.h>
+#include <gram/language/Evaluator.h>
 
 namespace gram {
 /**

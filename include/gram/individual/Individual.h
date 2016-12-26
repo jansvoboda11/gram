@@ -1,11 +1,11 @@
 #ifndef GRAM_INDIVIDUAL
 #define GRAM_INDIVIDUAL
 
-#include <gram/individual/Genotype.h>
 #include <gram/individual/operator/Crossover.h>
 #include <gram/individual/operator/Mutation.h>
-#include <gram/language/Language.h>
 #include <gram/individual/processor/Processor.h>
+#include <gram/individual/Genotype.h>
+#include <gram/language/Language.h>
 
 namespace gram {
 /**

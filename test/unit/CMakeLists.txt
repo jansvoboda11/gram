@@ -6,25 +6,23 @@ add_executable(gram_unit_tests
         individual/fitness/parabola_fitness_calculator_test.cpp
         individual/operator/crossover_test.cpp
         individual/operator/mutation_test.cpp
-        evolution_builder_test.cpp
-        evolution_test.cpp
-        population/selector/tournament_selector_test.cpp
+        individual/processor/processor_test.cpp
+        individual/individual_test.cpp
+        individual/mapper_test.cpp
+        individual/phenotype_test.cpp
         language/parser/bnf_rule_parser_test.cpp
         language/symbol/non_terminal_test.cpp
         language/symbol/option_test.cpp
         language/symbol/terminal_test.cpp
         language/grammar_test.cpp
-        language/parser/bnf_rule_parser_test.cpp
-        language/grammar_test.cpp
-        individual/individual_test.cpp
-        individual/mapper_test.cpp
-        individual/phenotype_test.cpp
+        language/language_test.cpp
         population/generator/generator_test.cpp
         population/initializer/random_initializer_test.cpp
-        individual/processor/processor_test.cpp
+        population/selector/tournament_selector_test.cpp
         population/population_test.cpp
-        language/language_test.cpp
         util/helper_test.cpp
+        evolution_builder_test.cpp
+        evolution_test.cpp
         )
 
 add_dependencies(gram_unit_tests fakeit)

@@ -6,6 +6,6 @@ add_executable(gram_acceptance_tests
         evolution_test.cpp
         )
 
-add_dependencies(gram_unit_tests fakeit)
+add_dependencies(gram_acceptance_tests fakeit)
 
 target_link_libraries(gram_acceptance_tests gram gtest gtest_main)

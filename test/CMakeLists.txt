@@ -12,5 +12,5 @@ ExternalProject_Add(fakeit
         )
 
 add_subdirectory(lib/googletest/googlemock)
-add_subdirectory(unit)
 add_subdirectory(acceptance)
+add_subdirectory(unit)

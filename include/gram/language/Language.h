@@ -1,8 +1,8 @@
 #ifndef GRAM_LANGUAGE
 #define GRAM_LANGUAGE
 
-#include <gram/language/Grammar.h>
 #include <gram/individual/Mapper.h>
+#include <gram/language/Grammar.h>
 
 namespace gram {
 /**

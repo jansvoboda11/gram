@@ -4,9 +4,9 @@
 #include <memory>
 #include <vector>
 
+#include <gram/individual/processor/Processor.h>
 #include <gram/individual/Individual.h>
 #include <gram/population/generator/Generator.h>
-#include <gram/individual/processor/Processor.h>
 
 namespace gram {
 /**

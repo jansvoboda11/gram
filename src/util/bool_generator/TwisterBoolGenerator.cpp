@@ -1,4 +1,5 @@
 #include <gram/util/bool_generator/TwisterBoolGenerator.h>
+
 #include <gram/util/number_generator/TwisterNumberGenerator.h>
 
 using namespace gram;
