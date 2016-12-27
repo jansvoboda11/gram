@@ -28,15 +28,15 @@ Phenotype& Mapper::recursiveMap(Phenotype& phenotype,
   unsigned long geneIndex = geneCount % genotype.size();
   unsigned long gene = genotype[geneIndex] % nonTerminal.size();
 
-  shared_ptr<Option> option = nonTerminal.optionAt(gene);
+  Option option = nonTerminal.optionAt(gene);
 
-  for (unsigned long i = 0; i < option->size(); i++) {
-    if (option->hasTerminalAt(i)) {
-      phenotype.addTerminal(option->terminalAt(i));
+  for (unsigned long i = 0; i < option.size(); i++) {
+    if (option.hasTerminalAt(i)) {
+      phenotype.addTerminal(option.terminalAt(i));
     } else {
       geneCount += 1;
 
-      recursiveMap(phenotype, *option->nonTerminalAt(i).lock(), genotype, geneCount);
+      recursiveMap(phenotype, *option.nonTerminalAt(i).lock(), genotype, geneCount);
     }
   }
 

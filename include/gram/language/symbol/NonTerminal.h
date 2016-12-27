@@ -15,7 +15,7 @@ class Option;
 class NonTerminal {
  public:
   void addOption(std::shared_ptr<Option> option);
-  std::shared_ptr<Option> optionAt(unsigned long index) const;
+  Option& optionAt(unsigned long index) const;
   unsigned long size() const;
   bool operator==(const NonTerminal &nonTerminal) const;
   bool operator!=(const NonTerminal &nonTerminal) const;

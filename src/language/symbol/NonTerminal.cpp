@@ -7,8 +7,8 @@ void NonTerminal::addOption(shared_ptr<Option> option) {
   options.push_back(option);
 }
 
-shared_ptr<Option> NonTerminal::optionAt(unsigned long index) const {
-  return options[index];
+Option& NonTerminal::optionAt(unsigned long index) const {
+  return *options[index];
 }
 
 unsigned long NonTerminal::size() const {
