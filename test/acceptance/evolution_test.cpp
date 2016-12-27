@@ -32,8 +32,7 @@ TEST(evolution_test, test_something) {
 
   BnfRuleParser parser;
 
-  shared_ptr<Grammar> grammar = parser.parse(grammarString);
-
+  auto grammar = make_shared<Grammar>(parser.parse(grammarString));
   auto mapper = make_unique<Mapper>(grammar);
   auto language = make_shared<Language>(grammar, move(mapper));
 

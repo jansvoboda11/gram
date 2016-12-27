@@ -10,11 +10,13 @@ TEST(bnf_rule_parser_test, test_it_parses_rule_with_single_terminal) {
 
   string rules = "<rule> ::= \"hello\"";
 
-  shared_ptr<Grammar> grammar = parser.parse(rules);
+  Grammar grammar = parser.parse(rules);
 
-  ASSERT_EQ(1, grammar->startRule()->size());
-  ASSERT_TRUE(grammar->startRule()->optionAt(0)->hasTerminalAt(0));
-  ASSERT_EQ("hello", grammar->startRule()->optionAt(0)->terminalAt(0).value());
+  shared_ptr<NonTerminal> rule = grammar.startRule();
+
+  ASSERT_EQ(1, rule->size());
+  ASSERT_TRUE(rule->optionAt(0)->hasTerminalAt(0));
+  ASSERT_EQ("hello", rule->optionAt(0)->terminalAt(0).value());
 }
 
 TEST(bnf_rule_parser_test, test_it_parses_rule_with_multiple_terminals) {
@@ -22,13 +24,15 @@ TEST(bnf_rule_parser_test, test_it_parses_rule_with_multiple_terminals) {
 
   string rules = "<rule> ::= \"hello\" \"world\"";
 
-  shared_ptr<Grammar> grammar = parser.parse(rules);
+  Grammar grammar = parser.parse(rules);
 
-  ASSERT_EQ(1, grammar->startRule()->size());
-  ASSERT_TRUE(grammar->startRule()->optionAt(0)->hasTerminalAt(0));
-  ASSERT_TRUE(grammar->startRule()->optionAt(0)->hasTerminalAt(1));
-  ASSERT_EQ("hello", grammar->startRule()->optionAt(0)->terminalAt(0).value());
-  ASSERT_EQ("world", grammar->startRule()->optionAt(0)->terminalAt(1).value());
+  shared_ptr<NonTerminal> rule = grammar.startRule();
+
+  ASSERT_EQ(1, rule->size());
+  ASSERT_TRUE(rule->optionAt(0)->hasTerminalAt(0));
+  ASSERT_TRUE(rule->optionAt(0)->hasTerminalAt(1));
+  ASSERT_EQ("hello", rule->optionAt(0)->terminalAt(0).value());
+  ASSERT_EQ("world", rule->optionAt(0)->terminalAt(1).value());
 }
 
 TEST(bnf_rule_parser_test, test_it_parses_rule_with_multiple_terminal_options) {
@@ -36,15 +40,17 @@ TEST(bnf_rule_parser_test, test_it_parses_rule_with_multiple_terminal_options) {
 
   string rules = "<rule> ::= \"hello\" \"world\" | \"she said\"";
 
-  shared_ptr<Grammar> grammar = parser.parse(rules);
+  Grammar grammar = parser.parse(rules);
 
-  ASSERT_EQ(2, grammar->startRule()->size());
-  ASSERT_TRUE(grammar->startRule()->optionAt(0)->hasTerminalAt(0));
-  ASSERT_TRUE(grammar->startRule()->optionAt(0)->hasTerminalAt(1));
-  ASSERT_EQ("hello", grammar->startRule()->optionAt(0)->terminalAt(0).value());
-  ASSERT_EQ("world", grammar->startRule()->optionAt(0)->terminalAt(1).value());
-  ASSERT_TRUE(grammar->startRule()->optionAt(1)->hasTerminalAt(0));
-  ASSERT_EQ("she said", grammar->startRule()->optionAt(1)->terminalAt(0).value());
+  shared_ptr<NonTerminal> rule = grammar.startRule();
+
+  ASSERT_EQ(2, rule->size());
+  ASSERT_TRUE(rule->optionAt(0)->hasTerminalAt(0));
+  ASSERT_TRUE(rule->optionAt(0)->hasTerminalAt(1));
+  ASSERT_EQ("hello", rule->optionAt(0)->terminalAt(0).value());
+  ASSERT_EQ("world", rule->optionAt(0)->terminalAt(1).value());
+  ASSERT_TRUE(rule->optionAt(1)->hasTerminalAt(0));
+  ASSERT_EQ("she said", rule->optionAt(1)->terminalAt(0).value());
 }
 
 TEST(bnf_rule_parser_test, test_it_parses_multiple_rules) {
@@ -54,9 +60,9 @@ TEST(bnf_rule_parser_test, test_it_parses_multiple_rules) {
       "<rule1> ::= <rule2>\n"
           "<rule2> ::= \"hello\"";
 
-  shared_ptr<Grammar> grammar = parser.parse(rules);
+  Grammar grammar = parser.parse(rules);
 
-  shared_ptr<NonTerminal> rule1 = grammar->startRule();
+  shared_ptr<NonTerminal> rule1 = grammar.startRule();
   ASSERT_EQ(1, rule1->size());
   ASSERT_TRUE(rule1->optionAt(0)->hasNonTerminalAt(0));
 
@@ -73,9 +79,9 @@ TEST(bnf_rule_parser_test, test_it_parses_multiple_rules_with_both_terminals_and
       "<rule1> ::= <rule2> \"world\" | \"she\" \"said\"\n"
           "<rule2> ::= \"hello\"";
 
-  shared_ptr<Grammar> grammar = parser.parse(rules);
+  Grammar grammar = parser.parse(rules);
 
-  shared_ptr<NonTerminal> rule1 = grammar->startRule();
+  shared_ptr<NonTerminal> rule1 = grammar.startRule();
   ASSERT_EQ(2, rule1->size());
 
   ASSERT_TRUE(rule1->optionAt(0)->hasNonTerminalAt(0));

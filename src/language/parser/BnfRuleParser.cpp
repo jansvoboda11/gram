@@ -5,8 +5,8 @@
 using namespace gram;
 using namespace std;
 
-shared_ptr<Grammar> BnfRuleParser::parse(string input) const {
-  auto grammar = make_shared<Grammar>();
+Grammar BnfRuleParser::parse(string input) const {
+  Grammar grammar;
 
   vector<string> lines = explode(input, "\n");
 
@@ -17,7 +17,7 @@ shared_ptr<Grammar> BnfRuleParser::parse(string input) const {
   return grammar;
 }
 
-void BnfRuleParser::parseRule(shared_ptr<Grammar> grammar, string& line) const {
+void BnfRuleParser::parseRule(Grammar& grammar, string& line) const {
   regex nonTerminalPattern(nonTerminal());
   regex equalsPattern(equals());
   smatch matches;
@@ -27,7 +27,7 @@ void BnfRuleParser::parseRule(shared_ptr<Grammar> grammar, string& line) const {
     name = matches[1];
   }
 
-  shared_ptr<NonTerminal> rule = grammar->ruleNamed(name);
+  shared_ptr<NonTerminal> rule = grammar.ruleNamed(name);
 
   // todo: improve whitespace handling
   line = line.substr(name.length() + 2);
@@ -45,7 +45,7 @@ void BnfRuleParser::parseRule(shared_ptr<Grammar> grammar, string& line) const {
   }
 }
 
-Option BnfRuleParser::parseOption(shared_ptr<Grammar> grammar, string& line) const {
+Option BnfRuleParser::parseOption(Grammar& grammar, string& line) const {
   Option option;
 
   regex terminalPattern(terminal());
@@ -64,7 +64,7 @@ Option BnfRuleParser::parseOption(shared_ptr<Grammar> grammar, string& line) con
     } else if (regex_search(line, matches, nonTerminalPattern)) {
       string name = matches[1];
 
-      shared_ptr<NonTerminal> nonTerm = grammar->ruleNamed(name);
+      shared_ptr<NonTerminal> nonTerm = grammar.ruleNamed(name);
       option.addNonTerminal(nonTerm);
 
       line = line.substr(name.length() + 3);
