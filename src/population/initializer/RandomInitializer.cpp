@@ -5,16 +5,16 @@ using namespace std;
 
 RandomInitializer::RandomInitializer(unique_ptr<NumberGenerator> numberGenerator,
                                      shared_ptr<Language> language,
-                                     unsigned long individualSize)
-    : numberGenerator(move(numberGenerator)), language(language), individualSize(individualSize) {
+                                     unsigned long size)
+    : numberGenerator(move(numberGenerator)), language(language), size(size) {
   //
 }
 
-Population RandomInitializer::initialize(unsigned long individualCount, shared_ptr<Generator> generator) const {
+Population RandomInitializer::initialize(unsigned long count, shared_ptr<Generator> generator) const {
   vector<shared_ptr<Individual>> individuals;
 
-  for (unsigned long i = 0; i < individualCount; i++) {
-    Genotype genotype = numberGenerator->generateMany(individualSize);
+  for (unsigned long i = 0; i < count; i++) {
+    Genotype genotype = numberGenerator->generateMany(size);
 
     auto individual = make_shared<Individual>(genotype, language);
 

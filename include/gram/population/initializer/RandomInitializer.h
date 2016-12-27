@@ -14,12 +14,12 @@ class RandomInitializer : public Initializer {
  public:
   RandomInitializer(std::unique_ptr<NumberGenerator> numberGenerator,
                     std::shared_ptr<Language> language,
-                    unsigned long individualSize);
-  Population initialize(unsigned long individualCount, std::shared_ptr<Generator> generator) const;
+                    unsigned long size);
+  Population initialize(unsigned long count, std::shared_ptr<Generator> generator) const;
  private:
   std::unique_ptr<NumberGenerator> numberGenerator;
   std::shared_ptr<Language> language;
-  unsigned long individualSize;
+  unsigned long size;
 };
 }
 

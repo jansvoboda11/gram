@@ -13,11 +13,11 @@ namespace gram {
  */
 class Processor {
  public:
-  Processor(std::unique_ptr<Evaluator> evaluator, std::unique_ptr<FitnessCalculator> calculator);
+  Processor(std::unique_ptr<Evaluator> evaluator, std::unique_ptr<FitnessCalculator> fitnessCalculator);
   double process(std::string program, int goal) const;
  private:
   std::unique_ptr<Evaluator> evaluator;
-  std::unique_ptr<FitnessCalculator> calculator;
+  std::unique_ptr<FitnessCalculator> fitnessCalculator;
 };
 }
 
