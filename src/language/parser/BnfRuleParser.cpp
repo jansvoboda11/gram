@@ -18,29 +18,22 @@ Grammar BnfRuleParser::parse(string input) const {
 }
 
 void BnfRuleParser::parseRule(Grammar& grammar, string& line) const {
-  regex nonTerminalPattern(nonTerminal());
-  regex equalsPattern(equals());
-  smatch matches;
   string name;
 
-  if (regex_search(line, matches, nonTerminalPattern)) {
-    name = matches[1];
+  line = left_trim(line);
+
+  if (line.empty()) {
+    return;
+  }
+
+  if (!parseNonTerminal(name, line) || !parseEquals(line)) {
+    throw logic_error("The BNF grammar could not be parsed.");
   }
 
   shared_ptr<NonTerminal> rule = grammar.ruleNamed(name);
 
-  // todo: improve whitespace handling
-  line = line.substr(name.length() + 2);
-
-  if (!regex_search(line, matches, equalsPattern)) {
-    throw logic_error("Rule start could not be parsed.");
-  }
-
-  line = line.substr(4);
-
   while (line.length() > 0) {
     Option option = parseOption(grammar, line);
-
     rule->addOption(make_shared<Option>(option));
   }
 }
@@ -48,50 +41,80 @@ void BnfRuleParser::parseRule(Grammar& grammar, string& line) const {
 Option BnfRuleParser::parseOption(Grammar& grammar, string& line) const {
   Option option;
 
-  regex terminalPattern(terminal());
-  regex nonTerminalPattern(nonTerminal());
-  regex delimiterPattern(pipe());
-  smatch matches;
-
   while (line.length() > 0) {
-    if (regex_search(line, matches, terminalPattern)) {
-      string value = matches[1];
+    string name;
+    string value;
 
-      Terminal term(value);
-      option.addTerminal(term);
-
-      line = line.substr(min(value.length() + 3, line.length()));
-    } else if (regex_search(line, matches, nonTerminalPattern)) {
-      string name = matches[1];
-
-      shared_ptr<NonTerminal> nonTerm = grammar.ruleNamed(name);
-      option.addNonTerminal(nonTerm);
-
-      line = line.substr(name.length() + 3);
-    } else if (regex_search(line, matches, delimiterPattern)) {
-      line = line.substr(2);
-
+    if (parseNonTerminal(name, line)) {
+      shared_ptr<NonTerminal> nonTerminal = grammar.ruleNamed(name);
+      option.addNonTerminal(nonTerminal);
+    } else if (parseTerminal(value, line)) {
+      Terminal terminal(value);
+      option.addTerminal(terminal);
+    } else if (parsePipe(line)) {
       break;
     } else {
-      throw logic_error("Rule option could not be parsed.");
+      throw logic_error("The BNF grammar could not be parsed.");
     }
   }
 
   return option;
 }
 
-string BnfRuleParser::nonTerminal() const {
-  return string("^ *<([a-zA-Z][a-zA-Z0-9-]*)> *");
+bool BnfRuleParser::parseNonTerminal(std::string& name, std::string& line) const {
+  regex pattern("^<([a-zA-Z][a-zA-Z0-9-]*)>");
+  smatch matches;
+
+  if (!regex_search(line, matches, pattern)) {
+    return false;
+  }
+
+  name = matches[1];
+  line = line.substr(name.length() + 2);
+  line = left_trim(line);
+
+  return true;
 }
 
-string BnfRuleParser::equals() const {
-  return string("^ *::= *");
+bool BnfRuleParser::parseTerminal(std::string& value, std::string& line) const {
+  regex pattern("^\"([a-zA-Z0-9| -!#$%&\\(\\)\\*\\+,-\\./:;<=>?@\\[\\\\\\]\\^_`{}~]+)\"");
+  smatch matches;
+
+  if (!regex_search(line, matches, pattern)) {
+    return false;
+  }
+
+  value = matches[1];
+  line = line.substr(value.length() + 2);
+  line = left_trim(line);
+
+  return true;
 }
 
-string BnfRuleParser::terminal() const {
-  return string("^ *\"([a-zA-Z0-9| -!#$%&\\(\\)\\*\\+,-\\./:;<=>?@\\[\\\\\\]\\^_`{}~]+)\" *");
+bool BnfRuleParser::parseEquals(std::string& line) const {
+  regex pattern("^::=");
+  smatch matches;
+
+  if (!regex_search(line, matches, pattern)) {
+    return false;
+  }
+
+  line = line.substr(3);
+  line = left_trim(line);
+
+  return true;
 }
 
-string BnfRuleParser::pipe() const {
-  return string("^ *\\| *");
+bool BnfRuleParser::parsePipe(std::string& line) const {
+  regex pattern("^\\|");
+  smatch matches;
+
+  if (!regex_search(line, matches, pattern)) {
+    return false;
+  }
+
+  line = line.substr(1);
+  line = left_trim(line);
+
+  return true;
 }

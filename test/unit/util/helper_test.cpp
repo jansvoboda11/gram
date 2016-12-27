@@ -31,3 +31,21 @@ TEST(helper_test, test_it_handles_multiple_delimiters_in_row) {
   ASSERT_EQ("o wor", pieces[2]);
   ASSERT_EQ("d", pieces[3]);
 }
+
+TEST(helper_test, test_it_trims_whitespace_on_the_left) {
+  string trimmed = left_trim(" \n hello world ");
+
+  ASSERT_EQ("hello world ", trimmed);
+}
+
+TEST(helper_test, test_it_does_not_trim_when_no_whitespace_on_the_left) {
+  string trimmed = left_trim("hello world");
+
+  ASSERT_EQ("hello world", trimmed);
+}
+
+TEST(helper_test, test_left_trim_handles_empty_string) {
+  string trimmed = left_trim("");
+
+  ASSERT_EQ("", trimmed);
+}

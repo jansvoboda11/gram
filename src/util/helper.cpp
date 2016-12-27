@@ -1,5 +1,7 @@
 #include <gram/util/helper.h>
 
+#include <algorithm>
+
 using namespace std;
 
 vector<string> gram::explode(string input, string delimiter) {
@@ -18,4 +20,10 @@ vector<string> gram::explode(string input, string delimiter) {
   pieces.push_back(input);
 
   return pieces;
+}
+
+string gram::left_trim(string input) {
+  input.erase(input.begin(), find_if(input.begin(), input.end(), not1(ptr_fun<int, int>(isspace))));
+
+  return input;
 }

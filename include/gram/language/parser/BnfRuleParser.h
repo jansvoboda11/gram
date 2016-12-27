@@ -15,10 +15,10 @@ class BnfRuleParser : public RuleParser {
  private:
   void parseRule(Grammar& grammar, std::string& line) const;
   Option parseOption(Grammar& grammar, std::string& line) const;
-  std::string nonTerminal() const;
-  std::string equals() const;
-  std::string terminal() const;
-  std::string pipe() const;
+  bool parseNonTerminal(std::string& name, std::string& line) const;
+  bool parseTerminal(std::string& value, std::string& line) const;
+  bool parseEquals(std::string& line) const;
+  bool parsePipe(std::string& line) const;
 };
 }
 
