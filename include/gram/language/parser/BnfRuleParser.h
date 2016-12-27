@@ -14,7 +14,7 @@ class BnfRuleParser : public RuleParser {
   std::shared_ptr<Grammar> parse(std::string input) const;
  private:
   void parseRule(std::shared_ptr<Grammar> grammar, std::string& line) const;
-  std::shared_ptr<Option> parseOption(std::shared_ptr<Grammar> grammar, std::string& line) const;
+  Option parseOption(std::shared_ptr<Grammar> grammar, std::string& line) const;
   std::string nonTerminal() const;
   std::string equals() const;
   std::string terminal() const;

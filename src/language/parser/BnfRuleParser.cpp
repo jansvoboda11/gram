@@ -39,14 +39,14 @@ void BnfRuleParser::parseRule(shared_ptr<Grammar> grammar, string& line) const {
   line = line.substr(4);
 
   while (line.length() > 0) {
-    shared_ptr<Option> option = parseOption(grammar, line);
+    Option option = parseOption(grammar, line);
 
-    rule->addOption(option);
+    rule->addOption(make_shared<Option>(option));
   }
 }
 
-shared_ptr<Option> BnfRuleParser::parseOption(shared_ptr<Grammar> grammar, string& line) const {
-  auto option = make_shared<Option>();
+Option BnfRuleParser::parseOption(shared_ptr<Grammar> grammar, string& line) const {
+  Option option;
 
   regex terminalPattern(terminal());
   regex nonTerminalPattern(nonTerminal());
@@ -58,14 +58,14 @@ shared_ptr<Option> BnfRuleParser::parseOption(shared_ptr<Grammar> grammar, strin
       string value = matches[1];
 
       Terminal term(value);
-      option->addTerminal(term);
+      option.addTerminal(term);
 
       line = line.substr(min(value.length() + 3, line.length()));
     } else if (regex_search(line, matches, nonTerminalPattern)) {
       string name = matches[1];
 
       shared_ptr<NonTerminal> nonTerm = grammar->ruleNamed(name);
-      option->addNonTerminal(nonTerm);
+      option.addNonTerminal(nonTerm);
 
       line = line.substr(name.length() + 3);
     } else if (regex_search(line, matches, delimiterPattern)) {
