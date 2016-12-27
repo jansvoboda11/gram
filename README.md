@@ -1,3 +1,3 @@
 # Gram
 
-Lightweight **grammatical evolution** library written in modern C++.
+Gram is a lightweight **grammatical evolution** library written in modern C++.
