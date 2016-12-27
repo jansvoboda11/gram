@@ -36,7 +36,7 @@ void Individual::process(const Processor& processor, int goal) {
 
   double fitness = processor.process(program, goal);
 
-  if (fitness < 0) {
+  if (fitness < 0.0) {
     throw logic_error("Fitness cannot be negative.");
   }
 
@@ -50,7 +50,7 @@ string Individual::serialize() const {
 }
 
 double Individual::fitness() const {
-  if (fitness_ < 0) {
+  if (fitness_ < 0.0) {
     throw logic_error("Fitness of the individual has not been calculated yet.");
   }
 
