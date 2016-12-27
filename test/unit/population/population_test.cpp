@@ -44,5 +44,5 @@ TEST(population_test, test_it_returns_best_individual) {
 
   Population population(individuals, generator);
 
-  ASSERT_EQ(individual2, population.bestIndividual());
+  ASSERT_EQ(*individual2, population.bestIndividual());
 }

@@ -16,5 +16,5 @@ Individual Evolution::run(Population &population, int goal) const {
     population.process(*processor, goal);
   }
 
-  return *population.bestIndividual();
+  return population.bestIndividual();
 }

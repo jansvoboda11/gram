@@ -4,28 +4,28 @@ using namespace gram;
 using namespace std;
 
 Population::Population(vector<shared_ptr<Individual>> individuals, shared_ptr<Generator> generator)
-    : individuals_(individuals), generator_(generator) {
+    : individuals(individuals), generator(generator) {
   //
 }
 
 double Population::bestFitness() const {
-  return bestIndividual()->fitness();
+  return bestIndividual().fitness();
 }
 
-shared_ptr<Individual> Population::bestIndividual() const {
-  if (individuals_.size() == 0) {
+Individual& Population::bestIndividual() const {
+  if (individuals.size() == 0) {
     throw logic_error("The population is empty.");
   }
 
-  shared_ptr<Individual> best = individuals_[0];
-  double bestFitness = individuals_[0]->fitness();
+  Individual& best = *individuals[0];
+  double bestFitness = best.fitness();
 
-  for (int i = 1; i < individuals_.size(); i++) {
-    shared_ptr<Individual> individual = individuals_[i];
-    double individualFitness = individual->fitness();
+  for (int i = 1; i < individuals.size(); i++) {
+    Individual& individual = *individuals[i];
+    double individualFitness = individual.fitness();
 
     if (individualFitness < bestFitness) {
-      best = individuals_[i];
+      best = individual;
       bestFitness = individualFitness;
     }
   }
@@ -34,17 +34,17 @@ shared_ptr<Individual> Population::bestIndividual() const {
 }
 
 void Population::process(const Processor& processor, int goal) {
-  for (auto &individual : individuals_) {
+  for (auto &individual : individuals) {
     individual->process(processor, goal);
   }
 }
 
 Population Population::successor() const {
-  vector<shared_ptr<Individual>> individuals = generator_->generateSuccessor(individuals_);
+  vector<shared_ptr<Individual>> individuals = generator->generateSuccessor(individuals);
 
-  return Population(individuals, generator_);
+  return Population(individuals, generator);
 }
 
-shared_ptr<Individual> &Population::operator[](unsigned long index) {
-  return individuals_[index];
+Individual& Population::operator[](unsigned long index) {
+  return *individuals[index];
 }
