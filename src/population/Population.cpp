@@ -40,9 +40,9 @@ void Population::process(const Processor& processor, int goal) {
 }
 
 Population Population::successor() const {
-  vector<shared_ptr<Individual>> individuals = generator->generateSuccessor(individuals);
+  vector<shared_ptr<Individual>> successors = generator->generateSuccessor(individuals);
 
-  return Population(individuals, generator);
+  return Population(successors, generator);
 }
 
 Individual& Population::operator[](unsigned long index) {
