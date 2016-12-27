@@ -7,13 +7,13 @@ Mapper::Mapper(shared_ptr<Grammar> grammar) : grammar(grammar) {
   //
 }
 
-Phenotype Mapper::map(const Genotype& mappedGenotype) const {
+Phenotype Mapper::map(const Genotype& genotype) const {
   Phenotype phenotype;
   NonTerminal nonTerminal = *grammar->startRule();
   unsigned long geneCount = 0;
 
   // todo: convert to iterative algorithm
-  return recursiveMap(phenotype, nonTerminal, mappedGenotype, geneCount);
+  return recursiveMap(phenotype, nonTerminal, genotype, geneCount);
 }
 
 Phenotype& Mapper::recursiveMap(Phenotype& phenotype,
