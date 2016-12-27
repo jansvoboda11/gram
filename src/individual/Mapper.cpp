@@ -36,7 +36,7 @@ Phenotype& Mapper::recursiveMap(Phenotype& phenotype,
     } else {
       geneCount += 1;
 
-      recursiveMap(phenotype, *option.nonTerminalAt(i).lock(), genotype, geneCount);
+      recursiveMap(phenotype, option.nonTerminalAt(i), genotype, geneCount);
     }
   }
 

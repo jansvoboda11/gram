@@ -66,10 +66,10 @@ TEST(bnf_rule_parser_test, test_it_parses_multiple_rules) {
   ASSERT_EQ(1, rule1->size());
   ASSERT_TRUE(rule1->optionAt(0).hasNonTerminalAt(0));
 
-  shared_ptr<NonTerminal> rule2 = rule1->optionAt(0).nonTerminalAt(0).lock();
-  ASSERT_EQ(1, rule2->size());
-  ASSERT_TRUE(rule2->optionAt(0).hasTerminalAt(0));
-  ASSERT_EQ("hello", rule2->optionAt(0).terminalAt(0).value());
+  NonTerminal rule2 = rule1->optionAt(0).nonTerminalAt(0);
+  ASSERT_EQ(1, rule2.size());
+  ASSERT_TRUE(rule2.optionAt(0).hasTerminalAt(0));
+  ASSERT_EQ("hello", rule2.optionAt(0).terminalAt(0).value());
 }
 
 TEST(bnf_rule_parser_test, test_it_parses_multiple_rules_with_both_terminals_and_nonterminals) {
@@ -93,8 +93,8 @@ TEST(bnf_rule_parser_test, test_it_parses_multiple_rules_with_both_terminals_and
   ASSERT_TRUE(rule1->optionAt(1).hasTerminalAt(1));
   ASSERT_EQ("said", rule1->optionAt(1).terminalAt(1).value());
 
-  shared_ptr<NonTerminal> rule2 = rule1->optionAt(0).nonTerminalAt(0).lock();
-  ASSERT_EQ(1, rule2->size());
-  ASSERT_TRUE(rule2->optionAt(0).hasTerminalAt(0));
-  ASSERT_EQ("hello", rule2->optionAt(0).terminalAt(0).value());
+  NonTerminal rule2 = rule1->optionAt(0).nonTerminalAt(0);
+  ASSERT_EQ(1, rule2.size());
+  ASSERT_TRUE(rule2.optionAt(0).hasTerminalAt(0));
+  ASSERT_EQ("hello", rule2.optionAt(0).terminalAt(0).value());
 }

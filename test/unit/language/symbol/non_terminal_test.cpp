@@ -30,7 +30,7 @@ TEST(non_terminal_test, test_it_handles_recursive_option) {
   option->addNonTerminal(nonTerminal);
 
   ASSERT_TRUE(nonTerminal->optionAt(0).hasNonTerminalAt(1));
-  ASSERT_EQ(nonTerminal, nonTerminal->optionAt(0).nonTerminalAt(1).lock());
+  ASSERT_EQ(*nonTerminal, nonTerminal->optionAt(0).nonTerminalAt(1));
 }
 
 TEST(non_terminal_test, test_it_returns_option_count) {
@@ -46,20 +46,16 @@ TEST(non_terminal_test, test_it_returns_option_count) {
 }
 
 TEST(non_terminal_test, test_it_recognizes_two_equal_objects) {
-  Terminal terminal1("test");
-  Terminal terminal2("test");
+  Terminal terminal("test");
 
-  auto option1 = make_shared<Option>();
-  auto option2 = make_shared<Option>();
-
-  option1->addTerminal(terminal1);
-  option2->addTerminal(terminal2);
+  auto option = make_shared<Option>();
+  option->addTerminal(terminal);
 
   NonTerminal nonTerminal1;
   NonTerminal nonTerminal2;
 
-  nonTerminal1.addOption(option1);
-  nonTerminal2.addOption(option2);
+  nonTerminal1.addOption(option);
+  nonTerminal2.addOption(option);
 
   ASSERT_TRUE(nonTerminal1 == nonTerminal2);
 }

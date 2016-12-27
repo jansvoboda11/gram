@@ -31,8 +31,8 @@ Terminal Option::terminalAt(unsigned long index) const {
   return terminals.at(index);
 }
 
-weak_ptr<NonTerminal> Option::nonTerminalAt(unsigned long index) const {
-  return nonTerminals.at(index);
+NonTerminal& Option::nonTerminalAt(unsigned long index) const {
+  return *nonTerminals.at(index).lock();
 }
 
 unsigned long Option::size() const {
@@ -56,7 +56,7 @@ bool Option::operator==(const Option &option) const {
         return false;
       }
 
-      if (*nonTerminals.at(i).lock() != *option.nonTerminals.at(i).lock()) {
+      if (nonTerminals.at(i).lock() != option.nonTerminals.at(i).lock()) {
         return false;
       }
     }

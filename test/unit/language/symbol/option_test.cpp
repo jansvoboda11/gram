@@ -33,7 +33,7 @@ TEST(option_test, test_it_accepts_nonterminals) {
   option.addNonTerminal(nonTerminal);
 
   ASSERT_TRUE(option.hasNonTerminalAt(0));
-  ASSERT_EQ(nonTerminal, option.nonTerminalAt(0).lock());
+  ASSERT_EQ(*nonTerminal, option.nonTerminalAt(0));
 }
 
 TEST(option_test, test_it_accepts_both_terminals_and_nonterminals) {
@@ -54,7 +54,7 @@ TEST(option_test, test_it_accepts_both_terminals_and_nonterminals) {
   ASSERT_TRUE(option.hasTerminalAt(0));
   ASSERT_TRUE(option.hasNonTerminalAt(1));
   ASSERT_EQ(terminal, option.terminalAt(0));
-  ASSERT_EQ(nonTerminal, option.nonTerminalAt(1).lock());
+  ASSERT_EQ(*nonTerminal, option.nonTerminalAt(1));
 }
 
 TEST(option_test, test_it_recognizes_two_equal_options) {

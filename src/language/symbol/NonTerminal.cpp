@@ -21,10 +21,7 @@ bool NonTerminal::operator==(const NonTerminal &nonTerminal) const {
   }
 
   for (int i = 0; i < size(); i++) {
-    shared_ptr<Option> firstOption = options[i];
-    shared_ptr<Option> secondOption = nonTerminal.options[i];
-
-    if (*firstOption != *secondOption) {
+    if (options[i] != nonTerminal.options[i]) {
       return false;
     }
   }
