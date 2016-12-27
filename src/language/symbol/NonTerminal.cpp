@@ -8,7 +8,7 @@ void NonTerminal::addOption(shared_ptr<Option> option) {
 }
 
 Option& NonTerminal::optionAt(unsigned long index) const {
-  return *options[index];
+  return *options.at(index);
 }
 
 unsigned long NonTerminal::size() const {
@@ -20,8 +20,8 @@ bool NonTerminal::operator==(const NonTerminal &nonTerminal) const {
     return false;
   }
 
-  for (int i = 0; i < size(); i++) {
-    if (options[i] != nonTerminal.options[i]) {
+  for (unsigned long i = 0; i < size(); i++) {
+    if (options.at(i) != nonTerminal.options.at(i)) {
       return false;
     }
   }
