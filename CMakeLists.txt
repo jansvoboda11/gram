@@ -4,7 +4,7 @@ project(gram)
 
 option(build_gram_tests "Build Gram tests." OFF)
 
-set(CMAKE_CXX_FLAGS "-std=gnu++14")
+set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(src)
 
