@@ -23,6 +23,36 @@ set(SOURCE_FILES
         util/helper.cpp
         Evolution.cpp
         EvolutionBuilder.cpp
+        ../include/gram/individual/fitness/FitnessCalculator.h
+        ../include/gram/individual/fitness/ParabolaFitnessCalculator.h
+        ../include/gram/individual/operator/Crossover.h
+        ../include/gram/individual/operator/Mutation.h
+        ../include/gram/individual/processor/Processor.h
+        ../include/gram/individual/Genotype.h
+        ../include/gram/individual/Individual.h
+        ../include/gram/individual/Mapper.h
+        ../include/gram/individual/Phenotype.h
+        ../include/gram/language/parser/RuleParser.h
+        ../include/gram/language/parser/BnfRuleParser.h
+        ../include/gram/language/symbol/NonTerminal.h
+        ../include/gram/language/symbol/Option.h
+        ../include/gram/language/symbol/Terminal.h
+        ../include/gram/language/Evaluator.h
+        ../include/gram/language/Grammar.h
+        ../include/gram/language/Language.h
+        ../include/gram/population/generator/Generator.h
+        ../include/gram/population/initializer/Initializer.h
+        ../include/gram/population/initializer/RandomInitializer.h
+        ../include/gram/population/selector/IndividualSelector.h
+        ../include/gram/population/selector/TournamentSelector.h
+        ../include/gram/population/Population.h
+        ../include/gram/util/bool_generator/BoolGenerator.h
+        ../include/gram/util/bool_generator/TwisterBoolGenerator.h
+        ../include/gram/util/number_generator/NumberGenerator.h
+        ../include/gram/util/number_generator/TwisterNumberGenerator.h
+        ../include/gram/util/helper.h
+        ../include/gram/Evolution.h
+        ../include/gram/EvolutionBuilder.h
         )
 
 add_library(gram STATIC ${SOURCE_FILES})
