@@ -19,6 +19,7 @@ add_executable(gram_unit_tests
         population/generator/generator_test.cpp
         population/initializer/random_initializer_test.cpp
         population/selector/tournament_selector_test.cpp
+        population/individuals_test.cpp
         population/population_test.cpp
         util/helper_test.cpp
         evolution_builder_test.cpp
