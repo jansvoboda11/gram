@@ -5,6 +5,7 @@
 #include <vector>
 
 #include <gram/individual/Individual.h>
+#include <gram/population/Individuals.h>
 
 namespace gram {
 /**
@@ -12,7 +13,7 @@ namespace gram {
  */
 class IndividualSelector {
  public:
-  virtual std::shared_ptr<Individual> select(std::vector<std::shared_ptr<Individual>> population) const = 0;
+  virtual Individual select(const Individuals& individuals) const = 0;
 };
 }
 

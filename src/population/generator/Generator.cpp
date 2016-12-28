@@ -10,51 +10,20 @@ Generator::Generator(unique_ptr<IndividualSelector> selector,
   //
 }
 
-vector<shared_ptr<Individual>> Generator::generateSuccessor(vector<shared_ptr<Individual>> individuals) const {
-  vector<shared_ptr<Individual>> parents = selectParents(individuals);
-
-  vector<shared_ptr<Individual>> children = createChildren(parents);
-
-  mutateChildren(children);
-
-  return children;
-}
-
-vector<shared_ptr<Individual>> Generator::selectParents(vector<shared_ptr<Individual>> individuals) const {
-  vector<shared_ptr<Individual>> parents;
+Individuals Generator::generateSuccessor(const Individuals &individuals) const {
+  Individuals children;
 
   unsigned long size = individuals.size();
 
   for (unsigned long i = 0; i < size; i++) {
-    shared_ptr<Individual> parent = selector->select(individuals);
+    Individual parent1 = selector->select(individuals);
+    Individual parent2 = selector->select(individuals);
 
-    parents.push_back(parent);
-  }
+    Individual child = parent1.mateWith(parent2, *crossover);
+    child.mutate(*mutation);
 
-  return parents;
-}
-
-vector<shared_ptr<Individual>> Generator::createChildren(vector<shared_ptr<Individual>> parents) const {
-  vector<shared_ptr<Individual>> children;
-
-  unsigned long size = parents.size();
-
-  for (unsigned long i = 0; i < size; i += 2) {
-    Individual firstParent = *parents[i];
-    Individual secondParent = *parents[i + 1];
-
-    Individual firstChild = firstParent.mateWith(secondParent, *crossover);
-    Individual secondChild = firstParent.mateWith(secondParent, *crossover);
-
-    children.push_back(make_shared<Individual>(firstChild));
-    children.push_back(make_shared<Individual>(secondChild));
+    children.addIndividual(make_shared<Individual>(child));
   }
 
   return children;
-}
-
-void Generator::mutateChildren(vector<shared_ptr<Individual>> children) const {
-  for (auto &child : children) {
-    child->mutate(*mutation);
-  }
 }

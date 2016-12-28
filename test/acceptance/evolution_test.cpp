@@ -12,6 +12,20 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
+class FakeEvaluator : public Evaluator {
+  int evaluate(std::string program) const {
+    unsigned long length = program.length();
+
+    return (length == 0 || length > 9) ? 0 : stoi(program);
+  };
+};
+
+class FakeFitnessCalculator : public FitnessCalculator {
+  double calculate(int desired, int actual) const {
+    return abs(desired - actual);
+  };
+};
+
 TEST(evolution_test, test_something) {
   unsigned long max = numeric_limits<unsigned long>::max();
 
@@ -38,21 +52,8 @@ TEST(evolution_test, test_something) {
 
   RandomInitializer initializer(move(numberGenerator4), language, 16);
 
-  Mock<Evaluator> evaluatorMock;
-  Fake(Dtor(evaluatorMock));
-  When(Method(evaluatorMock, evaluate)).AlwaysDo([](auto program) {
-    unsigned long length = program.length();
-
-    return (length == 0 || length > 9) ? 0 : stoi(program);
-  });
-  unique_ptr<Evaluator> evaluator(&evaluatorMock.get());
-
-  Mock<FitnessCalculator> calculatorMock;
-  Fake(Dtor(calculatorMock));
-  When(Method(calculatorMock, calculate)).AlwaysDo([](auto desired, auto actual) {
-    return abs(desired - actual);
-  });
-  unique_ptr<FitnessCalculator> calculator(&calculatorMock.get());
+  unique_ptr<Evaluator> evaluator = make_unique<FakeEvaluator>();
+  unique_ptr<FitnessCalculator> calculator = make_unique<FakeFitnessCalculator>();
 
   auto processor = make_unique<Processor>(move(evaluator), move(calculator));
 
@@ -60,7 +61,7 @@ TEST(evolution_test, test_something) {
 
   Population population = initializer.initialize(1000, generator);
 
-  Individual result = evolution.run(population, 1470);
+  Individual result = evolution.run(population, 12345);
 
   double fitness = result.fitness();
 

@@ -12,10 +12,10 @@ namespace gram {
  */
 class TournamentSelector : public IndividualSelector {
  public:
-  TournamentSelector(std::unique_ptr<NumberGenerator> generator);
-  std::shared_ptr<Individual> select(std::vector<std::shared_ptr<Individual>> individuals) const;
+  TournamentSelector(std::unique_ptr<NumberGenerator> numberGenerator);
+  Individual select(const Individuals& individuals) const;
  private:
-  std::unique_ptr<NumberGenerator> generator;
+  std::unique_ptr<NumberGenerator> numberGenerator;
 };
 }
 

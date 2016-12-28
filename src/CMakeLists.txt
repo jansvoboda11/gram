@@ -17,6 +17,7 @@ set(SOURCE_FILES
         population/generator/Generator.cpp
         population/initializer/RandomInitializer.cpp
         population/selector/TournamentSelector.cpp
+        population/Individuals.cpp
         population/Population.cpp
         util/bool_generator/TwisterBoolGenerator.cpp
         util/number_generator/TwisterNumberGenerator.cpp
@@ -45,6 +46,7 @@ set(SOURCE_FILES
         ../include/gram/population/initializer/RandomInitializer.h
         ../include/gram/population/selector/IndividualSelector.h
         ../include/gram/population/selector/TournamentSelector.h
+        ../include/gram/population/Individuals.h
         ../include/gram/population/Population.h
         ../include/gram/util/bool_generator/BoolGenerator.h
         ../include/gram/util/bool_generator/TwisterBoolGenerator.h

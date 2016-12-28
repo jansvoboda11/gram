@@ -8,6 +8,7 @@
 #include <gram/individual/operator/Mutation.h>
 #include <gram/individual/Individual.h>
 #include <gram/population/selector/IndividualSelector.h>
+#include <gram/population/Individuals.h>
 
 namespace gram {
 /**
@@ -19,14 +20,11 @@ class Generator {
             std::unique_ptr<Crossover> crossover,
             std::unique_ptr<Mutation> mutation);
   virtual ~Generator() = default;
-  virtual std::vector<std::shared_ptr<Individual>> generateSuccessor(std::vector<std::shared_ptr<Individual>> individuals) const;
+  virtual Individuals generateSuccessor(const Individuals &individuals) const;
  private:
   std::unique_ptr<IndividualSelector> selector;
   std::unique_ptr<Crossover> crossover;
   std::unique_ptr<Mutation> mutation;
-  std::vector<std::shared_ptr<Individual>> selectParents(std::vector<std::shared_ptr<Individual>> individuals) const;
-  std::vector<std::shared_ptr<Individual>> createChildren(std::vector<std::shared_ptr<Individual>> parents) const;
-  void mutateChildren(std::vector<std::shared_ptr<Individual>> children) const;
 };
 }
 

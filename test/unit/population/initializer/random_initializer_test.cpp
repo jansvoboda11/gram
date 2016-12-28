@@ -37,7 +37,7 @@ TEST(random_initializer_test, test_it_initializes_individuals) {
 
   Population population = initializer.initialize(3, generator);
 
-  ASSERT_EQ(individual1, population[0]);
-  ASSERT_EQ(individual2, population[1]);
-  ASSERT_EQ(individual3, population[2]);
+  ASSERT_EQ(individual1, population.at(0));
+  ASSERT_EQ(individual2, population.at(1));
+  ASSERT_EQ(individual3, population.at(2));
 }

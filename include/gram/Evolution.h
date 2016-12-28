@@ -13,7 +13,7 @@ namespace gram {
 class Evolution {
  public:
   Evolution(std::unique_ptr<Processor> processor);
-  Individual run(Population &population, int goal) const;
+  Individual run(Population& population, int goal) const;
  private:
   std::unique_ptr<Processor> processor;
 };

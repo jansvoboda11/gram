@@ -7,6 +7,7 @@
 #include <gram/individual/processor/Processor.h>
 #include <gram/individual/Individual.h>
 #include <gram/population/generator/Generator.h>
+#include <gram/population/Individuals.h>
 
 namespace gram {
 /**
@@ -14,14 +15,14 @@ namespace gram {
  */
 class Population {
  public:
-  Population(std::vector<std::shared_ptr<Individual>> individuals, std::shared_ptr<Generator> generator);
+  Population(Individuals individuals, std::shared_ptr<Generator> generator);
   double bestFitness() const;
-  Individual& bestIndividual() const;
+  Individual bestIndividual() const;
+  Individual at(unsigned long index) const;
   void process(const Processor& processor, int goal);
   Population successor() const;
-  Individual& operator[](unsigned long index);
  private:
-  std::vector<std::shared_ptr<Individual>> individuals;
+  Individuals individuals;
   std::shared_ptr<Generator> generator;
 };
 }

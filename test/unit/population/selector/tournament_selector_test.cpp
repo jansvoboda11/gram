@@ -12,7 +12,7 @@ TEST(tournament_selector_test, test_it_handles_empty_population) {
   Fake(Dtor(mock));
   auto numberGenerator = unique_ptr<NumberGenerator>(&mock.get());
 
-  vector<shared_ptr<Individual>> individuals;
+  Individuals individuals;
 
   TournamentSelector selector(move(numberGenerator));
 
@@ -28,11 +28,11 @@ TEST(tournament_selector_test, test_it_select_the_only_individual) {
   Fake(Dtor(individual));
   auto sharedIndividual = shared_ptr<Individual>(&individual.get());
 
-  vector<shared_ptr<Individual>> individuals{sharedIndividual};
+  Individuals individuals({sharedIndividual});
 
   TournamentSelector selector(move(numberGenerator));
 
-  ASSERT_EQ(*sharedIndividual, *selector.select(individuals));
+  ASSERT_EQ(*sharedIndividual, selector.select(individuals));
 }
 
 TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_selected_group) {
@@ -61,9 +61,9 @@ TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_sel
   auto individual3 = shared_ptr<Individual>(&individual3Mock.get());
   auto individual4 = shared_ptr<Individual>(&individual4Mock.get());
 
-  vector<shared_ptr<Individual>> individuals{individual1, individual2, individual3, individual4};
+  Individuals individuals({individual1, individual2, individual3, individual4});
 
   TournamentSelector selector(move(numberGenerator));
 
-  ASSERT_EQ(*individual2, *selector.select(individuals));
+  ASSERT_EQ(*individual2, selector.select(individuals));
 }

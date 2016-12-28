@@ -8,7 +8,7 @@ using namespace gram;
 using namespace std;
 
 TEST(population_test, test_it_does_not_return_best_individual_when_empty) {
-  vector<shared_ptr<Individual>> individuals;
+  Individuals individuals;
 
   Mock<Generator> generatorMock;
   Fake(Dtor(generatorMock));
@@ -36,7 +36,7 @@ TEST(population_test, test_it_returns_best_individual) {
   auto individual2 = shared_ptr<Individual>(&individual2Mock.get());
   auto individual3 = shared_ptr<Individual>(&individual3Mock.get());
 
-  vector<shared_ptr<Individual>> individuals{individual1, individual2, individual3};
+  Individuals individuals({individual1, individual2, individual3});
 
   Mock<Generator> generatorMock;
   Fake(Dtor(generatorMock));

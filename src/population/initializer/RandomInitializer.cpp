@@ -11,14 +11,12 @@ RandomInitializer::RandomInitializer(unique_ptr<NumberGenerator> numberGenerator
 }
 
 Population RandomInitializer::initialize(unsigned long count, shared_ptr<Generator> generator) const {
-  vector<shared_ptr<Individual>> individuals;
+  Individuals individuals;
 
   for (unsigned long i = 0; i < count; i++) {
     Genotype genotype = numberGenerator->generateMany(size);
 
-    auto individual = make_shared<Individual>(genotype, language);
-
-    individuals.push_back(individual);
+    individuals.addIndividual(make_shared<Individual>(genotype, language));
   }
 
   return Population(individuals, generator);
