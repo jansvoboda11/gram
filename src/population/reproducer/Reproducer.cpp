@@ -4,8 +4,8 @@ using namespace gram;
 using namespace std;
 
 Reproducer::Reproducer(unique_ptr<IndividualSelector> selector,
-                     unique_ptr<Crossover> crossover,
-                     unique_ptr<Mutation> mutation)
+                       unique_ptr<Crossover> crossover,
+                       unique_ptr<Mutation> mutation)
     : selector(move(selector)), crossover(move(crossover)), mutation(move(mutation)) {
   //
 }

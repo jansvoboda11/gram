@@ -17,8 +17,8 @@ namespace gram {
 class Reproducer {
  public:
   Reproducer(std::unique_ptr<IndividualSelector> selector,
-               std::unique_ptr<Crossover> crossover,
-               std::unique_ptr<Mutation> mutation);
+             std::unique_ptr<Crossover> crossover,
+             std::unique_ptr<Mutation> mutation);
   virtual ~Reproducer() = default;
   virtual Individuals reproduce(const Individuals &individuals) const;
  private:
