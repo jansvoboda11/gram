@@ -11,7 +11,7 @@ Individual Evolution::run(Population& population, int goal) const {
   population.process(*processor, goal);
 
   while (population.bestFitness() > 0.0) {
-    population = population.successor();
+    population = population.reproduce();
 
     population.process(*processor, goal);
   }

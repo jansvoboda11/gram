@@ -16,8 +16,8 @@ add_executable(gram_unit_tests
         language/symbol/terminal_test.cpp
         language/grammar_test.cpp
         language/language_test.cpp
-        population/generator/generator_test.cpp
         population/initializer/random_initializer_test.cpp
+        population/reproduction/reproduction_test.cpp
         population/selector/tournament_selector_test.cpp
         population/individuals_test.cpp
         population/population_test.cpp

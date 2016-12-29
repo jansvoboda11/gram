@@ -1,5 +1,5 @@
-#ifndef GRAM_POPULATION_GENERATOR
-#define GRAM_POPULATION_GENERATOR
+#ifndef GRAM_POPULATION_REPRODUCTION
+#define GRAM_POPULATION_REPRODUCTION
 
 #include <memory>
 #include <vector>
@@ -14,13 +14,13 @@ namespace gram {
 /**
  * Class.
  */
-class Generator {
+class Reproduction {
  public:
-  Generator(std::unique_ptr<IndividualSelector> selector,
-            std::unique_ptr<Crossover> crossover,
-            std::unique_ptr<Mutation> mutation);
-  virtual ~Generator() = default;
-  virtual Individuals generateSuccessor(const Individuals &individuals) const;
+  Reproduction(std::unique_ptr<IndividualSelector> selector,
+               std::unique_ptr<Crossover> crossover,
+               std::unique_ptr<Mutation> mutation);
+  virtual ~Reproduction() = default;
+  virtual Individuals reproduce(const Individuals &individuals) const;
  private:
   std::unique_ptr<IndividualSelector> selector;
   std::unique_ptr<Crossover> crossover;
@@ -28,4 +28,4 @@ class Generator {
 };
 }
 
-#endif // GRAM_POPULATION_GENERATOR
+#endif // GRAM_POPULATION_REPRODUCTION

@@ -10,7 +10,7 @@ namespace gram {
  */
 class Initializer {
  public:
-  virtual Population initialize(unsigned long count, std::shared_ptr<Generator> generator) const = 0;
+  virtual Population initialize(unsigned long count, std::shared_ptr<Reproduction> generator) const = 0;
 };
 }
 

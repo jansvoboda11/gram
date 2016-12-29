@@ -10,7 +10,7 @@ RandomInitializer::RandomInitializer(unique_ptr<NumberGenerator> numberGenerator
   //
 }
 
-Population RandomInitializer::initialize(unsigned long count, shared_ptr<Generator> generator) const {
+Population RandomInitializer::initialize(unsigned long count, shared_ptr<Reproduction> generator) const {
   Individuals individuals;
 
   for (unsigned long i = 0; i < count; i++) {
