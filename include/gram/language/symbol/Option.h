@@ -23,8 +23,8 @@ class Option {
   NonTerminal& nonTerminalAt(unsigned long index) const;
   Terminal terminalAt(unsigned long index) const;
   unsigned long size() const;
-  bool operator==(const Option &option) const;
-  bool operator!=(const Option &option) const;
+  bool operator==(const Option& option) const;
+  bool operator!=(const Option& option) const;
  private:
   std::unordered_map<unsigned long, std::weak_ptr<NonTerminal>> nonTerminals;
   std::unordered_map<unsigned long, Terminal> terminals;

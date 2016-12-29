@@ -25,7 +25,7 @@ unsigned long Population::size() const {
 }
 
 void Population::process(const Processor& processor, int goal) {
-  for (auto &individual : individuals) {
+  for (auto& individual : individuals) {
     individual->process(processor, goal);
   }
 }

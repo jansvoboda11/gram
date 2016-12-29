@@ -11,8 +11,8 @@ class Terminal {
  public:
   Terminal(std::string value);
   std::string value() const;
-  bool operator==(const Terminal &terminal) const;
-  bool operator!=(const Terminal &terminal) const;
+  bool operator==(const Terminal& terminal) const;
+  bool operator!=(const Terminal& terminal) const;
  private:
   std::string val;
 };

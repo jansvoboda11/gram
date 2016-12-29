@@ -10,7 +10,7 @@ void Phenotype::addTerminal(Terminal terminal) {
 string Phenotype::serialize() const {
   string serialized;
 
-  for (auto &terminal : terminals) {
+  for (auto& terminal : terminals) {
     serialized += terminal.value();
   }
 

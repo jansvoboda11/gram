@@ -11,10 +11,10 @@ string Terminal::value() const {
   return val;
 }
 
-bool Terminal::operator==(const Terminal &terminal) const {
+bool Terminal::operator==(const Terminal& terminal) const {
   return val == terminal.val;
 }
 
-bool Terminal::operator!=(const Terminal &terminal) const {
+bool Terminal::operator!=(const Terminal& terminal) const {
   return !operator==(terminal);
 }

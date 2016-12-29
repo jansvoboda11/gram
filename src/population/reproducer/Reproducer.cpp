@@ -10,7 +10,7 @@ Reproducer::Reproducer(unique_ptr<IndividualSelector> selector,
   //
 }
 
-Individuals Reproducer::reproduce(const Individuals &individuals) const {
+Individuals Reproducer::reproduce(const Individuals& individuals) const {
   Individuals children;
 
   unsigned long size = individuals.size();

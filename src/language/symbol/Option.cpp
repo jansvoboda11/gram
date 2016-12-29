@@ -39,7 +39,7 @@ unsigned long Option::size() const {
   return symbolCount;
 }
 
-bool Option::operator==(const Option &option) const {
+bool Option::operator==(const Option& option) const {
   for (unsigned long i = 0; i < symbolCount; i++) {
     if (terminals.find(i) != terminals.end()) {
       if (option.terminals.find(i) == option.terminals.end()) {
@@ -65,6 +65,6 @@ bool Option::operator==(const Option &option) const {
   return true;
 }
 
-bool Option::operator!=(const Option &option) const {
+bool Option::operator!=(const Option& option) const {
   return !operator==(option);
 }

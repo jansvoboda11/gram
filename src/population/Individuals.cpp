@@ -21,9 +21,9 @@ Individual& Individuals::bestIndividual() const {
     throw logic_error("There are no individuals.");
   }
 
-   shared_ptr<Individual> bestIndividual = individuals[0];
+  shared_ptr<Individual> bestIndividual = individuals[0];
 
-  for (auto &individual : individuals) {
+  for (auto& individual : individuals) {
     if (individual->fitness() < bestIndividual->fitness()) {
       bestIndividual = individual;
     }

@@ -15,7 +15,7 @@ unsigned long NonTerminal::size() const {
   return options.size();
 }
 
-bool NonTerminal::operator==(const NonTerminal &nonTerminal) const {
+bool NonTerminal::operator==(const NonTerminal& nonTerminal) const {
   if (size() != nonTerminal.size()) {
     return false;
   }
@@ -29,6 +29,6 @@ bool NonTerminal::operator==(const NonTerminal &nonTerminal) const {
   return true;
 }
 
-bool NonTerminal::operator!=(const NonTerminal &nonTerminal) const {
+bool NonTerminal::operator!=(const NonTerminal& nonTerminal) const {
   return !operator==(nonTerminal);
 }
