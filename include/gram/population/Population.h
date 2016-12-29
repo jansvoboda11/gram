@@ -17,8 +17,9 @@ class Population {
  public:
   Population(Individuals individuals, std::shared_ptr<Generator> generator);
   double bestFitness() const;
-  Individual bestIndividual() const;
-  Individual at(unsigned long index) const;
+  Individual& bestIndividual() const;
+  Individual& operator[](unsigned long index) const;
+  unsigned long size() const;
   void process(const Processor& processor, int goal);
   Population successor() const;
  private:

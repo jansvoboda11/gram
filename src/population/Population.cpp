@@ -12,12 +12,16 @@ double Population::bestFitness() const {
   return bestIndividual().fitness();
 }
 
-Individual Population::bestIndividual() const {
+Individual& Population::bestIndividual() const {
   return individuals.bestIndividual();
 }
 
-Individual Population::at(unsigned long index) const {
-  return individuals.at(index);
+Individual& Population::operator[](unsigned long index) const {
+  return individuals[index];
+}
+
+unsigned long Population::size() const {
+  return individuals.size();
 }
 
 void Population::process(const Processor& processor, int goal) {

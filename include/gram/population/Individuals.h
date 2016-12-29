@@ -15,8 +15,8 @@ class Individuals {
   Individuals();
   Individuals(std::initializer_list<std::shared_ptr<Individual>> individuals);
   void addIndividual(std::shared_ptr<Individual> individual);
-  Individual bestIndividual() const;
-  Individual at(unsigned long index) const;
+  Individual& bestIndividual() const;
+  Individual& operator[](unsigned long index) const;
   unsigned long size() const;
   std::vector<std::shared_ptr<Individual>>::iterator begin();
   std::vector<std::shared_ptr<Individual>>::iterator end();

@@ -14,7 +14,7 @@ Individual TournamentSelector::select(const Individuals& individuals) const {
   }
 
   if (individuals.size() == 1) {
-    return individuals.at(0);
+    return individuals[0];
   }
 
   Individuals candidates;
@@ -22,7 +22,7 @@ Individual TournamentSelector::select(const Individuals& individuals) const {
 
   for (unsigned long i = 0; i < count; i++) {
     unsigned long index = numberGenerator->generate() % individuals.size();
-    Individual candidate = individuals.at(index);
+    Individual candidate = individuals[index];
 
     candidates.addIndividual(make_shared<Individual>(candidate));
   }

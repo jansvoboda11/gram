@@ -14,19 +14,23 @@ TEST(individuals_test, test_it_handles_no_individuals) {
 }
 
 TEST(individuals_test, test_it_recognizes_the_fittest_individual) {
-  Mock<Individual> individual1;
-  Mock<Individual> individual2;
-  Mock<Individual> individual3;
+  Mock<Individual> individual1Mock;
+  Mock<Individual> individual2Mock;
+  Mock<Individual> individual3Mock;
 
-  When(Method(individual1, fitness)).AlwaysReturn(1.0);
-  When(Method(individual2, fitness)).AlwaysReturn(0.5);
-  When(Method(individual3, fitness)).AlwaysReturn(2.0);
+  When(Method(individual1Mock, fitness)).AlwaysReturn(1.0);
+  When(Method(individual2Mock, fitness)).AlwaysReturn(0.5);
+  When(Method(individual3Mock, fitness)).AlwaysReturn(2.0);
 
-  auto sharedIndividual1 = make_shared<Individual>(individual1.get());
-  auto sharedIndividual2 = make_shared<Individual>(individual2.get());
-  auto sharedIndividual3 = make_shared<Individual>(individual3.get());
+  Individual individual1 = individual1Mock.get();
+  Individual individual2 = individual2Mock.get();
+  Individual individual3 = individual3Mock.get();
+
+  auto sharedIndividual1 = make_shared<Individual>(individual1);
+  auto sharedIndividual2 = make_shared<Individual>(individual2);
+  auto sharedIndividual3 = make_shared<Individual>(individual3);
 
   Individuals individuals({sharedIndividual1, sharedIndividual2, sharedIndividual3});
 
-  ASSERT_EQ(*sharedIndividual2, individuals.bestIndividual());
+  ASSERT_EQ(individual2, individuals.bestIndividual());
 }

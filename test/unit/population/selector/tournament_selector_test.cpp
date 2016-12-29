@@ -8,9 +8,9 @@ using namespace gram;
 using namespace std;
 
 TEST(tournament_selector_test, test_it_handles_empty_population) {
-  Mock<NumberGenerator> mock;
-  Fake(Dtor(mock));
-  auto numberGenerator = unique_ptr<NumberGenerator>(&mock.get());
+  Mock<NumberGenerator> numberGeneratorMock;
+  Fake(Dtor(numberGeneratorMock));
+  auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
   Individuals individuals;
 
@@ -20,19 +20,19 @@ TEST(tournament_selector_test, test_it_handles_empty_population) {
 }
 
 TEST(tournament_selector_test, test_it_select_the_only_individual) {
-  Mock<NumberGenerator> mock;
-  Fake(Dtor(mock));
-  auto numberGenerator = unique_ptr<NumberGenerator>(&mock.get());
+  Mock<NumberGenerator> numberGeneratorMock;
+  Fake(Dtor(numberGeneratorMock));
+  auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
-  Mock<Individual> individual;
-  Fake(Dtor(individual));
-  auto sharedIndividual = shared_ptr<Individual>(&individual.get());
+  Mock<Individual> individualMock;
+  Individual individual = individualMock.get();
+  auto sharedIndividual = make_shared<Individual>(individual);
 
   Individuals individuals({sharedIndividual});
 
   TournamentSelector selector(move(numberGenerator));
 
-  ASSERT_EQ(*sharedIndividual, selector.select(individuals));
+  ASSERT_EQ(individual, selector.select(individuals));
 }
 
 TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_selected_group) {
@@ -46,24 +46,24 @@ TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_sel
   Mock<Individual> individual3Mock;
   Mock<Individual> individual4Mock;
 
-  Fake(Dtor(individual1Mock));
-  Fake(Dtor(individual2Mock));
-  Fake(Dtor(individual3Mock));
-  Fake(Dtor(individual4Mock));
-
   When(Method(individual1Mock, fitness)).AlwaysReturn(0.0);
   When(Method(individual2Mock, fitness)).AlwaysReturn(1.0);
   When(Method(individual3Mock, fitness)).AlwaysReturn(2.0);
   When(Method(individual4Mock, fitness)).AlwaysReturn(3.0);
 
-  auto individual1 = shared_ptr<Individual>(&individual1Mock.get());
-  auto individual2 = shared_ptr<Individual>(&individual2Mock.get());
-  auto individual3 = shared_ptr<Individual>(&individual3Mock.get());
-  auto individual4 = shared_ptr<Individual>(&individual4Mock.get());
+  Individual individual1 = individual1Mock.get();
+  Individual individual2 = individual2Mock.get();
+  Individual individual3 = individual3Mock.get();
+  Individual individual4 = individual4Mock.get();
 
-  Individuals individuals({individual1, individual2, individual3, individual4});
+  auto sharedIndividual1 = make_shared<Individual>(individual1);
+  auto sharedIndividual2 = make_shared<Individual>(individual2);
+  auto sharedIndividual3 = make_shared<Individual>(individual3);
+  auto sharedIndividual4 = make_shared<Individual>(individual4);
+
+  Individuals individuals({sharedIndividual1, sharedIndividual2, sharedIndividual3, sharedIndividual4});
 
   TournamentSelector selector(move(numberGenerator));
 
-  ASSERT_EQ(*individual2, selector.select(individuals));
+  ASSERT_EQ(individual2, selector.select(individuals));
 }

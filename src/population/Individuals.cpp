@@ -16,7 +16,7 @@ void Individuals::addIndividual(shared_ptr<Individual> individual) {
   individuals.push_back(individual);
 }
 
-Individual Individuals::bestIndividual() const {
+Individual& Individuals::bestIndividual() const {
   if (individuals.empty()) {
     throw logic_error("There are no individuals.");
   }
@@ -32,8 +32,8 @@ Individual Individuals::bestIndividual() const {
   return *bestIndividual;
 }
 
-Individual Individuals::at(unsigned long index) const {
-  return *individuals.at(index);
+Individual& Individuals::operator[](unsigned long index) const {
+  return *individuals[index];
 }
 
 unsigned long Individuals::size() const {
