@@ -38,7 +38,7 @@ TEST(evolution_test, test_something) {
   auto selector = make_unique<TournamentSelector>(move(numberGenerator1));
   auto mutation = make_unique<Mutation>(move(boolGenerator), move(numberGenerator2));
   auto crossover = make_unique<Crossover>(move(numberGenerator3));
-  auto reproduction = make_shared<Reproduction>(move(selector), move(crossover), move(mutation));
+  auto reproducer = make_shared<Reproducer>(move(selector), move(crossover), move(mutation));
 
   string grammarString =
       "<number> ::= <number> <digit> | <digit>\n"
@@ -59,7 +59,7 @@ TEST(evolution_test, test_something) {
 
   Evolution evolution(move(processor));
 
-  Population population = initializer.initialize(1000, reproduction);
+  Population population = initializer.initialize(1000, reproducer);
 
   Individual result = evolution.run(population, 12345);
 

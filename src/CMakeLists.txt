@@ -15,7 +15,7 @@ set(SOURCE_FILES
         language/Grammar.cpp
         language/Language.cpp
         population/initializer/RandomInitializer.cpp
-        population/reproduction/Reproduction.cpp
+        population/reproducer/Reproducer.cpp
         population/selector/TournamentSelector.cpp
         population/Individuals.cpp
         population/Population.cpp
@@ -43,7 +43,7 @@ set(SOURCE_FILES
         ../include/gram/language/Language.h
         ../include/gram/population/initializer/Initializer.h
         ../include/gram/population/initializer/RandomInitializer.h
-        ../include/gram/population/reproduction/Reproduction.h
+        ../include/gram/population/reproducer/Reproducer.h
         ../include/gram/population/selector/IndividualSelector.h
         ../include/gram/population/selector/TournamentSelector.h
         ../include/gram/population/Individuals.h

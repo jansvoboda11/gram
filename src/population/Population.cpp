@@ -3,8 +3,8 @@
 using namespace gram;
 using namespace std;
 
-Population::Population(Individuals individuals, shared_ptr<Reproduction> reproduction)
-    : individuals(individuals), reproduction(reproduction) {
+Population::Population(Individuals individuals, shared_ptr<Reproducer> reproducer)
+    : individuals(individuals), reproducer(reproducer) {
   //
 }
 
@@ -31,7 +31,7 @@ void Population::process(const Processor& processor, int goal) {
 }
 
 Population Population::reproduce() const {
-  Individuals successors = reproduction->reproduce(individuals);
+  Individuals successors = reproducer->reproduce(individuals);
 
-  return Population(successors, reproduction);
+  return Population(successors, reproducer);
 }

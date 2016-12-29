@@ -29,13 +29,13 @@ TEST(random_initializer_test, test_it_initializes_individuals) {
       .Return(vector<unsigned long>({2, 3, 0}));
   auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
-  Mock<Reproduction> reproductionMock;
-  Fake(Dtor(reproductionMock));
-  auto reproduction = shared_ptr<Reproduction>(&reproductionMock.get());
+  Mock<Reproducer> reproducerMock;
+  Fake(Dtor(reproducerMock));
+  auto reproducer = shared_ptr<Reproducer>(&reproducerMock.get());
 
   RandomInitializer initializer(move(numberGenerator), language, 3);
 
-  Population population = initializer.initialize(3, reproduction);
+  Population population = initializer.initialize(3, reproducer);
 
   ASSERT_EQ(3, population.size());
   ASSERT_EQ(individual1, population[0]);

@@ -10,7 +10,7 @@ RandomInitializer::RandomInitializer(unique_ptr<NumberGenerator> numberGenerator
   //
 }
 
-Population RandomInitializer::initialize(unsigned long count, shared_ptr<Reproduction> reproduction) const {
+Population RandomInitializer::initialize(unsigned long count, shared_ptr<Reproducer> reproducer) const {
   Individuals individuals;
 
   for (unsigned long i = 0; i < count; i++) {
@@ -19,5 +19,5 @@ Population RandomInitializer::initialize(unsigned long count, shared_ptr<Reprodu
     individuals.addIndividual(make_shared<Individual>(genotype, language));
   }
 
-  return Population(individuals, reproduction);
+  return Population(individuals, reproducer);
 }

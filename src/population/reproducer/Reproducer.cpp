@@ -1,16 +1,16 @@
-#include <gram/population/reproduction/Reproduction.h>
+#include <gram/population/reproducer/Reproducer.h>
 
 using namespace gram;
 using namespace std;
 
-Reproduction::Reproduction(unique_ptr<IndividualSelector> selector,
+Reproducer::Reproducer(unique_ptr<IndividualSelector> selector,
                      unique_ptr<Crossover> crossover,
                      unique_ptr<Mutation> mutation)
     : selector(move(selector)), crossover(move(crossover)), mutation(move(mutation)) {
   //
 }
 
-Individuals Reproduction::reproduce(const Individuals &individuals) const {
+Individuals Reproducer::reproduce(const Individuals &individuals) const {
   Individuals children;
 
   unsigned long size = individuals.size();

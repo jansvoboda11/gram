@@ -1,5 +1,5 @@
-#ifndef GRAM_POPULATION_REPRODUCTION
-#define GRAM_POPULATION_REPRODUCTION
+#ifndef GRAM_POPULATION_REPRODUCER
+#define GRAM_POPULATION_REPRODUCER
 
 #include <memory>
 #include <vector>
@@ -14,12 +14,12 @@ namespace gram {
 /**
  * Class.
  */
-class Reproduction {
+class Reproducer {
  public:
-  Reproduction(std::unique_ptr<IndividualSelector> selector,
+  Reproducer(std::unique_ptr<IndividualSelector> selector,
                std::unique_ptr<Crossover> crossover,
                std::unique_ptr<Mutation> mutation);
-  virtual ~Reproduction() = default;
+  virtual ~Reproducer() = default;
   virtual Individuals reproduce(const Individuals &individuals) const;
  private:
   std::unique_ptr<IndividualSelector> selector;
@@ -28,4 +28,4 @@ class Reproduction {
 };
 }
 
-#endif // GRAM_POPULATION_REPRODUCTION
+#endif // GRAM_POPULATION_REPRODUCER

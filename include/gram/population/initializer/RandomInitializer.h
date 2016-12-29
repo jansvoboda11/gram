@@ -15,7 +15,7 @@ class RandomInitializer : public Initializer {
   RandomInitializer(std::unique_ptr<NumberGenerator> numberGenerator,
                     std::shared_ptr<Language> language,
                     unsigned long size);
-  Population initialize(unsigned long count, std::shared_ptr<Reproduction> reproduction) const;
+  Population initialize(unsigned long count, std::shared_ptr<Reproducer> reproducer) const;
  private:
   std::unique_ptr<NumberGenerator> numberGenerator;
   std::shared_ptr<Language> language;
