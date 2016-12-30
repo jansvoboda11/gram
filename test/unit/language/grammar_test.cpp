@@ -14,7 +14,6 @@ TEST(grammar_test, test_it_accepts_rule) {
   grammar.addRule("rule1", rule1);
   grammar.addRule("rule2", rule2);
 
-  ASSERT_TRUE(grammar.hasRuleNamed("rule1"));
   ASSERT_EQ(rule1, grammar.ruleNamed("rule1"));
   ASSERT_EQ(rule1, grammar.startRule());
 }

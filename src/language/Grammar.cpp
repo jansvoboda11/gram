@@ -8,27 +8,25 @@ Grammar::Grammar() : start(), rules() {
 }
 
 void Grammar::addRule(string name, shared_ptr<NonTerminal> rule) {
+  rules[name] = rule;
+
+  if (!start) {
+    start = rule;
+  }
+}
+
+shared_ptr<NonTerminal> Grammar::ruleNamed(string name) {
+  shared_ptr<NonTerminal> &rule = rules[name];
+
+  if (!rule) {
+    rule = make_shared<NonTerminal>();
+  }
+
   if (!start) {
     start = rule;
   }
 
-  rules[name] = rule;
-}
-
-bool Grammar::hasRuleNamed(string name) const {
-  auto found = rules.find(name);
-
-  return found != rules.end();
-}
-
-shared_ptr<NonTerminal> Grammar::ruleNamed(string name) {
-  if (!hasRuleNamed(name)) {
-    auto rule = make_shared<NonTerminal>();
-
-    addRule(name, rule);
-  }
-
-  return rules[name];
+  return rule;
 }
 
 shared_ptr<NonTerminal> Grammar::startRule() const {

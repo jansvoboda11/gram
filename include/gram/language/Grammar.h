@@ -12,7 +12,6 @@ class Grammar {
   Grammar();
   virtual ~Grammar() = default;
   void addRule(std::string name, std::shared_ptr<NonTerminal> rule);
-  bool hasRuleNamed(std::string name) const;
   std::shared_ptr<NonTerminal> ruleNamed(std::string name);
   virtual std::shared_ptr<NonTerminal> startRule() const;
  private:
