@@ -11,9 +11,10 @@ Reproducer::Reproducer(unique_ptr<IndividualSelector> selector,
 }
 
 Individuals Reproducer::reproduce(const Individuals& individuals) const {
-  Individuals children;
-
   unsigned long size = individuals.size();
+  
+  Individuals children;
+  children.reserve(size);
 
   for (unsigned long i = 0; i < size; i++) {
     Individual parent1 = selector->select(individuals);

@@ -40,6 +40,10 @@ unsigned long Individuals::size() const {
   return individuals.size();
 }
 
+void Individuals::reserve(unsigned long count) {
+  individuals.reserve(count);
+}
+
 vector<shared_ptr<Individual>>::iterator Individuals::begin() {
   return individuals.begin();
 }

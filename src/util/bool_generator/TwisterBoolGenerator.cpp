@@ -18,6 +18,7 @@ bool TwisterBoolGenerator::generate() const {
 
 vector<bool> TwisterBoolGenerator::generateMany(unsigned long count) const {
   vector<bool> values;
+  values.reserve(count);
 
   for (unsigned long i = 0; i < count; i++) {
     values.push_back(generate());

@@ -18,6 +18,7 @@ unsigned long TwisterNumberGenerator::generate() {
 
 vector<unsigned long> TwisterNumberGenerator::generateMany(unsigned long count) {
   vector<unsigned long> numbers;
+  numbers.reserve(count);
 
   for (unsigned long i = 0; i < count; i++) {
     unsigned long number = generate();

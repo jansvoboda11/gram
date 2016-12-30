@@ -18,6 +18,7 @@ class Individuals {
   Individual& bestIndividual() const;
   Individual& operator[](unsigned long index) const;
   unsigned long size() const;
+  void reserve(unsigned long count);
   std::vector<std::shared_ptr<Individual>>::iterator begin();
   std::vector<std::shared_ptr<Individual>>::iterator end();
  private:
