@@ -13,17 +13,32 @@ using namespace gram;
 using namespace std;
 
 class FakeEvaluator : public Evaluator {
-  int evaluate(std::string program) const {
-    unsigned long length = program.length();
+  double evaluate(string program) const {
+    return static_cast<double>(edit_distance(program, "1234"));
+  }
 
-    return (length == 0 || length > 9) ? 0 : stoi(program);
-  };
-};
+  unsigned long edit_distance(const string& s1, const string& s2) const {
+    const unsigned long len1 = s1.size(), len2 = s2.size();
+    vector<vector<unsigned long>> d(len1 + 1, vector<unsigned long>(len2 + 1));
 
-class FakeFitnessCalculator : public FitnessCalculator {
-  double calculate(int desired, int actual) const {
-    return abs(desired - actual);
-  };
+    d[0][0] = 0;
+
+    for (unsigned int i = 1; i <= len1; ++i) {
+      d[i][0] = i;
+    }
+
+    for (unsigned int i = 1; i <= len2; ++i) {
+      d[0][i] = i;
+    }
+
+    for (unsigned int i = 1; i <= len1; ++i) {
+      for (unsigned int j = 1; j <= len2; ++j) {
+        d[i][j] = min({d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (s1[i - 1] == s2[j - 1] ? 0 : 1)});
+      }
+    }
+
+    return d[len1][len2];
+  }
 };
 
 TEST(evolution_test, test_something) {
@@ -53,15 +68,12 @@ TEST(evolution_test, test_something) {
   RandomInitializer initializer(move(numberGenerator4), language, 16);
 
   unique_ptr<Evaluator> evaluator = make_unique<FakeEvaluator>();
-  unique_ptr<FitnessCalculator> calculator = make_unique<FakeFitnessCalculator>();
 
-  auto processor = make_unique<Processor>(move(evaluator), move(calculator));
-
-  Evolution evolution(move(processor));
+  Evolution evolution(move(evaluator));
 
   Population population = initializer.initialize(1000, reproducer);
 
-  Individual result = evolution.run(population, 12345);
+  Individual result = evolution.run(population);
 
   double fitness = result.fitness();
 
