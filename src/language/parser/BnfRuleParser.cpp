@@ -61,7 +61,7 @@ Option BnfRuleParser::parseOption(Grammar& grammar, string& line) const {
   return option;
 }
 
-bool BnfRuleParser::parseNonTerminal(std::string& name, std::string& line) const {
+bool BnfRuleParser::parseNonTerminal(string& name, string& line) const {
   regex pattern("^<([a-zA-Z][a-zA-Z0-9-]*)>");
   smatch matches;
 
@@ -76,7 +76,7 @@ bool BnfRuleParser::parseNonTerminal(std::string& name, std::string& line) const
   return true;
 }
 
-bool BnfRuleParser::parseTerminal(std::string& value, std::string& line) const {
+bool BnfRuleParser::parseTerminal(string& value, string& line) const {
   regex pattern("^\"([a-zA-Z0-9| -!#$%&\\(\\)\\*\\+,-\\./:;<=>?@\\[\\\\\\]\\^_`{}~]+)\"");
   smatch matches;
 
@@ -91,7 +91,7 @@ bool BnfRuleParser::parseTerminal(std::string& value, std::string& line) const {
   return true;
 }
 
-bool BnfRuleParser::parseEquals(std::string& line) const {
+bool BnfRuleParser::parseEquals(string& line) const {
   regex pattern("^::=");
   smatch matches;
 
@@ -105,7 +105,7 @@ bool BnfRuleParser::parseEquals(std::string& line) const {
   return true;
 }
 
-bool BnfRuleParser::parsePipe(std::string& line) const {
+bool BnfRuleParser::parsePipe(string& line) const {
   regex pattern("^\\|");
   smatch matches;
 
