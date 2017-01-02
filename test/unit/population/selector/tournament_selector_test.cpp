@@ -28,7 +28,8 @@ TEST(tournament_selector_test, test_it_select_the_only_individual) {
   Individual individual = individualMock.get();
   auto sharedIndividual = make_shared<Individual>(individual);
 
-  Individuals individuals({sharedIndividual});
+  Individuals individuals;
+  individuals.addIndividual(sharedIndividual);
 
   TournamentSelector selector(move(numberGenerator));
 
@@ -61,7 +62,11 @@ TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_sel
   auto sharedIndividual3 = make_shared<Individual>(individual3);
   auto sharedIndividual4 = make_shared<Individual>(individual4);
 
-  Individuals individuals({sharedIndividual1, sharedIndividual2, sharedIndividual3, sharedIndividual4});
+  Individuals individuals;
+  individuals.addIndividual(sharedIndividual1);
+  individuals.addIndividual(sharedIndividual2);
+  individuals.addIndividual(sharedIndividual3);
+  individuals.addIndividual(sharedIndividual4);
 
   TournamentSelector selector(move(numberGenerator));
 

@@ -7,11 +7,6 @@ Individuals::Individuals() {
   //
 }
 
-Individuals::Individuals(initializer_list<shared_ptr<Individual>> individuals)
-    : individuals(individuals) {
-  //
-}
-
 void Individuals::addIndividual(shared_ptr<Individual> individual) {
   individuals.push_back(individual);
 }

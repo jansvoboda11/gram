@@ -30,7 +30,10 @@ TEST(individuals_test, test_it_recognizes_the_fittest_individual) {
   auto sharedIndividual2 = make_shared<Individual>(individual2);
   auto sharedIndividual3 = make_shared<Individual>(individual3);
 
-  Individuals individuals({sharedIndividual1, sharedIndividual2, sharedIndividual3});
+  Individuals individuals;
+  individuals.addIndividual(sharedIndividual1);
+  individuals.addIndividual(sharedIndividual2);
+  individuals.addIndividual(sharedIndividual3);
 
   ASSERT_EQ(individual2, individuals.bestIndividual());
 }

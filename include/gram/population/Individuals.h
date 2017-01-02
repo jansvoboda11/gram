@@ -13,7 +13,6 @@ namespace gram {
 class Individuals {
  public:
   Individuals();
-  Individuals(std::initializer_list<std::shared_ptr<Individual>> individuals);
   void addIndividual(std::shared_ptr<Individual> individual);
   Individual& bestIndividual() const;
   Individual& operator[](unsigned long index) const;
