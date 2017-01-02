@@ -1,6 +1,7 @@
 #include <gram/util/helper.h>
 
 #include <algorithm>
+#include <functional>
 
 using namespace std;
 
