@@ -4,7 +4,6 @@ set(SOURCE_FILES
         individual/fitness/ParabolaFitnessCalculator.cpp
         individual/operator/Crossover.cpp
         individual/operator/Mutation.cpp
-        individual/processor/Processor.cpp
         individual/Individual.cpp
         individual/Mapper.cpp
         individual/Phenotype.cpp
@@ -28,7 +27,6 @@ set(SOURCE_FILES
         ../include/gram/individual/fitness/ParabolaFitnessCalculator.h
         ../include/gram/individual/operator/Crossover.h
         ../include/gram/individual/operator/Mutation.h
-        ../include/gram/individual/processor/Processor.h
         ../include/gram/individual/Genotype.h
         ../include/gram/individual/Individual.h
         ../include/gram/individual/Mapper.h

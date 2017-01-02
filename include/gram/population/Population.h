@@ -4,7 +4,6 @@
 #include <memory>
 #include <vector>
 
-#include <gram/individual/processor/Processor.h>
 #include <gram/individual/Individual.h>
 #include <gram/population/reproducer/Reproducer.h>
 #include <gram/population/Individuals.h>
@@ -20,7 +19,7 @@ class Population {
   Individual& bestIndividual() const;
   Individual& operator[](unsigned long index) const;
   unsigned long size() const;
-  void process(const Processor& processor, int goal);
+  void evaluate(const Evaluator& evaluator);
   Population reproduce() const;
  private:
   Individuals individuals;

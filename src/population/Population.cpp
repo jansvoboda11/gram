@@ -24,9 +24,9 @@ unsigned long Population::size() const {
   return individuals.size();
 }
 
-void Population::process(const Processor& processor, int goal) {
+void Population::evaluate(const Evaluator& evaluator) {
   for (auto& individual : individuals) {
-    individual->process(processor, goal);
+    individual->evaluate(evaluator);
   }
 }
 

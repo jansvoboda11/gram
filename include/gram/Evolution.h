@@ -3,7 +3,6 @@
 
 #include <memory>
 
-#include <gram/individual/processor/Processor.h>
 #include <gram/population/Population.h>
 
 namespace gram {
@@ -12,10 +11,10 @@ namespace gram {
  */
 class Evolution {
  public:
-  Evolution(std::unique_ptr<Processor> processor);
-  Individual run(Population& population, int goal) const;
+  Evolution(std::unique_ptr<Evaluator> evaluator);
+  Individual run(Population& population) const;
  private:
-  std::unique_ptr<Processor> processor;
+  std::unique_ptr<Evaluator> evaluator;
 };
 }
 

@@ -10,7 +10,7 @@ namespace gram {
 class Evaluator {
  public:
   virtual ~Evaluator() = default;
-  virtual int evaluate(std::string program) const = 0;
+  virtual double evaluate(std::string program) const = 0;
 };
 }
 

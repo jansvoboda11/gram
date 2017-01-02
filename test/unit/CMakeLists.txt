@@ -6,7 +6,6 @@ add_executable(gram_unit_tests
         individual/fitness/parabola_fitness_calculator_test.cpp
         individual/operator/crossover_test.cpp
         individual/operator/mutation_test.cpp
-        individual/processor/processor_test.cpp
         individual/individual_test.cpp
         individual/mapper_test.cpp
         individual/phenotype_test.cpp

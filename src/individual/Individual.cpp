@@ -31,10 +31,10 @@ void Individual::mutate(const Mutation& mutation) {
   genotype = mutation.apply(genotype);
 }
 
-void Individual::process(const Processor& processor, int goal) {
+void Individual::evaluate(const Evaluator& evaluator) {
   string program = serialize();
 
-  double fitness = processor.process(program, goal);
+  double fitness = evaluator.evaluate(program);
 
   if (fitness < 0.0) {
     throw logic_error("Fitness cannot be negative.");

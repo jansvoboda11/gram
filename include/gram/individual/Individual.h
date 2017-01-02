@@ -3,8 +3,8 @@
 
 #include <gram/individual/operator/Crossover.h>
 #include <gram/individual/operator/Mutation.h>
-#include <gram/individual/processor/Processor.h>
 #include <gram/individual/Genotype.h>
+#include <gram/language/Evaluator.h>
 #include <gram/language/Language.h>
 
 namespace gram {
@@ -19,7 +19,7 @@ class Individual {
   virtual ~Individual() = default;
   Individual mateWith(const Individual& partner, const Crossover& crossover) const;
   void mutate(const Mutation& mutation);
-  void process(const Processor& processor, int goal);
+  void evaluate(const Evaluator& evaluator);
   std::string serialize() const;
   virtual double fitness() const;
   bool operator==(const Individual& individual) const;

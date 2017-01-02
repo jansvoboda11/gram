@@ -3,17 +3,17 @@
 using namespace gram;
 using namespace std;
 
-Evolution::Evolution(unique_ptr<Processor> processor) : processor(move(processor)) {
+Evolution::Evolution(unique_ptr<Evaluator> evaluator) : evaluator(move(evaluator)) {
   //
 }
 
-Individual Evolution::run(Population& population, int goal) const {
-  population.process(*processor, goal);
+Individual Evolution::run(Population& population) const {
+  population.evaluate(*evaluator);
 
   while (population.bestFitness() > 0.0) {
     population = population.reproduce();
 
-    population.process(*processor, goal);
+    population.evaluate(*evaluator);
   }
 
   return population.bestIndividual();
