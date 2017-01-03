@@ -8,18 +8,18 @@ using namespace gram;
 using namespace std;
 
 TEST(individual_test, test_it_mates_with_another_individual) {
-  Mock<Language> languageMock;
-  Fake(Dtor(languageMock));
-  When(Method(languageMock, expand)).AlwaysReturn(Phenotype());
-  auto language = shared_ptr<Language>(&languageMock.get());
+  Mock<Grammar> grammarMock;
+  Fake(Dtor(grammarMock));
+  When(Method(grammarMock, expand)).AlwaysReturn(Phenotype());
+  auto grammar = shared_ptr<Grammar>(&grammarMock.get());
 
   Genotype genotype1({0, 0, 0});
   Genotype genotype2({1, 1, 1});
   Genotype desiredGenotype({0, 0, 1});
 
-  Individual individual1(genotype1, language);
-  Individual individual2(genotype2, language);
-  Individual desiredChild(desiredGenotype, language);
+  Individual individual1(genotype1, grammar);
+  Individual individual2(genotype2, grammar);
+  Individual desiredChild(desiredGenotype, grammar);
 
   Mock<Crossover> crossover;
   When(Method(crossover, apply)).Return(Genotype({0, 0, 1}));
@@ -30,16 +30,16 @@ TEST(individual_test, test_it_mates_with_another_individual) {
 }
 
 TEST(individual_test, test_it_undergoes_mutation) {
-  Mock<Language> languageMock;
-  Fake(Dtor(languageMock));
-  When(Method(languageMock, expand)).Return(Phenotype());
-  auto language = shared_ptr<Language>(&languageMock.get());
+  Mock<Grammar> grammarMock;
+  Fake(Dtor(grammarMock));
+  When(Method(grammarMock, expand)).Return(Phenotype());
+  auto grammar = shared_ptr<Grammar>(&grammarMock.get());
 
   Genotype genotype({0, 0, 0});
   Genotype desiredGenotype({0, 1, 0});
 
-  Individual individual(genotype, language);
-  Individual desiredIndividual(desiredGenotype, language);
+  Individual individual(genotype, grammar);
+  Individual desiredIndividual(desiredGenotype, grammar);
 
   Mock<Mutation> mutation;
   When(Method(mutation, apply)).Return(Genotype({0, 1, 0}));
@@ -54,56 +54,56 @@ TEST(individual_test, test_it_serializes) {
   Phenotype phenotype;
   phenotype.addTerminal(terminal);
 
-  Mock<Language> languageMock;
-  Fake(Dtor(languageMock));
-  When(Method(languageMock, expand)).Return(phenotype);
-  auto language = shared_ptr<Language>(&languageMock.get());
+  Mock<Grammar> grammarMock;
+  Fake(Dtor(grammarMock));
+  When(Method(grammarMock, expand)).Return(phenotype);
+  auto grammar = shared_ptr<Grammar>(&grammarMock.get());
 
   Genotype genotype({0, 0, 0});
 
-  Individual individual(genotype, language);
+  Individual individual(genotype, grammar);
 
   ASSERT_EQ("hello", individual.serialize());
 }
 
 TEST(individual_test, test_it_does_not_return_fitness_if_not_calculated) {
-  Mock<Language> languageMock;
-  Fake(Dtor(languageMock));
-  When(Method(languageMock, expand)).Return(Phenotype());
-  auto language = shared_ptr<Language>(&languageMock.get());
+  Mock<Grammar> grammarMock;
+  Fake(Dtor(grammarMock));
+  When(Method(grammarMock, expand)).Return(Phenotype());
+  auto grammar = shared_ptr<Grammar>(&grammarMock.get());
 
   Genotype genotype({0});
 
-  Individual individual(genotype, language);
+  Individual individual(genotype, grammar);
 
   ASSERT_THROW(individual.fitness(), logic_error);
 }
 
 TEST(individual_test, test_it_recognizes_two_equal_objects) {
-  Mock<Language> languageMock;
-  Fake(Dtor(languageMock));
-  When(Method(languageMock, expand)).AlwaysReturn(Phenotype());
-  auto language = shared_ptr<Language>(&languageMock.get());
+  Mock<Grammar> grammarMock;
+  Fake(Dtor(grammarMock));
+  When(Method(grammarMock, expand)).AlwaysReturn(Phenotype());
+  auto grammar = shared_ptr<Grammar>(&grammarMock.get());
 
   Genotype genotype({1, 2, 3});
 
-  Individual individual1(genotype, language);
-  Individual individual2(genotype, language);
+  Individual individual1(genotype, grammar);
+  Individual individual2(genotype, grammar);
 
   ASSERT_TRUE(individual1 == individual2);
 }
 
 TEST(individual_test, test_it_recognizes_two_different_objects) {
-  Mock<Language> languageMock;
-  Fake(Dtor(languageMock));
-  When(Method(languageMock, expand)).AlwaysReturn(Phenotype());
-  auto language = shared_ptr<Language>(&languageMock.get());
+  Mock<Grammar> grammarMock;
+  Fake(Dtor(grammarMock));
+  When(Method(grammarMock, expand)).AlwaysReturn(Phenotype());
+  auto grammar = shared_ptr<Grammar>(&grammarMock.get());
 
   Genotype genotype1({1, 2, 3});
   Genotype genotype2({3, 2, 1});
 
-  Individual individual1(genotype1, language);
-  Individual individual2(genotype2, language);
+  Individual individual1(genotype1, grammar);
+  Individual individual2(genotype2, grammar);
 
   ASSERT_TRUE(individual1 != individual2);
 }

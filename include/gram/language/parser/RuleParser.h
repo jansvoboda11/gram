@@ -1,7 +1,7 @@
 #ifndef GRAM_LANGUAGE_RULE_PARSER
 #define GRAM_LANGUAGE_RULE_PARSER
 
-#include <gram/language/Grammar.h>
+#include <gram/language/ContextFreeGrammar.h>
 
 namespace gram {
 /**
@@ -9,7 +9,7 @@ namespace gram {
  */
 class RuleParser {
  public:
-  virtual Grammar parse(std::string input) const = 0;
+  virtual ContextFreeGrammar parse(std::string input) const = 0;
 };
 }
 

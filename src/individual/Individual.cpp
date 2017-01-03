@@ -4,18 +4,18 @@ using namespace gram;
 using namespace std;
 
 Individual::Individual(const Individual& individual)
-    : genotype(individual.genotype), language(individual.language), fitness_(individual.fitness_) {
+    : genotype(individual.genotype), grammar(individual.grammar), fitness_(individual.fitness_) {
   //
 }
 
-Individual::Individual(const Genotype& genotype, shared_ptr<Language> language)
-    : genotype(genotype), language(language), fitness_(-1.0) {
+Individual::Individual(const Genotype& genotype, shared_ptr<Grammar> grammar)
+    : genotype(genotype), grammar(grammar), fitness_(-1.0) {
   //
 }
 
 Individual& Individual::operator=(const Individual& individual) {
   genotype = individual.genotype;
-  language = individual.language;
+  grammar = individual.grammar;
   fitness_ = individual.fitness_;
 
   return *this;
@@ -24,7 +24,7 @@ Individual& Individual::operator=(const Individual& individual) {
 Individual Individual::mateWith(const Individual& partner, const Crossover& crossover) const {
   Genotype childGenotype = crossover.apply(genotype, partner.genotype);
 
-  return Individual(childGenotype, language);
+  return Individual(childGenotype, grammar);
 }
 
 void Individual::mutate(const Mutation& mutation) {
@@ -44,7 +44,7 @@ void Individual::evaluate(const Evaluator& evaluator) {
 }
 
 string Individual::serialize() const {
-  Phenotype phenotype = language->expand(genotype);
+  Phenotype phenotype = grammar->expand(genotype);
 
   return phenotype.serialize();
 }

@@ -5,8 +5,8 @@
 using namespace gram;
 using namespace std;
 
-Grammar BnfRuleParser::parse(string input) const {
-  Grammar grammar;
+ContextFreeGrammar BnfRuleParser::parse(string input) const {
+  ContextFreeGrammar grammar;
 
   vector<string> lines = explode(input, "\n");
 
@@ -17,7 +17,7 @@ Grammar BnfRuleParser::parse(string input) const {
   return grammar;
 }
 
-void BnfRuleParser::parseRule(Grammar& grammar, string& line) const {
+void BnfRuleParser::parseRule(ContextFreeGrammar& grammar, string& line) const {
   string name;
 
   line = left_trim(line);
@@ -38,7 +38,7 @@ void BnfRuleParser::parseRule(Grammar& grammar, string& line) const {
   }
 }
 
-Option BnfRuleParser::parseOption(Grammar& grammar, string& line) const {
+Option BnfRuleParser::parseOption(ContextFreeGrammar& grammar, string& line) const {
   Option option;
 
   while (line.length() > 0) {

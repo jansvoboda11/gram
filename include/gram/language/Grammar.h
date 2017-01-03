@@ -1,22 +1,17 @@
 #ifndef GRAM_LANGUAGE_GRAMMAR
 #define GRAM_LANGUAGE_GRAMMAR
 
-#include <gram/language/symbol/Option.h>
+#include <gram/individual/Genotype.h>
+#include <gram/individual/Phenotype.h>
 
 namespace gram {
 /**
- * Class.
+ * Interface.
  */
 class Grammar {
  public:
-  Grammar();
   virtual ~Grammar() = default;
-  void addRule(std::string name, std::shared_ptr<NonTerminal> rule);
-  std::shared_ptr<NonTerminal> ruleNamed(std::string name);
-  virtual std::shared_ptr<NonTerminal> startRule() const;
- private:
-  std::shared_ptr<NonTerminal> start;
-  std::unordered_map<std::string, std::shared_ptr<NonTerminal>> rules;
+  virtual Phenotype expand(const Genotype& genotype) = 0;
 };
 }
 

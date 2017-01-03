@@ -8,18 +8,18 @@ using namespace gram;
 using namespace std;
 
 TEST(random_initializer_test, test_it_initializes_individuals) {
-  Mock<Language> languageMock;
-  Fake(Dtor(languageMock));
-  When(Method(languageMock, expand)).AlwaysReturn(Phenotype());
-  auto language = shared_ptr<Language>(&languageMock.get());
+  Mock<Grammar> grammarMock;
+  Fake(Dtor(grammarMock));
+  When(Method(grammarMock, expand)).AlwaysReturn(Phenotype());
+  auto grammar = shared_ptr<Grammar>(&grammarMock.get());
 
   Genotype genotype1({0, 1, 2});
   Genotype genotype2({3, 0, 1});
   Genotype genotype3({2, 3, 0});
 
-  Individual individual1(genotype1, language);
-  Individual individual2(genotype2, language);
-  Individual individual3(genotype3, language);
+  Individual individual1(genotype1, grammar);
+  Individual individual2(genotype2, grammar);
+  Individual individual3(genotype3, grammar);
 
   Mock<NumberGenerator> numberGeneratorMock;
   Fake(Dtor(numberGeneratorMock));
@@ -33,7 +33,7 @@ TEST(random_initializer_test, test_it_initializes_individuals) {
   Fake(Dtor(reproducerMock));
   auto reproducer = shared_ptr<Reproducer>(&reproducerMock.get());
 
-  RandomInitializer initializer(move(numberGenerator), language, 3);
+  RandomInitializer initializer(move(numberGenerator), grammar, 3);
 
   Population population = initializer.initialize(3, reproducer);
 

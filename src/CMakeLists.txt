@@ -5,14 +5,12 @@ set(SOURCE_FILES
         individual/operator/Crossover.cpp
         individual/operator/Mutation.cpp
         individual/Individual.cpp
-        individual/Mapper.cpp
         individual/Phenotype.cpp
         language/parser/BnfRuleParser.cpp
         language/symbol/NonTerminal.cpp
         language/symbol/Option.cpp
         language/symbol/Terminal.cpp
-        language/Grammar.cpp
-        language/Language.cpp
+        language/ContextFreeGrammar.cpp
         population/initializer/RandomInitializer.cpp
         population/reproducer/Reproducer.cpp
         population/selector/TournamentSelector.cpp
@@ -29,16 +27,15 @@ set(SOURCE_FILES
         ../include/gram/individual/operator/Mutation.h
         ../include/gram/individual/Genotype.h
         ../include/gram/individual/Individual.h
-        ../include/gram/individual/Mapper.h
         ../include/gram/individual/Phenotype.h
         ../include/gram/language/parser/RuleParser.h
         ../include/gram/language/parser/BnfRuleParser.h
         ../include/gram/language/symbol/NonTerminal.h
         ../include/gram/language/symbol/Option.h
         ../include/gram/language/symbol/Terminal.h
+        ../include/gram/language/ContextFreeGrammar.h
         ../include/gram/language/Evaluator.h
         ../include/gram/language/Grammar.h
-        ../include/gram/language/Language.h
         ../include/gram/population/initializer/Initializer.h
         ../include/gram/population/initializer/RandomInitializer.h
         ../include/gram/population/reproducer/Reproducer.h

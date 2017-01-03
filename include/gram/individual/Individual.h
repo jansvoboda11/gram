@@ -5,7 +5,7 @@
 #include <gram/individual/operator/Mutation.h>
 #include <gram/individual/Genotype.h>
 #include <gram/language/Evaluator.h>
-#include <gram/language/Language.h>
+#include <gram/language/Grammar.h>
 
 namespace gram {
 /**
@@ -14,7 +14,7 @@ namespace gram {
 class Individual {
  public:
   Individual(const Individual& individual);
-  Individual(const Genotype& genotype, std::shared_ptr<Language> language);
+  Individual(const Genotype& genotype, std::shared_ptr<Grammar> grammar);
   Individual& operator=(const Individual& individual);
   virtual ~Individual() = default;
   Individual mateWith(const Individual& partner, const Crossover& crossover) const;
@@ -26,7 +26,7 @@ class Individual {
   bool operator!=(const Individual& individual) const;
  private:
   Genotype genotype;
-  std::shared_ptr<Language> language;
+  std::shared_ptr<Grammar> grammar;
   double fitness_;
 };
 }

@@ -13,12 +13,12 @@ namespace gram {
 class RandomInitializer : public Initializer {
  public:
   RandomInitializer(std::unique_ptr<NumberGenerator> numberGenerator,
-                    std::shared_ptr<Language> language,
+                    std::shared_ptr<Grammar> grammar,
                     unsigned long size);
   Population initialize(unsigned long count, std::shared_ptr<Reproducer> reproducer) const;
  private:
   std::unique_ptr<NumberGenerator> numberGenerator;
-  std::shared_ptr<Language> language;
+  std::shared_ptr<Grammar> grammar;
   unsigned long size;
 };
 }

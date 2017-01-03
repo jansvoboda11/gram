@@ -10,7 +10,7 @@ TEST(bnf_rule_parser_test, test_it_parses_rule_with_single_terminal) {
 
   string rules = "<rule> ::= \"hello\"";
 
-  Grammar grammar = parser.parse(rules);
+  ContextFreeGrammar grammar = parser.parse(rules);
 
   shared_ptr<NonTerminal> rule = grammar.startRule();
 
@@ -24,7 +24,7 @@ TEST(bnf_rule_parser_test, test_it_parses_rule_with_multiple_terminals) {
 
   string rules = "<rule> ::= \"hello\" \"world\"";
 
-  Grammar grammar = parser.parse(rules);
+  ContextFreeGrammar grammar = parser.parse(rules);
 
   shared_ptr<NonTerminal> rule = grammar.startRule();
 
@@ -40,7 +40,7 @@ TEST(bnf_rule_parser_test, test_it_parses_rule_with_multiple_terminal_options) {
 
   string rules = "<rule> ::= \"hello\" \"world\" | \"she said\"";
 
-  Grammar grammar = parser.parse(rules);
+  ContextFreeGrammar grammar = parser.parse(rules);
 
   shared_ptr<NonTerminal> rule = grammar.startRule();
 
@@ -60,7 +60,7 @@ TEST(bnf_rule_parser_test, test_it_parses_multiple_rules) {
       "<rule1> ::= <rule2>\n"
           "<rule2> ::= \"hello\"";
 
-  Grammar grammar = parser.parse(rules);
+  ContextFreeGrammar grammar = parser.parse(rules);
 
   shared_ptr<NonTerminal> rule1 = grammar.startRule();
   ASSERT_EQ(1, rule1->size());
@@ -79,7 +79,7 @@ TEST(bnf_rule_parser_test, test_it_parses_multiple_rules_with_both_terminals_and
       "<rule1> ::= <rule2> \"world\" | \"she\" \"said\"\n"
           "<rule2> ::= \"hello\"";
 
-  Grammar grammar = parser.parse(rules);
+  ContextFreeGrammar grammar = parser.parse(rules);
 
   shared_ptr<NonTerminal> rule1 = grammar.startRule();
   ASSERT_EQ(2, rule1->size());
@@ -108,7 +108,7 @@ TEST(bnf_rule_parser_test, test_it_handles_whitespace_correctly) {
           "<next> ::= \"hello\"\n"
           "\n";
 
-  Grammar grammar = parser.parse(rules);
+  ContextFreeGrammar grammar = parser.parse(rules);
 
   shared_ptr<NonTerminal> rule1 = grammar.startRule();
   ASSERT_EQ(2, rule1->size());
