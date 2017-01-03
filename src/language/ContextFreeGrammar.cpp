@@ -23,7 +23,7 @@ void ContextFreeGrammar::addRule(string name, shared_ptr<NonTerminal> rule) {
 }
 
 shared_ptr<NonTerminal> ContextFreeGrammar::ruleNamed(string name) {
-  shared_ptr<NonTerminal> &rule = rules[name];
+  shared_ptr<NonTerminal>& rule = rules[name];
 
   if (!rule) {
     rule = make_shared<NonTerminal>();

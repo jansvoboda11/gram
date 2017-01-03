@@ -22,9 +22,9 @@ class ContextFreeGrammar : public Grammar {
   std::shared_ptr<NonTerminal> start;
   std::unordered_map<std::string, std::shared_ptr<NonTerminal>> rules;
   Phenotype& recursiveExpand(Phenotype& phenotype,
-                            const NonTerminal& nonTerminal,
-                            const Genotype& genotype,
-                            unsigned long& geneCount) const;
+                             const NonTerminal& nonTerminal,
+                             const Genotype& genotype,
+                             unsigned long& geneCount) const;
 };
 }
 
