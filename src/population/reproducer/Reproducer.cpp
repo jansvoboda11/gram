@@ -16,15 +16,23 @@ Individuals Reproducer::reproduce(const Individuals& individuals) const {
   Individuals children;
   children.reserve(size);
 
-  for (unsigned long i = 0; i < size; i++) {
+  for (unsigned long i = 0; i < size - 2; i++) {
     Individual parent1 = selector->select(individuals);
     Individual parent2 = selector->select(individuals);
 
-    Individual child = parent1.mateWith(parent2, *crossover);
-    child.mutate(*mutation);
+    while (parent2 == parent1) {
+      parent2 = selector->select(individuals);
+    }
 
+    Individual child = parent1.mateWith(parent2, *crossover);
     children.addIndividual(make_shared<Individual>(child));
   }
+
+  Individual best = individuals.bestIndividual();
+  children.addIndividual(make_shared<Individual>(best));
+
+  best.mutate(*mutation);
+  children.addIndividual(make_shared<Individual>(best));
 
   return children;
 }
