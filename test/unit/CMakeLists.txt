@@ -4,7 +4,6 @@ include_directories(../../include)
 
 add_executable(gram_unit_tests
         individual/fitness/parabola_fitness_calculator_test.cpp
-        individual/operator/inverse_one_point_crossover_test.cpp
         individual/operator/mutation_test.cpp
         individual/operator/one_point_crossover_test.cpp
         individual/individual_test.cpp
