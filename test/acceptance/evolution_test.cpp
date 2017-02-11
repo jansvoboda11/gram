@@ -52,7 +52,7 @@ TEST(evolution_test, test_something) {
 
   auto selector = make_unique<TournamentSelector>(move(numberGenerator1));
   auto mutation = make_unique<Mutation>(move(boolGenerator), move(numberGenerator2));
-  auto crossover = make_unique<Crossover>(move(numberGenerator3));
+  auto crossover = make_unique<OnePointCrossover>(move(numberGenerator3));
   auto reproducer = make_shared<Reproducer>(move(selector), move(crossover), move(mutation));
 
   string grammarString =

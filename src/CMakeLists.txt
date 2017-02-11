@@ -2,8 +2,8 @@ include_directories(../include)
 
 set(SOURCE_FILES
         individual/fitness/ParabolaFitnessCalculator.cpp
-        individual/operator/Crossover.cpp
         individual/operator/Mutation.cpp
+        individual/operator/OnePointCrossover.cpp
         individual/Individual.cpp
         individual/Phenotype.cpp
         language/parser/BnfRuleParser.cpp
@@ -25,6 +25,7 @@ set(SOURCE_FILES
         ../include/gram/individual/fitness/ParabolaFitnessCalculator.h
         ../include/gram/individual/operator/Crossover.h
         ../include/gram/individual/operator/Mutation.h
+        ../include/gram/individual/operator/OnePointCrossover.h
         ../include/gram/individual/Genotype.h
         ../include/gram/individual/Individual.h
         ../include/gram/individual/Phenotype.h

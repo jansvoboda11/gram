@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <gtest/fakeit.hpp>
 
-#include <gram/individual/operator/Crossover.h>
+#include <gram/individual/operator/OnePointCrossover.h>
 
 using namespace fakeit;
 using namespace gram;
@@ -13,7 +13,7 @@ TEST(crossover_operator_test, test_it_combines_genotypes_of_the_same_length) {
   When(Method(mock, generate)).Return(2);
   auto numberGenerator = unique_ptr<NumberGenerator>(&mock.get());
 
-  Crossover crossover(move(numberGenerator));
+  OnePointCrossover crossover(move(numberGenerator));
 
   Genotype genotype1({0, 1, 2, 3, 4});
   Genotype genotype2({5, 6, 7, 8, 9});
@@ -27,7 +27,7 @@ TEST(crossover_operator_test, test_it_combines_short_and_long_genotypes) {
   When(Method(mock, generate)).Return(2);
   auto numberGenerator = unique_ptr<NumberGenerator>(&mock.get());
 
-  Crossover crossover(move(numberGenerator));
+  OnePointCrossover crossover(move(numberGenerator));
 
   Genotype genotype1({0, 1, 2});
   Genotype genotype2({5, 6, 7, 8, 9});
@@ -41,7 +41,7 @@ TEST(crossover_operator_test, test_it_combines_long_and_short_genotypes) {
   When(Method(mock, generate)).Return(2);
   auto numberGenerator = unique_ptr<NumberGenerator>(&mock.get());
 
-  Crossover crossover(move(numberGenerator));
+  OnePointCrossover crossover(move(numberGenerator));
 
   Genotype genotype1({0, 1, 2, 3, 4});
   Genotype genotype2({5, 6});
