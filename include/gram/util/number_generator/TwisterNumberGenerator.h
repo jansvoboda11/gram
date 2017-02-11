@@ -11,7 +11,7 @@ namespace gram {
  */
 class TwisterNumberGenerator : public NumberGenerator {
  public:
-  TwisterNumberGenerator(unsigned long max);
+  TwisterNumberGenerator(unsigned long max = std::numeric_limits<unsigned long>::max());
   unsigned long generate();
   std::vector<unsigned long> generateMany(unsigned long count);
  private:

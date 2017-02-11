@@ -43,12 +43,10 @@ class FakeEvaluator : public Evaluator {
 };
 
 TEST(evolution_test, test_something) {
-  unsigned long max = numeric_limits<unsigned long>::max();
-
-  unique_ptr<NumberGenerator> numberGenerator1 = make_unique<TwisterNumberGenerator>(max);
-  unique_ptr<NumberGenerator> numberGenerator2 = make_unique<TwisterNumberGenerator>(29);
-  unique_ptr<NumberGenerator> numberGenerator3 = make_unique<TwisterNumberGenerator>(11);
-  unique_ptr<NumberGenerator> numberGenerator4 = make_unique<TwisterNumberGenerator>(11);
+  unique_ptr<NumberGenerator> numberGenerator1 = make_unique<TwisterNumberGenerator>();
+  unique_ptr<NumberGenerator> numberGenerator2 = make_unique<TwisterNumberGenerator>();
+  unique_ptr<NumberGenerator> numberGenerator3 = make_unique<TwisterNumberGenerator>();
+  unique_ptr<NumberGenerator> numberGenerator4 = make_unique<TwisterNumberGenerator>();
   unique_ptr<BoolGenerator> boolGenerator = make_unique<TwisterBoolGenerator>(0.1);
 
   auto selector = make_unique<TournamentSelector>(move(numberGenerator1));
