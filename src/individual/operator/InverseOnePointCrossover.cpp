@@ -10,7 +10,7 @@ InverseOnePointCrossover::InverseOnePointCrossover(unique_ptr<NumberGenerator> n
 
 Genotype InverseOnePointCrossover::apply(const Genotype& first, const Genotype& second) const {
   unsigned long biggerSize = max(first.size(), second.size());
-  unsigned long point = numberGenerator->generate() % (biggerSize + 1);
+  unsigned long point = numberGenerator->generate() % biggerSize + 1;
 
   Genotype firstPart(first.begin(), first.begin() + min(first.size(), point));
   Genotype secondPart(second.begin(), second.begin() + min(second.size(), point));
