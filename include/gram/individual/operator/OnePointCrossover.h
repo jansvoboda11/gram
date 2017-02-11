@@ -4,7 +4,6 @@
 #include <memory>
 
 #include <gram/individual/operator/Crossover.h>
-#include <gram/individual/Genotype.h>
 #include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {

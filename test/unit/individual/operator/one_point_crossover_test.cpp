@@ -7,7 +7,7 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST(crossover_operator_test, test_it_combines_genotypes_of_the_same_length) {
+TEST(one_point_crossover_operator_test, test_it_combines_genotypes_of_the_same_length) {
   Mock<NumberGenerator> mock;
   Fake(Dtor(mock));
   When(Method(mock, generate)).Return(2);
@@ -21,7 +21,7 @@ TEST(crossover_operator_test, test_it_combines_genotypes_of_the_same_length) {
   ASSERT_EQ(Genotype({0, 1, 7, 8, 9}), crossover.apply(genotype1, genotype2));
 }
 
-TEST(crossover_operator_test, test_it_combines_short_and_long_genotypes) {
+TEST(one_point_crossover_operator_test, test_it_combines_short_and_long_genotypes) {
   Mock<NumberGenerator> mock;
   Fake(Dtor(mock));
   When(Method(mock, generate)).Return(2);
@@ -35,7 +35,7 @@ TEST(crossover_operator_test, test_it_combines_short_and_long_genotypes) {
   ASSERT_EQ(Genotype({0, 1, 7, 8, 9}), crossover.apply(genotype1, genotype2));
 }
 
-TEST(crossover_operator_test, test_it_combines_long_and_short_genotypes) {
+TEST(one_point_crossover_operator_test, test_it_combines_long_and_short_genotypes) {
   Mock<NumberGenerator> mock;
   Fake(Dtor(mock));
   When(Method(mock, generate)).Return(2);
