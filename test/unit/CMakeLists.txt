@@ -20,7 +20,6 @@ add_executable(gram_unit_tests
         population/individuals_test.cpp
         population/population_test.cpp
         util/helper_test.cpp
-        evolution_builder_test.cpp
         evolution_test.cpp
         )
 

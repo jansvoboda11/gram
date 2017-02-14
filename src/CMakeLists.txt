@@ -21,7 +21,6 @@ set(SOURCE_FILES
         util/number_generator/TwisterNumberGenerator.cpp
         util/helper.cpp
         Evolution.cpp
-        EvolutionBuilder.cpp
         ../include/gram/individual/fitness/FitnessCalculator.h
         ../include/gram/individual/fitness/ParabolaFitnessCalculator.h
         ../include/gram/individual/operator/Crossover.h
@@ -52,7 +51,6 @@ set(SOURCE_FILES
         ../include/gram/util/number_generator/TwisterNumberGenerator.h
         ../include/gram/util/helper.h
         ../include/gram/Evolution.h
-        ../include/gram/EvolutionBuilder.h
         )
 
 add_library(gram STATIC ${SOURCE_FILES})
