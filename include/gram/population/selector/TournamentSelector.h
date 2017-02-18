@@ -5,6 +5,7 @@
 
 #include <gram/individual/Individual.h>
 #include <gram/population/selector/IndividualSelector.h>
+#include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {
 /**

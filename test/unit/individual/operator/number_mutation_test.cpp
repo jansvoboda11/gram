@@ -1,13 +1,13 @@
 #include <gtest/gtest.h>
 #include <gtest/fakeit.hpp>
 
-#include <gram/individual/operator/Mutation.h>
+#include <gram/individual/operator/NumberMutation.h>
 
 using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST(mutation_operator_test, test_it_does_not_always_mutate) {
+TEST(number_mutation_operator_test, test_it_does_not_always_mutate) {
   Mock<BoolGenerator> boolGeneratorMock;
   Fake(Dtor(boolGeneratorMock));
   When(Method(boolGeneratorMock, generate)).Return(false);
@@ -17,14 +17,14 @@ TEST(mutation_operator_test, test_it_does_not_always_mutate) {
   Fake(Dtor(numberGeneratorMock));
   auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
-  Mutation mutation(move(boolGenerator), move(numberGenerator));
+  NumberMutation mutation(move(boolGenerator), move(numberGenerator));
 
   Genotype genotype({1, 1, 1});
 
   ASSERT_EQ(Genotype({1, 1, 1}), mutation.apply(genotype));
 }
 
-TEST(mutation_operator_test, test_it_mutates_one_gene) {
+TEST(number_mutation_operator_test, test_it_mutates_one_gene) {
   Mock<BoolGenerator> boolGeneratorMock;
   Fake(Dtor(boolGeneratorMock));
   When(Method(boolGeneratorMock, generate)).Return(true);
@@ -35,7 +35,7 @@ TEST(mutation_operator_test, test_it_mutates_one_gene) {
   When(Method(numberGeneratorMock, generate)).Return(2).Return(3);
   auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
-  Mutation mutation(move(boolGenerator), move(numberGenerator));
+  NumberMutation mutation(move(boolGenerator), move(numberGenerator));
 
   Genotype genotype({1, 1, 1});
 

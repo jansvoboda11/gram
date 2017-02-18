@@ -1,14 +1,14 @@
-#include <gram/individual/operator/Mutation.h>
+#include <gram/individual/operator/NumberMutation.h>
 
 using namespace gram;
 using namespace std;
 
-Mutation::Mutation(unique_ptr<BoolGenerator> boolGenerator, unique_ptr<NumberGenerator> numberGenerator)
+NumberMutation::NumberMutation(unique_ptr<BoolGenerator> boolGenerator, unique_ptr<NumberGenerator> numberGenerator)
     : boolGenerator(move(boolGenerator)), numberGenerator(move(numberGenerator)) {
   //
 }
 
-Genotype Mutation::apply(Genotype genotype) const {
+Genotype NumberMutation::apply(Genotype genotype) const {
   if (!boolGenerator->generate()) {
     return genotype;
   }

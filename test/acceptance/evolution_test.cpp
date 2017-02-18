@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <gtest/fakeit.hpp>
 
+#include <gram/individual/operator/NumberMutation.h>
 #include <gram/individual/operator/OnePointCrossover.h>
 #include <gram/language/parser/BnfRuleParser.h>
 #include <gram/population/initializer/RandomInitializer.h>
@@ -50,7 +51,7 @@ TEST(evolution_test, test_something) {
   unique_ptr<BoolGenerator> boolGenerator = make_unique<TwisterBoolGenerator>(0.1);
 
   auto selector = make_unique<TournamentSelector>(move(numberGenerator1));
-  auto mutation = make_unique<Mutation>(move(boolGenerator), move(numberGenerator2));
+  auto mutation = make_unique<NumberMutation>(move(boolGenerator), move(numberGenerator2));
   auto crossover = make_unique<OnePointCrossover>(move(numberGenerator3));
   auto reproducer = make_shared<Reproducer>(move(selector), move(crossover), move(mutation));
 
