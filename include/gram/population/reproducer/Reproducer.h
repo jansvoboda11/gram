@@ -4,8 +4,8 @@
 #include <memory>
 #include <vector>
 
-#include <gram/individual/operator/Crossover.h>
-#include <gram/individual/operator/Mutation.h>
+#include <gram/individual/crossover/Crossover.h>
+#include <gram/individual/mutation/Mutation.h>
 #include <gram/individual/Individual.h>
 #include <gram/population/selector/IndividualSelector.h>
 #include <gram/population/Individuals.h>

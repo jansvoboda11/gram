@@ -1,9 +1,9 @@
-#ifndef GRAM_INDIVIDUAL_NUMBER_MUTATION_OPERATOR
-#define GRAM_INDIVIDUAL_NUMBER_MUTATION_OPERATOR
+#ifndef GRAM_INDIVIDUAL_NUMBER_MUTATION
+#define GRAM_INDIVIDUAL_NUMBER_MUTATION
 
 #include <memory>
 
-#include <gram/individual/operator/Mutation.h>
+#include <gram/individual/mutation/Mutation.h>
 #include <gram/util/bool_generator/BoolGenerator.h>
 #include <gram/util/number_generator/NumberGenerator.h>
 
@@ -21,4 +21,4 @@ class NumberMutation : public Mutation {
 };
 }
 
-#endif // GRAM_INDIVIDUAL_NUMBER_MUTATION_OPERATOR
+#endif // GRAM_INDIVIDUAL_NUMBER_MUTATION

@@ -1,9 +1,9 @@
 include_directories(../include)
 
 set(SOURCE_FILES
+        individual/crossover/OnePointCrossover.cpp
         individual/fitness/ParabolaFitnessCalculator.cpp
-        individual/operator/NumberMutation.cpp
-        individual/operator/OnePointCrossover.cpp
+        individual/mutation/NumberMutation.cpp
         individual/Individual.cpp
         individual/Phenotype.cpp
         language/parser/BnfRuleParser.cpp
@@ -21,12 +21,12 @@ set(SOURCE_FILES
         util/number_generator/TwisterNumberGenerator.cpp
         util/helper.cpp
         Evolution.cpp
+        ../include/gram/individual/crossover/Crossover.h
+        ../include/gram/individual/crossover/OnePointCrossover.h
         ../include/gram/individual/fitness/FitnessCalculator.h
         ../include/gram/individual/fitness/ParabolaFitnessCalculator.h
-        ../include/gram/individual/operator/Crossover.h
-        ../include/gram/individual/operator/Mutation.h
-        ../include/gram/individual/operator/NumberMutation.h
-        ../include/gram/individual/operator/OnePointCrossover.h
+        ../include/gram/individual/mutation/Mutation.h
+        ../include/gram/individual/mutation/NumberMutation.h
         ../include/gram/individual/Genotype.h
         ../include/gram/individual/Individual.h
         ../include/gram/individual/Phenotype.h

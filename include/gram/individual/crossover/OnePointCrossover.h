@@ -1,9 +1,9 @@
-#ifndef GRAM_INDIVIDUAL_ONE_POINT_CROSSOVER_OPERATOR
-#define GRAM_INDIVIDUAL_ONE_POINT_CROSSOVER_OPERATOR
+#ifndef GRAM_INDIVIDUAL_ONE_POINT_CROSSOVER
+#define GRAM_INDIVIDUAL_ONE_POINT_CROSSOVER
 
 #include <memory>
 
-#include <gram/individual/operator/Crossover.h>
+#include <gram/individual/crossover/Crossover.h>
 #include <gram/util/number_generator/NumberGenerator.h>
 
 namespace gram {
@@ -19,4 +19,4 @@ class OnePointCrossover : public Crossover {
 };
 }
 
-#endif // GRAM_INDIVIDUAL_ONE_POINT_CROSSOVER_OPERATOR
+#endif // GRAM_INDIVIDUAL_ONE_POINT_CROSSOVER

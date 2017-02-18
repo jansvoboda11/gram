@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <gtest/fakeit.hpp>
 
-#include <gram/individual/operator/NumberMutation.h>
-#include <gram/individual/operator/OnePointCrossover.h>
+#include <gram/individual/crossover/OnePointCrossover.h>
+#include <gram/individual/mutation/NumberMutation.h>
 #include <gram/language/parser/BnfRuleParser.h>
 #include <gram/population/initializer/RandomInitializer.h>
 #include <gram/population/selector/TournamentSelector.h>

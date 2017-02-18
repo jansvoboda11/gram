@@ -1,4 +1,4 @@
-#include <gram/individual/operator/NumberMutation.h>
+#include <gram/individual/mutation/NumberMutation.h>
 
 using namespace gram;
 using namespace std;

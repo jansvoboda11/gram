@@ -1,13 +1,13 @@
 #include <gtest/gtest.h>
 #include <gtest/fakeit.hpp>
 
-#include <gram/individual/operator/NumberMutation.h>
+#include <gram/individual/mutation/NumberMutation.h>
 
 using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST(number_mutation_operator_test, test_it_does_not_always_mutate) {
+TEST(number_mutation_test, test_it_does_not_always_mutate) {
   Mock<BoolGenerator> boolGeneratorMock;
   Fake(Dtor(boolGeneratorMock));
   When(Method(boolGeneratorMock, generate)).Return(false);
@@ -24,7 +24,7 @@ TEST(number_mutation_operator_test, test_it_does_not_always_mutate) {
   ASSERT_EQ(Genotype({1, 1, 1}), mutation.apply(genotype));
 }
 
-TEST(number_mutation_operator_test, test_it_mutates_one_gene) {
+TEST(number_mutation_test, test_it_mutates_one_gene) {
   Mock<BoolGenerator> boolGeneratorMock;
   Fake(Dtor(boolGeneratorMock));
   When(Method(boolGeneratorMock, generate)).Return(true);

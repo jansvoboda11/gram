@@ -1,4 +1,4 @@
-#include <gram/individual/operator/OnePointCrossover.h>
+#include <gram/individual/crossover/OnePointCrossover.h>
 
 using namespace gram;
 using namespace std;

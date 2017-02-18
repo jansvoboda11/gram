@@ -1,5 +1,5 @@
-#ifndef GRAM_INDIVIDUAL_MUTATION_OPERATOR
-#define GRAM_INDIVIDUAL_MUTATION_OPERATOR
+#ifndef GRAM_INDIVIDUAL_MUTATION
+#define GRAM_INDIVIDUAL_MUTATION
 
 #include <gram/individual/Genotype.h>
 
@@ -13,4 +13,4 @@ class Mutation {
 };
 }
 
-#endif // GRAM_INDIVIDUAL_MUTATION_OPERATOR
+#endif // GRAM_INDIVIDUAL_MUTATION
