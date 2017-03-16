@@ -2,7 +2,6 @@ include_directories(../include)
 
 set(SOURCE_FILES
         individual/crossover/OnePointCrossover.cpp
-        individual/fitness/ParabolaFitnessCalculator.cpp
         individual/mutation/NumberMutation.cpp
         individual/Individual.cpp
         individual/Phenotype.cpp
@@ -23,8 +22,6 @@ set(SOURCE_FILES
         Evolution.cpp
         ../include/gram/individual/crossover/Crossover.h
         ../include/gram/individual/crossover/OnePointCrossover.h
-        ../include/gram/individual/fitness/FitnessCalculator.h
-        ../include/gram/individual/fitness/ParabolaFitnessCalculator.h
         ../include/gram/individual/mutation/Mutation.h
         ../include/gram/individual/mutation/NumberMutation.h
         ../include/gram/individual/Genotype.h
