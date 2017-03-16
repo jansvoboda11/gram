@@ -15,7 +15,7 @@ using namespace gram;
 using namespace std;
 
 class FakeEvaluator : public Evaluator {
-  double evaluate(string program) const {
+  double evaluate(string program) {
     return static_cast<double>(edit_distance(program, "1234"));
   }
 
