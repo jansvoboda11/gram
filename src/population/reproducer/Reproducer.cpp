@@ -16,7 +16,7 @@ Individuals Reproducer::reproduce(const Individuals& individuals) const {
   Individuals children;
   children.reserve(size);
 
-  for (unsigned long i = 0; i < size - 2; i++) {
+  for (unsigned long i = 0; i < size - 1; i++) {
     Individual parent1 = selector->select(individuals);
     Individual parent2 = selector->select(individuals);
 
@@ -31,8 +31,9 @@ Individuals Reproducer::reproduce(const Individuals& individuals) const {
   Individual best = individuals.bestIndividual();
   children.addIndividual(make_shared<Individual>(best));
 
-  best.mutate(*mutation);
-  children.addIndividual(make_shared<Individual>(best));
+  for (auto &child : children) {
+    child->mutate(*mutation);
+  }
 
   return children;
 }
