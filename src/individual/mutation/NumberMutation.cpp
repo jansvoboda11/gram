@@ -9,14 +9,11 @@ NumberMutation::NumberMutation(unique_ptr<BoolGenerator> boolGenerator, unique_p
 }
 
 Genotype NumberMutation::apply(Genotype genotype) const {
-  if (!boolGenerator->generate()) {
-    return genotype;
+  for (auto &gene : genotype) {
+    if (boolGenerator->generate()) {
+      gene = numberGenerator->generate();
+    }
   }
-
-  unsigned long index = numberGenerator->generate() % genotype.size();
-  unsigned long value = numberGenerator->generate();
-
-  genotype[index] = value;
 
   return genotype;
 }
