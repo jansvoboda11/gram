@@ -21,7 +21,7 @@ class Individual {
   virtual ~Individual() = default;
   Individual mateWith(const Individual& partner, const Crossover& crossover) const;
   void mutate(const Mutation& mutation);
-  void evaluate(const Evaluator& evaluator);
+  void evaluate(Evaluator& evaluator);
   std::string serialize() const;
   virtual double fitness() const;
   bool operator==(const Individual& individual) const;

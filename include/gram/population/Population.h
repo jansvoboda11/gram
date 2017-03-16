@@ -19,7 +19,7 @@ class Population {
   Individual& bestIndividual() const;
   Individual& operator[](unsigned long index) const;
   unsigned long size() const;
-  void evaluate(const Evaluator& evaluator);
+  void evaluate(Evaluator& evaluator);
   Population reproduce() const;
  private:
   Individuals individuals;

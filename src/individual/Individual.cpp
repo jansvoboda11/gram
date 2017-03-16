@@ -31,7 +31,7 @@ void Individual::mutate(const Mutation& mutation) {
   genotype = mutation.apply(genotype);
 }
 
-void Individual::evaluate(const Evaluator& evaluator) {
+void Individual::evaluate(Evaluator& evaluator) {
   string program = serialize();
 
   double fitness = evaluator.evaluate(program);

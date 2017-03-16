@@ -24,7 +24,7 @@ unsigned long Population::size() const {
   return individuals.size();
 }
 
-void Population::evaluate(const Evaluator& evaluator) {
+void Population::evaluate(Evaluator& evaluator) {
   for (auto& individual : individuals) {
     individual->evaluate(evaluator);
   }
