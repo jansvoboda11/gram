@@ -44,11 +44,11 @@ class FakeEvaluator : public Evaluator {
 };
 
 TEST(evolution_test, test_something) {
-  unique_ptr<NumberGenerator> numberGenerator1 = make_unique<TwisterNumberGenerator>();
-  unique_ptr<NumberGenerator> numberGenerator2 = make_unique<TwisterNumberGenerator>();
-  unique_ptr<NumberGenerator> numberGenerator3 = make_unique<TwisterNumberGenerator>();
-  unique_ptr<NumberGenerator> numberGenerator4 = make_unique<TwisterNumberGenerator>();
-  unique_ptr<BoolGenerator> boolGenerator = make_unique<TwisterBoolGenerator>(0.1);
+  auto numberGenerator1 = make_unique<TwisterNumberGenerator>();
+  auto numberGenerator2 = make_unique<TwisterNumberGenerator>();
+  auto numberGenerator3 = make_unique<TwisterNumberGenerator>();
+  auto numberGenerator4 = make_unique<TwisterNumberGenerator>();
+  auto boolGenerator = make_unique<TwisterBoolGenerator>(0.1);
 
   auto selector = make_unique<TournamentSelector>(move(numberGenerator1));
   auto mutation = make_unique<NumberMutation>(move(boolGenerator), move(numberGenerator2));
@@ -65,7 +65,7 @@ TEST(evolution_test, test_something) {
 
   RandomInitializer initializer(move(numberGenerator4), grammar, 16);
 
-  unique_ptr<Evaluator> evaluator = make_unique<FakeEvaluator>();
+  auto evaluator = make_unique<FakeEvaluator>();
 
   Evolution evolution(move(evaluator));
 
