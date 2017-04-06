@@ -15,9 +15,15 @@ using namespace gram;
 using namespace std;
 
 class FakeEvaluator : public Evaluator {
+ public:
+  FakeEvaluator(string desired) : desired(desired) {}
+
   double evaluate(string program) {
-    return static_cast<double>(edit_distance(program, "1234"));
+    return static_cast<double>(edit_distance(program, desired));
   }
+
+ private:
+  string desired;
 
   unsigned long edit_distance(const string& s1, const string& s2) const {
     const unsigned long len1 = s1.size(), len2 = s2.size();
@@ -65,7 +71,7 @@ TEST(evolution_test, test_something) {
 
   RandomInitializer initializer(move(numberGenerator4), grammar, 16);
 
-  auto evaluator = make_unique<FakeEvaluator>();
+  auto evaluator = make_unique<FakeEvaluator>("1234");
 
   Evolution evolution(move(evaluator));
 
