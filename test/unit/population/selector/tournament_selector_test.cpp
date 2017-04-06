@@ -14,7 +14,7 @@ TEST(tournament_selector_test, test_it_handles_empty_population) {
 
   Individuals individuals;
 
-  TournamentSelector selector(move(numberGenerator));
+  TournamentSelector selector(2, move(numberGenerator));
 
   ASSERT_THROW(selector.select(individuals), logic_error);
 }
@@ -31,7 +31,7 @@ TEST(tournament_selector_test, test_it_select_the_only_individual) {
   Individuals individuals;
   individuals.addIndividual(sharedIndividual);
 
-  TournamentSelector selector(move(numberGenerator));
+  TournamentSelector selector(2, move(numberGenerator));
 
   ASSERT_EQ(individual, selector.select(individuals));
 }
@@ -68,7 +68,7 @@ TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_sel
   individuals.addIndividual(sharedIndividual3);
   individuals.addIndividual(sharedIndividual4);
 
-  TournamentSelector selector(move(numberGenerator));
+  TournamentSelector selector(2, move(numberGenerator));
 
   ASSERT_EQ(individual2, selector.select(individuals));
 }

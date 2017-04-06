@@ -3,8 +3,8 @@
 using namespace gram;
 using namespace std;
 
-TournamentSelector::TournamentSelector(unique_ptr<NumberGenerator> numberGenerator)
-    : numberGenerator(move(numberGenerator)) {
+TournamentSelector::TournamentSelector(unsigned long tournamentSize, unique_ptr<NumberGenerator> numberGenerator)
+    : tournamentSize(tournamentSize), numberGenerator(move(numberGenerator)) {
   //
 }
 
@@ -17,12 +17,10 @@ Individual TournamentSelector::select(const Individuals& individuals) const {
     return individuals[0];
   }
 
-  unsigned long count = max(individuals.size() / 50, 1UL);
-
   Individuals candidates;
-  candidates.reserve(count);
+  candidates.reserve(tournamentSize);
 
-  for (unsigned long i = 0; i < count; i++) {
+  for (unsigned long i = 0; i < tournamentSize; i++) {
     unsigned long index = numberGenerator->generate() % individuals.size();
     Individual candidate = individuals[index];
 
