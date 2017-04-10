@@ -14,17 +14,19 @@ namespace gram {
  */
 class Population {
  public:
-  Population(Individuals individuals, std::shared_ptr<Reproducer> reproducer);
+  Population(Individuals individuals, std::shared_ptr<Reproducer> reproducer, unsigned long number);
   double bestFitness() const;
   Individual& bestIndividual() const;
   Individual& operator[](unsigned long index) const;
   unsigned long size() const;
+  unsigned long number() const;
   void evaluate(Evaluator& evaluator);
   Population reproduce() const;
   virtual ~Population() = default;
  private:
   Individuals individuals;
   std::shared_ptr<Reproducer> reproducer;
+  unsigned long _number;
 };
 }
 

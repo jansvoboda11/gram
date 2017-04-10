@@ -20,5 +20,5 @@ Population RandomInitializer::initialize(unsigned long count, shared_ptr<Reprodu
     individuals.addIndividual(make_shared<Individual>(genotype, grammar));
   }
 
-  return Population(individuals, reproducer);
+  return Population(individuals, reproducer, 0);
 }

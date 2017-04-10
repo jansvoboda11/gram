@@ -3,8 +3,8 @@
 using namespace gram;
 using namespace std;
 
-Population::Population(Individuals individuals, shared_ptr<Reproducer> reproducer)
-    : individuals(individuals), reproducer(reproducer) {
+Population::Population(Individuals individuals, shared_ptr<Reproducer> reproducer, unsigned long number)
+    : individuals(individuals), reproducer(reproducer), _number(number) {
   //
 }
 
@@ -24,6 +24,10 @@ unsigned long Population::size() const {
   return individuals.size();
 }
 
+unsigned long Population::number() const {
+  return _number;
+}
+
 void Population::evaluate(Evaluator& evaluator) {
   for (auto& individual : individuals) {
     individual->evaluate(evaluator);
@@ -33,5 +37,7 @@ void Population::evaluate(Evaluator& evaluator) {
 Population Population::reproduce() const {
   Individuals successors = reproducer->reproduce(individuals);
 
-  return Population(successors, reproducer);
+  unsigned long newNumber = _number + 1;
+
+  return Population(successors, reproducer, newNumber);
 }
