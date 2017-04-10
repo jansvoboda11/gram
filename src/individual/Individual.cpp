@@ -4,19 +4,18 @@ using namespace gram;
 using namespace std;
 
 Individual::Individual(const Individual& individual)
-    : genotype(individual.genotype), grammar(individual.grammar), fitness_(individual.fitness_) {
+    : genotype(individual.genotype), fitness(individual.fitness) {
   //
 }
 
-Individual::Individual(const Genotype& genotype, shared_ptr<Grammar> grammar)
-    : genotype(genotype), grammar(grammar), fitness_(-1.0) {
+Individual::Individual(const Genotype& genotype)
+    : genotype(genotype), fitness(-1.0) {
   //
 }
 
 Individual& Individual::operator=(const Individual& individual) {
   genotype = individual.genotype;
-  grammar = individual.grammar;
-  fitness_ = individual.fitness_;
+  fitness = individual.fitness;
 
   return *this;
 }
@@ -24,7 +23,7 @@ Individual& Individual::operator=(const Individual& individual) {
 Individual Individual::mateWith(const Individual& partner, const Crossover& crossover) const {
   Genotype childGenotype = crossover.apply(genotype, partner.genotype);
 
-  return Individual(childGenotype, grammar);
+  return Individual(childGenotype);
 }
 
 void Individual::mutate(const Mutation& mutation) {
@@ -32,29 +31,21 @@ void Individual::mutate(const Mutation& mutation) {
 }
 
 void Individual::evaluate(Evaluator& evaluator) {
-  string program = serialize();
-
-  double fitness = evaluator.evaluate(program);
-
-  if (fitness < 0.0) {
-    throw logic_error("Fitness cannot be negative.");
-  }
-
-  fitness_ = fitness;
+  fitness = evaluator.evaluate(*this);
 }
 
-string Individual::serialize() const {
-  Phenotype phenotype = grammar->expand(genotype);
+std::string Individual::serialize(Mapper& mapper) const {
+  Phenotype phenotype = mapper.map(genotype);
 
   return phenotype.serialize();
 }
 
-double Individual::fitness() const {
-  if (fitness_ < 0.0) {
+double Individual::getFitness() const {
+  if (fitness < 0.0) {
     throw logic_error("Fitness of the individual has not been calculated yet.");
   }
 
-  return fitness_;
+  return fitness;
 }
 
 bool Individual::operator==(const Individual& individual) const {

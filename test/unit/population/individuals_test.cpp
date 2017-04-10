@@ -18,9 +18,9 @@ TEST_CASE("individuals choose the best individual", "[individuals]") {
   Mock<Individual> individual2Mock;
   Mock<Individual> individual3Mock;
 
-  When(Method(individual1Mock, fitness)).AlwaysReturn(1.0);
-  When(Method(individual2Mock, fitness)).AlwaysReturn(0.5);
-  When(Method(individual3Mock, fitness)).AlwaysReturn(2.0);
+  When(Method(individual1Mock, getFitness)).AlwaysReturn(1.0);
+  When(Method(individual2Mock, getFitness)).AlwaysReturn(0.5);
+  When(Method(individual3Mock, getFitness)).AlwaysReturn(2.0);
 
   Individual individual1 = individual1Mock.get();
   Individual individual2 = individual2Mock.get();

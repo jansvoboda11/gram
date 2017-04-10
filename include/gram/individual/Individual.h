@@ -7,29 +7,30 @@
 #include <gram/individual/mutation/Mutation.h>
 #include <gram/individual/Genotype.h>
 #include <gram/language/Evaluator.h>
-#include <gram/language/Grammar.h>
+#include <gram/language/Mapper.h>
 
 namespace gram {
+// Forward declaration.
+class Evaluator;
 /**
  * Class.
  */
 class Individual {
  public:
   Individual(const Individual& individual);
-  Individual(const Genotype& genotype, std::shared_ptr<Grammar> grammar);
+  Individual(const Genotype& genotype);
   Individual& operator=(const Individual& individual);
   virtual ~Individual() = default;
   Individual mateWith(const Individual& partner, const Crossover& crossover) const;
   void mutate(const Mutation& mutation);
   void evaluate(Evaluator& evaluator);
-  std::string serialize() const;
-  virtual double fitness() const;
+  std::string serialize(Mapper& mapper) const;
+  virtual double getFitness() const;
   bool operator==(const Individual& individual) const;
   bool operator!=(const Individual& individual) const;
  private:
   Genotype genotype;
-  std::shared_ptr<Grammar> grammar;
-  double fitness_;
+  double fitness;
 };
 }
 

@@ -8,18 +8,13 @@ using namespace gram;
 using namespace std;
 
 TEST_CASE("random initializer initializes new population", "[random_initializer]") {
-  Mock<Grammar> grammarMock;
-  Fake(Dtor(grammarMock));
-  When(Method(grammarMock, expand)).AlwaysReturn(Phenotype());
-  auto grammar = shared_ptr<Grammar>(&grammarMock.get());
-
   Genotype genotype1({0, 1, 2});
   Genotype genotype2({3, 0, 1});
   Genotype genotype3({2, 3, 0});
 
-  Individual individual1(genotype1, grammar);
-  Individual individual2(genotype2, grammar);
-  Individual individual3(genotype3, grammar);
+  Individual individual1(genotype1);
+  Individual individual2(genotype2);
+  Individual individual3(genotype3);
 
   Mock<NumberGenerator> numberGeneratorMock;
   Fake(Dtor(numberGeneratorMock));
@@ -33,7 +28,7 @@ TEST_CASE("random initializer initializes new population", "[random_initializer]
   Fake(Dtor(reproducerMock));
   auto reproducer = shared_ptr<Reproducer>(&reproducerMock.get());
 
-  RandomInitializer initializer(move(numberGenerator), grammar, 3);
+  RandomInitializer initializer(move(numberGenerator), 3);
 
   Population population = initializer.initialize(3, reproducer);
 

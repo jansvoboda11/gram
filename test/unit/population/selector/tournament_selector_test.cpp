@@ -47,10 +47,10 @@ TEST_CASE("tournament selector chooses the best individual from randomly selecte
   Mock<Individual> individual3Mock;
   Mock<Individual> individual4Mock;
 
-  When(Method(individual1Mock, fitness)).AlwaysReturn(0.0);
-  When(Method(individual2Mock, fitness)).AlwaysReturn(1.0);
-  When(Method(individual3Mock, fitness)).AlwaysReturn(2.0);
-  When(Method(individual4Mock, fitness)).AlwaysReturn(3.0);
+  When(Method(individual1Mock, getFitness)).AlwaysReturn(0.0);
+  When(Method(individual2Mock, getFitness)).AlwaysReturn(1.0);
+  When(Method(individual3Mock, getFitness)).AlwaysReturn(2.0);
+  When(Method(individual4Mock, getFitness)).AlwaysReturn(3.0);
 
   Individual individual1 = individual1Mock.get();
   Individual individual2 = individual2Mock.get();

@@ -19,7 +19,7 @@ Individual& Individuals::bestIndividual() const {
   shared_ptr<Individual> bestIndividual = individuals[0];
 
   for (auto& individual : individuals) {
-    if (individual->fitness() < bestIndividual->fitness()) {
+    if (individual->getFitness() < bestIndividual->getFitness()) {
       bestIndividual = individual;
     }
   }

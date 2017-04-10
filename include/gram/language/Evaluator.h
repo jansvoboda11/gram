@@ -1,16 +1,18 @@
 #ifndef GRAM_LANGUAGE_EVALUATOR
 #define GRAM_LANGUAGE_EVALUATOR
 
-#include <string>
+#include <gram/individual/Individual.h>
 
 namespace gram {
+// Forward declaration.
+class Individual;
 /**
  * Class.
  */
 class Evaluator {
  public:
   virtual ~Evaluator() = default;
-  virtual double evaluate(std::string program) = 0;
+  virtual double evaluate(Individual& individual) = 0;
 };
 }
 

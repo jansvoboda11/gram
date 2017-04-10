@@ -3,7 +3,7 @@
 using namespace gram;
 using namespace std;
 
-StreamLogger::StreamLogger(ostream& stream) : stream(stream) {
+StreamLogger::StreamLogger(ostream& stream, shared_ptr<Mapper> mapper) : stream(stream), mapper(mapper) {
   //
 }
 

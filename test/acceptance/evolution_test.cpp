@@ -4,6 +4,7 @@
 #include <gram/individual/crossover/OnePointCrossover.h>
 #include <gram/individual/mutation/NumberMutation.h>
 #include <gram/language/parser/BnfRuleParser.h>
+#include <gram/language/ContextFreeMapper.h>
 #include <gram/population/initializer/RandomInitializer.h>
 #include <gram/population/selector/TournamentSelector.h>
 #include <gram/util/bool_generator/TwisterBoolGenerator.h>
@@ -17,13 +18,16 @@ using namespace std;
 
 class FakeEvaluator : public Evaluator {
  public:
-  FakeEvaluator(string desired) : desired(desired) {}
+  FakeEvaluator(shared_ptr<ContextFreeMapper> mapper, string desired) : mapper(mapper), desired(desired) {}
 
-  double evaluate(string program) {
+  double evaluate(Individual& individual) {
+    string program = individual.serialize(*mapper.get());
+
     return static_cast<double>(edit_distance(program, desired));
   }
 
  private:
+  shared_ptr<ContextFreeMapper> mapper;
   string desired;
 
   unsigned long edit_distance(const string& s1, const string& s2) const {
@@ -69,10 +73,11 @@ TEST_CASE("evolution_test") {
   BnfRuleParser parser;
 
   auto grammar = make_shared<ContextFreeGrammar>(parser.parse(grammarString));
+  auto mapper = make_shared<ContextFreeMapper>(grammar, 1);
 
-  RandomInitializer initializer(move(numberGenerator4), grammar, 16);
+  RandomInitializer initializer(move(numberGenerator4), 16);
 
-  auto evaluator = make_unique<FakeEvaluator>("1234");
+  auto evaluator = make_unique<FakeEvaluator>(mapper, "1234");
   auto logger = make_unique<NullLogger>();
 
   Evolution evolution(move(evaluator), move(logger));
@@ -81,7 +86,6 @@ TEST_CASE("evolution_test") {
 
   Individual result = evolution.run(population);
 
-  double fitness = result.fitness();
-
-  REQUIRE(fitness == 0.0);
+  REQUIRE(result.getFitness() == 0.0);
+  REQUIRE(result.serialize(*mapper) == "1234");
 }

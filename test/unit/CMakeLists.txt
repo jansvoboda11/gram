@@ -12,6 +12,7 @@ add_executable(gram-unit-tests
         language/symbol/option_test.cpp
         language/symbol/terminal_test.cpp
         language/context_free_grammar_test.cpp
+        language/context_free_mapper_test.cpp
         population/initializer/random_initializer_test.cpp
         population/reproducer/reproducer_test.cpp
         population/selector/roulette_selector_test.cpp

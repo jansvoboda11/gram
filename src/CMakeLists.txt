@@ -10,6 +10,7 @@ set(SOURCE_FILES
         language/symbol/Option.cpp
         language/symbol/Terminal.cpp
         language/ContextFreeGrammar.cpp
+        language/ContextFreeMapper.cpp
         population/initializer/RandomInitializer.cpp
         population/reproducer/Reproducer.cpp
         population/selector/RouletteSelector.cpp
@@ -35,8 +36,9 @@ set(SOURCE_FILES
         ../include/gram/language/symbol/Option.h
         ../include/gram/language/symbol/Terminal.h
         ../include/gram/language/ContextFreeGrammar.h
+        ../include/gram/language/ContextFreeMapper.h
         ../include/gram/language/Evaluator.h
-        ../include/gram/language/Grammar.h
+        ../include/gram/language/Mapper.h
         ../include/gram/population/initializer/Initializer.h
         ../include/gram/population/initializer/RandomInitializer.h
         ../include/gram/population/reproducer/Reproducer.h

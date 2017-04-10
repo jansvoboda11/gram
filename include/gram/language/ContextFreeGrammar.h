@@ -4,27 +4,22 @@
 #include <memory>
 
 #include <gram/language/symbol/Option.h>
-#include <gram/language/Grammar.h>
+#include <gram/language/Mapper.h>
 
 namespace gram {
 /**
  * Class.
  */
-class ContextFreeGrammar : public Grammar {
+class ContextFreeGrammar {
  public:
   ContextFreeGrammar();
   virtual ~ContextFreeGrammar() = default;
-  Phenotype expand(const Genotype& genotype);
   void addRule(std::string name, std::shared_ptr<NonTerminal> rule);
   std::shared_ptr<NonTerminal> ruleNamed(std::string name);
   virtual std::shared_ptr<NonTerminal> startRule() const;
  private:
   std::shared_ptr<NonTerminal> start;
   std::unordered_map<std::string, std::shared_ptr<NonTerminal>> rules;
-  Phenotype& recursiveExpand(Phenotype& phenotype,
-                             const NonTerminal& nonTerminal,
-                             const Genotype& genotype,
-                             unsigned long& geneCount) const;
 };
 }
 

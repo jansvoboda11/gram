@@ -9,7 +9,7 @@ Population::Population(Individuals individuals, shared_ptr<Reproducer> reproduce
 }
 
 double Population::bestFitness() const {
-  return bestIndividual().fitness();
+  return bestIndividual().getFitness();
 }
 
 Individual& Population::bestIndividual() const {
