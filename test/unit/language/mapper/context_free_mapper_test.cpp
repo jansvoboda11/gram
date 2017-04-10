@@ -2,10 +2,11 @@
 
 #include <gram/language/mapper/ContextFreeMapper.h>
 
+using namespace Catch::Matchers;
 using namespace gram;
 using namespace std;
 
-TEST_CASE("context-free grammar expands a terminal", "[context-free_grammar]") {
+TEST_CASE("context-free mapper maps a terminal", "[context-free_mapper]") {
   Terminal terminal("test");
   auto option = make_shared<Option>();
   auto startSymbol = make_shared<NonTerminal>();
@@ -26,7 +27,7 @@ TEST_CASE("context-free grammar expands a terminal", "[context-free_grammar]") {
   REQUIRE(mapper.map(genotype) == expectedPhenotype);
 }
 
-TEST_CASE("context-free grammar expands a non-terminal", "[context-free_grammar]") {
+TEST_CASE("context-free mapper maps a non-terminal", "[context-free_mapper]") {
   Terminal terminal1("first");
   Terminal terminal2("second");
 
@@ -54,7 +55,7 @@ TEST_CASE("context-free grammar expands a non-terminal", "[context-free_grammar]
   REQUIRE(mapper.map(genotype) == expectedPhenotype);
 }
 
-TEST_CASE("context-free grammar expands linear grammar", "[context-free_grammar]") {
+TEST_CASE("context-free mapper maps linear grammar", "[context-free_mapper]") {
   Terminal digit0("0");
   Terminal digit1("1");
   Terminal digit2("2");
@@ -121,4 +122,42 @@ TEST_CASE("context-free grammar expands linear grammar", "[context-free_grammar]
   Phenotype phenotype = mapper.map(Genotype({7, 16, 11, 25, 0, 39}));
 
   REQUIRE(phenotype.serialize() == "659");
+}
+
+TEST_CASE("context-free mapper wraps the genotype", "[context-free_mapper]") {
+  auto rule1 = make_shared<NonTerminal>();
+  auto rule2 = make_shared<NonTerminal>();
+
+  auto option1 = make_shared<Option>();
+  option1->addNonTerminal(rule2);
+  rule1->addOption(option1);
+
+  auto option2 = make_shared<Option>();
+  option2->addTerminal(Terminal("hello"));
+  rule2->addOption(option2);
+
+  auto grammar = make_shared<ContextFreeGrammar>();
+  grammar->addRule("rule1", rule1);
+
+  ContextFreeMapper mapper(grammar, 1);
+
+  Phenotype phenotype = mapper.map(Genotype({0}));
+
+  REQUIRE(phenotype.serialize() == "hello");
+}
+
+TEST_CASE("context-free mapper respects wrapping limit", "[context-free_mapper]") {
+  auto rule = make_shared<NonTerminal>();
+
+  auto option = make_shared<Option>();
+  option->addNonTerminal(rule);
+  rule->addOption(option);
+
+  auto grammar = make_shared<ContextFreeGrammar>();
+  grammar->addRule("rule", rule);
+
+  ContextFreeMapper mapper(grammar, 2);
+
+  REQUIRE_THROWS_WITH(mapper.map(Genotype({0, 0, 0})),
+                      Contains("Wrapping limit exceeded during genotype-phenotype mapping."));
 }

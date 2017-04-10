@@ -18,7 +18,9 @@ class ContextFreeMapper : public Mapper {
   Phenotype& recursiveMap(Phenotype& phenotype,
                           const NonTerminal& nonTerminal,
                           const Genotype& genotype,
-                          unsigned long& geneCount);
+                          unsigned long& geneNumber);
+  bool isWrappingEvent(const Genotype& genotype, unsigned long geneNumber);
+  bool exceededWrappingLimit(const Genotype& genotype, unsigned long geneNumber);
 };
 }
 

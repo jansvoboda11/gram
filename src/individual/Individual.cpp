@@ -31,7 +31,13 @@ void Individual::mutate(const Mutation& mutation) {
 }
 
 void Individual::evaluate(Evaluator& evaluator) {
-  fitness = evaluator.evaluate(*this);
+  try {
+    fitness = evaluator.evaluate(*this);
+  } catch (logic_error error) {
+    // todo: mark mapping failure
+
+    fitness = 1000.0;
+  }
 }
 
 std::string Individual::serialize(Mapper& mapper) const {

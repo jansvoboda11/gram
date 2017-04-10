@@ -10,21 +10,23 @@ ContextFreeMapper::ContextFreeMapper(shared_ptr<ContextFreeGrammar> grammar, uns
 
 Phenotype ContextFreeMapper::map(const Genotype& genotype) {
   Phenotype phenotype;
-  unsigned long geneCount = 0;
+  unsigned long geneNumber = 0;
 
-  return recursiveMap(phenotype, *grammar->startRule(), genotype, geneCount);
+  return recursiveMap(phenotype, *grammar->startRule(), genotype, geneNumber);
 }
 
 Phenotype& ContextFreeMapper::recursiveMap(Phenotype& phenotype,
                                            const NonTerminal& nonTerminal,
                                            const Genotype& genotype,
-                                           unsigned long& geneCount) {
-  // todo: handle infinite genotype more gracefully
-  if (geneCount > 100) {
-    return phenotype;
+                                           unsigned long& geneNumber) {
+  if (isWrappingEvent(genotype, geneNumber) && exceededWrappingLimit(genotype, geneNumber)) {
+    throw logic_error("Wrapping limit exceeded during genotype-phenotype mapping. ("
+                      "limit: " + to_string(wrappingLimit) + ", "
+                      "derivation: " + to_string(geneNumber + 1) + ", "
+                      "genotype length: " + to_string(genotype.size()) + ")");
   }
 
-  unsigned long geneIndex = geneCount % genotype.size();
+  unsigned long geneIndex = geneNumber % genotype.size();
   unsigned long gene = genotype[geneIndex] % nonTerminal.size();
 
   Option option = nonTerminal.optionAt(gene);
@@ -33,11 +35,21 @@ Phenotype& ContextFreeMapper::recursiveMap(Phenotype& phenotype,
     if (option.hasTerminalAt(i)) {
       phenotype.addTerminal(option.terminalAt(i));
     } else {
-      geneCount += 1;
+      geneNumber += 1;
 
-      recursiveMap(phenotype, option.nonTerminalAt(i), genotype, geneCount);
+      recursiveMap(phenotype, option.nonTerminalAt(i), genotype, geneNumber);
     }
   }
 
   return phenotype;
+}
+
+bool ContextFreeMapper::isWrappingEvent(const Genotype& genotype, unsigned long geneNumber) {
+  unsigned long geneIndex = geneNumber % genotype.size();
+
+  return geneIndex == 0 && geneNumber != 0;
+}
+
+bool ContextFreeMapper::exceededWrappingLimit(const Genotype& genotype, unsigned long geneNumber) {
+  return (geneNumber / genotype.size()) > wrappingLimit;
 }
