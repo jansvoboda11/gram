@@ -29,6 +29,8 @@ unsigned long Population::number() const {
 }
 
 void Population::evaluate(Evaluator& evaluator) {
+  // todo: create EvaluationDrivers for serial and parallel evaluation
+
   for (auto& individual : individuals) {
     individual->evaluate(evaluator);
   }
