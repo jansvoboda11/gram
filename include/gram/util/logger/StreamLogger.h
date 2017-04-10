@@ -1,7 +1,7 @@
 #ifndef GRAM_UTIL_STREAM_LOGGER
 #define GRAM_UTIL_STREAM_LOGGER
 
-#include <gram/language/Mapper.h>
+#include <gram/language/mapper/Mapper.h>
 #include <gram/util/logger/Logger.h>
 
 #include <memory>

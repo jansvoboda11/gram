@@ -4,7 +4,7 @@
 #include <memory>
 
 #include <gram/language/symbol/Option.h>
-#include <gram/language/Mapper.h>
+#include <gram/language/mapper/Mapper.h>
 
 namespace gram {
 /**

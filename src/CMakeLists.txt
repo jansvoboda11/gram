@@ -9,8 +9,8 @@ set(SOURCE_FILES
         language/symbol/NonTerminal.cpp
         language/symbol/Option.cpp
         language/symbol/Terminal.cpp
-        language/ContextFreeGrammar.cpp
-        language/ContextFreeMapper.cpp
+        language/grammar/ContextFreeGrammar.cpp
+        language/mapper/ContextFreeMapper.cpp
         population/initializer/RandomInitializer.cpp
         population/reproducer/Reproducer.cpp
         population/selector/RouletteSelector.cpp
@@ -30,15 +30,15 @@ set(SOURCE_FILES
         ../include/gram/individual/Genotype.h
         ../include/gram/individual/Individual.h
         ../include/gram/individual/Phenotype.h
+        ../include/gram/language/grammar/ContextFreeGrammar.h
+        ../include/gram/language/mapper/ContextFreeMapper.h
+        ../include/gram/language/mapper/Mapper.h
         ../include/gram/language/parser/RuleParser.h
         ../include/gram/language/parser/BnfRuleParser.h
         ../include/gram/language/symbol/NonTerminal.h
         ../include/gram/language/symbol/Option.h
         ../include/gram/language/symbol/Terminal.h
-        ../include/gram/language/ContextFreeGrammar.h
-        ../include/gram/language/ContextFreeMapper.h
         ../include/gram/language/Evaluator.h
-        ../include/gram/language/Mapper.h
         ../include/gram/population/initializer/Initializer.h
         ../include/gram/population/initializer/RandomInitializer.h
         ../include/gram/population/reproducer/Reproducer.h

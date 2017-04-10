@@ -1,7 +1,7 @@
 #ifndef GRAM_LANGUAGE_CONTEXT_FREE_MAPPER
 #define GRAM_LANGUAGE_CONTEXT_FREE_MAPPER
 
-#include <gram/language/ContextFreeGrammar.h>
+#include <gram/language/grammar/ContextFreeGrammar.h>
 #include <gram/individual/Individual.h>
 
 namespace gram {

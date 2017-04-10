@@ -4,7 +4,7 @@
 #include <gram/individual/crossover/OnePointCrossover.h>
 #include <gram/individual/mutation/NumberMutation.h>
 #include <gram/language/parser/BnfRuleParser.h>
-#include <gram/language/ContextFreeMapper.h>
+#include <gram/language/mapper/ContextFreeMapper.h>
 #include <gram/population/initializer/RandomInitializer.h>
 #include <gram/population/selector/TournamentSelector.h>
 #include <gram/util/bool_generator/TwisterBoolGenerator.h>

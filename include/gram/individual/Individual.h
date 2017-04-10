@@ -7,7 +7,7 @@
 #include <gram/individual/mutation/Mutation.h>
 #include <gram/individual/Genotype.h>
 #include <gram/language/Evaluator.h>
-#include <gram/language/Mapper.h>
+#include <gram/language/mapper/Mapper.h>
 
 namespace gram {
 // Forward declaration.

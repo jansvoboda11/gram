@@ -1,4 +1,4 @@
-#include <gram/language/ContextFreeMapper.h>
+#include <gram/language/mapper/ContextFreeMapper.h>
 
 using namespace gram;
 using namespace std;

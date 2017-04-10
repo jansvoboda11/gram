@@ -1,4 +1,4 @@
-#include <gram/language/ContextFreeGrammar.h>
+#include <gram/language/grammar/ContextFreeGrammar.h>
 
 using namespace gram;
 using namespace std;

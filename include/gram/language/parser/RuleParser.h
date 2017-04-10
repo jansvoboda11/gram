@@ -1,7 +1,7 @@
 #ifndef GRAM_LANGUAGE_RULE_PARSER
 #define GRAM_LANGUAGE_RULE_PARSER
 
-#include <gram/language/ContextFreeGrammar.h>
+#include <gram/language/grammar/ContextFreeGrammar.h>
 
 namespace gram {
 /**
