@@ -1,10 +1,10 @@
-#include <gtest/gtest.h>
+#include <catch.hpp>
 
 #include <gram/population/Population.h>
 
 using namespace gram;
 using namespace std;
 
-TEST(population_test, test_something) {
+TEST_CASE("population does something", "[population]") {
   // todo: write tests
 }

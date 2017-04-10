@@ -1,11 +1,11 @@
-#include <gtest/gtest.h>
+#include <catch.hpp>
 
 #include <gram/language/ContextFreeGrammar.h>
 
 using namespace gram;
 using namespace std;
 
-TEST(grammar_test, test_it_accepts_rule) {
+TEST_CASE("context-free grammar accepts a rule", "[context-free_grammar]") {
   ContextFreeGrammar grammar;
 
   auto rule1 = make_shared<NonTerminal>();
@@ -14,11 +14,11 @@ TEST(grammar_test, test_it_accepts_rule) {
   grammar.addRule("rule1", rule1);
   grammar.addRule("rule2", rule2);
 
-  ASSERT_EQ(rule1, grammar.ruleNamed("rule1"));
-  ASSERT_EQ(rule1, grammar.startRule());
+  REQUIRE(grammar.ruleNamed("rule1") == rule1);
+  REQUIRE(grammar.startRule() == rule1);
 }
 
-TEST(grammar_test, test_it_expands_one_terminal) {
+TEST_CASE("context-free grammar expands a terminal", "[context-free_grammar]") {
   Terminal terminal("test");
   auto option = make_shared<Option>();
   auto startSymbol = make_shared<NonTerminal>();
@@ -34,10 +34,10 @@ TEST(grammar_test, test_it_expands_one_terminal) {
   Phenotype expectedPhenotype;
   expectedPhenotype.addTerminal(terminal);
 
-  ASSERT_EQ(expectedPhenotype, grammar.expand(genotype));
+  REQUIRE(grammar.expand(genotype) == expectedPhenotype);
 }
 
-TEST(grammar_test, test_it_expands_nonterminal) {
+TEST_CASE("context-free grammar expands a non-terminal", "[context-free_grammar]") {
   Terminal terminal1("first");
   Terminal terminal2("second");
 
@@ -60,10 +60,10 @@ TEST(grammar_test, test_it_expands_nonterminal) {
   Phenotype expectedPhenotype;
   expectedPhenotype.addTerminal(terminal2);
 
-  ASSERT_EQ(expectedPhenotype, grammar.expand(genotype));
+  REQUIRE(grammar.expand(genotype) == expectedPhenotype);
 }
 
-TEST(grammar_test, test_it_expands_linear_grammar) {
+TEST_CASE("context-free grammar expands linear grammar", "[context-free_grammar]") {
   Terminal digit0("0");
   Terminal digit1("1");
   Terminal digit2("2");
@@ -127,5 +127,5 @@ TEST(grammar_test, test_it_expands_linear_grammar) {
 
   Phenotype phenotype = grammar.expand(Genotype({7, 16, 11, 25, 0, 39}));
 
-  ASSERT_EQ("659", phenotype.serialize());
+  REQUIRE(phenotype.serialize() == "659");
 }

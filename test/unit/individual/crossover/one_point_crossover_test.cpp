@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
-#include <gtest/fakeit.hpp>
+#include <catch.hpp>
+#include <fakeit.hpp>
 
 #include <gram/individual/crossover/OnePointCrossover.h>
 
@@ -7,7 +7,7 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST(one_point_crossover_test, test_it_combines_genotypes_of_the_same_length) {
+TEST_CASE("genotypes of the same length can be combined", "[one_point_crossover]") {
   Mock<NumberGenerator> mock;
   Fake(Dtor(mock));
   When(Method(mock, generate)).Return(2);
@@ -18,10 +18,10 @@ TEST(one_point_crossover_test, test_it_combines_genotypes_of_the_same_length) {
   Genotype genotype1({0, 1, 2, 3, 4});
   Genotype genotype2({5, 6, 7, 8, 9});
 
-  ASSERT_EQ(Genotype({0, 1, 7, 8, 9}), crossover.apply(genotype1, genotype2));
+  REQUIRE(Genotype({0, 1, 7, 8, 9}) == crossover.apply(genotype1, genotype2));
 }
 
-TEST(one_point_crossover_test, test_it_combines_short_and_long_genotypes) {
+TEST_CASE("short and long genotypes can be combined", "[one_point_crossover]") {
   Mock<NumberGenerator> mock;
   Fake(Dtor(mock));
   When(Method(mock, generate)).Return(2);
@@ -32,10 +32,10 @@ TEST(one_point_crossover_test, test_it_combines_short_and_long_genotypes) {
   Genotype genotype1({0, 1, 2});
   Genotype genotype2({5, 6, 7, 8, 9});
 
-  ASSERT_EQ(Genotype({0, 1, 7, 8, 9}), crossover.apply(genotype1, genotype2));
+  REQUIRE(Genotype({0, 1, 7, 8, 9}) == crossover.apply(genotype1, genotype2));
 }
 
-TEST(one_point_crossover_test, test_it_combines_long_and_short_genotypes) {
+TEST_CASE("long and short genotypes can be combined", "[one_point_crossover]") {
   Mock<NumberGenerator> mock;
   Fake(Dtor(mock));
   When(Method(mock, generate)).Return(2);
@@ -46,5 +46,5 @@ TEST(one_point_crossover_test, test_it_combines_long_and_short_genotypes) {
   Genotype genotype1({0, 1, 2, 3, 4});
   Genotype genotype2({5, 6});
 
-  ASSERT_EQ(Genotype({0, 1}), crossover.apply(genotype1, genotype2));
+  REQUIRE(Genotype({0, 1}) == crossover.apply(genotype1, genotype2));
 }

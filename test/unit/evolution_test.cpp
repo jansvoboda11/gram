@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
+#include <catch.hpp>
 
-TEST(evolution_test, test_something) {
-  //
+TEST_CASE("evolution does something", "[evolution]") {
+  // todo: write tests
 }

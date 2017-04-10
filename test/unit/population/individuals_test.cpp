@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
-#include <gtest/fakeit.hpp>
+#include <catch.hpp>
+#include <fakeit.hpp>
 
 #include <gram/population/Individuals.h>
 
@@ -7,13 +7,13 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST(individuals_test, test_it_handles_no_individuals) {
+TEST_CASE("individuals throw when empty and choosing the best individual", "[individuals]") {
   Individuals individuals;
 
-  ASSERT_THROW(individuals.bestIndividual(), logic_error);
+  REQUIRE_THROWS_AS(individuals.bestIndividual(), logic_error);
 }
 
-TEST(individuals_test, test_it_recognizes_the_fittest_individual) {
+TEST_CASE("individuals choose the best individual", "[individuals]") {
   Mock<Individual> individual1Mock;
   Mock<Individual> individual2Mock;
   Mock<Individual> individual3Mock;
@@ -35,5 +35,5 @@ TEST(individuals_test, test_it_recognizes_the_fittest_individual) {
   individuals.addIndividual(sharedIndividual2);
   individuals.addIndividual(sharedIndividual3);
 
-  ASSERT_EQ(individual2, individuals.bestIndividual());
+  REQUIRE(individuals.bestIndividual() == individual2);
 }

@@ -1,51 +1,51 @@
-#include <gtest/gtest.h>
+#include <catch.hpp>
 
 #include <gram/util/helper.h>
 
 using namespace gram;
 using namespace std;
 
-TEST(helper_test, test_it_splits_string_containing_delimiter) {
+TEST_CASE("explode string containing the given delimiter", "[helper]") {
   vector<string> pieces = explode("hello world, she said", " ");
 
-  ASSERT_EQ(4, pieces.size());
-  ASSERT_EQ("hello", pieces[0]);
-  ASSERT_EQ("world,", pieces[1]);
-  ASSERT_EQ("she", pieces[2]);
-  ASSERT_EQ("said", pieces[3]);
+  REQUIRE(pieces.size() == 4);
+  REQUIRE(pieces[0] == "hello");
+  REQUIRE(pieces[1] == "world,");
+  REQUIRE(pieces[2] == "she");
+  REQUIRE(pieces[3] == "said");
 }
 
-TEST(helper_test, test_it_does_not_split_string_without_delimiter) {
+TEST_CASE("explode ignores string that does not contain the given delimiter", "[helper]") {
   vector<string> pieces = explode("hello world", "x");
 
-  ASSERT_EQ(1, pieces.size());
-  ASSERT_EQ("hello world", pieces[0]);
+  REQUIRE(pieces.size() == 1);
+  REQUIRE(pieces[0] == "hello world");
 }
 
-TEST(helper_test, test_it_handles_multiple_delimiters_in_row) {
+TEST_CASE("explode handles multiple delimiters in a row", "[helper]") {
   vector<string> pieces = explode("hello world", "l");
 
-  ASSERT_EQ(4, pieces.size());
-  ASSERT_EQ("he", pieces[0]);
-  ASSERT_EQ("", pieces[1]);
-  ASSERT_EQ("o wor", pieces[2]);
-  ASSERT_EQ("d", pieces[3]);
+  REQUIRE(pieces.size() == 4);
+  REQUIRE(pieces[0] == "he");
+  REQUIRE(pieces[1] == "");
+  REQUIRE(pieces[2] == "o wor");
+  REQUIRE(pieces[3] == "d");
 }
 
-TEST(helper_test, test_it_trims_whitespace_on_the_left) {
+TEST_CASE("left trim deletes whitespace on the left", "[helper]") {
   string trimmed = left_trim(" \n hello world ");
 
-  ASSERT_EQ("hello world ", trimmed);
+  REQUIRE(trimmed == "hello world ");
 }
 
-TEST(helper_test, test_it_does_not_trim_when_no_whitespace_on_the_left) {
+TEST_CASE("left trim handles string with no whitespace on the left", "[helper]") {
   string trimmed = left_trim("hello world");
 
-  ASSERT_EQ("hello world", trimmed);
+  REQUIRE(trimmed == "hello world");
 }
 
-TEST(helper_test, test_left_trim_handles_empty_string) {
+TEST_CASE("left trim handles empty string", "[helper]") {
   string trimmed = left_trim("");
 
-  ASSERT_EQ("", trimmed);
+  REQUIRE(trimmed == "");
 }

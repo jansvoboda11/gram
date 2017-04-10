@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
-#include <gtest/fakeit.hpp>
+#include <catch.hpp>
+#include <fakeit.hpp>
 
 #include <gram/population/selector/TournamentSelector.h>
 
@@ -7,7 +7,7 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST(tournament_selector_test, test_it_handles_empty_population) {
+TEST_CASE("tournament selector handles empty population", "[tournament_selector]") {
   Mock<NumberGenerator> numberGeneratorMock;
   Fake(Dtor(numberGeneratorMock));
   auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
@@ -16,10 +16,10 @@ TEST(tournament_selector_test, test_it_handles_empty_population) {
 
   TournamentSelector selector(2, move(numberGenerator));
 
-  ASSERT_THROW(selector.select(individuals), logic_error);
+  REQUIRE_THROWS_AS(selector.select(individuals), logic_error);
 }
 
-TEST(tournament_selector_test, test_it_select_the_only_individual) {
+TEST_CASE("tournament selector chooses the only individual", "[tournament_selector]") {
   Mock<NumberGenerator> numberGeneratorMock;
   Fake(Dtor(numberGeneratorMock));
   auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
@@ -33,10 +33,10 @@ TEST(tournament_selector_test, test_it_select_the_only_individual) {
 
   TournamentSelector selector(2, move(numberGenerator));
 
-  ASSERT_EQ(individual, selector.select(individuals));
+  REQUIRE(selector.select(individuals) == individual);
 }
 
-TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_selected_group) {
+TEST_CASE("tournament selector chooses the best individual from randomly selected group", "[tournament_selector]") {
   Mock<NumberGenerator> numberGeneratorMock;
   Fake(Dtor(numberGeneratorMock));
   When(Method(numberGeneratorMock, generate)).Return(1).Return(3);
@@ -70,5 +70,5 @@ TEST(tournament_selector_test, test_it_selects_best_individual_from_randomly_sel
 
   TournamentSelector selector(2, move(numberGenerator));
 
-  ASSERT_EQ(individual2, selector.select(individuals));
+  REQUIRE(selector.select(individuals) == individual2);
 }

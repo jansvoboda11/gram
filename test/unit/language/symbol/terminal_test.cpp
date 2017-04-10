@@ -1,19 +1,19 @@
-#include <gtest/gtest.h>
+#include <catch.hpp>
 
 #include <gram/language/symbol/Terminal.h>
 
 using namespace gram;
 
-TEST(terminal_test, test_it_recognizes_two_equal_objects) {
+TEST_CASE("same terminals are equal", "[terminal]") {
   Terminal terminal1("test");
   Terminal terminal2("test");
 
-  ASSERT_TRUE(terminal1 == terminal2);
+  REQUIRE(terminal1 == terminal2);
 }
 
-TEST(terminal_test, test_it_recognizes_two_different_objects) {
+TEST_CASE("different terminals are not equal", "[terminal]") {
   Terminal terminal1("first");
   Terminal terminal2("second");
 
-  ASSERT_TRUE(terminal1 != terminal2);
+  REQUIRE(terminal1 != terminal2);
 }

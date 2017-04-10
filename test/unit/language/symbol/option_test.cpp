@@ -1,11 +1,11 @@
-#include <gtest/gtest.h>
+#include <catch.hpp>
 
 #include <gram/language/symbol/Option.h>
 
 using namespace gram;
 using namespace std;
 
-TEST(option_test, test_it_accepts_terminals) {
+TEST_CASE("option accepts a terminal", "[option]") {
   Terminal terminal1("first");
   Terminal terminal2("second");
 
@@ -13,13 +13,13 @@ TEST(option_test, test_it_accepts_terminals) {
   option.addTerminal(terminal1);
   option.addTerminal(terminal2);
 
-  ASSERT_TRUE(option.hasTerminalAt(0));
-  ASSERT_TRUE(option.hasTerminalAt(1));
-  ASSERT_EQ(terminal1, option.terminalAt(0));
-  ASSERT_EQ(terminal2, option.terminalAt(1));
+  REQUIRE(option.hasTerminalAt(0));
+  REQUIRE(option.hasTerminalAt(1));
+  REQUIRE(option.terminalAt(0) == terminal1);
+  REQUIRE(option.terminalAt(1) == terminal2);
 }
 
-TEST(option_test, test_it_accepts_nonterminals) {
+TEST_CASE("option accepts a non-terminal", "[option]") {
   Terminal terminal("terminal");
 
   auto innerOption = make_shared<Option>();
@@ -32,11 +32,11 @@ TEST(option_test, test_it_accepts_nonterminals) {
 
   option.addNonTerminal(nonTerminal);
 
-  ASSERT_TRUE(option.hasNonTerminalAt(0));
-  ASSERT_EQ(*nonTerminal, option.nonTerminalAt(0));
+  REQUIRE(option.hasNonTerminalAt(0));
+  REQUIRE(option.nonTerminalAt(0) == *nonTerminal);
 }
 
-TEST(option_test, test_it_accepts_both_terminals_and_nonterminals) {
+TEST_CASE("option accepts both terminals and non-terminals", "[option]") {
   Terminal terminal("regular");
   Terminal innerTerminal("inner");
 
@@ -51,13 +51,13 @@ TEST(option_test, test_it_accepts_both_terminals_and_nonterminals) {
   option.addTerminal(terminal);
   option.addNonTerminal(nonTerminal);
 
-  ASSERT_TRUE(option.hasTerminalAt(0));
-  ASSERT_TRUE(option.hasNonTerminalAt(1));
-  ASSERT_EQ(terminal, option.terminalAt(0));
-  ASSERT_EQ(*nonTerminal, option.nonTerminalAt(1));
+  REQUIRE(option.hasTerminalAt(0));
+  REQUIRE(option.hasNonTerminalAt(1));
+  REQUIRE(option.terminalAt(0) == terminal);
+  REQUIRE(option.nonTerminalAt(1) == *nonTerminal);
 }
 
-TEST(option_test, test_it_recognizes_two_equal_options) {
+TEST_CASE("same options are equal", "[option]") {
   Terminal terminal1("test");
   Terminal terminal2("test");
 
@@ -67,10 +67,10 @@ TEST(option_test, test_it_recognizes_two_equal_options) {
   option1.addTerminal(terminal1);
   option2.addTerminal(terminal2);
 
-  ASSERT_TRUE(option1 == option2);
+  REQUIRE(option1 == option2);
 }
 
-TEST(option_test, test_it_recognizes_two_different_options) {
+TEST_CASE("different options are not equal", "[option]") {
   Terminal terminal1("first");
   Terminal terminal2("second");
 
@@ -80,5 +80,5 @@ TEST(option_test, test_it_recognizes_two_different_options) {
   option1.addTerminal(terminal1);
   option2.addTerminal(terminal2);
 
-  ASSERT_TRUE(option1 != option2);
+  REQUIRE(option1 != option2);
 }

@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
-#include <gtest/fakeit.hpp>
+#include <catch.hpp>
+#include <fakeit.hpp>
 
 #include <gram/util/helper.h>
 #include <gram/util/logger/StreamLogger.h>
@@ -8,7 +8,7 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST(stream_logger_test, test_it_does_something) {
+TEST_CASE("stream logger writes to the given stream", "[stream_logger]") {
   ostream &stream = cout;
 
   Mock<Population> populationMock;

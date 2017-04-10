@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
-#include <gtest/fakeit.hpp>
+#include <catch.hpp>
+#include <fakeit.hpp>
 
 #include <gram/population/initializer/RandomInitializer.h>
 
@@ -7,7 +7,7 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST(random_initializer_test, test_it_initializes_individuals) {
+TEST_CASE("random initializer initializes new population", "[random_initializer]") {
   Mock<Grammar> grammarMock;
   Fake(Dtor(grammarMock));
   When(Method(grammarMock, expand)).AlwaysReturn(Phenotype());
@@ -37,9 +37,9 @@ TEST(random_initializer_test, test_it_initializes_individuals) {
 
   Population population = initializer.initialize(3, reproducer);
 
-  ASSERT_EQ(0, population.number());
-  ASSERT_EQ(3, population.size());
-  ASSERT_EQ(individual1, population[0]);
-  ASSERT_EQ(individual2, population[1]);
-  ASSERT_EQ(individual3, population[2]);
+  REQUIRE(population.number() == 0);
+  REQUIRE(population.size() == 3);
+  REQUIRE(population[0] == individual1);
+  REQUIRE(population[1] == individual2);
+  REQUIRE(population[2] == individual3);
 }

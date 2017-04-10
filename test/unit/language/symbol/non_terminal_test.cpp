@@ -1,11 +1,11 @@
-#include <gtest/gtest.h>
+#include <catch.hpp>
 
 #include <gram/language/symbol/NonTerminal.h>
 
 using namespace gram;
 using namespace std;
 
-TEST(non_terminal_test, test_it_accepts_option) {
+TEST_CASE("non-terminal accepts an option", "[non-terminal]") {
   Terminal terminal("test");
 
   auto option = make_shared<Option>();
@@ -15,10 +15,10 @@ TEST(non_terminal_test, test_it_accepts_option) {
 
   nonTerminal.addOption(option);
 
-  ASSERT_EQ(*option, nonTerminal.optionAt(0));
+  REQUIRE(nonTerminal.optionAt(0) == *option);
 }
 
-TEST(non_terminal_test, test_it_handles_recursive_option) {
+TEST_CASE("non-terminal handles a recursive option", "[non-terminal]") {
   Terminal terminal("test");
 
   auto option = make_shared<Option>();
@@ -29,11 +29,11 @@ TEST(non_terminal_test, test_it_handles_recursive_option) {
   nonTerminal->addOption(option);
   option->addNonTerminal(nonTerminal);
 
-  ASSERT_TRUE(nonTerminal->optionAt(0).hasNonTerminalAt(1));
-  ASSERT_EQ(*nonTerminal, nonTerminal->optionAt(0).nonTerminalAt(1));
+  REQUIRE(nonTerminal->optionAt(0).hasNonTerminalAt(1));
+  REQUIRE(nonTerminal->optionAt(0).nonTerminalAt(1) == *nonTerminal);
 }
 
-TEST(non_terminal_test, test_it_returns_option_count) {
+TEST_CASE("non-terminal returns option count", "[non-terminal]") {
   auto option1 = make_shared<Option>();
   auto option2 = make_shared<Option>();
 
@@ -42,10 +42,10 @@ TEST(non_terminal_test, test_it_returns_option_count) {
   nonTerminal.addOption(option1);
   nonTerminal.addOption(option2);
 
-  ASSERT_EQ(2, nonTerminal.size());
+  REQUIRE(nonTerminal.size() == 2);
 }
 
-TEST(non_terminal_test, test_it_recognizes_two_equal_objects) {
+TEST_CASE("same non-terminals are equal", "[non-terminal]") {
   Terminal terminal("test");
 
   auto option = make_shared<Option>();
@@ -57,10 +57,10 @@ TEST(non_terminal_test, test_it_recognizes_two_equal_objects) {
   nonTerminal1.addOption(option);
   nonTerminal2.addOption(option);
 
-  ASSERT_TRUE(nonTerminal1 == nonTerminal2);
+  REQUIRE(nonTerminal1 == nonTerminal2);
 }
 
-TEST(non_terminal_test, test_it_recognizes_two_different_objects) {
+TEST_CASE("different non-terminals are not equal", "[non-terminal]") {
   Terminal terminal1("first");
   Terminal terminal2("second");
 
@@ -76,5 +76,5 @@ TEST(non_terminal_test, test_it_recognizes_two_different_objects) {
   nonTerminal1.addOption(option1);
   nonTerminal2.addOption(option2);
 
-  ASSERT_TRUE(nonTerminal1 != nonTerminal2);
+  REQUIRE(nonTerminal1 != nonTerminal2);
 }

@@ -1,16 +1,16 @@
-#include <gtest/gtest.h>
+#include <catch.hpp>
 
 #include <gram/individual/Phenotype.h>
 
 using namespace gram;
 
-TEST(phenotype_test, test_it_serializes_empty_string) {
+TEST_CASE("empty phenotype serializes", "[phenotype]") {
   Phenotype phenotype;
 
-  ASSERT_EQ("", phenotype.serialize());
+  REQUIRE("" == phenotype.serialize());
 }
 
-TEST(phenotype_test, test_it_serializes_terminals) {
+TEST_CASE("phenotype with terminals serializes", "[phenotype]") {
   Terminal terminal("hello");
   Terminal terminal2("world");
 
@@ -18,10 +18,10 @@ TEST(phenotype_test, test_it_serializes_terminals) {
   phenotype.addTerminal(terminal);
   phenotype.addTerminal(terminal2);
 
-  ASSERT_EQ("helloworld", phenotype.serialize());
+  REQUIRE("helloworld" == phenotype.serialize());
 }
 
-TEST(phenotype_test, test_it_recognizes_two_equal_objects) {
+TEST_CASE("same phenotypes are equal", "[phenotype]") {
   Terminal terminal1("test");
   Terminal terminal2("test");
 
@@ -31,10 +31,10 @@ TEST(phenotype_test, test_it_recognizes_two_equal_objects) {
   phenotype1.addTerminal(terminal1);
   phenotype2.addTerminal(terminal2);
 
-  ASSERT_TRUE(phenotype1 == phenotype2);
+  REQUIRE(phenotype1 == phenotype2);
 }
 
-TEST(phenotype_test, test_it_recognizes_two_different_objects) {
+TEST_CASE("different phenotypes are not equal", "[phenotype]") {
   Terminal terminal1("first");
   Terminal terminal2("second");
 
@@ -44,5 +44,5 @@ TEST(phenotype_test, test_it_recognizes_two_different_objects) {
   phenotype1.addTerminal(terminal1);
   phenotype2.addTerminal(terminal2);
 
-  ASSERT_TRUE(phenotype1 != phenotype2);
+  REQUIRE(phenotype1 != phenotype2);
 }

@@ -1,5 +1,5 @@
-include_directories(../lib/googletest/googlemock/include)
-include_directories(../lib/fakeit/src/fakeit/single_header)
+include_directories(../lib/catch/src/catch/single_include)
+include_directories(../lib/fakeit/src/fakeit/single_header/catch)
 include_directories(../../include)
 
 add_executable(gram_unit_tests
@@ -21,8 +21,9 @@ add_executable(gram_unit_tests
         util/logger/stream_logger_test.cpp
         util/helper_test.cpp
         evolution_test.cpp
+        test.cpp
         )
 
-add_dependencies(gram_unit_tests fakeit)
+add_dependencies(gram_unit_tests catch fakeit)
 
-target_link_libraries(gram_unit_tests gram gtest gtest_main)
+target_link_libraries(gram_unit_tests gram)

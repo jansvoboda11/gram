@@ -1,10 +1,10 @@
-#include <gtest/gtest.h>
+#include <catch.hpp>
 
 #include <gram/population/reproducer/Reproducer.h>
 
 using namespace gram;
 using namespace std;
 
-TEST(reproducer_test, test_something) {
+TEST_CASE("reproducer does something", "[reproducer]") {
   // todo: write tests
 }

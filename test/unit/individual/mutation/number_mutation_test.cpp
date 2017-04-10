@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
-#include <gtest/fakeit.hpp>
+#include <catch.hpp>
+#include <fakeit.hpp>
 
 #include <gram/individual/mutation/NumberMutation.h>
 
@@ -7,7 +7,7 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST(number_mutation_test, test_it_does_not_always_mutate) {
+TEST_CASE("number mutation is not always performed", "[number_mutation]") {
   Mock<BoolGenerator> boolGeneratorMock;
   Fake(Dtor(boolGeneratorMock));
   When(Method(boolGeneratorMock, generate)).AlwaysReturn(false);
@@ -21,10 +21,10 @@ TEST(number_mutation_test, test_it_does_not_always_mutate) {
 
   Genotype genotype({1, 1, 1});
 
-  ASSERT_EQ(Genotype({1, 1, 1}), mutation.apply(genotype));
+  REQUIRE(Genotype({1, 1, 1}) == mutation.apply(genotype));
 }
 
-TEST(number_mutation_test, test_it_mutates_one_gene) {
+TEST_CASE("number mutation mutates a gene", "[number_mutation]") {
   Mock<BoolGenerator> boolGeneratorMock;
   Fake(Dtor(boolGeneratorMock));
   When(Method(boolGeneratorMock, generate)).Return(true).Return(false).Return(true);
@@ -39,5 +39,5 @@ TEST(number_mutation_test, test_it_mutates_one_gene) {
 
   Genotype genotype({1, 1, 1});
 
-  ASSERT_EQ(Genotype({2, 1, 3}), mutation.apply(genotype));
+  REQUIRE(Genotype({2, 1, 3}) == mutation.apply(genotype));
 }

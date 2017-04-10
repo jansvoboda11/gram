@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
-#include <gtest/fakeit.hpp>
+#include <catch.hpp>
+#include <fakeit.hpp>
 
 #include <gram/individual/Individual.h>
 
@@ -7,7 +7,7 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST(individual_test, test_it_mates_with_another_individual) {
+TEST_CASE("individual mates with another individual", "[individual]") {
   Mock<Grammar> grammarMock;
   Fake(Dtor(grammarMock));
   When(Method(grammarMock, expand)).AlwaysReturn(Phenotype());
@@ -26,10 +26,10 @@ TEST(individual_test, test_it_mates_with_another_individual) {
 
   Individual child = individual1.mateWith(individual2, crossover.get());
 
-  ASSERT_EQ(desiredChild, child);
+  REQUIRE(desiredChild == child);
 }
 
-TEST(individual_test, test_it_undergoes_mutation) {
+TEST_CASE("individual undergoes mutation", "[individual]") {
   Mock<Grammar> grammarMock;
   Fake(Dtor(grammarMock));
   When(Method(grammarMock, expand)).Return(Phenotype());
@@ -46,10 +46,10 @@ TEST(individual_test, test_it_undergoes_mutation) {
 
   individual.mutate(mutation.get());
 
-  ASSERT_EQ(desiredIndividual, individual);
+  REQUIRE(desiredIndividual == individual);
 }
 
-TEST(individual_test, test_it_serializes) {
+TEST_CASE("individual can be serialized", "[individual]") {
   Terminal terminal("hello");
   Phenotype phenotype;
   phenotype.addTerminal(terminal);
@@ -63,10 +63,10 @@ TEST(individual_test, test_it_serializes) {
 
   Individual individual(genotype, grammar);
 
-  ASSERT_EQ("hello", individual.serialize());
+  REQUIRE("hello" == individual.serialize());
 }
 
-TEST(individual_test, test_it_does_not_return_fitness_if_not_calculated) {
+TEST_CASE("individual does not return fitness if it was not calculated yet", "[individual]") {
   Mock<Grammar> grammarMock;
   Fake(Dtor(grammarMock));
   When(Method(grammarMock, expand)).Return(Phenotype());
@@ -76,10 +76,10 @@ TEST(individual_test, test_it_does_not_return_fitness_if_not_calculated) {
 
   Individual individual(genotype, grammar);
 
-  ASSERT_THROW(individual.fitness(), logic_error);
+  REQUIRE_THROWS_AS(individual.fitness(), logic_error);
 }
 
-TEST(individual_test, test_it_recognizes_two_equal_objects) {
+TEST_CASE("same individuals are equal", "[individual]") {
   Mock<Grammar> grammarMock;
   Fake(Dtor(grammarMock));
   When(Method(grammarMock, expand)).AlwaysReturn(Phenotype());
@@ -90,10 +90,10 @@ TEST(individual_test, test_it_recognizes_two_equal_objects) {
   Individual individual1(genotype, grammar);
   Individual individual2(genotype, grammar);
 
-  ASSERT_TRUE(individual1 == individual2);
+  REQUIRE(individual1 == individual2);
 }
 
-TEST(individual_test, test_it_recognizes_two_different_objects) {
+TEST_CASE("different individuals are not equal", "[individual]") {
   Mock<Grammar> grammarMock;
   Fake(Dtor(grammarMock));
   When(Method(grammarMock, expand)).AlwaysReturn(Phenotype());
@@ -105,5 +105,5 @@ TEST(individual_test, test_it_recognizes_two_different_objects) {
   Individual individual1(genotype1, grammar);
   Individual individual2(genotype2, grammar);
 
-  ASSERT_TRUE(individual1 != individual2);
+  REQUIRE(individual1 != individual2);
 }
