@@ -21,6 +21,5 @@ ExternalProject_Add(fakeit
         INSTALL_COMMAND ""
         )
 
-add_subdirectory(lib/googletest/googletest)
 add_subdirectory(acceptance)
 add_subdirectory(unit)
