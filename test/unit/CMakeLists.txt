@@ -2,7 +2,7 @@ include_directories(../lib/catch/src/catch/single_include)
 include_directories(../lib/fakeit/src/fakeit/single_header/catch)
 include_directories(../../include)
 
-add_executable(gram_unit_tests
+add_executable(gram-unit-tests
         individual/crossover/one_point_crossover_test.cpp
         individual/mutation/number_mutation_test.cpp
         individual/individual_test.cpp
@@ -24,6 +24,6 @@ add_executable(gram_unit_tests
         test.cpp
         )
 
-add_dependencies(gram_unit_tests catch fakeit)
+add_dependencies(gram-unit-tests catch fakeit)
 
-target_link_libraries(gram_unit_tests gram)
+target_link_libraries(gram-unit-tests gram)
