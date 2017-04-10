@@ -4,6 +4,7 @@ using namespace gram;
 using namespace std;
 
 TwisterNumberGenerator::TwisterNumberGenerator(unsigned long max) {
+  // todo: make it possible to provide own seed
   random_device device;
   mt19937 twister(device());
   uniform_int_distribution<unsigned long> uniform(0, max);
