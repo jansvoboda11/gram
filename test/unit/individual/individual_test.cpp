@@ -10,33 +10,33 @@ using namespace std;
 TEST_CASE("individual mates with another individual", "[individual]") {
   Genotype genotype1({0, 0, 0});
   Genotype genotype2({1, 1, 1});
-  Genotype desiredGenotype({0, 0, 1});
+  Genotype expectedGenotype({0, 0, 1});
 
   Individual individual1(genotype1);
   Individual individual2(genotype2);
-  Individual desiredChild(desiredGenotype);
+  Individual expectedChild(expectedGenotype);
 
   Mock<Crossover> crossover;
   When(Method(crossover, apply)).Return(Genotype({0, 0, 1}));
 
   Individual child = individual1.mateWith(individual2, crossover.get());
 
-  REQUIRE(desiredChild == child);
+  REQUIRE(child == expectedChild);
 }
 
 TEST_CASE("individual undergoes mutation", "[individual]") {
   Genotype genotype({0, 0, 0});
-  Genotype desiredGenotype({0, 1, 0});
+  Genotype expectedGenotype({0, 1, 0});
 
   Individual individual(genotype);
-  Individual desiredIndividual(desiredGenotype);
+  Individual expectedIndividual(expectedGenotype);
 
   Mock<Mutation> mutation;
   When(Method(mutation, apply)).Return(Genotype({0, 1, 0}));
 
   individual.mutate(mutation.get());
 
-  REQUIRE(desiredIndividual == individual);
+  REQUIRE(individual == expectedIndividual);
 }
 
 TEST_CASE("individual does not return fitness if it was not calculated yet", "[individual]") {
