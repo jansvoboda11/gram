@@ -1,5 +1,6 @@
-#include <gtest/gtest.h>
-#include <gtest/fakeit.hpp>
+#define CATCH_CONFIG_MAIN
+#include <catch.hpp>
+#include <fakeit.hpp>
 
 #include <gram/individual/crossover/OnePointCrossover.h>
 #include <gram/individual/mutation/NumberMutation.h>
@@ -50,7 +51,7 @@ class FakeEvaluator : public Evaluator {
   }
 };
 
-TEST(evolution_test, test_something) {
+TEST_CASE("evolution_test") {
   auto numberGenerator1 = make_unique<TwisterNumberGenerator>();
   auto numberGenerator2 = make_unique<TwisterNumberGenerator>();
   auto numberGenerator3 = make_unique<TwisterNumberGenerator>();
@@ -83,5 +84,5 @@ TEST(evolution_test, test_something) {
 
   double fitness = result.fitness();
 
-  ASSERT_NEAR(0.0, fitness, 0.001);
+  REQUIRE(fitness == 0.0);
 }
