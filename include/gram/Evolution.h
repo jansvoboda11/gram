@@ -4,6 +4,7 @@
 #include <memory>
 
 #include <gram/population/Population.h>
+#include <gram/util/logger/Logger.h>
 
 namespace gram {
 /**
@@ -11,10 +12,11 @@ namespace gram {
  */
 class Evolution {
  public:
-  Evolution(std::unique_ptr<Evaluator> evaluator);
+  Evolution(std::unique_ptr<Evaluator> evaluator, std::unique_ptr<Logger> logger);
   Individual run(Population& population) const;
  private:
   std::unique_ptr<Evaluator> evaluator;
+  std::unique_ptr<Logger> logger;
 };
 }
 

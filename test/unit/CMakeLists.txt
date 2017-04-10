@@ -18,6 +18,7 @@ add_executable(gram_unit_tests
         population/selector/tournament_selector_test.cpp
         population/individuals_test.cpp
         population/population_test.cpp
+        util/logger/stream_logger_test.cpp
         util/helper_test.cpp
         evolution_test.cpp
         )

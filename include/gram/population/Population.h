@@ -21,6 +21,7 @@ class Population {
   unsigned long size() const;
   void evaluate(Evaluator& evaluator);
   Population reproduce() const;
+  virtual ~Population() = default;
  private:
   Individuals individuals;
   std::shared_ptr<Reproducer> reproducer;

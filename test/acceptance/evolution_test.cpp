@@ -7,6 +7,7 @@
 #include <gram/population/initializer/RandomInitializer.h>
 #include <gram/population/selector/TournamentSelector.h>
 #include <gram/util/bool_generator/TwisterBoolGenerator.h>
+#include <gram/util/logger/NullLogger.h>
 #include <gram/util/number_generator/TwisterNumberGenerator.h>
 #include <gram/Evolution.h>
 
@@ -72,8 +73,9 @@ TEST(evolution_test, test_something) {
   RandomInitializer initializer(move(numberGenerator4), grammar, 16);
 
   auto evaluator = make_unique<FakeEvaluator>("1234");
+  auto logger = make_unique<NullLogger>();
 
-  Evolution evolution(move(evaluator));
+  Evolution evolution(move(evaluator), move(logger));
 
   Population population = initializer.initialize(1000, reproducer);
 
