@@ -14,6 +14,6 @@ TEST_CASE("context-free grammar accepts a rule", "[context-free_grammar]") {
   grammar.addRule("rule1", rule1);
   grammar.addRule("rule2", rule2);
 
-  REQUIRE(grammar.ruleNamed("rule1") == rule1);
   REQUIRE(grammar.startRule() == rule1);
+  REQUIRE(grammar.ruleNamed("rule2") == rule2);
 }
