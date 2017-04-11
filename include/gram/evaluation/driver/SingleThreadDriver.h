@@ -1,5 +1,5 @@
-#ifndef GRAM_SINGLE_THREAD_DRIVER
-#define GRAM_SINGLE_THREAD_DRIVER
+#ifndef GRAM_SINGLE_THREAD_EVALUATION_DRIVER
+#define GRAM_SINGLE_THREAD_EVALUATION_DRIVER
 
 #include <memory>
 
@@ -19,4 +19,4 @@ class SingleThreadDriver : public EvaluationDriver {
 };
 }
 
-#endif // GRAM_SINGLE_THREAD_DRIVER
+#endif // GRAM_SINGLE_THREAD_EVALUATION_DRIVER

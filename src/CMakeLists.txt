@@ -1,5 +1,7 @@
 include_directories(../include)
 
+find_package(Threads REQUIRED)
+
 set(SOURCE_FILES
         evaluation/driver/MultiThreadDriver.cpp
         evaluation/driver/SingleThreadDriver.cpp
@@ -29,6 +31,7 @@ set(SOURCE_FILES
         ../include/gram/evaluation/driver/MultiThreadDriver.h
         ../include/gram/evaluation/driver/SingleThreadDriver.h
         ../include/gram/evaluation/Evaluator.h
+        ../include/gram/evaluation/MultiThreadEvaluator.h
         ../include/gram/individual/crossover/Crossover.h
         ../include/gram/individual/crossover/OnePointCrossover.h
         ../include/gram/individual/mutation/Mutation.h
@@ -64,3 +67,5 @@ set(SOURCE_FILES
         )
 
 add_library(gram STATIC ${SOURCE_FILES})
+
+target_link_libraries(gram ${CMAKE_THREAD_LIBS_INIT})

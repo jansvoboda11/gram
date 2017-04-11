@@ -1,5 +1,5 @@
-#ifndef GRAM_LANGUAGE_EVALUATOR
-#define GRAM_LANGUAGE_EVALUATOR
+#ifndef GRAM_EVALUATOR
+#define GRAM_EVALUATOR
 
 #include <gram/individual/Individual.h>
 
