@@ -1,6 +1,7 @@
 #include <catch.hpp>
 #include <fakeit.hpp>
 
+#include <gram/evaluation/driver/SingleThreadDriver.h>
 #include <gram/individual/crossover/OnePointCrossover.h>
 #include <gram/individual/mutation/NumberMutation.h>
 #include <gram/language/parser/BnfRuleParser.h>
@@ -78,9 +79,10 @@ TEST_CASE("evolution_test") {
   RandomInitializer initializer(move(numberGenerator4), 16);
 
   auto evaluator = make_unique<FakeEvaluator>(mapper, "1234");
+  auto evaluationDriver = make_unique<SingleThreadDriver>(move(evaluator));
   auto logger = make_unique<NullLogger>();
 
-  Evolution evolution(move(evaluator), move(logger));
+  Evolution evolution(move(evaluationDriver), move(logger));
 
   Population population = initializer.initialize(1000, reproducer);
 

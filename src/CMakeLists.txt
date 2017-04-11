@@ -1,6 +1,8 @@
 include_directories(../include)
 
 set(SOURCE_FILES
+        evaluation/driver/MultiThreadDriver.cpp
+        evaluation/driver/SingleThreadDriver.cpp
         individual/crossover/OnePointCrossover.cpp
         individual/mutation/NumberMutation.cpp
         individual/Individual.cpp
@@ -23,6 +25,10 @@ set(SOURCE_FILES
         util/number_generator/TwisterNumberGenerator.cpp
         util/helper.cpp
         Evolution.cpp
+        ../include/gram/evaluation/driver/EvaluationDriver.h
+        ../include/gram/evaluation/driver/MultiThreadDriver.h
+        ../include/gram/evaluation/driver/SingleThreadDriver.h
+        ../include/gram/evaluation/Evaluator.h
         ../include/gram/individual/crossover/Crossover.h
         ../include/gram/individual/crossover/OnePointCrossover.h
         ../include/gram/individual/mutation/Mutation.h
@@ -38,7 +44,6 @@ set(SOURCE_FILES
         ../include/gram/language/symbol/NonTerminal.h
         ../include/gram/language/symbol/Option.h
         ../include/gram/language/symbol/Terminal.h
-        ../include/gram/language/Evaluator.h
         ../include/gram/population/initializer/Initializer.h
         ../include/gram/population/initializer/RandomInitializer.h
         ../include/gram/population/reproducer/Reproducer.h

@@ -3,8 +3,8 @@
 using namespace gram;
 using namespace std;
 
-Evolution::Evolution(unique_ptr<Evaluator> evaluator, unique_ptr<Logger> logger)
-    : evaluator(move(evaluator)), logger(move(logger)) {
+Evolution::Evolution(unique_ptr<EvaluationDriver> evaluationDriver, unique_ptr<Logger> logger)
+    : evaluationDriver(move(evaluationDriver)), logger(move(logger)) {
   //
 }
 
@@ -15,14 +15,14 @@ Individual Evolution::run(Population& population) const {
 }
 
 Individual Evolution::run(Population& population, bool (*successCondition)(Population&)) const {
-  population.evaluate(*evaluator);
+  evaluationDriver->evaluate(population);
 
   logger->log(population);
 
   while (!successCondition(population)) {
     population = population.reproduce();
 
-    population.evaluate(*evaluator);
+    evaluationDriver->evaluate(population);
 
     logger->log(population);
   }

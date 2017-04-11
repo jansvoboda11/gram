@@ -3,6 +3,7 @@
 
 #include <memory>
 
+#include <gram/evaluation/driver/EvaluationDriver.h>
 #include <gram/population/Population.h>
 #include <gram/util/logger/Logger.h>
 
@@ -12,11 +13,11 @@ namespace gram {
  */
 class Evolution {
  public:
-  Evolution(std::unique_ptr<Evaluator> evaluator, std::unique_ptr<Logger> logger);
+  Evolution(std::unique_ptr<EvaluationDriver> evaluationDriver, std::unique_ptr<Logger> logger);
   Individual run(Population& population) const;
   Individual run(Population& population, bool (*successCondition)(Population&)) const;
  private:
-  std::unique_ptr<Evaluator> evaluator;
+  std::unique_ptr<EvaluationDriver> evaluationDriver;
   std::unique_ptr<Logger> logger;
 };
 }

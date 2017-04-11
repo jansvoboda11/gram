@@ -3,10 +3,10 @@
 
 #include <memory>
 
+#include <gram/evaluation/Evaluator.h>
 #include <gram/individual/crossover/Crossover.h>
 #include <gram/individual/mutation/Mutation.h>
 #include <gram/individual/Genotype.h>
-#include <gram/language/Evaluator.h>
 #include <gram/language/mapper/Mapper.h>
 
 namespace gram {
