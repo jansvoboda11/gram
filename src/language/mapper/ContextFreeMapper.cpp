@@ -29,7 +29,7 @@ Phenotype& ContextFreeMapper::recursiveMap(Phenotype& phenotype,
   unsigned long geneIndex = geneNumber % genotype.size();
   unsigned long gene = genotype[geneIndex] % nonTerminal.size();
 
-  Option option = nonTerminal.optionAt(gene);
+  Option& option = nonTerminal.optionAt(gene);
 
   for (unsigned long i = 0; i < option.size(); i++) {
     if (option.hasTerminalAt(i)) {
