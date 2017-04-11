@@ -2,6 +2,8 @@ include_directories(../include)
 
 find_package(Threads REQUIRED)
 
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3")
+
 set(SOURCE_FILES
         evaluation/driver/MultiThreadDriver.cpp
         evaluation/driver/SingleThreadDriver.cpp
