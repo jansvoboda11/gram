@@ -4,6 +4,7 @@ include_directories(../../include)
 
 add_executable(gram-unit-tests
         individual/crossover/one_point_crossover_test.cpp
+        individual/mutation/bernoulli_distribution_step_generator_test.cpp
         individual/mutation/codon_mutation_test.cpp
         individual/mutation/fast_codon_mutation_test.cpp
         individual/individual_test.cpp
