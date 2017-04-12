@@ -8,7 +8,8 @@ set(SOURCE_FILES
         evaluation/driver/MultiThreadDriver.cpp
         evaluation/driver/SingleThreadDriver.cpp
         individual/crossover/OnePointCrossover.cpp
-        individual/mutation/NumberMutation.cpp
+        individual/mutation/CodonMutation.cpp
+        individual/mutation/FastCodonMutation.cpp
         individual/Individual.cpp
         individual/Phenotype.cpp
         language/parser/BnfRuleParser.cpp
@@ -38,8 +39,9 @@ set(SOURCE_FILES
         ../include/gram/evaluation/MultiThreadEvaluator.h
         ../include/gram/individual/crossover/Crossover.h
         ../include/gram/individual/crossover/OnePointCrossover.h
+        ../include/gram/individual/mutation/CodonMutation.h
+        ../include/gram/individual/mutation/FastCodonMutation.h
         ../include/gram/individual/mutation/Mutation.h
-        ../include/gram/individual/mutation/NumberMutation.h
         ../include/gram/individual/Genotype.h
         ../include/gram/individual/Individual.h
         ../include/gram/individual/Phenotype.h
@@ -68,7 +70,7 @@ set(SOURCE_FILES
         ../include/gram/util/number_generator/TwisterNumberGenerator.h
         ../include/gram/util/helper.h
         ../include/gram/Evolution.h
-        )
+        ../include/gram/individual/mutation/BernoulliDistributionStepGenerator.h individual/mutation/BernoulliDistributionStepGenerator.cpp)
 
 add_library(gram STATIC ${SOURCE_FILES})
 

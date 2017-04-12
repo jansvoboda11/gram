@@ -26,7 +26,7 @@ Individual Individual::mateWith(const Individual& partner, const Crossover& cros
   return Individual(childGenotype);
 }
 
-void Individual::mutate(const Mutation& mutation) {
+void Individual::mutate(Mutation& mutation) {
   genotype = mutation.apply(genotype);
 }
 

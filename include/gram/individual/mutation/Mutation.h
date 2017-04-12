@@ -9,7 +9,7 @@ namespace gram {
  */
 class Mutation {
  public:
-  virtual Genotype apply(Genotype genotype) const = 0;
+  virtual Genotype apply(Genotype genotype) = 0;
 };
 }
 

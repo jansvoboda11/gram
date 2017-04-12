@@ -1,5 +1,5 @@
-#ifndef GRAM_INDIVIDUAL_NUMBER_MUTATION
-#define GRAM_INDIVIDUAL_NUMBER_MUTATION
+#ifndef GRAM_INDIVIDUAL_CODON_MUTATION
+#define GRAM_INDIVIDUAL_CODON_MUTATION
 
 #include <memory>
 
@@ -11,14 +11,14 @@ namespace gram {
 /**
  * Class.
  */
-class NumberMutation : public Mutation {
+class CodonMutation : public Mutation {
  public:
-  NumberMutation(std::unique_ptr<BoolGenerator> boolGenerator, std::unique_ptr<NumberGenerator> numberGenerator);
-  virtual Genotype apply(Genotype genotype) const;
+  CodonMutation(std::unique_ptr<BoolGenerator> boolGenerator, std::unique_ptr<NumberGenerator> numberGenerator);
+  virtual Genotype apply(Genotype genotype);
  private:
   std::unique_ptr<BoolGenerator> boolGenerator;
   std::unique_ptr<NumberGenerator> numberGenerator;
 };
 }
 
-#endif // GRAM_INDIVIDUAL_NUMBER_MUTATION
+#endif // GRAM_INDIVIDUAL_CODON_MUTATION

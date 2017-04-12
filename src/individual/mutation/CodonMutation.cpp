@@ -1,14 +1,14 @@
-#include <gram/individual/mutation/NumberMutation.h>
+#include <gram/individual/mutation/CodonMutation.h>
 
 using namespace gram;
 using namespace std;
 
-NumberMutation::NumberMutation(unique_ptr<BoolGenerator> boolGenerator, unique_ptr<NumberGenerator> numberGenerator)
+CodonMutation::CodonMutation(unique_ptr<BoolGenerator> boolGenerator, unique_ptr<NumberGenerator> numberGenerator)
     : boolGenerator(move(boolGenerator)), numberGenerator(move(numberGenerator)) {
   //
 }
 
-Genotype NumberMutation::apply(Genotype genotype) const {
+Genotype CodonMutation::apply(Genotype genotype) {
   for (auto &gene : genotype) {
     if (boolGenerator->generate()) {
       gene = numberGenerator->generate();

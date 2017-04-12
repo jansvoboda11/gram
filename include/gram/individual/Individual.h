@@ -22,7 +22,7 @@ class Individual {
   Individual& operator=(const Individual& individual);
   virtual ~Individual() = default;
   Individual mateWith(const Individual& partner, const Crossover& crossover) const;
-  void mutate(const Mutation& mutation);
+  void mutate(Mutation& mutation);
   void evaluate(Evaluator& evaluator);
   std::string serialize(Mapper& mapper) const;
   virtual double getFitness() const;

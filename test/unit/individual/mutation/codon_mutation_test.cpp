@@ -1,13 +1,13 @@
 #include <catch.hpp>
 #include <fakeit.hpp>
 
-#include <gram/individual/mutation/NumberMutation.h>
+#include <gram/individual/mutation/CodonMutation.h>
 
 using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST_CASE("number mutation is not always performed", "[number_mutation]") {
+TEST_CASE("codon mutation is not always performed", "[codon_mutation]") {
   Mock<BoolGenerator> boolGeneratorMock;
   Fake(Dtor(boolGeneratorMock));
   When(Method(boolGeneratorMock, generate)).AlwaysReturn(false);
@@ -17,14 +17,14 @@ TEST_CASE("number mutation is not always performed", "[number_mutation]") {
   Fake(Dtor(numberGeneratorMock));
   auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
-  NumberMutation mutation(move(boolGenerator), move(numberGenerator));
+  CodonMutation mutation(move(boolGenerator), move(numberGenerator));
 
   Genotype genotype({1, 1, 1});
 
   REQUIRE(Genotype({1, 1, 1}) == mutation.apply(genotype));
 }
 
-TEST_CASE("number mutation mutates a gene", "[number_mutation]") {
+TEST_CASE("codon mutation mutates a gene", "[codon_mutation]") {
   Mock<BoolGenerator> boolGeneratorMock;
   Fake(Dtor(boolGeneratorMock));
   When(Method(boolGeneratorMock, generate)).Return(true).Return(false).Return(true);
@@ -35,7 +35,7 @@ TEST_CASE("number mutation mutates a gene", "[number_mutation]") {
   When(Method(numberGeneratorMock, generate)).Return(2).Return(3);
   auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
-  NumberMutation mutation(move(boolGenerator), move(numberGenerator));
+  CodonMutation mutation(move(boolGenerator), move(numberGenerator));
 
   Genotype genotype({1, 1, 1});
 

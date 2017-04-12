@@ -3,7 +3,7 @@
 
 #include <gram/evaluation/driver/MultiThreadDriver.h>
 #include <gram/individual/crossover/OnePointCrossover.h>
-#include <gram/individual/mutation/NumberMutation.h>
+#include <gram/individual/mutation/FastCodonMutation.h>
 #include <gram/language/parser/BnfRuleParser.h>
 #include <gram/language/mapper/ContextFreeMapper.h>
 #include <gram/population/initializer/RandomInitializer.h>
@@ -65,10 +65,10 @@ TEST_CASE("evolution_test") {
   auto numberGenerator3 = make_unique<MinimalNumberGenerator>();
   auto numberGenerator4 = make_unique<MinimalNumberGenerator>();
   auto numberGenerator5 = make_unique<MinimalNumberGenerator>();
-  auto boolGenerator = make_unique<BoolGenerator>(move(numberGenerator5), 0.1);
+  auto stepGenerator = make_unique<BernoulliDistributionStepGenerator>(0.1, move(numberGenerator5));
 
   auto selector = make_unique<TournamentSelector>(20, move(numberGenerator1));
-  auto mutation = make_unique<NumberMutation>(move(boolGenerator), move(numberGenerator2));
+  auto mutation = make_unique<FastCodonMutation>(move(stepGenerator), move(numberGenerator2));
   auto crossover = make_unique<OnePointCrossover>(move(numberGenerator3));
   auto reproducer = make_shared<Reproducer>(move(selector), move(crossover), move(mutation));
 
