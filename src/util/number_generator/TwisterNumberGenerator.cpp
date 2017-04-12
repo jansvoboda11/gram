@@ -3,7 +3,7 @@
 using namespace gram;
 using namespace std;
 
-TwisterNumberGenerator::TwisterNumberGenerator(unsigned long max) {
+TwisterNumberGenerator::TwisterNumberGenerator(unsigned long max) : max(max) {
   // todo: make it possible to provide own seed
   random_device device;
   mt19937 twister(device());
