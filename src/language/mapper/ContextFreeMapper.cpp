@@ -19,14 +19,15 @@ Phenotype& ContextFreeMapper::recursiveMap(Phenotype& phenotype,
                                            const Rule& rule,
                                            const Genotype& genotype,
                                            unsigned long& geneNumber) {
-  if (isWrappingEvent(genotype, geneNumber) && exceededWrappingLimit(genotype, geneNumber)) {
+  unsigned long geneIndex = geneNumber % genotype.size();
+
+  if (isWrappingEvent(geneIndex, geneNumber) && exceededWrappingLimit(genotype, geneNumber)) {
     throw logic_error("Wrapping limit exceeded during genotype-phenotype mapping. ("
                       "limit: " + to_string(wrappingLimit) + ", "
                       "derivation: " + to_string(geneNumber + 1) + ", "
                       "genotype length: " + to_string(genotype.size()) + ")");
   }
 
-  unsigned long geneIndex = geneNumber % genotype.size();
   unsigned long gene = genotype[geneIndex] % rule.size();
 
   Option& option = rule.optionAt(gene);
@@ -44,9 +45,7 @@ Phenotype& ContextFreeMapper::recursiveMap(Phenotype& phenotype,
   return phenotype;
 }
 
-bool ContextFreeMapper::isWrappingEvent(const Genotype& genotype, unsigned long geneNumber) {
-  unsigned long geneIndex = geneNumber % genotype.size();
-
+bool ContextFreeMapper::isWrappingEvent(unsigned long geneIndex, unsigned long geneNumber) {
   return geneIndex == 0 && geneNumber != 0;
 }
 

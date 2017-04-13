@@ -19,7 +19,7 @@ class ContextFreeMapper : public Mapper {
                           const Rule& rule,
                           const Genotype& genotype,
                           unsigned long& geneNumber);
-  bool isWrappingEvent(const Genotype& genotype, unsigned long geneNumber);
+  bool isWrappingEvent(unsigned long geneIndex, unsigned long geneNumber);
   bool exceededWrappingLimit(const Genotype& genotype, unsigned long geneNumber);
 };
 }
