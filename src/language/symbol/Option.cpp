@@ -3,60 +3,56 @@
 using namespace gram;
 using namespace std;
 
-Option::Option() : symbolCount(0) {
-  //
+void Option::addNonTerminal(shared_ptr<NonTerminal> nonTerminal) {
+  symbols.push_back(nonTerminal);
 }
 
-void Option::addTerminal(Terminal terminal) {
-  terminals.emplace(symbolCount, terminal);
-
-  symbolCount += 1;
-}
-
-void Option::addNonTerminal(weak_ptr<NonTerminal> nonTerminal) {
-  nonTerminals.emplace(symbolCount, nonTerminal);
-
-  symbolCount += 1;
+void Option::addTerminal(shared_ptr<Terminal> terminal) {
+  symbols.push_back(terminal);
 }
 
 bool Option::hasNonTerminalAt(unsigned long index) const {
-  return nonTerminals.find(index) != nonTerminals.end();
+  return index < symbols.size() && symbols[index]->isNonTerminal();
 }
 
 bool Option::hasTerminalAt(unsigned long index) const {
-  return terminals.find(index) != terminals.end();
+  return index < symbols.size() && symbols[index]->isTerminal();
 }
 
-Terminal Option::terminalAt(unsigned long index) const {
-  return terminals.at(index);
+Terminal& Option::terminalAt(unsigned long index) const {
+  return dynamic_cast<Terminal&>(*symbols.at(index));
 }
 
 NonTerminal& Option::nonTerminalAt(unsigned long index) const {
-  return *nonTerminals.at(index).lock();
+  return dynamic_cast<NonTerminal&>(*symbols.at(index));
 }
 
 unsigned long Option::size() const {
-  return symbolCount;
+  return symbols.size();
 }
 
 bool Option::operator==(const Option& option) const {
-  for (unsigned long i = 0; i < symbolCount; i++) {
-    if (terminals.find(i) != terminals.end()) {
-      if (option.terminals.find(i) == option.terminals.end()) {
+  if (symbols.size() != option.symbols.size()) {
+    return false;
+  }
+
+  for (unsigned long i = 0; i < symbols.size(); i++) {
+    if (hasTerminalAt(i)) {
+      if (!option.hasTerminalAt(i)) {
         return false;
       }
 
-      if (terminals.at(i) != option.terminals.at(i)) {
+      if (terminalAt(i) != option.terminalAt(i)) {
         return false;
       }
     }
 
-    if (nonTerminals.find(i) != nonTerminals.end()) {
-      if (option.nonTerminals.find(i) == option.nonTerminals.end()) {
+    if (hasNonTerminalAt(i)) {
+      if (!option.hasNonTerminalAt(i)) {
         return false;
       }
 
-      if (nonTerminals.at(i).lock() != option.nonTerminals.at(i).lock()) {
+      if (nonTerminalAt(i) != option.nonTerminalAt(i)) {
         return false;
       }
     }

@@ -4,23 +4,24 @@
 #include <memory>
 #include <vector>
 
-#include <gram/language/symbol/Option.h>
+#include <gram/language/symbol/Symbol.h>
 
 namespace gram {
 // Forward declaration.
-class Option;
+class Rule;
 /**
  * Class.
  */
-class NonTerminal {
+class NonTerminal : public Symbol {
  public:
-  void addOption(std::shared_ptr<Option> option);
-  Option& optionAt(unsigned long index) const;
-  unsigned long size() const;
+  NonTerminal(std::weak_ptr<Rule> rule);
+  Rule& toRule() const;
+  bool isTerminal() const;
+  bool isNonTerminal() const;
   bool operator==(const NonTerminal& nonTerminal) const;
   bool operator!=(const NonTerminal& nonTerminal) const;
  private:
-  std::vector<std::shared_ptr<Option>> options;
+  std::weak_ptr<Rule> rule;
 };
 }
 

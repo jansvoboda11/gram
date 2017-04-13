@@ -30,7 +30,7 @@ void BnfRuleParser::parseRule(ContextFreeGrammar& grammar, string& line) const {
     throw logic_error("The BNF grammar could not be parsed.");
   }
 
-  shared_ptr<NonTerminal> rule = grammar.ruleNamed(name);
+  shared_ptr<Rule> rule = grammar.ruleNamed(name);
 
   while (line.length() > 0) {
     Option option = parseOption(grammar, line);
@@ -46,10 +46,11 @@ Option BnfRuleParser::parseOption(ContextFreeGrammar& grammar, string& line) con
     string value;
 
     if (parseNonTerminal(name, line)) {
-      shared_ptr<NonTerminal> nonTerminal = grammar.ruleNamed(name);
+      shared_ptr<Rule> rule = grammar.ruleNamed(name);
+      auto nonTerminal = make_shared<NonTerminal>(rule);
       option.addNonTerminal(nonTerminal);
     } else if (parseTerminal(value, line)) {
-      Terminal terminal(value);
+      auto terminal = make_shared<Terminal>(value);
       option.addTerminal(terminal);
     } else if (parsePipe(line)) {
       break;

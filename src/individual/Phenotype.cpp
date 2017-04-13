@@ -11,7 +11,7 @@ string Phenotype::serialize() const {
   string serialized;
 
   for (auto& terminal : terminals) {
-    serialized += terminal.value();
+    serialized += terminal.getValue();
   }
 
   return serialized;

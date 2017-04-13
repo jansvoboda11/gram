@@ -16,7 +16,7 @@ class ContextFreeMapper : public Mapper {
   std::shared_ptr<ContextFreeGrammar> grammar;
   unsigned long wrappingLimit;
   Phenotype& recursiveMap(Phenotype& phenotype,
-                          const NonTerminal& nonTerminal,
+                          const Rule& rule,
                           const Genotype& genotype,
                           unsigned long& geneNumber);
   bool isWrappingEvent(const Genotype& genotype, unsigned long geneNumber);

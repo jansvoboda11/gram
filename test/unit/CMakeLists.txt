@@ -14,6 +14,7 @@ add_executable(gram-unit-tests
         language/parser/bnf_rule_parser_test.cpp
         language/symbol/non_terminal_test.cpp
         language/symbol/option_test.cpp
+        language/symbol/rule_test.cpp
         language/symbol/terminal_test.cpp
         population/initializer/random_initializer_test.cpp
         population/reproducer/reproducer_test.cpp

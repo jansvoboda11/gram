@@ -1,6 +1,7 @@
 #ifndef GRAM_INDIVIDUAL_PHENOTYPE
 #define GRAM_INDIVIDUAL_PHENOTYPE
 
+#include <memory>
 #include <string>
 #include <vector>
 

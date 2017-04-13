@@ -1,13 +1,14 @@
 #include <catch.hpp>
 
 #include <gram/language/symbol/Option.h>
+#include <gram/language/symbol/Rule.h>
 
 using namespace gram;
 using namespace std;
 
 TEST_CASE("option accepts a terminal", "[option]") {
-  Terminal terminal1("first");
-  Terminal terminal2("second");
+  auto terminal1 = make_shared<Terminal>("first");
+  auto terminal2 = make_shared<Terminal>("second");
 
   Option option;
   option.addTerminal(terminal1);
@@ -15,18 +16,13 @@ TEST_CASE("option accepts a terminal", "[option]") {
 
   REQUIRE(option.hasTerminalAt(0));
   REQUIRE(option.hasTerminalAt(1));
-  REQUIRE(option.terminalAt(0) == terminal1);
-  REQUIRE(option.terminalAt(1) == terminal2);
+  REQUIRE(option.terminalAt(0) == *terminal1);
+  REQUIRE(option.terminalAt(1) == *terminal2);
 }
 
 TEST_CASE("option accepts a non-terminal", "[option]") {
-  Terminal terminal("terminal");
-
-  auto innerOption = make_shared<Option>();
-  auto nonTerminal = make_shared<NonTerminal>();
-
-  innerOption->addTerminal(terminal);
-  nonTerminal->addOption(innerOption);
+  auto rule = make_shared<Rule>("rule");
+  auto nonTerminal = make_shared<NonTerminal>(rule);
 
   Option option;
 
@@ -37,14 +33,10 @@ TEST_CASE("option accepts a non-terminal", "[option]") {
 }
 
 TEST_CASE("option accepts both terminals and non-terminals", "[option]") {
-  Terminal terminal("regular");
-  Terminal innerTerminal("inner");
+  auto terminal = make_shared<Terminal>("regular");
 
-  auto innerOption = make_shared<Option>();
-  auto nonTerminal = make_shared<NonTerminal>();
-
-  innerOption->addTerminal(innerTerminal);
-  nonTerminal->addOption(innerOption);
+  auto rule = make_shared<Rule>("rule");
+  auto nonTerminal = make_shared<NonTerminal>(rule);
 
   Option option;
 
@@ -53,13 +45,13 @@ TEST_CASE("option accepts both terminals and non-terminals", "[option]") {
 
   REQUIRE(option.hasTerminalAt(0));
   REQUIRE(option.hasNonTerminalAt(1));
-  REQUIRE(option.terminalAt(0) == terminal);
+  REQUIRE(option.terminalAt(0) == *terminal);
   REQUIRE(option.nonTerminalAt(1) == *nonTerminal);
 }
 
 TEST_CASE("same options are equal", "[option]") {
-  Terminal terminal1("test");
-  Terminal terminal2("test");
+  auto terminal1 = make_shared<Terminal>("test");
+  auto terminal2 = make_shared<Terminal>("test");
 
   Option option1;
   Option option2;
@@ -71,8 +63,8 @@ TEST_CASE("same options are equal", "[option]") {
 }
 
 TEST_CASE("different options are not equal", "[option]") {
-  Terminal terminal1("first");
-  Terminal terminal2("second");
+  auto terminal1 = make_shared<Terminal>("first");
+  auto terminal2 = make_shared<Terminal>("second");
 
   Option option1;
   Option option2;

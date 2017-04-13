@@ -1,32 +1,28 @@
 #include <gram/language/symbol/NonTerminal.h>
 
+#include <gram/language/symbol/Rule.h>
+
 using namespace gram;
 using namespace std;
 
-void NonTerminal::addOption(shared_ptr<Option> option) {
-  options.push_back(option);
+NonTerminal::NonTerminal(std::weak_ptr<Rule> rule) : rule(rule) {
+  //
 }
 
-Option& NonTerminal::optionAt(unsigned long index) const {
-  return *options.at(index);
+Rule& NonTerminal::toRule() const {
+  return *rule.lock();
 }
 
-unsigned long NonTerminal::size() const {
-  return options.size();
+bool NonTerminal::isTerminal() const {
+  return false;
+}
+
+bool NonTerminal::isNonTerminal() const {
+  return true;
 }
 
 bool NonTerminal::operator==(const NonTerminal& nonTerminal) const {
-  if (size() != nonTerminal.size()) {
-    return false;
-  }
-
-  for (unsigned long i = 0; i < size(); i++) {
-    if (options.at(i) != nonTerminal.options.at(i)) {
-      return false;
-    }
-  }
-
-  return true;
+  return *rule.lock() == *nonTerminal.rule.lock();
 }
 
 bool NonTerminal::operator!=(const NonTerminal& nonTerminal) const {

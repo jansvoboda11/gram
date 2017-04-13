@@ -2,8 +2,9 @@
 #define GRAM_LANGUAGE_CONTEXT_FREE_GRAMMAR
 
 #include <memory>
+#include <unordered_map>
 
-#include <gram/language/symbol/Option.h>
+#include <gram/language/symbol/Rule.h>
 
 namespace gram {
 /**
@@ -12,12 +13,12 @@ namespace gram {
 class ContextFreeGrammar {
  public:
   ContextFreeGrammar();
-  void addRule(std::string name, std::shared_ptr<NonTerminal> rule);
-  std::shared_ptr<NonTerminal> ruleNamed(std::string name);
-  std::shared_ptr<NonTerminal> startRule() const;
+  void addRule(std::shared_ptr<Rule> rule);
+  std::shared_ptr<Rule> ruleNamed(std::string name);
+  std::shared_ptr<Rule> startRule() const;
  private:
-  std::shared_ptr<NonTerminal> start;
-  std::unordered_map<std::string, std::shared_ptr<NonTerminal>> rules;
+  std::shared_ptr<Rule> start;
+  std::unordered_map<std::string, std::shared_ptr<Rule>> rules;
 };
 }
 

@@ -3,16 +3,24 @@
 using namespace gram;
 using namespace std;
 
-Terminal::Terminal(string value) : val(value) {
+Terminal::Terminal(string value) : value(value) {
   //
 }
 
-string Terminal::value() const {
-  return val;
+string Terminal::getValue() const {
+  return value;
+}
+
+bool Terminal::isTerminal() const {
+  return true;
+}
+
+bool Terminal::isNonTerminal() const {
+  return false;
 }
 
 bool Terminal::operator==(const Terminal& terminal) const {
-  return val == terminal.val;
+  return value == terminal.value;
 }
 
 bool Terminal::operator!=(const Terminal& terminal) const {

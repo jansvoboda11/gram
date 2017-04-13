@@ -7,19 +7,19 @@ ContextFreeGrammar::ContextFreeGrammar() : start(), rules() {
   //
 }
 
-void ContextFreeGrammar::addRule(string name, shared_ptr<NonTerminal> rule) {
-  rules[name] = rule;
+void ContextFreeGrammar::addRule(shared_ptr<Rule> rule) {
+  rules[rule->getName()] = rule;
 
   if (!start) {
     start = rule;
   }
 }
 
-shared_ptr<NonTerminal> ContextFreeGrammar::ruleNamed(string name) {
-  shared_ptr<NonTerminal>& rule = rules[name];
+shared_ptr<Rule> ContextFreeGrammar::ruleNamed(string name) {
+  shared_ptr<Rule>& rule = rules[name];
 
   if (!rule) {
-    rule = make_shared<NonTerminal>();
+    rule = make_shared<Rule>(name);
   }
 
   if (!start) {
@@ -29,7 +29,7 @@ shared_ptr<NonTerminal> ContextFreeGrammar::ruleNamed(string name) {
   return rule;
 }
 
-shared_ptr<NonTerminal> ContextFreeGrammar::startRule() const {
+shared_ptr<Rule> ContextFreeGrammar::startRule() const {
   if (!start) {
     throw logic_error("The start symbol of grammar is invalid.");
   }

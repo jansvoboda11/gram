@@ -8,6 +8,7 @@ set(SOURCE_FILES
         evaluation/driver/MultiThreadDriver.cpp
         evaluation/driver/SingleThreadDriver.cpp
         individual/crossover/OnePointCrossover.cpp
+        individual/mutation/BernoulliDistributionStepGenerator.cpp
         individual/mutation/CodonMutation.cpp
         individual/mutation/FastCodonMutation.cpp
         individual/Individual.cpp
@@ -15,6 +16,7 @@ set(SOURCE_FILES
         language/parser/BnfRuleParser.cpp
         language/symbol/NonTerminal.cpp
         language/symbol/Option.cpp
+        language/symbol/Rule.cpp
         language/symbol/Terminal.cpp
         language/grammar/ContextFreeGrammar.cpp
         language/mapper/ContextFreeMapper.cpp
@@ -39,6 +41,7 @@ set(SOURCE_FILES
         ../include/gram/evaluation/MultiThreadEvaluator.h
         ../include/gram/individual/crossover/Crossover.h
         ../include/gram/individual/crossover/OnePointCrossover.h
+        ../include/gram/individual/mutation/BernoulliDistributionStepGenerator.h
         ../include/gram/individual/mutation/CodonMutation.h
         ../include/gram/individual/mutation/FastCodonMutation.h
         ../include/gram/individual/mutation/Mutation.h
@@ -52,6 +55,8 @@ set(SOURCE_FILES
         ../include/gram/language/parser/BnfRuleParser.h
         ../include/gram/language/symbol/NonTerminal.h
         ../include/gram/language/symbol/Option.h
+        ../include/gram/language/symbol/Rule.h
+        ../include/gram/language/symbol/Symbol.h
         ../include/gram/language/symbol/Terminal.h
         ../include/gram/population/initializer/Initializer.h
         ../include/gram/population/initializer/RandomInitializer.h
@@ -70,7 +75,7 @@ set(SOURCE_FILES
         ../include/gram/util/number_generator/TwisterNumberGenerator.h
         ../include/gram/util/helper.h
         ../include/gram/Evolution.h
-        ../include/gram/individual/mutation/BernoulliDistributionStepGenerator.h individual/mutation/BernoulliDistributionStepGenerator.cpp)
+        )
 
 add_library(gram STATIC ${SOURCE_FILES})
 

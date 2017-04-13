@@ -1,20 +1,24 @@
 #ifndef GRAM_LANGUAGE_TERMINAL_SYMBOL
 #define GRAM_LANGUAGE_TERMINAL_SYMBOL
 
+#include <gram/language/symbol/Symbol.h>
+
 #include <string>
 
 namespace gram {
 /**
  * Class.
  */
-class Terminal {
+class Terminal : public Symbol {
  public:
   Terminal(std::string value);
-  std::string value() const;
+  std::string getValue() const;
+  bool isTerminal() const;
+  bool isNonTerminal() const;
   bool operator==(const Terminal& terminal) const;
   bool operator!=(const Terminal& terminal) const;
  private:
-  std::string val;
+  std::string value;
 };
 }
 

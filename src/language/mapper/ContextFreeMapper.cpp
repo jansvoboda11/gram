@@ -16,7 +16,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
 }
 
 Phenotype& ContextFreeMapper::recursiveMap(Phenotype& phenotype,
-                                           const NonTerminal& nonTerminal,
+                                           const Rule& rule,
                                            const Genotype& genotype,
                                            unsigned long& geneNumber) {
   if (isWrappingEvent(genotype, geneNumber) && exceededWrappingLimit(genotype, geneNumber)) {
@@ -27,9 +27,9 @@ Phenotype& ContextFreeMapper::recursiveMap(Phenotype& phenotype,
   }
 
   unsigned long geneIndex = geneNumber % genotype.size();
-  unsigned long gene = genotype[geneIndex] % nonTerminal.size();
+  unsigned long gene = genotype[geneIndex] % rule.size();
 
-  Option& option = nonTerminal.optionAt(gene);
+  Option& option = rule.optionAt(gene);
 
   for (unsigned long i = 0; i < option.size(); i++) {
     if (option.hasTerminalAt(i)) {
@@ -37,7 +37,7 @@ Phenotype& ContextFreeMapper::recursiveMap(Phenotype& phenotype,
     } else {
       geneNumber += 1;
 
-      recursiveMap(phenotype, option.nonTerminalAt(i), genotype, geneNumber);
+      recursiveMap(phenotype, option.nonTerminalAt(i).toRule(), genotype, geneNumber);
     }
   }
 

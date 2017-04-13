@@ -7,156 +7,182 @@ using namespace gram;
 using namespace std;
 
 TEST_CASE("context-free mapper maps a terminal", "[context-free_mapper]") {
-  Terminal terminal("test");
+//  <rule> ::= "terminal"
+  auto terminal = make_shared<Terminal>("terminal");
+  auto rule = make_shared<Rule>("rule");
   auto option = make_shared<Option>();
-  auto startSymbol = make_shared<NonTerminal>();
 
   option->addTerminal(terminal);
-  startSymbol->addOption(option);
+  rule->addOption(option);
 
   auto grammar = make_shared<ContextFreeGrammar>();
-  grammar->addRule("rule", startSymbol);
+  grammar->addRule(rule);
 
   Genotype genotype({0});
 
   ContextFreeMapper mapper(grammar, 1);
 
   Phenotype expectedPhenotype;
-  expectedPhenotype.addTerminal(terminal);
+  expectedPhenotype.addTerminal(*terminal);
 
   REQUIRE(mapper.map(genotype) == expectedPhenotype);
 }
 
 TEST_CASE("context-free mapper maps a non-terminal", "[context-free_mapper]") {
-  Terminal terminal1("first");
-  Terminal terminal2("second");
+//  <rule1> ::= <rule2>
+//  <rule2> ::= "terminal"
+
+  auto rule1 = make_shared<Rule>("rule1");
+  auto rule2 = make_shared<Rule>("rule2");
 
   auto option1 = make_shared<Option>();
   auto option2 = make_shared<Option>();
 
-  option1->addTerminal(terminal1);
-  option2->addTerminal(terminal2);
+  auto terminal = make_shared<Terminal>("terminal");
+  auto nonTerminal = make_shared<NonTerminal>(rule2);
 
-  auto startSymbol = make_shared<NonTerminal>();
+  option1->addNonTerminal(nonTerminal);
+  option2->addTerminal(terminal);
 
-  startSymbol->addOption(option1);
-  startSymbol->addOption(option2);
+  rule1->addOption(option1);
+  rule2->addOption(option2);
 
   auto grammar = make_shared<ContextFreeGrammar>();
-  grammar->addRule("rule", startSymbol);
+  grammar->addRule(rule1);
 
-  Genotype genotype{1};
+  Genotype genotype{0};
 
   ContextFreeMapper mapper(grammar, 1);
 
   Phenotype expectedPhenotype;
-  expectedPhenotype.addTerminal(terminal2);
+  expectedPhenotype.addTerminal(*terminal);
 
   REQUIRE(mapper.map(genotype) == expectedPhenotype);
 }
 
-TEST_CASE("context-free mapper maps linear grammar", "[context-free_mapper]") {
-  Terminal digit0("0");
-  Terminal digit1("1");
-  Terminal digit2("2");
-  Terminal digit3("3");
-  Terminal digit4("4");
-  Terminal digit5("5");
-  Terminal digit6("6");
-  Terminal digit7("7");
-  Terminal digit8("8");
-  Terminal digit9("9");
+TEST_CASE("context-free mapper maps a recursive grammar", "[context-free_mapper]") {
+//  <number> ::= <digit> <number> | <digit>
+//  <digit> ::= "0" | "1"
+
+  auto digit0 = make_shared<Terminal>("0");
+  auto digit1 = make_shared<Terminal>("1");
 
   auto option0 = make_shared<Option>();
   auto option1 = make_shared<Option>();
-  auto option2 = make_shared<Option>();
-  auto option3 = make_shared<Option>();
-  auto option4 = make_shared<Option>();
-  auto option5 = make_shared<Option>();
-  auto option6 = make_shared<Option>();
-  auto option7 = make_shared<Option>();
-  auto option8 = make_shared<Option>();
-  auto option9 = make_shared<Option>();
 
   option0->addTerminal(digit0);
   option1->addTerminal(digit1);
-  option2->addTerminal(digit2);
-  option3->addTerminal(digit3);
-  option4->addTerminal(digit4);
-  option5->addTerminal(digit5);
-  option6->addTerminal(digit6);
-  option7->addTerminal(digit7);
-  option8->addTerminal(digit8);
-  option9->addTerminal(digit9);
 
-  auto digit = make_shared<NonTerminal>();
+  auto digit = make_shared<Rule>("digit");
+  auto digitNonTerminal = make_shared<NonTerminal>(digit);
+
   digit->addOption(option0);
   digit->addOption(option1);
-  digit->addOption(option2);
-  digit->addOption(option3);
-  digit->addOption(option4);
-  digit->addOption(option5);
-  digit->addOption(option6);
-  digit->addOption(option7);
-  digit->addOption(option8);
-  digit->addOption(option9);
 
-  auto startSymbol = make_shared<NonTerminal>();
+  auto number = make_shared<Rule>("number");
+  auto numberNonTerminal = make_shared<NonTerminal>(number);
 
-  auto digitOption = make_shared<Option>();
-  digitOption->addNonTerminal(digit);
+  auto numberOption1 = make_shared<Option>();
+  auto numberOption2 = make_shared<Option>();
 
-  auto numberOption = make_shared<Option>();
-  numberOption->addNonTerminal(digit);
-  numberOption->addNonTerminal(startSymbol);
+  numberOption1->addNonTerminal(digitNonTerminal);
+  numberOption1->addNonTerminal(numberNonTerminal);
+  numberOption2->addNonTerminal(digitNonTerminal);
 
-  startSymbol->addOption(digitOption);
-  startSymbol->addOption(numberOption);
+  number->addOption(numberOption1);
+  number->addOption(numberOption2);
 
   auto grammar = make_shared<ContextFreeGrammar>();
-  grammar->addRule("number", startSymbol);
-  grammar->addRule("digit", digit);
+  grammar->addRule(number);
+  grammar->addRule(digit);
 
   ContextFreeMapper mapper(grammar, 1);
 
-  Phenotype phenotype = mapper.map(Genotype({7, 16, 11, 25, 0, 39}));
+  Phenotype phenotype = mapper.map(Genotype({0, 0, 1, 1}));
 
-  REQUIRE(phenotype.serialize() == "659");
+  REQUIRE(phenotype.serialize() == "01");
 }
 
 TEST_CASE("context-free mapper wraps the genotype", "[context-free_mapper]") {
-  auto rule1 = make_shared<NonTerminal>();
-  auto rule2 = make_shared<NonTerminal>();
+//  <number> ::= <digit> <number> | <digit>
+//  <digit> ::= "0" | "1"
 
+  auto digit0 = make_shared<Terminal>("0");
+  auto digit1 = make_shared<Terminal>("1");
+
+  auto option0 = make_shared<Option>();
   auto option1 = make_shared<Option>();
-  option1->addNonTerminal(rule2);
-  rule1->addOption(option1);
 
-  auto option2 = make_shared<Option>();
-  option2->addTerminal(Terminal("hello"));
-  rule2->addOption(option2);
+  option0->addTerminal(digit0);
+  option1->addTerminal(digit1);
+
+  auto digit = make_shared<Rule>("digit");
+  auto digitNonTerminal = make_shared<NonTerminal>(digit);
+
+  digit->addOption(option0);
+  digit->addOption(option1);
+
+  auto number = make_shared<Rule>("number");
+  auto numberNonTerminal = make_shared<NonTerminal>(number);
+
+  auto numberOption1 = make_shared<Option>();
+  auto numberOption2 = make_shared<Option>();
+
+  numberOption1->addNonTerminal(digitNonTerminal);
+  numberOption1->addNonTerminal(numberNonTerminal);
+  numberOption2->addNonTerminal(digitNonTerminal);
+
+  number->addOption(numberOption1);
+  number->addOption(numberOption2);
 
   auto grammar = make_shared<ContextFreeGrammar>();
-  grammar->addRule("rule1", rule1);
+  grammar->addRule(number);
+  grammar->addRule(digit);
 
   ContextFreeMapper mapper(grammar, 1);
 
-  Phenotype phenotype = mapper.map(Genotype({0}));
+  Phenotype phenotype = mapper.map(Genotype({0, 1, 1}));
 
-  REQUIRE(phenotype.serialize() == "hello");
+  REQUIRE(phenotype.serialize() == "10");
 }
 
 TEST_CASE("context-free mapper respects wrapping limit", "[context-free_mapper]") {
-  auto rule = make_shared<NonTerminal>();
+//  <number> ::= <digit> <number> | <digit>
+//  <digit> ::= "0" | "1"
 
-  auto option = make_shared<Option>();
-  option->addNonTerminal(rule);
-  rule->addOption(option);
+  auto digit0 = make_shared<Terminal>("0");
+  auto digit1 = make_shared<Terminal>("1");
+
+  auto option0 = make_shared<Option>();
+  auto option1 = make_shared<Option>();
+
+  option0->addTerminal(digit0);
+  option1->addTerminal(digit1);
+
+  auto digit = make_shared<Rule>("digit");
+  auto digitNonTerminal = make_shared<NonTerminal>(digit);
+
+  digit->addOption(option0);
+  digit->addOption(option1);
+
+  auto number = make_shared<Rule>("number");
+  auto numberNonTerminal = make_shared<NonTerminal>(number);
+
+  auto numberOption1 = make_shared<Option>();
+  auto numberOption2 = make_shared<Option>();
+
+  numberOption1->addNonTerminal(digitNonTerminal);
+  numberOption1->addNonTerminal(numberNonTerminal);
+  numberOption2->addNonTerminal(digitNonTerminal);
+
+  number->addOption(numberOption1);
+  number->addOption(numberOption2);
 
   auto grammar = make_shared<ContextFreeGrammar>();
-  grammar->addRule("rule", rule);
+  grammar->addRule(number);
+  grammar->addRule(digit);
 
-  ContextFreeMapper mapper(grammar, 2);
+  ContextFreeMapper mapper(grammar, 1);
 
   REQUIRE_THROWS_WITH(mapper.map(Genotype({0, 0, 0})),
                       Contains("Wrapping limit exceeded during genotype-phenotype mapping."));
