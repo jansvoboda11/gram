@@ -16,8 +16,8 @@ TEST_CASE("option accepts a terminal", "[option]") {
 
   REQUIRE(option.hasTerminalAt(0));
   REQUIRE(option.hasTerminalAt(1));
-  REQUIRE(option.terminalAt(0) == *terminal1);
-  REQUIRE(option.terminalAt(1) == *terminal2);
+  REQUIRE(option.terminalAt(0) == terminal1);
+  REQUIRE(option.terminalAt(1) == terminal2);
 }
 
 TEST_CASE("option accepts a non-terminal", "[option]") {
@@ -29,7 +29,7 @@ TEST_CASE("option accepts a non-terminal", "[option]") {
   option.addNonTerminal(nonTerminal);
 
   REQUIRE(option.hasNonTerminalAt(0));
-  REQUIRE(option.nonTerminalAt(0) == *nonTerminal);
+  REQUIRE(option.nonTerminalAt(0) == nonTerminal);
 }
 
 TEST_CASE("option accepts both terminals and non-terminals", "[option]") {
@@ -45,8 +45,8 @@ TEST_CASE("option accepts both terminals and non-terminals", "[option]") {
 
   REQUIRE(option.hasTerminalAt(0));
   REQUIRE(option.hasNonTerminalAt(1));
-  REQUIRE(option.terminalAt(0) == *terminal);
-  REQUIRE(option.nonTerminalAt(1) == *nonTerminal);
+  REQUIRE(option.terminalAt(0) == terminal);
+  REQUIRE(option.nonTerminalAt(1) == nonTerminal);
 }
 
 TEST_CASE("same options are equal", "[option]") {

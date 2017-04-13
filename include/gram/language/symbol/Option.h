@@ -16,8 +16,8 @@ class Option {
   void addTerminal(std::shared_ptr<Terminal> terminal);
   bool hasNonTerminalAt(unsigned long index) const;
   bool hasTerminalAt(unsigned long index) const;
-  NonTerminal& nonTerminalAt(unsigned long index) const;
-  Terminal& terminalAt(unsigned long index) const;
+  std::shared_ptr<NonTerminal> nonTerminalAt(unsigned long index) const;
+  std::shared_ptr<Terminal> terminalAt(unsigned long index) const;
   unsigned long size() const;
   bool operator==(const Option& option) const;
   bool operator!=(const Option& option) const;

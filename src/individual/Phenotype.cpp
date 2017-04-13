@@ -3,7 +3,7 @@
 using namespace gram;
 using namespace std;
 
-void Phenotype::addTerminal(Terminal terminal) {
+void Phenotype::addTerminal(std::shared_ptr<Terminal> terminal) {
   terminals.push_back(terminal);
 }
 
@@ -11,7 +11,7 @@ string Phenotype::serialize() const {
   string serialized;
 
   for (auto& terminal : terminals) {
-    serialized += terminal.getValue();
+    serialized += terminal->getValue();
   }
 
   return serialized;
@@ -23,7 +23,7 @@ bool Phenotype::operator==(const Phenotype& phenotype) const {
   }
 
   for (int i = 0; i < terminals.size(); i++) {
-    if (terminals[i] != phenotype.terminals[i]) {
+    if (*terminals[i] != *phenotype.terminals[i]) {
       return false;
     }
   }

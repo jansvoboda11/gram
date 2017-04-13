@@ -37,7 +37,7 @@ Phenotype& ContextFreeMapper::recursiveMap(Phenotype& phenotype,
     } else {
       geneNumber += 1;
 
-      recursiveMap(phenotype, option.nonTerminalAt(i).toRule(), genotype, geneNumber);
+      recursiveMap(phenotype, option.nonTerminalAt(i)->toRule(), genotype, geneNumber);
     }
   }
 

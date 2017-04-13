@@ -13,12 +13,12 @@ namespace gram {
  */
 class Phenotype {
  public:
-  void addTerminal(Terminal terminal);
+  void addTerminal(std::shared_ptr<Terminal> terminal);
   virtual std::string serialize() const;
   bool operator==(const Phenotype& phenotype) const;
   bool operator!=(const Phenotype& phenotype) const;
  private:
-  std::vector<Terminal> terminals;
+  std::vector<std::shared_ptr<Terminal>> terminals;
 };
 }
 

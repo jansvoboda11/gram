@@ -23,7 +23,7 @@ TEST_CASE("context-free mapper maps a terminal", "[context-free_mapper]") {
   ContextFreeMapper mapper(grammar, 1);
 
   Phenotype expectedPhenotype;
-  expectedPhenotype.addTerminal(*terminal);
+  expectedPhenotype.addTerminal(terminal);
 
   REQUIRE(mapper.map(genotype) == expectedPhenotype);
 }
@@ -55,7 +55,7 @@ TEST_CASE("context-free mapper maps a non-terminal", "[context-free_mapper]") {
   ContextFreeMapper mapper(grammar, 1);
 
   Phenotype expectedPhenotype;
-  expectedPhenotype.addTerminal(*terminal);
+  expectedPhenotype.addTerminal(terminal);
 
   REQUIRE(mapper.map(genotype) == expectedPhenotype);
 }

@@ -3,6 +3,7 @@
 #include <gram/individual/Phenotype.h>
 
 using namespace gram;
+using namespace std;
 
 TEST_CASE("empty phenotype serializes", "[phenotype]") {
   Phenotype phenotype;
@@ -11,19 +12,19 @@ TEST_CASE("empty phenotype serializes", "[phenotype]") {
 }
 
 TEST_CASE("phenotype with terminals serializes", "[phenotype]") {
-  Terminal terminal("hello");
-  Terminal terminal2("world");
+  auto terminal1 = make_shared<Terminal>("hello");
+  auto terminal2 = make_shared<Terminal>("world");
 
   Phenotype phenotype;
-  phenotype.addTerminal(terminal);
+  phenotype.addTerminal(terminal1);
   phenotype.addTerminal(terminal2);
 
   REQUIRE("helloworld" == phenotype.serialize());
 }
 
 TEST_CASE("same phenotypes are equal", "[phenotype]") {
-  Terminal terminal1("test");
-  Terminal terminal2("test");
+  auto terminal1 = make_shared<Terminal>("test");
+  auto terminal2 = make_shared<Terminal>("test");
 
   Phenotype phenotype1;
   Phenotype phenotype2;
@@ -35,8 +36,8 @@ TEST_CASE("same phenotypes are equal", "[phenotype]") {
 }
 
 TEST_CASE("different phenotypes are not equal", "[phenotype]") {
-  Terminal terminal1("first");
-  Terminal terminal2("second");
+  auto terminal1 = make_shared<Terminal>("first");
+  auto terminal2 = make_shared<Terminal>("second");
 
   Phenotype phenotype1;
   Phenotype phenotype2;

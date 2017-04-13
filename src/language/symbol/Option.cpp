@@ -19,12 +19,12 @@ bool Option::hasTerminalAt(unsigned long index) const {
   return index < symbols.size() && symbols[index]->isTerminal();
 }
 
-Terminal& Option::terminalAt(unsigned long index) const {
-  return dynamic_cast<Terminal&>(*symbols.at(index));
+shared_ptr<Terminal> Option::terminalAt(unsigned long index) const {
+  return dynamic_pointer_cast<Terminal>(symbols.at(index));
 }
 
-NonTerminal& Option::nonTerminalAt(unsigned long index) const {
-  return dynamic_cast<NonTerminal&>(*symbols.at(index));
+shared_ptr<NonTerminal> Option::nonTerminalAt(unsigned long index) const {
+  return dynamic_pointer_cast<NonTerminal>(symbols.at(index));
 }
 
 unsigned long Option::size() const {
@@ -42,7 +42,7 @@ bool Option::operator==(const Option& option) const {
         return false;
       }
 
-      if (terminalAt(i) != option.terminalAt(i)) {
+      if (*terminalAt(i) != *option.terminalAt(i)) {
         return false;
       }
     }
@@ -52,7 +52,7 @@ bool Option::operator==(const Option& option) const {
         return false;
       }
 
-      if (nonTerminalAt(i) != option.nonTerminalAt(i)) {
+      if (*nonTerminalAt(i) != *option.nonTerminalAt(i)) {
         return false;
       }
     }
