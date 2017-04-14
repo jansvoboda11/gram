@@ -9,8 +9,11 @@ ContextFreeMapper::ContextFreeMapper(shared_ptr<ContextFreeGrammar> grammar, uns
 }
 
 Phenotype ContextFreeMapper::map(const Genotype& genotype) {
+  while (!symbols.empty()) {
+    symbols.pop();
+  }
+
   Phenotype phenotype;
-  stack<Symbol*> symbols;
 
   unsigned long wrappings = 0;
   unsigned long codonIndex = 0;
@@ -18,7 +21,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
   Rule& startRule = grammar->startRule();
   unsigned long optionIndex = genotype[codonIndex] % startRule.size();
   Option& startOption = startRule.optionAt(optionIndex);
-  pushOption(symbols, startOption);
+  pushOption(startOption);
   codonIndex += 1;
 
   while (!symbols.empty()) {
@@ -42,7 +45,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
       Rule& rule = nonTerminal->toRule();
       optionIndex = genotype[codonIndex] % rule.size();
       Option& option = rule.optionAt(optionIndex);
-      pushOption(symbols, option);
+      pushOption(option);
       codonIndex += 1;
     }
   }
@@ -50,7 +53,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
   return phenotype;
 }
 
-void ContextFreeMapper::pushOption(stack<Symbol*>& symbols, Option& option) const {
+void ContextFreeMapper::pushOption(Option& option) {
   for (auto symbol = option.rbegin(); symbol != option.rend(); symbol++) {
     symbols.push(*symbol);
   }
