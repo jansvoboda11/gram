@@ -31,6 +31,7 @@ set(SOURCE_FILES
         util/number_generator/MinimalNumberGenerator.cpp
         util/number_generator/NumberGenerator.cpp
         util/number_generator/TwisterNumberGenerator.cpp
+        util/number_generator/XorShiftNumberGenerator.cpp
         util/helper.cpp
         Evolution.cpp
         ../include/gram/evaluation/driver/EvaluationDriver.h
@@ -72,6 +73,7 @@ set(SOURCE_FILES
         ../include/gram/util/number_generator/MinimalNumberGenerator.h
         ../include/gram/util/number_generator/NumberGenerator.h
         ../include/gram/util/number_generator/TwisterNumberGenerator.h
+        ../include/gram/util/number_generator/XorShiftNumberGenerator.h
         ../include/gram/util/helper.h
         ../include/gram/Evolution.h
         )

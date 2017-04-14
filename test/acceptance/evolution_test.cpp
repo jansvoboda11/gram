@@ -11,7 +11,7 @@
 #include <gram/util/logger/NullLogger.h>
 #include <gram/util/number_generator/TwisterNumberGenerator.h>
 #include <gram/Evolution.h>
-#include <gram/util/number_generator/MinimalNumberGenerator.h>
+#include <gram/util/number_generator/XorShiftNumberGenerator.h>
 
 using namespace fakeit;
 using namespace gram;
@@ -60,11 +60,11 @@ class FakeEvaluator : public MultiThreadEvaluator {
 };
 
 TEST_CASE("evolution_test") {
-  auto numberGenerator1 = make_unique<MinimalNumberGenerator>();
-  auto numberGenerator2 = make_unique<MinimalNumberGenerator>();
-  auto numberGenerator3 = make_unique<MinimalNumberGenerator>();
-  auto numberGenerator4 = make_unique<MinimalNumberGenerator>();
-  auto numberGenerator5 = make_unique<MinimalNumberGenerator>();
+  auto numberGenerator1 = make_unique<XorShiftNumberGenerator>();
+  auto numberGenerator2 = make_unique<XorShiftNumberGenerator>();
+  auto numberGenerator3 = make_unique<XorShiftNumberGenerator>();
+  auto numberGenerator4 = make_unique<XorShiftNumberGenerator>();
+  auto numberGenerator5 = make_unique<XorShiftNumberGenerator>();
   auto stepGenerator = make_unique<BernoulliDistributionStepGenerator>(0.1, move(numberGenerator5));
 
   auto selector = make_unique<TournamentSelector>(20, move(numberGenerator1));
