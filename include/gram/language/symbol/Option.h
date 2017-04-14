@@ -18,7 +18,7 @@ class Option {
   bool hasTerminalAt(unsigned long index) const;
   std::shared_ptr<NonTerminal> nonTerminalAt(unsigned long index) const;
   std::shared_ptr<Terminal> terminalAt(unsigned long index) const;
-  std::vector<std::shared_ptr<Symbol>> getSymbols();
+  std::vector<std::shared_ptr<Symbol>>& getSymbols();
   unsigned long size() const;
   bool operator==(const Option& option) const;
   bool operator!=(const Option& option) const;

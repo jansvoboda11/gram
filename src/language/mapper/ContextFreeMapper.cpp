@@ -51,7 +51,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
 }
 
 void ContextFreeMapper::pushOption(stack<shared_ptr<Symbol>>& symbols, Option& option) const {
-  vector<shared_ptr<Symbol>> optionSymbols = option.getSymbols();
+  auto& optionSymbols = option.getSymbols();
 
   for (long i = option.size() - 1; i >= 0; i--) {
     symbols.push(optionSymbols[i]);
