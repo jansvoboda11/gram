@@ -8,7 +8,6 @@ add_executable(gram-unit-tests
         individual/mutation/codon_mutation_test.cpp
         individual/mutation/fast_codon_mutation_test.cpp
         individual/individual_test.cpp
-        individual/phenotype_test.cpp
         language/grammar/context_free_grammar_test.cpp
         language/mapper/context_free_mapper_test.cpp
         language/parser/bnf_rule_parser_test.cpp

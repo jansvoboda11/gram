@@ -41,9 +41,7 @@ void Individual::evaluate(Evaluator& evaluator) {
 }
 
 std::string Individual::serialize(Mapper& mapper) const {
-  Phenotype phenotype = mapper.map(genotype);
-
-  return phenotype.serialize();
+  return mapper.map(genotype);
 }
 
 double Individual::getFitness() const {

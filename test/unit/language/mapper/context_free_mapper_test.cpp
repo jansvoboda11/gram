@@ -23,7 +23,7 @@ TEST_CASE("context-free mapper maps a terminal", "[context-free_mapper]") {
   ContextFreeMapper mapper(grammar, 1);
 
   Phenotype expectedPhenotype;
-  expectedPhenotype.addTerminal(terminal);
+  expectedPhenotype += terminal->getValue();
 
   REQUIRE(mapper.map(genotype) == expectedPhenotype);
 }
@@ -55,7 +55,7 @@ TEST_CASE("context-free mapper maps a non-terminal", "[context-free_mapper]") {
   ContextFreeMapper mapper(grammar, 1);
 
   Phenotype expectedPhenotype;
-  expectedPhenotype.addTerminal(terminal);
+  expectedPhenotype += terminal->getValue();
 
   REQUIRE(mapper.map(genotype) == expectedPhenotype);
 }
@@ -100,7 +100,7 @@ TEST_CASE("context-free mapper maps a recursive grammar", "[context-free_mapper]
 
   Phenotype phenotype = mapper.map(Genotype({0, 0, 1, 1}));
 
-  REQUIRE(phenotype.serialize() == "01");
+  REQUIRE(phenotype == "01");
 }
 
 TEST_CASE("context-free mapper wraps the genotype", "[context-free_mapper]") {
@@ -143,7 +143,7 @@ TEST_CASE("context-free mapper wraps the genotype", "[context-free_mapper]") {
 
   Phenotype phenotype = mapper.map(Genotype({0, 1, 1}));
 
-  REQUIRE(phenotype.serialize() == "10");
+  REQUIRE(phenotype == "10");
 }
 
 TEST_CASE("context-free mapper respects wrapping limit", "[context-free_mapper]") {

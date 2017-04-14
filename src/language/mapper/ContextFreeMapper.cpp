@@ -27,7 +27,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
 
     if (symbol->isTerminal()) {
       auto terminal = dynamic_pointer_cast<Terminal>(symbol);
-      phenotype.addTerminal(terminal);
+      phenotype += terminal->getValue();
     } else {
       if (codonIndex == genotype.size()) {
         codonIndex = 0;

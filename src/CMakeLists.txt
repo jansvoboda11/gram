@@ -12,7 +12,6 @@ set(SOURCE_FILES
         individual/mutation/CodonMutation.cpp
         individual/mutation/FastCodonMutation.cpp
         individual/Individual.cpp
-        individual/Phenotype.cpp
         language/parser/BnfRuleParser.cpp
         language/symbol/NonTerminal.cpp
         language/symbol/Option.cpp
