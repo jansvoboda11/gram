@@ -34,7 +34,7 @@ void BnfRuleParser::parseRule(ContextFreeGrammar& grammar, string& line) const {
 
   while (line.length() > 0) {
     Option option = parseOption(grammar, line);
-    rule.addOption(make_shared<Option>(option));
+    rule.addOption(make_unique<Option>(option));
   }
 }
 

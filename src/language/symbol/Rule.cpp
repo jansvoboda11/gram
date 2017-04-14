@@ -11,8 +11,8 @@ string Rule::getName() const {
   return name;
 }
 
-void Rule::addOption(shared_ptr<Option> option) {
-  options.push_back(option);
+void Rule::addOption(unique_ptr<Option> option) {
+  options.push_back(move(option));
 }
 
 Option& Rule::optionAt(unsigned long index) const {

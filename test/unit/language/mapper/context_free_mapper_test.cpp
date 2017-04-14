@@ -10,10 +10,10 @@ TEST_CASE("context-free mapper maps a terminal", "[context-free_mapper]") {
 //  <rule> ::= "terminal"
   auto terminal = make_shared<Terminal>("terminal");
   auto rule = make_unique<Rule>("rule");
-  auto option = make_shared<Option>();
+  auto option = make_unique<Option>();
 
   option->addTerminal(terminal);
-  rule->addOption(option);
+  rule->addOption(move(option));
 
   auto grammar = make_shared<ContextFreeGrammar>();
   grammar->addRule(move(rule));
@@ -35,8 +35,8 @@ TEST_CASE("context-free mapper maps a non-terminal", "[context-free_mapper]") {
   auto rule1 = make_unique<Rule>("rule1");
   auto rule2 = make_unique<Rule>("rule2");
 
-  auto option1 = make_shared<Option>();
-  auto option2 = make_shared<Option>();
+  auto option1 = make_unique<Option>();
+  auto option2 = make_unique<Option>();
 
   auto terminal = make_shared<Terminal>("terminal");
   auto nonTerminal = make_shared<NonTerminal>(*rule2);
@@ -44,8 +44,8 @@ TEST_CASE("context-free mapper maps a non-terminal", "[context-free_mapper]") {
   option1->addNonTerminal(nonTerminal);
   option2->addTerminal(terminal);
 
-  rule1->addOption(option1);
-  rule2->addOption(option2);
+  rule1->addOption(move(option1));
+  rule2->addOption(move(option2));
 
   auto grammar = make_shared<ContextFreeGrammar>();
   grammar->addRule(move(rule1));
@@ -68,8 +68,8 @@ TEST_CASE("context-free mapper maps a recursive grammar", "[context-free_mapper]
   auto digit0 = make_shared<Terminal>("0");
   auto digit1 = make_shared<Terminal>("1");
 
-  auto option0 = make_shared<Option>();
-  auto option1 = make_shared<Option>();
+  auto option0 = make_unique<Option>();
+  auto option1 = make_unique<Option>();
 
   option0->addTerminal(digit0);
   option1->addTerminal(digit1);
@@ -77,21 +77,21 @@ TEST_CASE("context-free mapper maps a recursive grammar", "[context-free_mapper]
   auto digit = make_unique<Rule>("digit");
   auto digitNonTerminal = make_shared<NonTerminal>(*digit);
 
-  digit->addOption(option0);
-  digit->addOption(option1);
+  digit->addOption(move(option0));
+  digit->addOption(move(option1));
 
   auto number = make_unique<Rule>("number");
   auto numberNonTerminal = make_shared<NonTerminal>(*number);
 
-  auto numberOption1 = make_shared<Option>();
-  auto numberOption2 = make_shared<Option>();
+  auto numberOption1 = make_unique<Option>();
+  auto numberOption2 = make_unique<Option>();
 
   numberOption1->addNonTerminal(digitNonTerminal);
   numberOption1->addNonTerminal(numberNonTerminal);
   numberOption2->addNonTerminal(digitNonTerminal);
 
-  number->addOption(numberOption1);
-  number->addOption(numberOption2);
+  number->addOption(move(numberOption1));
+  number->addOption(move(numberOption2));
 
   auto grammar = make_shared<ContextFreeGrammar>();
   grammar->addRule(move(number));
@@ -111,8 +111,8 @@ TEST_CASE("context-free mapper wraps the genotype", "[context-free_mapper]") {
   auto digit0 = make_shared<Terminal>("0");
   auto digit1 = make_shared<Terminal>("1");
 
-  auto option0 = make_shared<Option>();
-  auto option1 = make_shared<Option>();
+  auto option0 = make_unique<Option>();
+  auto option1 = make_unique<Option>();
 
   option0->addTerminal(digit0);
   option1->addTerminal(digit1);
@@ -120,21 +120,21 @@ TEST_CASE("context-free mapper wraps the genotype", "[context-free_mapper]") {
   auto digit = make_unique<Rule>("digit");
   auto digitNonTerminal = make_shared<NonTerminal>(*digit);
 
-  digit->addOption(option0);
-  digit->addOption(option1);
+  digit->addOption(move(option0));
+  digit->addOption(move(option1));
 
   auto number = make_unique<Rule>("number");
   auto numberNonTerminal = make_shared<NonTerminal>(*number);
 
-  auto numberOption1 = make_shared<Option>();
-  auto numberOption2 = make_shared<Option>();
+  auto numberOption1 = make_unique<Option>();
+  auto numberOption2 = make_unique<Option>();
 
   numberOption1->addNonTerminal(digitNonTerminal);
   numberOption1->addNonTerminal(numberNonTerminal);
   numberOption2->addNonTerminal(digitNonTerminal);
 
-  number->addOption(numberOption1);
-  number->addOption(numberOption2);
+  number->addOption(move(numberOption1));
+  number->addOption(move(numberOption2));
 
   auto grammar = make_shared<ContextFreeGrammar>();
   grammar->addRule(move(number));
@@ -154,8 +154,8 @@ TEST_CASE("context-free mapper respects wrapping limit", "[context-free_mapper]"
   auto digit0 = make_shared<Terminal>("0");
   auto digit1 = make_shared<Terminal>("1");
 
-  auto option0 = make_shared<Option>();
-  auto option1 = make_shared<Option>();
+  auto option0 = make_unique<Option>();
+  auto option1 = make_unique<Option>();
 
   option0->addTerminal(digit0);
   option1->addTerminal(digit1);
@@ -163,21 +163,21 @@ TEST_CASE("context-free mapper respects wrapping limit", "[context-free_mapper]"
   auto digit = make_unique<Rule>("digit");
   auto digitNonTerminal = make_shared<NonTerminal>(*digit);
 
-  digit->addOption(option0);
-  digit->addOption(option1);
+  digit->addOption(move(option0));
+  digit->addOption(move(option1));
 
   auto number = make_unique<Rule>("number");
   auto numberNonTerminal = make_shared<NonTerminal>(*number);
 
-  auto numberOption1 = make_shared<Option>();
-  auto numberOption2 = make_shared<Option>();
+  auto numberOption1 = make_unique<Option>();
+  auto numberOption2 = make_unique<Option>();
 
   numberOption1->addNonTerminal(digitNonTerminal);
   numberOption1->addNonTerminal(numberNonTerminal);
   numberOption2->addNonTerminal(digitNonTerminal);
 
-  number->addOption(numberOption1);
-  number->addOption(numberOption2);
+  number->addOption(move(numberOption1));
+  number->addOption(move(numberOption2));
 
   auto grammar = make_shared<ContextFreeGrammar>();
   grammar->addRule(move(number));
