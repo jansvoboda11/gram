@@ -37,6 +37,10 @@ unsigned long Option::size() const {
   return symbols.size();
 }
 
+std::vector<Symbol*>& Option::getSymbols() {
+  return symbolPointers;
+}
+
 bool Option::operator==(const Option& option) const {
 //  if (symbols.size() != option.symbols.size()) {
 //    return false;
@@ -70,4 +74,3 @@ bool Option::operator==(const Option& option) const {
 bool Option::operator!=(const Option& option) const {
   return !operator==(option);
 }
-

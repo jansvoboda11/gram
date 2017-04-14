@@ -20,6 +20,7 @@ class Option {
   std::vector<Symbol*>::reverse_iterator rend();
   Symbol& operator[](unsigned long index);
   unsigned long size() const;
+  std::vector<Symbol*>& getSymbols();
   bool operator==(const Option& option) const;
   bool operator!=(const Option& option) const;
  private:

@@ -17,7 +17,7 @@ class ContextFreeMapper : public Mapper {
  private:
   std::shared_ptr<ContextFreeGrammar> grammar;
   unsigned long wrappingLimit;
-  std::stack<Symbol*> symbols; // does not hold any state
+  std::vector<Symbol*> symbols; // does not hold any state
   void pushOption(Option& option);
 };
 }

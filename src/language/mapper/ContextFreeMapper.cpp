@@ -5,13 +5,11 @@ using namespace std;
 
 ContextFreeMapper::ContextFreeMapper(shared_ptr<ContextFreeGrammar> grammar, unsigned long wrappingLimit)
     : grammar(grammar), wrappingLimit(wrappingLimit) {
-  //
+  symbols.reserve(512);
 }
 
 Phenotype ContextFreeMapper::map(const Genotype& genotype) {
-  while (!symbols.empty()) {
-    symbols.pop();
-  }
+  symbols.clear();
 
   Phenotype phenotype;
 
@@ -25,8 +23,8 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
   codonIndex += 1;
 
   while (!symbols.empty()) {
-    auto symbol = symbols.top();
-    symbols.pop();
+    auto symbol = symbols.back();
+    symbols.pop_back();
 
     if (symbol->isTerminal()) {
       auto terminal = dynamic_cast<Terminal*>(symbol);
@@ -54,7 +52,10 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
 }
 
 void ContextFreeMapper::pushOption(Option& option) {
-  for (auto symbol = option.rbegin(); symbol != option.rend(); symbol++) {
-    symbols.push(*symbol);
+  auto& optionSymbols = option.getSymbols();
+  unsigned long optionSize = optionSymbols.size();
+
+  for (long i = optionSize - 1; i >= 0; i--) {
+    symbols.push_back(optionSymbols[i]);
   }
 }
