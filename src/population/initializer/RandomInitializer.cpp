@@ -15,7 +15,7 @@ Population RandomInitializer::initialize(unsigned long count, shared_ptr<Reprodu
   for (unsigned long i = 0; i < count; i++) {
     Genotype genotype = numberGenerator->generateMany(size);
 
-    individuals.addIndividual(make_shared<Individual>(genotype));
+    individuals.addIndividual(Individual(genotype));
   }
 
   return Population(individuals, reproducer, 0);

@@ -8,7 +8,7 @@ RouletteSelector::RouletteSelector(unique_ptr<NumberGenerator> numberGenerator)
   //
 }
 
-Individual RouletteSelector::select(const Individuals& individuals) const {
+Individual& RouletteSelector::select(Individuals& individuals) {
   // todo: implementation
 
   return individuals[0];

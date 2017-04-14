@@ -14,7 +14,7 @@ namespace gram {
 class RouletteSelector : public IndividualSelector {
  public:
   RouletteSelector(std::unique_ptr<NumberGenerator> numberGenerator);
-  Individual select(const Individuals& individuals) const;
+  Individual& select(Individuals& individuals);
  private:
   std::unique_ptr<NumberGenerator> numberGenerator;
 };

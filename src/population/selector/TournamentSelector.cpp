@@ -8,7 +8,7 @@ TournamentSelector::TournamentSelector(unsigned long tournamentSize, unique_ptr<
   //
 }
 
-Individual TournamentSelector::select(const Individuals& individuals) const {
+Individual& TournamentSelector::select(Individuals& individuals) {
   if (individuals.size() == 0) {
     throw logic_error("Cannot select an individual from an empty vector.");
   }
@@ -17,15 +17,21 @@ Individual TournamentSelector::select(const Individuals& individuals) const {
     return individuals[0];
   }
 
-  Individuals candidates;
+  vector<Individual*> candidates;
   candidates.reserve(tournamentSize);
 
   for (unsigned long i = 0; i < tournamentSize; i++) {
     unsigned long index = numberGenerator->generate() % individuals.size();
-    Individual candidate = individuals[index];
-
-    candidates.addIndividual(make_shared<Individual>(candidate));
+    candidates.push_back(&individuals[index]);
   }
 
-  return candidates.bestIndividual();
+  unsigned long bestIndex = 0;
+
+  for (unsigned long i = 0; i < candidates.size(); i++) {
+    if (candidates[i]->getFitness() < candidates[bestIndex]->getFitness()) {
+      bestIndex = i;
+    }
+  }
+
+  return *candidates[bestIndex];
 }

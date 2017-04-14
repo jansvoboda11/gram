@@ -26,14 +26,10 @@ TEST_CASE("individuals choose the best individual", "[individuals]") {
   Individual individual2 = individual2Mock.get();
   Individual individual3 = individual3Mock.get();
 
-  auto sharedIndividual1 = make_shared<Individual>(individual1);
-  auto sharedIndividual2 = make_shared<Individual>(individual2);
-  auto sharedIndividual3 = make_shared<Individual>(individual3);
-
   Individuals individuals;
-  individuals.addIndividual(sharedIndividual1);
-  individuals.addIndividual(sharedIndividual2);
-  individuals.addIndividual(sharedIndividual3);
+  individuals.addIndividual(individual1);
+  individuals.addIndividual(individual2);
+  individuals.addIndividual(individual3);
 
   REQUIRE(individuals.bestIndividual() == individual2);
 }

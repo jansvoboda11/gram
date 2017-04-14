@@ -14,7 +14,7 @@ namespace gram {
 class TournamentSelector : public IndividualSelector {
  public:
   TournamentSelector(unsigned long tournamentSize, std::unique_ptr<NumberGenerator> numberGenerator);
-  Individual select(const Individuals& individuals) const;
+  Individual& select(Individuals& individuals);
  private:
   unsigned long tournamentSize;
   std::unique_ptr<NumberGenerator> numberGenerator;

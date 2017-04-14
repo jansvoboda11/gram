@@ -8,15 +8,15 @@ Population::Population(Individuals individuals, shared_ptr<Reproducer> reproduce
   //
 }
 
-double Population::bestFitness() const {
+double Population::bestFitness() {
   return bestIndividual().getFitness();
 }
 
-Individual& Population::bestIndividual() const {
+Individual& Population::bestIndividual() {
   return individuals.bestIndividual();
 }
 
-Individual& Population::operator[](unsigned long index) const {
+Individual& Population::operator[](unsigned long index) {
   return individuals[index];
 }
 
@@ -32,11 +32,11 @@ void Population::evaluate(Evaluator& evaluator) {
   // todo: create EvaluationDrivers for serial and parallel evaluation
 
   for (auto& individual : individuals) {
-    individual->evaluate(evaluator);
+    individual.evaluate(evaluator);
   }
 }
 
-Population Population::reproduce() const {
+Population Population::reproduce() {
   Individuals successors = reproducer->reproduce(individuals);
 
   unsigned long newNumber = _number + 1;

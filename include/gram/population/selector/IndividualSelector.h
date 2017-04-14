@@ -13,7 +13,7 @@ namespace gram {
  */
 class IndividualSelector {
  public:
-  virtual Individual select(const Individuals& individuals) const = 0;
+  virtual Individual& select(Individuals& individuals) = 0;
 };
 }
 

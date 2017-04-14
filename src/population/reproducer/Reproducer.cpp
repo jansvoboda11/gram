@@ -10,9 +10,9 @@ Reproducer::Reproducer(unique_ptr<IndividualSelector> selector,
   //
 }
 
-Individuals Reproducer::reproduce(const Individuals& individuals) const {
+Individuals Reproducer::reproduce(Individuals& individuals) {
   unsigned long size = individuals.size();
-  
+
   Individuals children;
   children.reserve(size);
 
@@ -25,14 +25,14 @@ Individuals Reproducer::reproduce(const Individuals& individuals) const {
     }
 
     Individual child = parent1.mateWith(parent2, *crossover);
-    children.addIndividual(make_shared<Individual>(child));
+    children.addIndividual(child);
   }
 
   Individual best = individuals.bestIndividual();
-  children.addIndividual(make_shared<Individual>(best));
+  children.addIndividual(best);
 
   for (auto &child : children) {
-    child->mutate(*mutation);
+    child.mutate(*mutation);
   }
 
   return children;

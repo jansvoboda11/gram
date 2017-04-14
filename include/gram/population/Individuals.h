@@ -12,16 +12,15 @@ namespace gram {
  */
 class Individuals {
  public:
-  Individuals();
-  void addIndividual(std::shared_ptr<Individual> individual);
-  Individual& bestIndividual() const;
-  Individual& operator[](unsigned long index) const;
+  void addIndividual(Individual individual);
+  Individual& bestIndividual();
+  Individual& operator[](unsigned long index);
   unsigned long size() const;
   void reserve(unsigned long count);
-  std::vector<std::shared_ptr<Individual>>::iterator begin();
-  std::vector<std::shared_ptr<Individual>>::iterator end();
+  std::vector<Individual>::iterator begin();
+  std::vector<Individual>::iterator end();
  private:
-  std::vector<std::shared_ptr<Individual>> individuals;
+  std::vector<Individual> individuals;
 };
 }
 

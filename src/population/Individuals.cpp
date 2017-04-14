@@ -3,32 +3,28 @@
 using namespace gram;
 using namespace std;
 
-Individuals::Individuals() {
-  //
-}
-
-void Individuals::addIndividual(shared_ptr<Individual> individual) {
+void Individuals::addIndividual(Individual individual) {
   individuals.push_back(individual);
 }
 
-Individual& Individuals::bestIndividual() const {
+Individual& Individuals::bestIndividual() {
   if (individuals.empty()) {
     throw logic_error("There are no individuals.");
   }
 
-  shared_ptr<Individual> bestIndividual = individuals[0];
+  Individual& bestIndividual = individuals[0];
 
   for (auto& individual : individuals) {
-    if (individual->getFitness() < bestIndividual->getFitness()) {
+    if (individual.getFitness() < bestIndividual.getFitness()) {
       bestIndividual = individual;
     }
   }
 
-  return *bestIndividual;
+  return bestIndividual;
 }
 
-Individual& Individuals::operator[](unsigned long index) const {
-  return *individuals[index];
+Individual& Individuals::operator[](unsigned long index) {
+  return individuals[index];
 }
 
 unsigned long Individuals::size() const {
@@ -39,10 +35,10 @@ void Individuals::reserve(unsigned long count) {
   individuals.reserve(count);
 }
 
-vector<shared_ptr<Individual>>::iterator Individuals::begin() {
+vector<Individual>::iterator Individuals::begin() {
   return individuals.begin();
 }
 
-vector<shared_ptr<Individual>>::iterator Individuals::end() {
+vector<Individual>::iterator Individuals::end() {
   return individuals.end();
 }

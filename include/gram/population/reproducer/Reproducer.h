@@ -20,7 +20,7 @@ class Reproducer {
              std::unique_ptr<Crossover> crossover,
              std::unique_ptr<Mutation> mutation);
   virtual ~Reproducer() = default;
-  virtual Individuals reproduce(const Individuals& individuals) const;
+  virtual Individuals reproduce(Individuals& individuals);
  private:
   std::unique_ptr<IndividualSelector> selector;
   std::unique_ptr<Crossover> crossover;

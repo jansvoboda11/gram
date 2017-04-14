@@ -26,10 +26,9 @@ TEST_CASE("tournament selector chooses the only individual", "[tournament_select
 
   Mock<Individual> individualMock;
   Individual individual = individualMock.get();
-  auto sharedIndividual = make_shared<Individual>(individual);
 
   Individuals individuals;
-  individuals.addIndividual(sharedIndividual);
+  individuals.addIndividual(individual);
 
   TournamentSelector selector(2, move(numberGenerator));
 
@@ -57,16 +56,11 @@ TEST_CASE("tournament selector chooses the best individual from randomly selecte
   Individual individual3 = individual3Mock.get();
   Individual individual4 = individual4Mock.get();
 
-  auto sharedIndividual1 = make_shared<Individual>(individual1);
-  auto sharedIndividual2 = make_shared<Individual>(individual2);
-  auto sharedIndividual3 = make_shared<Individual>(individual3);
-  auto sharedIndividual4 = make_shared<Individual>(individual4);
-
   Individuals individuals;
-  individuals.addIndividual(sharedIndividual1);
-  individuals.addIndividual(sharedIndividual2);
-  individuals.addIndividual(sharedIndividual3);
-  individuals.addIndividual(sharedIndividual4);
+  individuals.addIndividual(individual1);
+  individuals.addIndividual(individual2);
+  individuals.addIndividual(individual3);
+  individuals.addIndividual(individual4);
 
   TournamentSelector selector(2, move(numberGenerator));
 
