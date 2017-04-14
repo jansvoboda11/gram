@@ -8,7 +8,28 @@ ContextFreeMapper::ContextFreeMapper(shared_ptr<ContextFreeGrammar> grammar, uns
   //
 }
 
+string to_string(stack<Symbol*> st) {
+  string result;
+
+  while (!st.empty()) {
+    Symbol* sm = st.top();
+    st.pop();
+
+    if (sm->isTerminal()) {
+      result += static_cast<Terminal*>(sm)->getValue();
+    } else {
+      result += "<" + static_cast<NonTerminal*>(sm)->toRule().getName() + ">";
+    }
+  }
+
+  return result;
+}
+
 Phenotype ContextFreeMapper::map(const Genotype& genotype) {
+  string st;
+
+  ContextFreeGrammar& gr = *grammar.get();
+
   Phenotype phenotype;
   stack<Symbol*> symbols;
 
@@ -21,9 +42,15 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
   pushOption(symbols, startOption);
   codonIndex += 1;
 
+  st = to_string(symbols);
+
   while (!symbols.empty()) {
-    auto& symbol = symbols.top();
+    st = to_string(symbols);
+
+    auto symbol = symbols.top();
     symbols.pop();
+
+    st = to_string(symbols);
 
     if (symbol->isTerminal()) {
       auto terminal = dynamic_cast<Terminal*>(symbol);
@@ -51,9 +78,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
 }
 
 void ContextFreeMapper::pushOption(stack<Symbol*>& symbols, Option& option) const {
-  auto& optionSymbols = option.getSymbols();
-
-  for (long i = option.size() - 1; i >= 0; i--) {
-    symbols.push(optionSymbols[i].get());
+  for (auto symbol = option.rbegin(); symbol != option.rend(); symbol++) {
+    symbols.push(*symbol);
   }
 }

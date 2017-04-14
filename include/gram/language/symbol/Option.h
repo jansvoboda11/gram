@@ -12,18 +12,19 @@ namespace gram {
  */
 class Option {
  public:
-  void addNonTerminal(std::shared_ptr<NonTerminal> nonTerminal);
-  void addTerminal(std::shared_ptr<Terminal> terminal);
-  bool hasNonTerminalAt(unsigned long index) const;
-  bool hasTerminalAt(unsigned long index) const;
-  std::shared_ptr<NonTerminal> nonTerminalAt(unsigned long index) const;
-  std::shared_ptr<Terminal> terminalAt(unsigned long index) const;
-  std::vector<std::shared_ptr<Symbol>>& getSymbols();
+  void addNonTerminal(std::unique_ptr<NonTerminal> nonTerminal);
+  void addTerminal(std::unique_ptr<Terminal> terminal);
+  std::vector<Symbol*>::iterator begin();
+  std::vector<Symbol*>::iterator end();
+  std::vector<Symbol*>::reverse_iterator rbegin();
+  std::vector<Symbol*>::reverse_iterator rend();
+  Symbol& operator[](unsigned long index);
   unsigned long size() const;
   bool operator==(const Option& option) const;
   bool operator!=(const Option& option) const;
  private:
-  std::vector<std::shared_ptr<Symbol>> symbols;
+  std::vector<std::unique_ptr<Symbol>> symbols;
+  std::vector<Symbol*> symbolPointers;
 };
 }
 

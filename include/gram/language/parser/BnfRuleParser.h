@@ -1,6 +1,7 @@
 #ifndef GRAM_LANGUAGE_BNF_RULE_PARSER
 #define GRAM_LANGUAGE_BNF_RULE_PARSER
 
+#include <memory>
 #include <regex>
 
 #include <gram/language/parser/RuleParser.h>
@@ -14,7 +15,7 @@ class BnfRuleParser : public RuleParser {
   ContextFreeGrammar parse(std::string input) const;
  private:
   void parseRule(ContextFreeGrammar& grammar, std::string& line) const;
-  Option parseOption(ContextFreeGrammar& grammar, std::string& line) const;
+  std::unique_ptr<Option> parseOption(ContextFreeGrammar& grammar, std::string& line) const;
   bool parseNonTerminal(std::string& name, std::string& line) const;
   bool parseTerminal(std::string& value, std::string& line) const;
   bool parseEquals(std::string& line) const;

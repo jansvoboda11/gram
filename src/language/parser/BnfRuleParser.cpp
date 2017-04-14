@@ -33,13 +33,13 @@ void BnfRuleParser::parseRule(ContextFreeGrammar& grammar, string& line) const {
   Rule& rule = grammar.ruleNamed(name);
 
   while (line.length() > 0) {
-    Option option = parseOption(grammar, line);
-    rule.addOption(make_unique<Option>(option));
+    unique_ptr<Option> option = parseOption(grammar, line);
+    rule.addOption(move(option));
   }
 }
 
-Option BnfRuleParser::parseOption(ContextFreeGrammar& grammar, string& line) const {
-  Option option;
+unique_ptr<Option> BnfRuleParser::parseOption(ContextFreeGrammar& grammar, string& line) const {
+  auto option = make_unique<Option>();
 
   while (line.length() > 0) {
     string name;
@@ -47,11 +47,11 @@ Option BnfRuleParser::parseOption(ContextFreeGrammar& grammar, string& line) con
 
     if (parseNonTerminal(name, line)) {
       Rule& rule = grammar.ruleNamed(name);
-      auto nonTerminal = make_shared<NonTerminal>(rule);
-      option.addNonTerminal(nonTerminal);
+      auto nonTerminal = make_unique<NonTerminal>(rule);
+      option->addNonTerminal(move(nonTerminal));
     } else if (parseTerminal(value, line)) {
-      auto terminal = make_shared<Terminal>(value);
-      option.addTerminal(terminal);
+      auto terminal = make_unique<Terminal>(value);
+      option->addTerminal(move(terminal));
     } else if (parsePipe(line)) {
       break;
     } else {
