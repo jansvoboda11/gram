@@ -3,6 +3,10 @@
 using namespace gram;
 using namespace std;
 
+Phenotype::Phenotype() {
+  terminals.reserve(128);
+}
+
 void Phenotype::addTerminal(std::shared_ptr<Terminal> terminal) {
   terminals.push_back(terminal);
 }

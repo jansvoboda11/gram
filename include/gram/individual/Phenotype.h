@@ -13,6 +13,7 @@ namespace gram {
  */
 class Phenotype {
  public:
+  Phenotype();
   void addTerminal(std::shared_ptr<Terminal> terminal);
   virtual std::string serialize() const;
   bool operator==(const Phenotype& phenotype) const;
