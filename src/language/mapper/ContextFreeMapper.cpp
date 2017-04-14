@@ -10,7 +10,7 @@ ContextFreeMapper::ContextFreeMapper(shared_ptr<ContextFreeGrammar> grammar, uns
 
 Phenotype ContextFreeMapper::map(const Genotype& genotype) {
   Phenotype phenotype;
-  stack<shared_ptr<Symbol>> symbols;
+  stack<Symbol*> symbols;
 
   unsigned long wrappings = 0;
   unsigned long codonIndex = 0;
@@ -26,7 +26,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
     symbols.pop();
 
     if (symbol->isTerminal()) {
-      auto terminal = dynamic_pointer_cast<Terminal>(symbol);
+      auto terminal = dynamic_cast<Terminal*>(symbol);
       phenotype += terminal->getValue();
     } else {
       if (codonIndex == genotype.size()) {
@@ -38,7 +38,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
         }
       }
 
-      auto nonTerminal = dynamic_pointer_cast<NonTerminal>(symbol);
+      auto nonTerminal = dynamic_cast<NonTerminal*>(symbol);
       Rule& rule = nonTerminal->toRule();
       optionIndex = genotype[codonIndex] % rule.size();
       Option& option = rule.optionAt(optionIndex);
@@ -50,10 +50,10 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
   return phenotype;
 }
 
-void ContextFreeMapper::pushOption(stack<shared_ptr<Symbol>>& symbols, Option& option) const {
+void ContextFreeMapper::pushOption(stack<Symbol*>& symbols, Option& option) const {
   auto& optionSymbols = option.getSymbols();
 
   for (long i = option.size() - 1; i >= 0; i--) {
-    symbols.push(optionSymbols[i]);
+    symbols.push(optionSymbols[i].get());
   }
 }
