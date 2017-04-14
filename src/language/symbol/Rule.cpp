@@ -15,7 +15,7 @@ void Rule::addOption(unique_ptr<Option> option) {
   options.push_back(move(option));
 }
 
-Option& Rule::optionAt(unsigned long index) const {
+Option& Rule::operator[](unsigned long index) const {
   return *options[index];
 }
 

@@ -18,7 +18,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
 
   Rule& startRule = grammar->startRule();
   unsigned long optionIndex = genotype[codonIndex] % startRule.size();
-  Option& startOption = startRule.optionAt(optionIndex);
+  Option& startOption = startRule[optionIndex];
   pushOption(startOption);
   codonIndex += 1;
 
@@ -42,7 +42,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
       auto nonTerminal = symbol->toNonTerminal();
       Rule& rule = nonTerminal.toRule();
       optionIndex = genotype[codonIndex] % rule.size();
-      Option& option = rule.optionAt(optionIndex);
+      Option& option = rule[optionIndex];
       pushOption(option);
       codonIndex += 1;
     }
