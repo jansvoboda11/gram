@@ -14,14 +14,14 @@ class Rule;
  */
 class NonTerminal : public Symbol {
  public:
-  NonTerminal(std::weak_ptr<Rule> rule);
+  NonTerminal(std::shared_ptr<Rule> rule);
   Rule& toRule() const;
   bool isTerminal() const;
   bool isNonTerminal() const;
   bool operator==(const NonTerminal& nonTerminal) const;
   bool operator!=(const NonTerminal& nonTerminal) const;
  private:
-  std::weak_ptr<Rule> rule;
+  Rule& rule;
 };
 }
 

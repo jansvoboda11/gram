@@ -5,12 +5,12 @@
 using namespace gram;
 using namespace std;
 
-NonTerminal::NonTerminal(std::weak_ptr<Rule> rule) : rule(rule) {
+NonTerminal::NonTerminal(shared_ptr<Rule> rule) : rule(*rule.get()) {
   //
 }
 
 Rule& NonTerminal::toRule() const {
-  return *rule.lock();
+  return rule;
 }
 
 bool NonTerminal::isTerminal() const {
@@ -22,7 +22,7 @@ bool NonTerminal::isNonTerminal() const {
 }
 
 bool NonTerminal::operator==(const NonTerminal& nonTerminal) const {
-  return *rule.lock() == *nonTerminal.rule.lock();
+  return rule == nonTerminal.rule;
 }
 
 bool NonTerminal::operator!=(const NonTerminal& nonTerminal) const {
