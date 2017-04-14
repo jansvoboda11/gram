@@ -27,8 +27,8 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
     symbols.pop_back();
 
     if (symbol->isTerminal()) {
-      auto terminal = dynamic_cast<Terminal*>(symbol);
-      phenotype += terminal->getValue();
+      auto terminal = symbol->toTerminal();
+      phenotype += terminal.getValue();
     } else {
       if (codonIndex == genotype.size()) {
         codonIndex = 0;
@@ -39,8 +39,8 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
         }
       }
 
-      auto nonTerminal = dynamic_cast<NonTerminal*>(symbol);
-      Rule& rule = nonTerminal->toRule();
+      auto nonTerminal = symbol->toNonTerminal();
+      Rule& rule = nonTerminal.toRule();
       optionIndex = genotype[codonIndex] % rule.size();
       Option& option = rule.optionAt(optionIndex);
       pushOption(option);

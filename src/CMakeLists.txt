@@ -16,6 +16,7 @@ set(SOURCE_FILES
         language/symbol/NonTerminal.cpp
         language/symbol/Option.cpp
         language/symbol/Rule.cpp
+        language/symbol/Symbol.cpp
         language/symbol/Terminal.cpp
         language/grammar/ContextFreeGrammar.cpp
         language/mapper/ContextFreeMapper.cpp
