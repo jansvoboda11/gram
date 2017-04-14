@@ -27,6 +27,10 @@ shared_ptr<NonTerminal> Option::nonTerminalAt(unsigned long index) const {
   return dynamic_pointer_cast<NonTerminal>(symbols.at(index));
 }
 
+vector<shared_ptr<Symbol>> Option::getSymbols() {
+  return symbols;
+}
+
 unsigned long Option::size() const {
   return symbols.size();
 }

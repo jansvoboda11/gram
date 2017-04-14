@@ -10,45 +10,50 @@ ContextFreeMapper::ContextFreeMapper(shared_ptr<ContextFreeGrammar> grammar, uns
 
 Phenotype ContextFreeMapper::map(const Genotype& genotype) {
   Phenotype phenotype;
-  unsigned long geneNumber = 0;
+  stack<shared_ptr<Symbol>> symbols;
 
-  return recursiveMap(phenotype, *grammar->startRule(), genotype, geneNumber);
-}
+  unsigned long wrappings = 0;
+  unsigned long codonIndex = 0;
 
-Phenotype& ContextFreeMapper::recursiveMap(Phenotype& phenotype,
-                                           const Rule& rule,
-                                           const Genotype& genotype,
-                                           unsigned long& geneNumber) {
-  unsigned long geneIndex = geneNumber % genotype.size();
+  Rule& startRule = *grammar->startRule();
+  unsigned long optionIndex = genotype[codonIndex] % startRule.size();
+  Option& startOption = startRule.optionAt(optionIndex);
+  pushOption(symbols, startOption);
+  codonIndex += 1;
 
-  if (isWrappingEvent(geneIndex, geneNumber) && exceededWrappingLimit(genotype, geneNumber)) {
-    throw logic_error("Wrapping limit exceeded during genotype-phenotype mapping. ("
-                      "limit: " + to_string(wrappingLimit) + ", "
-                      "derivation: " + to_string(geneNumber + 1) + ", "
-                      "genotype length: " + to_string(genotype.size()) + ")");
-  }
+  while (!symbols.empty()) {
+    auto& symbol = symbols.top();
+    symbols.pop();
 
-  unsigned long gene = genotype[geneIndex] % rule.size();
-
-  Option& option = rule.optionAt(gene);
-
-  for (unsigned long i = 0; i < option.size(); i++) {
-    if (option.hasTerminalAt(i)) {
-      phenotype.addTerminal(option.terminalAt(i));
+    if (symbol->isTerminal()) {
+      auto terminal = dynamic_pointer_cast<Terminal>(symbol);
+      phenotype.addTerminal(terminal);
     } else {
-      geneNumber += 1;
+      if (codonIndex == genotype.size()) {
+        codonIndex = 0;
+        wrappings += 1;
 
-      recursiveMap(phenotype, option.nonTerminalAt(i)->toRule(), genotype, geneNumber);
+        if (wrappings > wrappingLimit) {
+          throw logic_error("Wrapping limit exceeded during genotype-phenotype mapping.");
+        }
+      }
+
+      auto nonTerminal = dynamic_pointer_cast<NonTerminal>(symbol);
+      Rule& rule = nonTerminal->toRule();
+      optionIndex = genotype[codonIndex] % rule.size();
+      Option& option = rule.optionAt(optionIndex);
+      pushOption(symbols, option);
+      codonIndex += 1;
     }
   }
 
   return phenotype;
 }
 
-bool ContextFreeMapper::isWrappingEvent(unsigned long geneIndex, unsigned long geneNumber) {
-  return geneIndex == 0 && geneNumber != 0;
-}
+void ContextFreeMapper::pushOption(stack<shared_ptr<Symbol>>& symbols, Option& option) const {
+  vector<shared_ptr<Symbol>> optionSymbols = option.getSymbols();
 
-bool ContextFreeMapper::exceededWrappingLimit(const Genotype& genotype, unsigned long geneNumber) {
-  return (geneNumber / genotype.size()) > wrappingLimit;
+  for (long i = option.size() - 1; i >= 0; i--) {
+    symbols.push(optionSymbols[i]);
+  }
 }

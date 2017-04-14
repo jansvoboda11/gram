@@ -4,6 +4,8 @@
 #include <gram/language/grammar/ContextFreeGrammar.h>
 #include <gram/individual/Individual.h>
 
+#include <stack>
+
 namespace gram {
 /**
  * Class.
@@ -15,12 +17,7 @@ class ContextFreeMapper : public Mapper {
  private:
   std::shared_ptr<ContextFreeGrammar> grammar;
   unsigned long wrappingLimit;
-  Phenotype& recursiveMap(Phenotype& phenotype,
-                          const Rule& rule,
-                          const Genotype& genotype,
-                          unsigned long& geneNumber);
-  bool isWrappingEvent(unsigned long geneIndex, unsigned long geneNumber);
-  bool exceededWrappingLimit(const Genotype& genotype, unsigned long geneNumber);
+  void pushOption(std::stack<std::shared_ptr<Symbol>>& symbols, Option& option) const;
 };
 }
 
