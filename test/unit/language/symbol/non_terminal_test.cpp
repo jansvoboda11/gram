@@ -7,16 +7,16 @@ using namespace gram;
 using namespace std;
 
 TEST_CASE("non-terminal accepts a rule", "[non-terminal]") {
-  auto rule = make_shared<Rule>("rule");
+  Rule rule("rule");
 
   NonTerminal nonTerminal(rule);
 
-  REQUIRE(nonTerminal.toRule() == *rule);
+  REQUIRE(nonTerminal.toRule() == rule);
 }
 
 TEST_CASE("same non-terminals are equal", "[non-terminal]") {
-  auto rule1 = make_shared<Rule>("test");
-  auto rule2 = make_shared<Rule>("test");
+  Rule rule1("test");
+  Rule rule2("test");
 
   NonTerminal nonTerminal1(rule1);
   NonTerminal nonTerminal2(rule2);
@@ -25,8 +25,8 @@ TEST_CASE("same non-terminals are equal", "[non-terminal]") {
 }
 
 TEST_CASE("different non-terminals are not equal", "[non-terminal]") {
-  auto rule1 = make_shared<Rule>("rule1");
-  auto rule2 = make_shared<Rule>("rule2");
+  Rule rule1("rule1");
+  Rule rule2("rule2");
 
   NonTerminal nonTerminal1(rule1);
   NonTerminal nonTerminal2(rule2);

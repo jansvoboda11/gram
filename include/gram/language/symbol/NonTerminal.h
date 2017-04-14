@@ -14,7 +14,7 @@ class Rule;
  */
 class NonTerminal : public Symbol {
  public:
-  NonTerminal(std::shared_ptr<Rule> rule);
+  NonTerminal(Rule& rule);
   Rule& toRule() const;
   bool isTerminal() const;
   bool isNonTerminal() const;

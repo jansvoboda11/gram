@@ -8,11 +8,11 @@ using namespace std;
 TEST_CASE("context-free grammar accepts rules", "[context-free_grammar]") {
   ContextFreeGrammar grammar;
 
-  auto rule1 = make_shared<Rule>("rule1");
-  auto rule2 = make_shared<Rule>("rule2");
+  Rule rule1("rule1");
+  Rule rule2("rule2");
 
-  grammar.addRule(rule1);
-  grammar.addRule(rule2);
+  grammar.addRule(make_unique<Rule>("rule1"));
+  grammar.addRule(make_unique<Rule>("rule2"));
 
   REQUIRE(grammar.startRule() == rule1);
   REQUIRE(grammar.ruleNamed("rule2") == rule2);

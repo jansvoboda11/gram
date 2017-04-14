@@ -21,7 +21,7 @@ TEST_CASE("option accepts a terminal", "[option]") {
 }
 
 TEST_CASE("option accepts a non-terminal", "[option]") {
-  auto rule = make_shared<Rule>("rule");
+  Rule rule("rule");
   auto nonTerminal = make_shared<NonTerminal>(rule);
 
   Option option;
@@ -35,7 +35,7 @@ TEST_CASE("option accepts a non-terminal", "[option]") {
 TEST_CASE("option accepts both terminals and non-terminals", "[option]") {
   auto terminal = make_shared<Terminal>("regular");
 
-  auto rule = make_shared<Rule>("rule");
+  Rule rule("rule");
   auto nonTerminal = make_shared<NonTerminal>(rule);
 
   Option option;

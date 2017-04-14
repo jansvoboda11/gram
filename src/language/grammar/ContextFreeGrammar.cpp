@@ -7,32 +7,36 @@ ContextFreeGrammar::ContextFreeGrammar() : start(), rules() {
   //
 }
 
-void ContextFreeGrammar::addRule(shared_ptr<Rule> rule) {
-  rules[rule->getName()] = rule;
-
-  if (!start) {
-    start = rule;
+void ContextFreeGrammar::addRule(unique_ptr<Rule> rule) {
+  if (start.length() == 0) {
+    start = rule->getName();
   }
+
+  rules[rule->getName()] = move(rule);
 }
 
-shared_ptr<Rule> ContextFreeGrammar::ruleNamed(string name) {
-  shared_ptr<Rule>& rule = rules[name];
+Rule& ContextFreeGrammar::ruleNamed(string name) {
+  Rule* rule = rules[name].get();
 
   if (!rule) {
-    rule = make_shared<Rule>(name);
+    auto newRule = make_unique<Rule>(name);
+
+    rule = newRule.get();
+
+    rules[name] = move(newRule);
   }
 
-  if (!start) {
-    start = rule;
+  if (start.length() == 0) {
+    start = rule->getName();
   }
 
-  return rule;
+  return *rule;
 }
 
-shared_ptr<Rule> ContextFreeGrammar::startRule() const {
-  if (!start) {
+Rule& ContextFreeGrammar::startRule() {
+  if (start.length() == 0) {
     throw logic_error("The start symbol of grammar is invalid.");
   }
 
-  return start;
+  return *rules[start].get();
 }

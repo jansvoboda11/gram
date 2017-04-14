@@ -13,12 +13,12 @@ namespace gram {
 class ContextFreeGrammar {
  public:
   ContextFreeGrammar();
-  void addRule(std::shared_ptr<Rule> rule);
-  std::shared_ptr<Rule> ruleNamed(std::string name);
-  std::shared_ptr<Rule> startRule() const;
+  void addRule(std::unique_ptr<Rule> rule);
+  Rule& ruleNamed(std::string name);
+  Rule& startRule();
  private:
-  std::shared_ptr<Rule> start;
-  std::unordered_map<std::string, std::shared_ptr<Rule>> rules;
+  std::string start;
+  std::unordered_map<std::string, std::unique_ptr<Rule>> rules;
 };
 }
 

@@ -5,7 +5,7 @@
 using namespace gram;
 using namespace std;
 
-NonTerminal::NonTerminal(shared_ptr<Rule> rule) : rule(*rule.get()) {
+NonTerminal::NonTerminal(Rule& rule) : rule(rule) {
   //
 }
 

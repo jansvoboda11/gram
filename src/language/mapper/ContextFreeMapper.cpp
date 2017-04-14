@@ -15,7 +15,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
   unsigned long wrappings = 0;
   unsigned long codonIndex = 0;
 
-  Rule& startRule = *grammar->startRule();
+  Rule& startRule = grammar->startRule();
   unsigned long optionIndex = genotype[codonIndex] % startRule.size();
   Option& startOption = startRule.optionAt(optionIndex);
   pushOption(symbols, startOption);
