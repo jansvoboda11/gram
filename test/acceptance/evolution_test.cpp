@@ -1,7 +1,7 @@
 #include <catch.hpp>
 #include <fakeit.hpp>
 
-#include <gram/evaluation/driver/MultiThreadDriver.h>
+#include <gram/evaluation/driver/SingleThreadDriver.h>
 #include <gram/individual/crossover/OnePointCrossover.h>
 #include <gram/individual/mutation/FastCodonMutation.h>
 #include <gram/language/parser/BnfRuleParser.h>
@@ -17,7 +17,7 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-class FakeEvaluator : public MultiThreadEvaluator {
+class FakeEvaluator : public Evaluator {
  public:
   FakeEvaluator(shared_ptr<ContextFreeMapper> mapper, string desired) : mapper(mapper), desired(desired) {}
 
@@ -25,10 +25,6 @@ class FakeEvaluator : public MultiThreadEvaluator {
     string program = individual.serialize(*mapper.get());
 
     return static_cast<double>(edit_distance(program, desired));
-  }
-
-  unique_ptr<MultiThreadEvaluator> clone() {
-    return make_unique<FakeEvaluator>(mapper, desired);
   }
 
  private:
@@ -84,7 +80,7 @@ TEST_CASE("evolution_test") {
   RandomInitializer initializer(move(numberGenerator4), 16);
 
   auto evaluator = make_unique<FakeEvaluator>(mapper, "1234");
-  auto evaluationDriver = make_unique<MultiThreadDriver>(move(evaluator), 4);
+  auto evaluationDriver = make_unique<SingleThreadDriver>(move(evaluator));
   auto logger = make_unique<NullLogger>();
 
   Evolution evolution(move(evaluationDriver), move(logger));
