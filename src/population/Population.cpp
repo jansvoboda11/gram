@@ -32,6 +32,14 @@ vector<Individual>::iterator Population::end() {
   return individuals.end();
 }
 
+vector<Individual>::const_iterator Population::begin() const {
+  return individuals.begin();
+};
+
+vector<Individual>::const_iterator Population::end() const {
+  return individuals.end();
+}
+
 unsigned long Population::size() const {
   return individuals.size();
 }

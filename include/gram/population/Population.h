@@ -21,6 +21,8 @@ class Population {
   Individual& operator[](unsigned long index);
   std::vector<Individual>::iterator begin();
   std::vector<Individual>::iterator end();
+  std::vector<Individual>::const_iterator begin() const;
+  std::vector<Individual>::const_iterator end() const;
   unsigned long size() const;
   Population reproduce();
   virtual ~Population() = default;

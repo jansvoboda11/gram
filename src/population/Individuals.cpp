@@ -43,3 +43,11 @@ vector<Individual>::iterator Individuals::begin() {
 vector<Individual>::iterator Individuals::end() {
   return individuals.end();
 }
+
+vector<Individual>::const_iterator Individuals::begin() const {
+  return individuals.begin();
+};
+
+vector<Individual>::const_iterator Individuals::end() const {
+  return individuals.end();
+}

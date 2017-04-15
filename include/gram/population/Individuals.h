@@ -19,6 +19,8 @@ class Individuals {
   void reserve(unsigned long count);
   std::vector<Individual>::iterator begin();
   std::vector<Individual>::iterator end();
+  std::vector<Individual>::const_iterator begin() const;
+  std::vector<Individual>::const_iterator end() const;
  private:
   std::vector<Individual> individuals;
 };
