@@ -17,7 +17,6 @@ class Individual {
  public:
   Individual(const Individual& individual);
   Individual(const Genotype& genotype);
-  Individual& operator=(const Individual& individual);
   virtual ~Individual() = default;
   Individual mateWith(const Individual& partner, Crossover& crossover) const;
   void mutate(Mutation& mutation);

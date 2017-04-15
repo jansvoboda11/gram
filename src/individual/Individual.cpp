@@ -13,13 +13,6 @@ Individual::Individual(const Genotype& genotype)
   //
 }
 
-Individual& Individual::operator=(const Individual& individual) {
-  genotype = individual.genotype;
-  fitnessScore = individual.fitnessScore;
-
-  return *this;
-}
-
 Individual Individual::mateWith(const Individual& partner, Crossover& crossover) const {
   Genotype childGenotype = crossover.apply(genotype, partner.genotype);
 
