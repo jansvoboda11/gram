@@ -1,16 +1,16 @@
-#include <gram/population/reproducer/Reproducer.h>
+#include <gram/population/reproducer/PassionateReproducer.h>
 
 using namespace gram;
 using namespace std;
 
-Reproducer::Reproducer(unique_ptr<IndividualSelector> selector,
-                       unique_ptr<Crossover> crossover,
-                       unique_ptr<Mutation> mutation)
+PassionateReproducer::PassionateReproducer(unique_ptr<IndividualSelector> selector,
+                                           unique_ptr<Crossover> crossover,
+                                           unique_ptr<Mutation> mutation)
     : selector(move(selector)), crossover(move(crossover)), mutation(move(mutation)) {
   //
 }
 
-Individuals Reproducer::reproduce(Individuals& individuals) {
+Individuals PassionateReproducer::reproduce(Individuals& individuals) {
   unsigned long size = individuals.size();
 
   Individuals children;

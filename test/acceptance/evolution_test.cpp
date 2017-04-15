@@ -7,11 +7,12 @@
 #include <gram/language/parser/BnfRuleParser.h>
 #include <gram/language/mapper/ContextFreeMapper.h>
 #include <gram/population/initializer/RandomInitializer.h>
+#include <gram/population/reproducer/PassionateReproducer.h>
 #include <gram/population/selector/TournamentSelector.h>
 #include <gram/util/logger/NullLogger.h>
 #include <gram/util/number_generator/TwisterNumberGenerator.h>
-#include <gram/Evolution.h>
 #include <gram/util/number_generator/XorShiftNumberGenerator.h>
+#include <gram/Evolution.h>
 
 using namespace fakeit;
 using namespace gram;
@@ -66,7 +67,7 @@ TEST_CASE("evolution_test") {
   auto selector = make_unique<TournamentSelector>(20, move(numberGenerator1));
   auto mutation = make_unique<FastCodonMutation>(move(stepGenerator), move(numberGenerator2));
   auto crossover = make_unique<OnePointCrossover>(move(numberGenerator3));
-  auto reproducer = make_shared<Reproducer>(move(selector), move(crossover), move(mutation));
+  auto reproducer = make_shared<PassionateReproducer>(move(selector), move(crossover), move(mutation));
 
   string grammarString =
       "<number> ::= <number> <digit> | <digit>\n"

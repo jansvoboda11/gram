@@ -21,7 +21,7 @@ set(SOURCE_FILES
         language/grammar/ContextFreeGrammar.cpp
         language/mapper/ContextFreeMapper.cpp
         population/initializer/RandomInitializer.cpp
-        population/reproducer/Reproducer.cpp
+        population/reproducer/PassionateReproducer.cpp
         population/selector/RouletteSelector.cpp
         population/selector/TournamentSelector.cpp
         population/Individuals.cpp
@@ -60,6 +60,7 @@ set(SOURCE_FILES
         ../include/gram/language/symbol/Terminal.h
         ../include/gram/population/initializer/Initializer.h
         ../include/gram/population/initializer/RandomInitializer.h
+        ../include/gram/population/reproducer/PassionateReproducer.h
         ../include/gram/population/reproducer/Reproducer.h
         ../include/gram/population/selector/IndividualSelector.h
         ../include/gram/population/selector/RouletteSelector.h

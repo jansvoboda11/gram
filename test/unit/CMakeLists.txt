@@ -16,7 +16,7 @@ add_executable(gram-unit-tests
         language/symbol/rule_test.cpp
         language/symbol/terminal_test.cpp
         population/initializer/random_initializer_test.cpp
-        population/reproducer/reproducer_test.cpp
+        population/reproducer/passionate_reproducer_test.cpp
         population/selector/roulette_selector_test.cpp
         population/selector/tournament_selector_test.cpp
         population/individuals_test.cpp
