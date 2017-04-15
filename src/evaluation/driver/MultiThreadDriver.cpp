@@ -3,41 +3,34 @@
 #include <thread>
 
 using namespace gram;
+using namespace std;
 
-MultiThreadDriver::MultiThreadDriver(std::unique_ptr<MultiThreadEvaluator> evaluator, unsigned long threadCount)
-    : threadCount(threadCount) {
-  if (threadCount <= 0) {
-    throw std::logic_error("Thread count must be greater than zero.");
-  }
-
-  evaluators.reserve(threadCount);
-
-  for (unsigned long i = 0; i < threadCount; i++) {
-    evaluators.push_back(evaluator->clone());
-  }
+MultiThreadDriver::MultiThreadDriver(vector<unique_ptr<Evaluator>> evaluators)
+    : evaluators(move(evaluators)) {
+  //
 }
 
 void MultiThreadDriver::evaluate(Population& population) {
-  unsigned long newThreadCount = threadCount - 1;
+  unsigned long newThreadCount = evaluators.size() - 1;
 
-  std::vector<std::thread> threads;
-  threads.reserve(newThreadCount);
+  vector<thread> evaluatorsThreads;
+  evaluatorsThreads.reserve(newThreadCount);
 
   for (unsigned long i = 0; i < newThreadCount; i++) {
-    threads.push_back(std::thread(&MultiThreadDriver::launchEvaluator, this, std::ref(population), i));
+    evaluatorsThreads.push_back(thread(&MultiThreadDriver::launchEvaluator, this, ref(population), i));
   }
 
   launchEvaluator(population, newThreadCount);
 
-  for (auto& thread : threads) {
-    thread.join();
+  for (auto& evaluatorThread : evaluatorsThreads) {
+    evaluatorThread.join();
   }
 }
 
 void MultiThreadDriver::launchEvaluator(Population& population, unsigned long threadNumber) {
-  MultiThreadEvaluator& evaluator = *evaluators[threadNumber];
+  Evaluator& evaluator = *evaluators[threadNumber];
 
-  unsigned long batchSize = population.size() / threadCount;
+  unsigned long batchSize = population.size() / evaluators.size();
 
   unsigned long lowerLimit = threadNumber * batchSize;
   unsigned long upperBound = lowerLimit + batchSize;

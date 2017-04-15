@@ -4,7 +4,6 @@
 #include <memory>
 
 #include <gram/evaluation/driver/EvaluationDriver.h>
-#include <gram/evaluation/MultiThreadEvaluator.h>
 
 namespace gram {
 /**
@@ -12,12 +11,11 @@ namespace gram {
  */
 class MultiThreadDriver : public EvaluationDriver {
  public:
-  MultiThreadDriver(std::unique_ptr<MultiThreadEvaluator> evaluator, unsigned long threadCount);
+  MultiThreadDriver(std::vector<std::unique_ptr<Evaluator>> evaluators);
   void evaluate(Population& population);
-  void launchEvaluator(Population& population, unsigned long threadNumber);
  private:
-  std::vector<std::unique_ptr<MultiThreadEvaluator>> evaluators;
-  unsigned long threadCount;
+  std::vector<std::unique_ptr<Evaluator>> evaluators;
+  void launchEvaluator(Population& population, unsigned long threadNumber);
 };
 }
 

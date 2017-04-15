@@ -39,7 +39,6 @@ set(SOURCE_FILES
         ../include/gram/evaluation/driver/MultiThreadDriver.h
         ../include/gram/evaluation/driver/SingleThreadDriver.h
         ../include/gram/evaluation/Evaluator.h
-        ../include/gram/evaluation/MultiThreadEvaluator.h
         ../include/gram/individual/crossover/Crossover.h
         ../include/gram/individual/crossover/OnePointCrossover.h
         ../include/gram/individual/mutation/BernoulliDistributionStepGenerator.h
