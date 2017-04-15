@@ -10,8 +10,6 @@
 #include <gram/language/mapper/Mapper.h>
 
 namespace gram {
-// Forward declaration.
-class Evaluator;
 /**
  * Class.
  */

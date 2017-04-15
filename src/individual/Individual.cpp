@@ -32,7 +32,7 @@ void Individual::mutate(Mutation& mutation) {
 
 void Individual::evaluate(Evaluator& evaluator) {
   try {
-    fitnessScore = evaluator.evaluate(*this);
+    fitnessScore = evaluator.evaluate(genotype);
   } catch (logic_error error) {
     // todo: mark mapping failure
 

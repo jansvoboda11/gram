@@ -1,18 +1,16 @@
 #ifndef GRAM_EVALUATOR
 #define GRAM_EVALUATOR
 
-#include <gram/individual/Individual.h>
+#include <gram/individual/Genotype.h>
 
 namespace gram {
-// Forward declaration.
-class Individual;
 /**
  * Class.
  */
 class Evaluator {
  public:
   virtual ~Evaluator() = default;
-  virtual double evaluate(Individual& individual) = 0;
+  virtual double evaluate(const Genotype& genotype) = 0;
 };
 }
 
