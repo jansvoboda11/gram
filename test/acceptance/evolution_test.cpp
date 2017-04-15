@@ -14,47 +14,11 @@
 #include <gram/util/number_generator/XorShiftNumberGenerator.h>
 #include <gram/Evolution.h>
 
+#include "StringDiffEvaluator.h"
+
 using namespace fakeit;
 using namespace gram;
 using namespace std;
-
-class FakeEvaluator : public Evaluator {
- public:
-  FakeEvaluator(shared_ptr<ContextFreeMapper> mapper, string desired) : mapper(mapper), desired(desired) {}
-
-  double evaluate(const Genotype& genotype) noexcept {
-    string program = mapper->map(genotype);
-
-    return static_cast<double>(edit_distance(program, desired));
-  }
-
- private:
-  shared_ptr<ContextFreeMapper> mapper;
-  string desired;
-
-  unsigned long edit_distance(const string& s1, const string& s2) const {
-    const unsigned long len1 = s1.size(), len2 = s2.size();
-    vector<vector<unsigned long>> d(len1 + 1, vector<unsigned long>(len2 + 1));
-
-    d[0][0] = 0;
-
-    for (unsigned int i = 1; i <= len1; ++i) {
-      d[i][0] = i;
-    }
-
-    for (unsigned int i = 1; i <= len2; ++i) {
-      d[0][i] = i;
-    }
-
-    for (unsigned int i = 1; i <= len1; ++i) {
-      for (unsigned int j = 1; j <= len2; ++j) {
-        d[i][j] = min({d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (s1[i - 1] == s2[j - 1] ? 0 : 1)});
-      }
-    }
-
-    return d[len1][len2];
-  }
-};
 
 TEST_CASE("evolution_test") {
   auto numberGenerator1 = make_unique<XorShiftNumberGenerator>();
@@ -70,26 +34,26 @@ TEST_CASE("evolution_test") {
   auto reproducer = make_shared<PassionateReproducer>(move(selector), move(crossover), move(mutation));
 
   string grammarString =
-      "<number> ::= <number> <digit> | <digit>\n"
-          "<digit> ::= \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"";
+      "<word> ::= <word> <char> | <char>\n"
+      "<char> ::= \"g\" | \"r\" | \"a\" | \"m\"";
 
   BnfRuleParser parser;
 
   auto grammar = make_shared<ContextFreeGrammar>(parser.parse(grammarString));
   auto mapper = make_shared<ContextFreeMapper>(grammar, 1);
 
-  RandomInitializer initializer(move(numberGenerator4), 16);
+  RandomInitializer initializer(move(numberGenerator4), 50);
 
-  auto evaluator = make_unique<FakeEvaluator>(mapper, "1234");
+  auto evaluator = make_unique<StringDiffEvaluator>(mapper, "gram");
   auto evaluationDriver = make_unique<SingleThreadDriver>(move(evaluator));
   auto logger = make_unique<NullLogger>();
 
   Evolution evolution(move(evaluationDriver), move(logger));
 
-  Population population = initializer.initialize(1000, reproducer);
+  Population population = initializer.initialize(200, reproducer);
 
   Individual result = evolution.run(population);
 
   REQUIRE(result.fitness() == 0.0);
-  REQUIRE(result.serialize(*mapper) == "1234");
+  REQUIRE(result.serialize(*mapper) == "gram");
 }

@@ -3,6 +3,8 @@ include_directories(../lib/fakeit/src/fakeit/single_header/catch)
 include_directories(../../include)
 
 add_executable(gram-acceptance-tests
+        StringDiffEvaluator.cpp
+        StringDiffEvaluator.h
         evolution_test.cpp
         test.cpp
         )
