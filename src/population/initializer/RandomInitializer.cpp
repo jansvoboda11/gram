@@ -3,17 +3,17 @@
 using namespace gram;
 using namespace std;
 
-RandomInitializer::RandomInitializer(unique_ptr<NumberGenerator> numberGenerator, unsigned long size)
-    : numberGenerator(move(numberGenerator)), size(size) {
+RandomInitializer::RandomInitializer(unique_ptr<NumberGenerator> numberGenerator, unsigned long genotypeSize)
+    : numberGenerator(move(numberGenerator)), genotypeSize(genotypeSize) {
   //
 }
 
-Population RandomInitializer::initialize(unsigned long count, shared_ptr<Reproducer> reproducer) const {
+Population RandomInitializer::initialize(unsigned long populationSize, shared_ptr<Reproducer> reproducer) const {
   Individuals individuals;
-  individuals.reserve(count);
+  individuals.reserve(populationSize);
 
-  for (unsigned long i = 0; i < count; i++) {
-    Genotype genotype = numberGenerator->generateMany(size);
+  for (unsigned long i = 0; i < populationSize; i++) {
+    Genotype genotype = numberGenerator->generateMany(genotypeSize);
 
     individuals.addIndividual(Individual(genotype));
   }
