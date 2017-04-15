@@ -16,7 +16,7 @@ class FastCodonMutation : public Mutation {
  public:
   FastCodonMutation(std::unique_ptr<BernoulliDistributionStepGenerator> stepGenerator,
                     std::unique_ptr<NumberGenerator> numberGenerator);
-  virtual Genotype apply(Genotype genotype);
+  Genotype apply(Genotype genotype);
  private:
   std::unique_ptr<BernoulliDistributionStepGenerator> stepGenerator;
   std::unique_ptr<NumberGenerator> numberGenerator;
