@@ -3,9 +3,13 @@
 using namespace gram;
 using namespace std;
 
-Population::Population(Individuals individuals, shared_ptr<Reproducer> reproducer, unsigned long number)
-    : individuals(individuals), reproducer(reproducer), _number(number) {
+Population::Population(Individuals individuals, shared_ptr<Reproducer> reproducer, unsigned long generationNumber)
+    : individuals(individuals), reproducer(reproducer), number(generationNumber) {
   //
+}
+
+unsigned long Population::generationNumber() const {
+  return number;
 }
 
 double Population::bestFitness() {
@@ -20,26 +24,22 @@ Individual& Population::operator[](unsigned long index) {
   return individuals[index];
 }
 
+vector<Individual>::iterator Population::begin() {
+  return individuals.begin();
+}
+
+vector<Individual>::iterator Population::end() {
+  return individuals.end();
+}
+
 unsigned long Population::size() const {
   return individuals.size();
-}
-
-unsigned long Population::number() const {
-  return _number;
-}
-
-void Population::evaluate(Evaluator& evaluator) {
-  // todo: create EvaluationDrivers for serial and parallel evaluation
-
-  for (auto& individual : individuals) {
-    individual.evaluate(evaluator);
-  }
 }
 
 Population Population::reproduce() {
   Individuals successors = reproducer->reproduce(individuals);
 
-  unsigned long newNumber = _number + 1;
+  unsigned long newNumber = number + 1;
 
   return Population(successors, reproducer, newNumber);
 }

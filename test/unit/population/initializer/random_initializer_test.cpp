@@ -32,7 +32,7 @@ TEST_CASE("random initializer initializes new population", "[random_initializer]
 
   Population population = initializer.initialize(3, reproducer);
 
-  REQUIRE(population.number() == 0);
+  REQUIRE(population.generationNumber() == 0);
   REQUIRE(population.size() == 3);
   REQUIRE(population[0] == individual1);
   REQUIRE(population[1] == individual2);

@@ -8,5 +8,7 @@ SingleThreadDriver::SingleThreadDriver(unique_ptr<Evaluator> evaluator) : evalua
 }
 
 void SingleThreadDriver::evaluate(Population& population) {
-  population.evaluate(*evaluator);
+  for (auto& individual : population) {
+    individual.evaluate(*evaluator);
+  }
 }
