@@ -21,7 +21,7 @@ class Individual {
   Individual(const Genotype& genotype);
   Individual& operator=(const Individual& individual);
   virtual ~Individual() = default;
-  Individual mateWith(const Individual& partner, const Crossover& crossover) const;
+  Individual mateWith(const Individual& partner, Crossover& crossover) const;
   void mutate(Mutation& mutation);
   void evaluate(Evaluator& evaluator);
   std::string serialize(Mapper& mapper) const;

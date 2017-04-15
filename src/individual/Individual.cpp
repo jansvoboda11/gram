@@ -20,7 +20,7 @@ Individual& Individual::operator=(const Individual& individual) {
   return *this;
 }
 
-Individual Individual::mateWith(const Individual& partner, const Crossover& crossover) const {
+Individual Individual::mateWith(const Individual& partner, Crossover& crossover) const {
   Genotype childGenotype = crossover.apply(genotype, partner.genotype);
 
   return Individual(childGenotype);

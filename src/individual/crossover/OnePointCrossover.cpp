@@ -8,7 +8,7 @@ OnePointCrossover::OnePointCrossover(unique_ptr<NumberGenerator> numberGenerator
   //
 }
 
-Genotype OnePointCrossover::apply(const Genotype& first, const Genotype& second) const {
+Genotype OnePointCrossover::apply(const Genotype& first, const Genotype& second) {
   unsigned long smallerSize = min(first.size(), second.size());
   unsigned long point = numberGenerator->generate() % (smallerSize + 1);
 

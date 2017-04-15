@@ -9,7 +9,7 @@ namespace gram {
  */
 class Crossover {
  public:
-  virtual Genotype apply(const Genotype& first, const Genotype& second) const = 0;
+  virtual Genotype apply(const Genotype& first, const Genotype& second) = 0;
 };
 }
 
