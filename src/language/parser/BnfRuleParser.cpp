@@ -6,6 +6,8 @@ using namespace gram;
 using namespace std;
 
 ContextFreeGrammar BnfRuleParser::parse(string input) const {
+  // todo: handle multi-line rules
+
   ContextFreeGrammar grammar;
 
   vector<string> lines = explode(input, "\n");
