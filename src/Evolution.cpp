@@ -8,12 +8,6 @@ Evolution::Evolution(unique_ptr<EvaluationDriver> evaluationDriver, unique_ptr<L
   //
 }
 
-Individual Evolution::run(Population& population) const {
-  return run(population, [](Population& currentPopulation) -> bool {
-    return currentPopulation.bestFitness() == 0.0;
-  });
-}
-
 Individual Evolution::run(Population& population, bool (*successCondition)(Population&)) const {
   evaluationDriver->evaluate(population);
 

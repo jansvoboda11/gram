@@ -14,7 +14,6 @@ namespace gram {
 class Evolution {
  public:
   Evolution(std::unique_ptr<EvaluationDriver> evaluationDriver, std::unique_ptr<Logger> logger);
-  Individual run(Population& population) const;
   Individual run(Population& population, bool (*successCondition)(Population&)) const;
  private:
   std::unique_ptr<EvaluationDriver> evaluationDriver;
