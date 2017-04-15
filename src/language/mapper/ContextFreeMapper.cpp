@@ -52,10 +52,9 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
 }
 
 void ContextFreeMapper::pushOption(Option& option) {
-  auto& optionSymbols = option.getSymbols();
-  unsigned long optionSize = optionSymbols.size();
+  unsigned long optionSize = option.size();
 
   for (long i = optionSize - 1; i >= 0; i--) {
-    symbols.push_back(optionSymbols[i]);
+    symbols.push_back(&option[i]);
   }
 }

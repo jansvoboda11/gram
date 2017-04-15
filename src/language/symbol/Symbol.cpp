@@ -5,10 +5,34 @@
 
 using namespace gram;
 
-Terminal& Symbol::toTerminal() {
-  return dynamic_cast<Terminal&>(*this);
+const Terminal& Symbol::toTerminal() const {
+  return dynamic_cast<const Terminal&>(*this);
 }
 
-NonTerminal& Symbol::toNonTerminal() {
-  return dynamic_cast<NonTerminal&>(*this);
+const NonTerminal& Symbol::toNonTerminal() const {
+  return dynamic_cast<const NonTerminal&>(*this);
+}
+
+bool Symbol::operator==(const Symbol& symbol) const {
+  if (isTerminal()) {
+    if (!symbol.isTerminal()) {
+      return false;
+    }
+
+    return toTerminal() == symbol.toTerminal();
+  }
+
+  if (isNonTerminal()) {
+    if (!symbol.isNonTerminal()) {
+      return false;
+    }
+
+    return toNonTerminal() == symbol.toNonTerminal();
+  }
+
+  return false;
+}
+
+bool Symbol::operator!=(const Symbol& symbol) const {
+  return !operator==(symbol);
 }

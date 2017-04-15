@@ -10,10 +10,12 @@ class NonTerminal;
  */
 class Symbol {
  public:
-  Terminal& toTerminal();
-  NonTerminal& toNonTerminal();
+  const Terminal& toTerminal() const;
+  const NonTerminal& toNonTerminal() const;
   virtual bool isTerminal() const = 0;
   virtual bool isNonTerminal() const = 0;
+  bool operator==(const Symbol& symbol) const;
+  bool operator!=(const Symbol& symbol) const;
 };
 }
 
