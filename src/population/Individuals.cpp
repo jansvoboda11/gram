@@ -7,20 +7,21 @@ void Individuals::addIndividual(Individual individual) {
   individuals.push_back(individual);
 }
 
-Individual& Individuals::bestIndividual() {
+const Individual& Individuals::bestIndividual() const {
   if (individuals.empty()) {
     throw logic_error("There are no individuals.");
   }
 
-  Individual& bestIndividual = individuals[0];
+  unsigned long individualsCount = individuals.size();
+  unsigned long bestIndex = 0;
 
-  for (auto& individual : individuals) {
-    if (individual.fitness() < bestIndividual.fitness()) {
-      bestIndividual = individual;
+  for (unsigned long i = 0; i < individualsCount; i++) {
+    if (individuals[i].fitness() < individuals[bestIndex].fitness()) {
+      bestIndex = i;
     }
   }
 
-  return bestIndividual;
+  return individuals[bestIndex];
 }
 
 Individual& Individuals::operator[](unsigned long index) {

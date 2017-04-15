@@ -12,11 +12,11 @@ unsigned long Population::generationNumber() const {
   return number;
 }
 
-double Population::bestFitness() {
+double Population::bestFitness() const {
   return bestIndividual().fitness();
 }
 
-Individual& Population::bestIndividual() {
+const Individual& Population::bestIndividual() const {
   return individuals.bestIndividual();
 }
 

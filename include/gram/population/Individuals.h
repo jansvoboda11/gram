@@ -13,7 +13,7 @@ namespace gram {
 class Individuals {
  public:
   void addIndividual(Individual individual);
-  Individual& bestIndividual();
+  const Individual& bestIndividual() const;
   Individual& operator[](unsigned long index);
   unsigned long size() const;
   void reserve(unsigned long count);

@@ -16,8 +16,8 @@ class Population {
  public:
   Population(Individuals individuals, std::shared_ptr<Reproducer> reproducer, unsigned long generationNumber);
   unsigned long generationNumber() const;
-  double bestFitness();
-  Individual& bestIndividual();
+  double bestFitness() const;
+  const Individual& bestIndividual() const;
   Individual& operator[](unsigned long index);
   std::vector<Individual>::iterator begin();
   std::vector<Individual>::iterator end();
