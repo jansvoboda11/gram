@@ -1,7 +1,7 @@
-#ifndef GRAM_XOR_SHIFT_NUMBER_GENERATOR
-#define GRAM_XOR_SHIFT_NUMBER_GENERATOR
+#ifndef GRAM_XOR_SHIFT_RANDOM_NUMBER_GENERATOR
+#define GRAM_XOR_SHIFT_RANDOM_NUMBER_GENERATOR
 
-#include <gram/util/number_generator/NumberGenerator.h>
+#include <gram/random/number_generator/NumberGenerator.h>
 
 #include <cstdint>
 
@@ -19,4 +19,4 @@ class XorShiftNumberGenerator : public NumberGenerator {
 };
 }
 
-#endif // GRAM_XOR_SHIFT_NUMBER_GENERATOR
+#endif // GRAM_XOR_SHIFT_RANDOM_NUMBER_GENERATOR

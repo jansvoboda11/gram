@@ -1,4 +1,4 @@
-#include <gram/util/number_generator/XorShiftNumberGenerator.h>
+#include <gram/random/number_generator/XorShiftNumberGenerator.h>
 
 #include <random>
 

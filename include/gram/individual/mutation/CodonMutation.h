@@ -4,8 +4,8 @@
 #include <memory>
 
 #include <gram/individual/mutation/Mutation.h>
-#include <gram/util/bool_generator/BoolGenerator.h>
-#include <gram/util/number_generator/NumberGenerator.h>
+#include <gram/random/bool_generator/BoolGenerator.h>
+#include <gram/random/number_generator/NumberGenerator.h>
 
 namespace gram {
 /**

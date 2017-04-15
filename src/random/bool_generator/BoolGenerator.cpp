@@ -1,4 +1,4 @@
-#include <gram/util/bool_generator/BoolGenerator.h>
+#include <gram/random/bool_generator/BoolGenerator.h>
 
 #include <limits>
 

@@ -1,4 +1,4 @@
-#include <gram/util/number_generator/TwisterNumberGenerator.h>
+#include <gram/random/number_generator/TwisterNumberGenerator.h>
 
 using namespace gram;
 using namespace std;

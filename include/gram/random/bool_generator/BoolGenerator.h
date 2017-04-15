@@ -1,7 +1,7 @@
-#ifndef GRAM_UTIL_BOOL_GENERATOR
-#define GRAM_UTIL_BOOL_GENERATOR
+#ifndef GRAM_RANDOM_BOOL_GENERATOR
+#define GRAM_RANDOM_BOOL_GENERATOR
 
-#include <gram/util/number_generator/NumberGenerator.h>
+#include <gram/random/number_generator/NumberGenerator.h>
 
 #include <memory>
 #include <vector>
@@ -21,4 +21,4 @@ class BoolGenerator {
 };
 }
 
-#endif // GRAM_UTIL_BOOL_GENERATOR
+#endif // GRAM_RANDOM_BOOL_GENERATOR

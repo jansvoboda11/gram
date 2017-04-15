@@ -1,4 +1,4 @@
-#include <gram/util/number_generator/MinimalNumberGenerator.h>
+#include <gram/random/number_generator/MinimalNumberGenerator.h>
 
 using namespace gram;
 using namespace std;

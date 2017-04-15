@@ -4,7 +4,7 @@
 #include <memory>
 
 #include <gram/population/initializer/Initializer.h>
-#include <gram/util/number_generator/NumberGenerator.h>
+#include <gram/random/number_generator/NumberGenerator.h>
 
 namespace gram {
 /**

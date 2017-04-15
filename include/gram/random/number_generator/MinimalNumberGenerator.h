@@ -1,7 +1,7 @@
-#ifndef GRAM_MINIMAL_NUMBER_GENERATOR
-#define GRAM_MINIMAL_NUMBER_GENERATOR
+#ifndef GRAM_MINIMAL_RANDOM_NUMBER_GENERATOR
+#define GRAM_MINIMAL_RANDOM_NUMBER_GENERATOR
 
-#include <gram/util/number_generator/NumberGenerator.h>
+#include <gram/random/number_generator/NumberGenerator.h>
 
 #include <random>
 
@@ -21,4 +21,4 @@ class MinimalNumberGenerator : public NumberGenerator {
 };
 }
 
-#endif // GRAM_MINIMAL_NUMBER_GENERATOR
+#endif // GRAM_MINIMAL_RANDOM_NUMBER_GENERATOR

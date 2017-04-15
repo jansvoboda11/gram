@@ -1,5 +1,5 @@
-#ifndef GRAM_UTIL_NUMBER_GENERATOR
-#define GRAM_UTIL_NUMBER_GENERATOR
+#ifndef GRAM_RANDOM_NUMBER_GENERATOR
+#define GRAM_RANDOM_NUMBER_GENERATOR
 
 #include <vector>
 
@@ -16,4 +16,4 @@ class NumberGenerator {
 };
 }
 
-#endif // GRAM_UTIL_NUMBER_GENERATOR
+#endif // GRAM_RANDOM_NUMBER_GENERATOR

@@ -25,12 +25,12 @@ set(SOURCE_FILES
         population/selector/TournamentSelector.cpp
         population/Individuals.cpp
         population/Population.cpp
-        util/bool_generator/BoolGenerator.cpp
+        random/bool_generator/BoolGenerator.cpp
+        random/number_generator/MinimalNumberGenerator.cpp
+        random/number_generator/NumberGenerator.cpp
+        random/number_generator/TwisterNumberGenerator.cpp
+        random/number_generator/XorShiftNumberGenerator.cpp
         util/logger/NullLogger.cpp
-        util/number_generator/MinimalNumberGenerator.cpp
-        util/number_generator/NumberGenerator.cpp
-        util/number_generator/TwisterNumberGenerator.cpp
-        util/number_generator/XorShiftNumberGenerator.cpp
         util/helper.cpp
         Evolution.cpp
         ../include/gram/evaluation/driver/EvaluationDriver.h
@@ -64,13 +64,13 @@ set(SOURCE_FILES
         ../include/gram/population/selector/TournamentSelector.h
         ../include/gram/population/Individuals.h
         ../include/gram/population/Population.h
-        ../include/gram/util/bool_generator/BoolGenerator.h
+        ../include/gram/random/bool_generator/BoolGenerator.h
+        ../include/gram/random/number_generator/MinimalNumberGenerator.h
+        ../include/gram/random/number_generator/NumberGenerator.h
+        ../include/gram/random/number_generator/TwisterNumberGenerator.h
+        ../include/gram/random/number_generator/XorShiftNumberGenerator.h
         ../include/gram/util/logger/Logger.h
         ../include/gram/util/logger/NullLogger.h
-        ../include/gram/util/number_generator/MinimalNumberGenerator.h
-        ../include/gram/util/number_generator/NumberGenerator.h
-        ../include/gram/util/number_generator/TwisterNumberGenerator.h
-        ../include/gram/util/number_generator/XorShiftNumberGenerator.h
         ../include/gram/util/helper.h
         ../include/gram/Evolution.h
         )

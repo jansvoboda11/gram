@@ -9,8 +9,8 @@
 #include <gram/population/initializer/RandomInitializer.h>
 #include <gram/population/reproducer/PassionateReproducer.h>
 #include <gram/population/selector/TournamentSelector.h>
+#include <gram/random/number_generator/XorShiftNumberGenerator.h>
 #include <gram/util/logger/NullLogger.h>
-#include <gram/util/number_generator/XorShiftNumberGenerator.h>
 #include <gram/Evolution.h>
 
 #include "StringDiffEvaluator.h"

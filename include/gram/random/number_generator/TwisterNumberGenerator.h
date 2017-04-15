@@ -1,7 +1,7 @@
-#ifndef GRAM_UTIL_NUMBER_GENERATOR_TWISTER
-#define GRAM_UTIL_NUMBER_GENERATOR_TWISTER
+#ifndef GRAM_TWISTER_RANDOM_NUMBER_GENERATOR
+#define GRAM_TWISTER_RANDOM_NUMBER_GENERATOR
 
-#include <gram/util/number_generator/NumberGenerator.h>
+#include <gram/random/number_generator/NumberGenerator.h>
 
 #include <random>
 
@@ -21,4 +21,4 @@ class TwisterNumberGenerator : public NumberGenerator {
 };
 }
 
-#endif // GRAM_UTIL_NUMBER_GENERATOR_TWISTER
+#endif // GRAM_TWISTER_RANDOM_NUMBER_GENERATOR
