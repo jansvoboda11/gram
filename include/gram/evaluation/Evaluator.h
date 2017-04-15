@@ -10,7 +10,7 @@ namespace gram {
 class Evaluator {
  public:
   virtual ~Evaluator() = default;
-  virtual double evaluate(const Genotype& genotype) = 0;
+  virtual double evaluate(const Genotype& genotype) noexcept = 0;
 };
 }
 

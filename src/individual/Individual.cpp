@@ -24,13 +24,7 @@ void Individual::mutate(Mutation& mutation) {
 }
 
 void Individual::evaluate(Evaluator& evaluator) {
-  try {
-    fitnessScore = evaluator.evaluate(genotype);
-  } catch (logic_error error) {
-    // todo: mark mapping failure
-
-    fitnessScore = 1000.0;
-  }
+  fitnessScore = evaluator.evaluate(genotype);
 }
 
 std::string Individual::serialize(Mapper& mapper) const {

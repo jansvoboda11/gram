@@ -21,7 +21,7 @@ class FakeEvaluator : public Evaluator {
  public:
   FakeEvaluator(shared_ptr<ContextFreeMapper> mapper, string desired) : mapper(mapper), desired(desired) {}
 
-  double evaluate(const Genotype& genotype) {
+  double evaluate(const Genotype& genotype) noexcept {
     string program = mapper->map(genotype);
 
     return static_cast<double>(edit_distance(program, desired));
