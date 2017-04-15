@@ -9,7 +9,8 @@ namespace gram {
  */
 class Logger {
  public:
-  virtual void log(Population& population) = 0;
+  virtual void logProgress(const Population& population) = 0;
+  virtual void logResult(const Population& population) = 0;
 };
 }
 

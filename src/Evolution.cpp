@@ -17,15 +17,15 @@ Individual Evolution::run(Population& population) const {
 Individual Evolution::run(Population& population, bool (*successCondition)(Population&)) const {
   evaluationDriver->evaluate(population);
 
-  logger->log(population);
-
   while (!successCondition(population)) {
+    logger->logProgress(population);
+
     population = population.reproduce();
 
     evaluationDriver->evaluate(population);
-
-    logger->log(population);
   }
+
+  logger->logResult(population);
 
   return population.bestIndividual();
 }

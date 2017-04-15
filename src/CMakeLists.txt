@@ -27,7 +27,6 @@ set(SOURCE_FILES
         population/Population.cpp
         util/bool_generator/BoolGenerator.cpp
         util/logger/NullLogger.cpp
-        util/logger/StreamLogger.cpp
         util/number_generator/MinimalNumberGenerator.cpp
         util/number_generator/NumberGenerator.cpp
         util/number_generator/TwisterNumberGenerator.cpp
@@ -68,7 +67,6 @@ set(SOURCE_FILES
         ../include/gram/util/bool_generator/BoolGenerator.h
         ../include/gram/util/logger/Logger.h
         ../include/gram/util/logger/NullLogger.h
-        ../include/gram/util/logger/StreamLogger.h
         ../include/gram/util/number_generator/MinimalNumberGenerator.h
         ../include/gram/util/number_generator/NumberGenerator.h
         ../include/gram/util/number_generator/TwisterNumberGenerator.h
