@@ -21,8 +21,8 @@ class FakeEvaluator : public Evaluator {
  public:
   FakeEvaluator(shared_ptr<ContextFreeMapper> mapper, string desired) : mapper(mapper), desired(desired) {}
 
-  double evaluate(Individual& individual) {
-    string program = individual.serialize(*mapper.get());
+  double evaluate(const Genotype& genotype) {
+    string program = mapper->map(genotype);
 
     return static_cast<double>(edit_distance(program, desired));
   }
