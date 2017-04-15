@@ -3,7 +3,7 @@
 using namespace gram;
 using namespace std;
 
-ContextFreeGrammar::ContextFreeGrammar() : start(), rules() {
+ContextFreeGrammar::ContextFreeGrammar() : start("") {
   //
 }
 
@@ -35,7 +35,7 @@ Rule& ContextFreeGrammar::ruleNamed(string name) {
 
 Rule& ContextFreeGrammar::startRule() {
   if (start.length() == 0) {
-    throw logic_error("The start symbol of grammar is invalid.");
+    throw logic_error("The grammar does not contain any rules.");
   }
 
   return *rules[start].get();
