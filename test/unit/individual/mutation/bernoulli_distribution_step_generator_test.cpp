@@ -1,10 +1,8 @@
 #include <catch.hpp>
-#include <fakeit.hpp>
 
 #include <gram/individual/mutation/BernoulliDistributionStepGenerator.h>
-#include <gram/util/number_generator/MinimalNumberGenerator.h>
+#include <gram/util/number_generator/XorShiftNumberGenerator.h>
 
-using namespace fakeit;
 using namespace gram;
 using namespace std;
 
@@ -12,7 +10,7 @@ TEST_CASE("Bernoulli distribution step generator generates statistically good st
           "[bernoulli_distribution_step_generator") {
   unsigned long testSize = 1000000;
 
-  auto numberGenerator = make_unique<MinimalNumberGenerator>();
+  auto numberGenerator = make_unique<XorShiftNumberGenerator>();
 
   BernoulliDistributionStepGenerator stepGenerator(0.5, move(numberGenerator));
 
