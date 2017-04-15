@@ -28,7 +28,7 @@ Individual& TournamentSelector::select(Individuals& individuals) {
   unsigned long bestIndex = 0;
 
   for (unsigned long i = 0; i < candidates.size(); i++) {
-    if (candidates[i]->getFitness() < candidates[bestIndex]->getFitness()) {
+    if (candidates[i]->fitness() < candidates[bestIndex]->fitness()) {
       bestIndex = i;
     }
   }

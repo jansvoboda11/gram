@@ -25,12 +25,12 @@ class Individual {
   void mutate(Mutation& mutation);
   void evaluate(Evaluator& evaluator);
   std::string serialize(Mapper& mapper) const;
-  virtual double getFitness() const;
+  virtual double fitness() const;
   bool operator==(const Individual& individual) const;
   bool operator!=(const Individual& individual) const;
  private:
   Genotype genotype;
-  double fitness;
+  double fitnessScore;
 };
 }
 

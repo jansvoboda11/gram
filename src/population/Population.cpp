@@ -13,7 +13,7 @@ unsigned long Population::generationNumber() const {
 }
 
 double Population::bestFitness() {
-  return bestIndividual().getFitness();
+  return bestIndividual().fitness();
 }
 
 Individual& Population::bestIndividual() {

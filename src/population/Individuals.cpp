@@ -15,7 +15,7 @@ Individual& Individuals::bestIndividual() {
   Individual& bestIndividual = individuals[0];
 
   for (auto& individual : individuals) {
-    if (individual.getFitness() < bestIndividual.getFitness()) {
+    if (individual.fitness() < bestIndividual.fitness()) {
       bestIndividual = individual;
     }
   }

@@ -4,18 +4,18 @@ using namespace gram;
 using namespace std;
 
 Individual::Individual(const Individual& individual)
-    : genotype(individual.genotype), fitness(individual.fitness) {
+    : genotype(individual.genotype), fitnessScore(individual.fitnessScore) {
   //
 }
 
 Individual::Individual(const Genotype& genotype)
-    : genotype(genotype), fitness(-1.0) {
+    : genotype(genotype), fitnessScore(-1.0) {
   //
 }
 
 Individual& Individual::operator=(const Individual& individual) {
   genotype = individual.genotype;
-  fitness = individual.fitness;
+  fitnessScore = individual.fitnessScore;
 
   return *this;
 }
@@ -32,11 +32,11 @@ void Individual::mutate(Mutation& mutation) {
 
 void Individual::evaluate(Evaluator& evaluator) {
   try {
-    fitness = evaluator.evaluate(*this);
+    fitnessScore = evaluator.evaluate(*this);
   } catch (logic_error error) {
     // todo: mark mapping failure
 
-    fitness = 1000.0;
+    fitnessScore = 1000.0;
   }
 }
 
@@ -44,12 +44,12 @@ std::string Individual::serialize(Mapper& mapper) const {
   return mapper.map(genotype);
 }
 
-double Individual::getFitness() const {
-  if (fitness < 0.0) {
+double Individual::fitness() const {
+  if (fitnessScore < 0.0) {
     throw logic_error("Fitness of the individual has not been calculated yet.");
   }
 
-  return fitness;
+  return fitnessScore;
 }
 
 bool Individual::operator==(const Individual& individual) const {

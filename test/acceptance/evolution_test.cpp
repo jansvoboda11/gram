@@ -89,6 +89,6 @@ TEST_CASE("evolution_test") {
 
   Individual result = evolution.run(population);
 
-  REQUIRE(result.getFitness() == 0.0);
+  REQUIRE(result.fitness() == 0.0);
   REQUIRE(result.serialize(*mapper) == "1234");
 }

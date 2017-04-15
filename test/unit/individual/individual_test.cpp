@@ -44,7 +44,7 @@ TEST_CASE("individual does not return fitness if it was not calculated yet", "[i
 
   Individual individual(genotype);
 
-  REQUIRE_THROWS_AS(individual.getFitness(), logic_error);
+  REQUIRE_THROWS_AS(individual.fitness(), logic_error);
 }
 
 TEST_CASE("same individuals are equal", "[individual]") {
