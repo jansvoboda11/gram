@@ -14,7 +14,7 @@ namespace gram {
 class CodonMutation : public Mutation {
  public:
   CodonMutation(std::unique_ptr<BoolGenerator> boolGenerator, std::unique_ptr<NumberGenerator> numberGenerator);
-  virtual Genotype apply(Genotype genotype);
+  Genotype apply(Genotype genotype);
  private:
   std::unique_ptr<BoolGenerator> boolGenerator;
   std::unique_ptr<NumberGenerator> numberGenerator;

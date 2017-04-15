@@ -9,7 +9,7 @@ CodonMutation::CodonMutation(unique_ptr<BoolGenerator> boolGenerator, unique_ptr
 }
 
 Genotype CodonMutation::apply(Genotype genotype) {
-  for (auto &gene : genotype) {
+  for (auto& gene : genotype) {
     if (boolGenerator->generate()) {
       gene = numberGenerator->generate();
     }
