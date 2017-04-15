@@ -22,7 +22,6 @@ set(SOURCE_FILES
         language/mapper/ContextFreeMapper.cpp
         population/initializer/RandomInitializer.cpp
         population/reproducer/PassionateReproducer.cpp
-        population/selector/RouletteSelector.cpp
         population/selector/TournamentSelector.cpp
         population/Individuals.cpp
         population/Population.cpp
@@ -63,7 +62,6 @@ set(SOURCE_FILES
         ../include/gram/population/reproducer/PassionateReproducer.h
         ../include/gram/population/reproducer/Reproducer.h
         ../include/gram/population/selector/IndividualSelector.h
-        ../include/gram/population/selector/RouletteSelector.h
         ../include/gram/population/selector/TournamentSelector.h
         ../include/gram/population/Individuals.h
         ../include/gram/population/Population.h
