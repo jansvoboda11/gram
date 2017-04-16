@@ -1,5 +1,6 @@
 #include <catch.hpp>
 
+#include <gram/error/WrappingLimitExceeded.h>
 #include <gram/language/mapper/ContextFreeMapper.h>
 
 using namespace Catch::Matchers;
@@ -178,6 +179,5 @@ TEST_CASE("context-free mapper respects wrapping limit", "[context-free_mapper]"
 
   ContextFreeMapper mapper(grammar, 1);
 
-  REQUIRE_THROWS_WITH(mapper.map(Genotype({0, 0, 0})),
-                      Contains("Wrapping limit exceeded during genotype-phenotype mapping."));
+  REQUIRE_THROWS_AS(mapper.map(Genotype({0, 0, 0})), WrappingLimitExceeded);
 }

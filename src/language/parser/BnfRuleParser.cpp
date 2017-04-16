@@ -1,5 +1,6 @@
 #include <gram/language/parser/BnfRuleParser.h>
 
+#include <gram/error/InvalidGrammar.h>
 #include <gram/util/helper.h>
 
 using namespace gram;
@@ -29,7 +30,7 @@ void BnfRuleParser::parseRule(ContextFreeGrammar& grammar, string& line) const {
   }
 
   if (!parseNonTerminal(name, line) || !parseEquals(line)) {
-    throw logic_error("The BNF grammar could not be parsed.");
+    throw InvalidGrammar();
   }
 
   Rule& rule = grammar.ruleNamed(name);
@@ -57,7 +58,7 @@ unique_ptr<Option> BnfRuleParser::parseOption(ContextFreeGrammar& grammar, strin
     } else if (parsePipe(line)) {
       break;
     } else {
-      throw logic_error("The BNF grammar could not be parsed.");
+      throw InvalidGrammar();
     }
   }
 

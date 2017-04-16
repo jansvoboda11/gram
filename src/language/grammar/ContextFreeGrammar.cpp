@@ -1,5 +1,7 @@
 #include <gram/language/grammar/ContextFreeGrammar.h>
 
+#include <gram/error/InvalidGrammar.h>
+
 using namespace gram;
 using namespace std;
 
@@ -35,7 +37,7 @@ Rule& ContextFreeGrammar::ruleNamed(string name) {
 
 Rule& ContextFreeGrammar::startRule() {
   if (start.length() == 0) {
-    throw logic_error("The grammar does not contain any rules.");
+    throw InvalidGrammar();
   }
 
   return *rules[start].get();

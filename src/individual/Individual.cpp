@@ -1,5 +1,7 @@
 #include <gram/individual/Individual.h>
 
+#include <gram/error/FitnessNotCalculated.h>
+
 using namespace gram;
 using namespace std;
 
@@ -33,7 +35,7 @@ string Individual::serialize(Mapper& mapper) const {
 
 double Individual::fitness() const {
   if (fitnessScore < 0.0) {
-    throw logic_error("Fitness of the individual has not been calculated yet.");
+    throw FitnessNotCalculated();
   }
 
   return fitnessScore;

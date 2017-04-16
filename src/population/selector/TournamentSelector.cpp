@@ -1,5 +1,7 @@
 #include <gram/population/selector/TournamentSelector.h>
 
+#include <gram/error/NoIndividuals.h>
+
 using namespace gram;
 using namespace std;
 
@@ -11,12 +13,8 @@ TournamentSelector::TournamentSelector(unsigned long tournamentSize,
 }
 
 Individual& TournamentSelector::select(Individuals& individuals) {
-  if (individuals.size() == 0) {
-    throw logic_error("Cannot select an individual from an empty vector.");
-  }
-
-  if (individuals.size() == 1) {
-    return individuals[0];
+  if (individuals.empty()) {
+    throw NoIndividuals();
   }
 
   vector<Individual*> candidates;

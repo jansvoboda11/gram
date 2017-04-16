@@ -1,6 +1,7 @@
 #include <catch.hpp>
 #include <fakeit.hpp>
 
+#include <gram/error/NoIndividuals.h>
 #include <gram/individual/comparer/LowFitnessComparer.h>
 #include <gram/population/Individuals.h>
 
@@ -13,7 +14,7 @@ TEST_CASE("individuals throw when empty and choosing the best individual", "[ind
 
   Individuals individuals;
 
-  REQUIRE_THROWS_AS(individuals.bestIndividual(comparer), logic_error);
+  REQUIRE_THROWS_AS(individuals.bestIndividual(comparer), NoIndividuals);
 }
 
 TEST_CASE("individuals choose individual with the lowest fitness", "[individuals]") {

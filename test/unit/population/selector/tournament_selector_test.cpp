@@ -1,6 +1,7 @@
 #include <catch.hpp>
 #include <fakeit.hpp>
 
+#include <gram/error/NoIndividuals.h>
 #include <gram/individual/comparer/LowFitnessComparer.h>
 #include <gram/population/selector/TournamentSelector.h>
 
@@ -19,17 +20,19 @@ TEST_CASE("tournament selector handles empty population", "[tournament_selector]
 
   TournamentSelector selector(2, move(numberGenerator), move(comparer));
 
-  REQUIRE_THROWS_AS(selector.select(individuals), logic_error);
+  REQUIRE_THROWS_AS(selector.select(individuals), NoIndividuals);
 }
 
 TEST_CASE("tournament selector chooses the only individual", "[tournament_selector]") {
   Mock<NumberGenerator> numberGeneratorMock;
   Fake(Dtor(numberGeneratorMock));
+  When(Method(numberGeneratorMock, generate)).AlwaysReturn(0);
   auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
   auto comparer = make_unique<LowFitnessComparer>();
 
   Mock<Individual> individualMock;
+  When(Method(individualMock, fitness)).AlwaysReturn(1.0);
   Individual individual = individualMock.get();
 
   Individuals individuals;

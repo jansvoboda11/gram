@@ -1,11 +1,13 @@
 #include <gram/language/symbol/Rule.h>
 
+#include <gram/error/InvalidGrammar.h>
+
 using namespace gram;
 using namespace std;
 
 Rule::Rule(string name) : name(name) {
   if (name.length() == 0) {
-    throw logic_error("A rule has to have a name.");
+    throw InvalidGrammar();
   }
 
   //

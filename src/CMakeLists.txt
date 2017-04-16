@@ -5,6 +5,10 @@ find_package(Threads REQUIRED)
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3")
 
 set(SOURCE_FILES
+        error/FitnessNotCalculated.cpp
+        error/InvalidGrammar.cpp
+        error/NoIndividuals.cpp
+        error/WrappingLimitExceeded.cpp
         evaluation/driver/MultiThreadDriver.cpp
         evaluation/driver/SingleThreadDriver.cpp
         individual/comparer/HighFitnessComparer.cpp
@@ -33,6 +37,10 @@ set(SOURCE_FILES
         util/logger/NullLogger.cpp
         util/helper.cpp
         Evolution.cpp
+        ../include/gram/error/FitnessNotCalculated.h
+        ../include/gram/error/InvalidGrammar.h
+        ../include/gram/error/NoIndividuals.h
+        ../include/gram/error/WrappingLimitExceeded.h
         ../include/gram/evaluation/driver/EvaluationDriver.h
         ../include/gram/evaluation/driver/MultiThreadDriver.h
         ../include/gram/evaluation/driver/SingleThreadDriver.h

@@ -1,5 +1,7 @@
 #include <gram/population/Individuals.h>
 
+#include <gram/error/NoIndividuals.h>
+
 using namespace gram;
 using namespace std;
 
@@ -9,7 +11,7 @@ void Individuals::addIndividual(Individual individual) {
 
 const Individual& Individuals::bestIndividual(IndividualComparer& comparer) const {
   if (individuals.empty()) {
-    throw logic_error("There are no individuals.");
+    throw NoIndividuals();
   }
 
   unsigned long individualsCount = individuals.size();
@@ -30,6 +32,10 @@ Individual& Individuals::operator[](unsigned long index) {
 
 unsigned long Individuals::size() const {
   return individuals.size();
+}
+
+bool Individuals::empty() const {
+  return individuals.empty();
 }
 
 void Individuals::reserve(unsigned long count) {

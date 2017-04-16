@@ -1,5 +1,7 @@
 #include <gram/language/mapper/ContextFreeMapper.h>
 
+#include <gram/error/WrappingLimitExceeded.h>
+
 using namespace gram;
 using namespace std;
 
@@ -35,7 +37,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
         wrappings += 1;
 
         if (wrappings > wrappingLimit) {
-          throw logic_error("Wrapping limit exceeded during genotype-phenotype mapping.");
+          throw WrappingLimitExceeded(wrappingLimit);
         }
       }
 

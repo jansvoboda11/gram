@@ -17,6 +17,7 @@ class Individuals {
   const Individual& bestIndividual(IndividualComparer& comparer) const;
   Individual& operator[](unsigned long index);
   unsigned long size() const;
+  bool empty() const;
   void reserve(unsigned long count);
   std::vector<Individual>::iterator begin();
   std::vector<Individual>::iterator end();
