@@ -12,7 +12,7 @@ TEST_CASE("Bernoulli distribution step generator generates statistically good st
 
   auto numberGenerator = make_unique<XorShiftNumberGenerator>();
 
-  BernoulliDistributionStepGenerator stepGenerator(0.5, move(numberGenerator));
+  BernoulliDistributionStepGenerator stepGenerator(Probability(0.5), move(numberGenerator));
 
   unsigned long totalSteps = 0;
 

@@ -26,7 +26,7 @@ TEST_CASE("evolution_test") {
   auto numberGenerator3 = make_unique<XorShiftNumberGenerator>();
   auto numberGenerator4 = make_unique<XorShiftNumberGenerator>();
   auto numberGenerator5 = make_unique<XorShiftNumberGenerator>();
-  auto stepGenerator = make_unique<BernoulliDistributionStepGenerator>(0.1, move(numberGenerator5));
+  auto stepGenerator = make_unique<BernoulliDistributionStepGenerator>(Probability(0.1), move(numberGenerator5));
 
   auto comparer = make_unique<LowFitnessComparer>();
   auto selector = make_unique<TournamentSelector>(20, move(numberGenerator1), move(comparer));

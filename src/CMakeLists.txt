@@ -7,6 +7,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3")
 set(SOURCE_FILES
         error/FitnessNotCalculated.cpp
         error/InvalidGrammar.cpp
+        error/InvalidProbability.cpp
         error/NoIndividuals.cpp
         error/WrappingLimitExceeded.cpp
         evaluation/driver/MultiThreadDriver.cpp
@@ -36,9 +37,11 @@ set(SOURCE_FILES
         random/number_generator/XorShiftNumberGenerator.cpp
         util/logger/NullLogger.cpp
         util/helper.cpp
+        util/Probability.cpp
         Evolution.cpp
         ../include/gram/error/FitnessNotCalculated.h
         ../include/gram/error/InvalidGrammar.h
+        ../include/gram/error/InvalidProbability.h
         ../include/gram/error/NoIndividuals.h
         ../include/gram/error/WrappingLimitExceeded.h
         ../include/gram/evaluation/driver/EvaluationDriver.h
@@ -82,6 +85,7 @@ set(SOURCE_FILES
         ../include/gram/util/logger/Logger.h
         ../include/gram/util/logger/NullLogger.h
         ../include/gram/util/helper.h
+        ../include/gram/util/Probability.h
         ../include/gram/Evolution.h
         )
 

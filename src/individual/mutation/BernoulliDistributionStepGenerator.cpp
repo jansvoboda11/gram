@@ -6,9 +6,9 @@
 using namespace gram;
 using namespace std;
 
-BernoulliDistributionStepGenerator::BernoulliDistributionStepGenerator(double probability,
+BernoulliDistributionStepGenerator::BernoulliDistributionStepGenerator(Probability probability,
                                                                        unique_ptr<NumberGenerator> numberGenerator)
-    : probability(probability), numberGenerator(move(numberGenerator)), divisor(log(1 - probability)) {
+    : probability(probability), numberGenerator(move(numberGenerator)), divisor(log(1 - probability.getValue())) {
   //
 }
 

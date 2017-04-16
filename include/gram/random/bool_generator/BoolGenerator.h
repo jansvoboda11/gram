@@ -2,6 +2,7 @@
 #define GRAM_RANDOM_BOOL_GENERATOR
 
 #include <gram/random/number_generator/NumberGenerator.h>
+#include <gram/util/Probability.h>
 
 #include <memory>
 #include <vector>
@@ -12,12 +13,12 @@ namespace gram {
  */
 class BoolGenerator {
  public:
-  BoolGenerator(std::unique_ptr<NumberGenerator> numberGenerator, double probability);
+  BoolGenerator(std::unique_ptr<NumberGenerator> numberGenerator, Probability probability);
   virtual ~BoolGenerator() = default;
   virtual bool generate() const;
  private:
   std::unique_ptr<NumberGenerator> numberGenerator;
-  double probability;
+  Probability probability;
 };
 }
 
