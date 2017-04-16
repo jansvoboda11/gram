@@ -47,7 +47,5 @@ unsigned long Population::size() const {
 Population Population::reproduce() {
   Individuals successors = reproducer->reproduce(individuals);
 
-  unsigned long newNumber = number + 1;
-
-  return Population(successors, reproducer, newNumber);
+  return Population(successors, reproducer, number + 1);
 }
