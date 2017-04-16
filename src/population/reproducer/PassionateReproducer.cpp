@@ -17,12 +17,8 @@ Individuals PassionateReproducer::reproduce(Individuals& individuals) {
   children.reserve(size);
 
   for (unsigned long i = 0; i < size - 1; i++) {
-    Individual parent1 = selector->select(individuals);
-    Individual parent2 = selector->select(individuals);
-
-    while (parent2 == parent1) {
-      parent2 = selector->select(individuals);
-    }
+    Individual& parent1 = selector->select(individuals);
+    Individual& parent2 = selector->select(individuals);
 
     Individual child = parent1.mateWith(parent2, *crossover);
     children.addIndividual(child);
