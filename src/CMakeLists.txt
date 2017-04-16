@@ -28,9 +28,7 @@ set(SOURCE_FILES
         population/Individuals.cpp
         population/Population.cpp
         random/bool_generator/BoolGenerator.cpp
-        random/number_generator/MinimalNumberGenerator.cpp
         random/number_generator/NumberGenerator.cpp
-        random/number_generator/TwisterNumberGenerator.cpp
         random/number_generator/XorShiftNumberGenerator.cpp
         util/logger/NullLogger.cpp
         util/helper.cpp
@@ -70,9 +68,8 @@ set(SOURCE_FILES
         ../include/gram/population/Individuals.h
         ../include/gram/population/Population.h
         ../include/gram/random/bool_generator/BoolGenerator.h
-        ../include/gram/random/number_generator/MinimalNumberGenerator.h
+        ../include/gram/random/number_generator/StdNumberGenerator.h
         ../include/gram/random/number_generator/NumberGenerator.h
-        ../include/gram/random/number_generator/TwisterNumberGenerator.h
         ../include/gram/random/number_generator/XorShiftNumberGenerator.h
         ../include/gram/util/logger/Logger.h
         ../include/gram/util/logger/NullLogger.h
