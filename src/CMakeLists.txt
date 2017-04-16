@@ -7,6 +7,8 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3")
 set(SOURCE_FILES
         evaluation/driver/MultiThreadDriver.cpp
         evaluation/driver/SingleThreadDriver.cpp
+        individual/comparer/HighFitnessComparer.cpp
+        individual/comparer/LowFitnessComparer.cpp
         individual/crossover/OnePointCrossover.cpp
         individual/mutation/BernoulliDistributionStepGenerator.cpp
         individual/mutation/CodonMutation.cpp
@@ -37,6 +39,9 @@ set(SOURCE_FILES
         ../include/gram/evaluation/driver/MultiThreadDriver.h
         ../include/gram/evaluation/driver/SingleThreadDriver.h
         ../include/gram/evaluation/Evaluator.h
+        ../include/gram/individual/comparer/HighFitnessComparer.h
+        ../include/gram/individual/comparer/IndividualComparer.h
+        ../include/gram/individual/comparer/LowFitnessComparer.h
         ../include/gram/individual/crossover/Crossover.h
         ../include/gram/individual/crossover/OnePointCrossover.h
         ../include/gram/individual/mutation/BernoulliDistributionStepGenerator.h

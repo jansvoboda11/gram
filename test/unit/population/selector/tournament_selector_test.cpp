@@ -1,6 +1,7 @@
 #include <catch.hpp>
 #include <fakeit.hpp>
 
+#include <gram/individual/comparer/LowFitnessComparer.h>
 #include <gram/population/selector/TournamentSelector.h>
 
 using namespace fakeit;
@@ -12,9 +13,11 @@ TEST_CASE("tournament selector handles empty population", "[tournament_selector]
   Fake(Dtor(numberGeneratorMock));
   auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
+  auto comparer = make_unique<LowFitnessComparer>();
+
   Individuals individuals;
 
-  TournamentSelector selector(2, move(numberGenerator));
+  TournamentSelector selector(2, move(numberGenerator), move(comparer));
 
   REQUIRE_THROWS_AS(selector.select(individuals), logic_error);
 }
@@ -24,13 +27,15 @@ TEST_CASE("tournament selector chooses the only individual", "[tournament_select
   Fake(Dtor(numberGeneratorMock));
   auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
+  auto comparer = make_unique<LowFitnessComparer>();
+
   Mock<Individual> individualMock;
   Individual individual = individualMock.get();
 
   Individuals individuals;
   individuals.addIndividual(individual);
 
-  TournamentSelector selector(2, move(numberGenerator));
+  TournamentSelector selector(2, move(numberGenerator), move(comparer));
 
   REQUIRE(selector.select(individuals) == individual);
 }
@@ -40,6 +45,8 @@ TEST_CASE("tournament selector chooses the best individual from randomly selecte
   Fake(Dtor(numberGeneratorMock));
   When(Method(numberGeneratorMock, generate)).Return(1).Return(3);
   auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
+
+  auto comparer = make_unique<LowFitnessComparer>();
 
   Mock<Individual> individual1Mock;
   Mock<Individual> individual2Mock;
@@ -62,7 +69,7 @@ TEST_CASE("tournament selector chooses the best individual from randomly selecte
   individuals.addIndividual(individual3);
   individuals.addIndividual(individual4);
 
-  TournamentSelector selector(2, move(numberGenerator));
+  TournamentSelector selector(2, move(numberGenerator), move(comparer));
 
   REQUIRE(selector.select(individuals) == individual2);
 }

@@ -6,6 +6,7 @@
 #include <gram/individual/Individual.h>
 #include <gram/population/selector/IndividualSelector.h>
 #include <gram/random/number_generator/NumberGenerator.h>
+#include <gram/individual/comparer/IndividualComparer.h>
 
 namespace gram {
 /**
@@ -13,11 +14,14 @@ namespace gram {
  */
 class TournamentSelector : public IndividualSelector {
  public:
-  TournamentSelector(unsigned long tournamentSize, std::unique_ptr<NumberGenerator> numberGenerator);
+  TournamentSelector(unsigned long tournamentSize,
+                     std::unique_ptr<NumberGenerator> numberGenerator,
+                     std::unique_ptr<IndividualComparer> comparer);
   Individual& select(Individuals& individuals);
  private:
   unsigned long tournamentSize;
   std::unique_ptr<NumberGenerator> numberGenerator;
+  std::unique_ptr<IndividualComparer> comparer;
 };
 }
 

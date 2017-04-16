@@ -3,8 +3,10 @@
 using namespace gram;
 using namespace std;
 
-TournamentSelector::TournamentSelector(unsigned long tournamentSize, unique_ptr<NumberGenerator> numberGenerator)
-    : tournamentSize(tournamentSize), numberGenerator(move(numberGenerator)) {
+TournamentSelector::TournamentSelector(unsigned long tournamentSize,
+                                       unique_ptr<NumberGenerator> numberGenerator,
+                                       unique_ptr<IndividualComparer> comparer)
+    : tournamentSize(tournamentSize), numberGenerator(move(numberGenerator)), comparer(move(comparer)) {
   //
 }
 
@@ -28,7 +30,7 @@ Individual& TournamentSelector::select(Individuals& individuals) {
   unsigned long bestIndex = 0;
 
   for (unsigned long i = 0; i < candidates.size(); i++) {
-    if (candidates[i]->fitness() < candidates[bestIndex]->fitness()) {
+    if (comparer->isFirstFitter(*candidates[i], *candidates[bestIndex])) {
       bestIndex = i;
     }
   }
