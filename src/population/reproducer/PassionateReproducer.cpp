@@ -16,19 +16,15 @@ Individuals PassionateReproducer::reproduce(Individuals& individuals) {
   Individuals children;
   children.reserve(size);
 
-  for (unsigned long i = 0; i < size - 1; i++) {
+  for (unsigned long i = 0; i < size; i++) {
     Individual& parent1 = selector->select(individuals);
     Individual& parent2 = selector->select(individuals);
 
     Individual child = parent1.mateWith(parent2, *crossover);
-    children.addIndividual(child);
-  }
 
-  Individual best = individuals.bestIndividual();
-  children.addIndividual(best);
-
-  for (auto &child : children) {
     child.mutate(*mutation);
+
+    children.addIndividual(child);
   }
 
   return children;
