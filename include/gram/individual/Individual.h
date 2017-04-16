@@ -28,6 +28,7 @@ class Individual {
  private:
   Genotype genotype;
   double fitnessScore;
+  bool fitnessCalculated;
 };
 }
 

@@ -6,12 +6,12 @@ using namespace gram;
 using namespace std;
 
 Individual::Individual(const Individual& individual)
-    : genotype(individual.genotype), fitnessScore(individual.fitnessScore) {
+    : genotype(individual.genotype), fitnessScore(individual.fitnessScore), fitnessCalculated(fitnessCalculated) {
   //
 }
 
 Individual::Individual(const Genotype& genotype)
-    : genotype(genotype), fitnessScore(-1.0) {
+    : genotype(genotype), fitnessScore(0.0), fitnessCalculated(false) {
   //
 }
 
@@ -27,6 +27,7 @@ void Individual::mutate(Mutation& mutation) {
 
 void Individual::evaluate(Evaluator& evaluator) {
   fitnessScore = evaluator.evaluate(genotype);
+  fitnessCalculated = true;
 }
 
 string Individual::serialize(Mapper& mapper) const {
@@ -34,7 +35,7 @@ string Individual::serialize(Mapper& mapper) const {
 }
 
 double Individual::fitness() const {
-  if (fitnessScore < 0.0) {
+  if (!fitnessCalculated) {
     throw FitnessNotCalculated();
   }
 
