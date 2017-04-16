@@ -27,7 +27,7 @@ void Individual::evaluate(Evaluator& evaluator) {
   fitnessScore = evaluator.evaluate(genotype);
 }
 
-std::string Individual::serialize(Mapper& mapper) const {
+string Individual::serialize(Mapper& mapper) const {
   return mapper.map(genotype);
 }
 

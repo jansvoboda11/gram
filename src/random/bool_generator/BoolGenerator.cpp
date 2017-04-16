@@ -5,7 +5,7 @@
 using namespace gram;
 using namespace std;
 
-BoolGenerator::BoolGenerator(std::unique_ptr<NumberGenerator> numberGenerator, double probability)
+BoolGenerator::BoolGenerator(unique_ptr<NumberGenerator> numberGenerator, double probability)
     : numberGenerator(move(numberGenerator)), probability(probability) {
   //
 }
