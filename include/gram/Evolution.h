@@ -1,6 +1,7 @@
 #ifndef GRAM_EVOLUTION_EVOLUTION
 #define GRAM_EVOLUTION_EVOLUTION
 
+#include <functional>
 #include <memory>
 
 #include <gram/evaluation/driver/EvaluationDriver.h>
@@ -14,7 +15,7 @@ namespace gram {
 class Evolution {
  public:
   Evolution(std::unique_ptr<EvaluationDriver> evaluationDriver, std::unique_ptr<Logger> logger);
-  Individual run(Population& population, bool (*successCondition)(Population&)) const;
+  Individual run(Population& population, std::function<bool(Population&)>& successCondition) const;
  private:
   std::unique_ptr<EvaluationDriver> evaluationDriver;
   std::unique_ptr<Logger> logger;

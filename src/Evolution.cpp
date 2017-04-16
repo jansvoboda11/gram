@@ -8,7 +8,7 @@ Evolution::Evolution(unique_ptr<EvaluationDriver> evaluationDriver, unique_ptr<L
   //
 }
 
-Individual Evolution::run(Population& population, bool (*successCondition)(Population&)) const {
+Individual Evolution::run(Population& population, function<bool(Population&)>& successCondition) const {
   evaluationDriver->evaluate(population);
 
   while (!successCondition(population)) {
