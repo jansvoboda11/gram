@@ -54,10 +54,12 @@ TEST_CASE("evolution_test") {
   Population population = initializer.initialize(200, reproducer);
 
   function<bool(Population&)> successCondition = [](Population& currentPopulation) -> bool {
-    return currentPopulation.bestFitness() == 0;
+    return currentPopulation.lowestFitness() == 0;
   };
 
-  Individual result = evolution.run(population, successCondition);
+  Population lastGeneration = evolution.run(population, successCondition);
+
+  const Individual& result = lastGeneration.individualWithLowestFitness();
 
   REQUIRE(result.fitness() == 0.0);
   REQUIRE(result.serialize(*mapper) == "gram");

@@ -4,6 +4,7 @@
 #include <memory>
 #include <vector>
 
+#include <gram/individual/comparer/IndividualComparer.h>
 #include <gram/individual/Individual.h>
 
 namespace gram {
@@ -13,7 +14,7 @@ namespace gram {
 class Individuals {
  public:
   void addIndividual(Individual individual);
-  const Individual& bestIndividual() const;
+  const Individual& bestIndividual(IndividualComparer& comparer) const;
   Individual& operator[](unsigned long index);
   unsigned long size() const;
   void reserve(unsigned long count);

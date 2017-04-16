@@ -1,5 +1,8 @@
 #include <gram/population/Population.h>
 
+#include <gram/individual/comparer/LowFitnessComparer.h>
+#include <gram/individual/comparer/HighFitnessComparer.h>
+
 using namespace gram;
 using namespace std;
 
@@ -12,12 +15,36 @@ unsigned long Population::generationNumber() const {
   return number;
 }
 
-double Population::bestFitness() const {
-  return bestIndividual().fitness();
+const Individual& Population::bestIndividual(IndividualComparer& comparer) const {
+  return individuals.bestIndividual(comparer);
 }
 
-const Individual& Population::bestIndividual() const {
-  return individuals.bestIndividual();
+const Individual& Population::individualWithLowestFitness() const {
+  LowFitnessComparer comparer;
+
+  return bestIndividual(comparer);
+}
+
+const Individual& Population::individualWithHighestFitness() const {
+  HighFitnessComparer comparer;
+
+  return bestIndividual(comparer);
+}
+
+double Population::bestFitness(IndividualComparer& comparer) const {
+  return bestIndividual(comparer).fitness();
+}
+
+double Population::lowestFitness() const {
+  LowFitnessComparer comparer;
+
+  return bestFitness(comparer);
+}
+
+double Population::highestFitness() const {
+  HighFitnessComparer comparer;
+
+  return bestFitness(comparer);
 }
 
 Individual& Population::operator[](unsigned long index) {

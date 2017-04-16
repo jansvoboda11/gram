@@ -7,7 +7,7 @@ void Individuals::addIndividual(Individual individual) {
   individuals.push_back(individual);
 }
 
-const Individual& Individuals::bestIndividual() const {
+const Individual& Individuals::bestIndividual(IndividualComparer& comparer) const {
   if (individuals.empty()) {
     throw logic_error("There are no individuals.");
   }
@@ -16,7 +16,7 @@ const Individual& Individuals::bestIndividual() const {
   unsigned long bestIndex = 0;
 
   for (unsigned long i = 0; i < individualsCount; i++) {
-    if (individuals[i].fitness() < individuals[bestIndex].fitness()) {
+    if (comparer.isFirstFitter(individuals[i], individuals[bestIndex])) {
       bestIndex = i;
     }
   }

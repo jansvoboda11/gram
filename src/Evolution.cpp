@@ -8,7 +8,7 @@ Evolution::Evolution(unique_ptr<EvaluationDriver> evaluationDriver, unique_ptr<L
   //
 }
 
-Individual Evolution::run(Population& population, function<bool(Population&)>& successCondition) const {
+Population Evolution::run(Population& population, function<bool(Population&)>& successCondition) const {
   evaluationDriver->evaluate(population);
 
   while (!successCondition(population)) {
@@ -21,5 +21,5 @@ Individual Evolution::run(Population& population, function<bool(Population&)>& s
 
   logger->logResult(population);
 
-  return population.bestIndividual();
+  return population;
 }

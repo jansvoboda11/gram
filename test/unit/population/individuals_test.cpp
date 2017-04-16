@@ -1,6 +1,7 @@
 #include <catch.hpp>
 #include <fakeit.hpp>
 
+#include <gram/individual/comparer/LowFitnessComparer.h>
 #include <gram/population/Individuals.h>
 
 using namespace fakeit;
@@ -8,12 +9,16 @@ using namespace gram;
 using namespace std;
 
 TEST_CASE("individuals throw when empty and choosing the best individual", "[individuals]") {
+  LowFitnessComparer comparer;
+
   Individuals individuals;
 
-  REQUIRE_THROWS_AS(individuals.bestIndividual(), logic_error);
+  REQUIRE_THROWS_AS(individuals.bestIndividual(comparer), logic_error);
 }
 
-TEST_CASE("individuals choose the best individual", "[individuals]") {
+TEST_CASE("individuals choose individual with the lowest fitness", "[individuals]") {
+  LowFitnessComparer comparer;
+
   Mock<Individual> individual1Mock;
   Mock<Individual> individual2Mock;
   Mock<Individual> individual3Mock;
@@ -31,5 +36,5 @@ TEST_CASE("individuals choose the best individual", "[individuals]") {
   individuals.addIndividual(individual2);
   individuals.addIndividual(individual3);
 
-  REQUIRE(individuals.bestIndividual() == individual2);
+  REQUIRE(individuals.bestIndividual(comparer) == individual2);
 }

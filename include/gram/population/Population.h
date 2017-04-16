@@ -4,6 +4,7 @@
 #include <memory>
 #include <vector>
 
+#include <gram/individual/comparer/IndividualComparer.h>
 #include <gram/individual/Individual.h>
 #include <gram/population/reproducer/Reproducer.h>
 #include <gram/population/Individuals.h>
@@ -16,8 +17,12 @@ class Population {
  public:
   Population(Individuals individuals, std::shared_ptr<Reproducer> reproducer, unsigned long generationNumber);
   unsigned long generationNumber() const;
-  double bestFitness() const;
-  const Individual& bestIndividual() const;
+  const Individual& bestIndividual(IndividualComparer& comparer) const;
+  const Individual& individualWithLowestFitness() const;
+  const Individual& individualWithHighestFitness() const;
+  double bestFitness(IndividualComparer& comparer) const;
+  double lowestFitness() const;
+  double highestFitness() const;
   Individual& operator[](unsigned long index);
   std::vector<Individual>::iterator begin();
   std::vector<Individual>::iterator end();
