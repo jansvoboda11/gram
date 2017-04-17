@@ -1,9 +1,10 @@
 #include "gram/Evolution.h"
 
-#include <catch.hpp>
-#include <fakeit.hpp>
 #include <functional>
 #include <string>
+
+#include <catch.hpp>
+#include <fakeit.hpp>
 
 #include "gram/evaluation/driver/SingleThreadDriver.h"
 #include "gram/individual/Individual.h"
