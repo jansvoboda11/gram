@@ -2,8 +2,17 @@
 
 #include <catch.hpp>
 
+#include "gram/error/InvalidGrammar.h"
+#include "gram/language/symbol/Rule.h"
+
 using namespace gram;
 using namespace std;
+
+TEST_CASE("context-free grammar requires start rule", "[context-free_grammar]") {
+  ContextFreeGrammar grammar;
+
+  REQUIRE_THROWS_AS(grammar.startRule(), InvalidGrammar);
+}
 
 TEST_CASE("context-free grammar accepts rules", "[context-free_grammar]") {
   ContextFreeGrammar grammar;
@@ -16,4 +25,12 @@ TEST_CASE("context-free grammar accepts rules", "[context-free_grammar]") {
 
   REQUIRE(grammar.startRule() == rule1);
   REQUIRE(grammar.ruleNamed("rule2") == rule2);
+}
+
+TEST_CASE("context-free grammar creates start rule", "[context-free_grammar]") {
+  ContextFreeGrammar grammar;
+
+  grammar.ruleNamed("start");
+
+  REQUIRE(grammar.startRule().getName() == "start");
 }
