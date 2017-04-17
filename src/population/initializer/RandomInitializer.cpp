@@ -1,5 +1,6 @@
 #include <gram/population/initializer/RandomInitializer.h>
 
+#include <gram/error/NoIndividuals.h>
 #include <gram/error/ZeroGenotypeLength.h>
 
 using namespace gram;
@@ -13,6 +14,10 @@ RandomInitializer::RandomInitializer(unique_ptr<NumberGenerator> numberGenerator
 }
 
 Population RandomInitializer::initialize(unsigned long populationSize, shared_ptr<Reproducer> reproducer) const {
+  if (populationSize == 0) {
+    throw NoIndividuals();
+  }
+
   Individuals individuals;
   individuals.reserve(populationSize);
 
