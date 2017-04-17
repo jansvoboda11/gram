@@ -7,11 +7,35 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
+#include <gram/error/NoIndividuals.h>
+#include <gram/error/ZeroGenotypeLength.h>
 #include "gram/individual/Genotype.h"
 #include "gram/individual/Individual.h"
 #include "gram/population/Population.h"
 #include "gram/population/reproducer/Reproducer.h"
 #include "gram/random/number_generator/NumberGenerator.h"
+
+TEST_CASE("random initializer requires valid genotype length", "[random_initializer]") {
+  Mock<NumberGenerator> numberGeneratorMock;
+  Fake(Dtor(numberGeneratorMock));
+  auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
+
+  REQUIRE_THROWS_AS(RandomInitializer(move(numberGenerator), 0), ZeroGenotypeLength);
+}
+
+TEST_CASE("random initializer requires valid population size", "[random_initializer]") {
+  Mock<NumberGenerator> numberGeneratorMock;
+  Fake(Dtor(numberGeneratorMock));
+  auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
+
+  Mock<Reproducer> reproducerMock;
+  Fake(Dtor(reproducerMock));
+  auto reproducer = shared_ptr<Reproducer>(&reproducerMock.get());
+
+  RandomInitializer initializer(move(numberGenerator), 200);
+
+  REQUIRE_THROWS_AS(initializer.initialize(0, reproducer), NoIndividuals);
+}
 
 TEST_CASE("random initializer initializes new population", "[random_initializer]") {
   Genotype genotype1({0, 1, 2});
