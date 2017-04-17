@@ -10,8 +10,7 @@
 using namespace gram;
 using namespace std;
 
-MultiThreadDriver::MultiThreadDriver(vector<unique_ptr<Evaluator>> evaluators)
-    : evaluators(move(evaluators)) {
+MultiThreadDriver::MultiThreadDriver(vector<unique_ptr<Evaluator>> evaluators) : evaluators(move(evaluators)) {
   //
 }
 
@@ -34,13 +33,15 @@ void MultiThreadDriver::evaluate(Population& population) {
 
 void MultiThreadDriver::launchEvaluator(Population& population, unsigned long threadNumber) {
   Evaluator& evaluator = *evaluators[threadNumber];
+  bool isLastEvaluator = threadNumber == evaluators.size() - 1;
 
-  unsigned long batchSize = population.size() / evaluators.size();
+  unsigned long threadCount = evaluators.size();
 
-  unsigned long lowerLimit = threadNumber * batchSize;
-  unsigned long upperBound = lowerLimit + batchSize;
+  unsigned long batchSize = population.size() / threadCount;
+  unsigned long lowerIndex = threadNumber * batchSize;
+  unsigned long upperLimit = isLastEvaluator ? population.size() : lowerIndex + batchSize;
 
-  for (unsigned long i = lowerLimit; i < upperBound; i++) {
+  for (unsigned long i = lowerIndex; i < upperLimit; i++) {
     population[i].evaluate(evaluator);
   }
 }

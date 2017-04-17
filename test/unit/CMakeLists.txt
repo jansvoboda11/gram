@@ -3,6 +3,7 @@ include_directories(../lib/fakeit/src/fakeit/single_header/catch)
 include_directories(../../include)
 
 add_executable(gram-unit-tests
+        evaluation/driver/multi_thread_driver_test.cpp
         evaluation/driver/single_thread_driver_test.cpp
         individual/crossover/one_point_crossover_test.cpp
         individual/mutation/bernoulli_distribution_step_generator_test.cpp

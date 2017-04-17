@@ -16,7 +16,7 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST_CASE("single thread evaluator evaluates all individuals in a population", "[single_thread_driver]") {
+TEST_CASE("single thread driver evaluates all individuals in a population", "[single_thread_driver]") {
   Mock<Evaluator> evaluatorMock;
   Fake(Dtor(evaluatorMock));
   When(Method(evaluatorMock, evaluate)).Return(1).Return(2).Return(3);
