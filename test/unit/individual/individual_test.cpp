@@ -1,7 +1,7 @@
+#include "gram/individual/Individual.h"
+
 #include <catch.hpp>
 #include <fakeit.hpp>
-
-#include <gram/individual/Individual.h>
 
 using namespace fakeit;
 using namespace gram;

@@ -1,6 +1,6 @@
-#include <catch.hpp>
+#include "gram/population/reproducer/PassionateReproducer.h"
 
-#include <gram/population/reproducer/PassionateReproducer.h>
+#include <catch.hpp>
 
 using namespace gram;
 using namespace std;

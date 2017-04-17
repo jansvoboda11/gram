@@ -1,7 +1,7 @@
+#include "gram/individual/crossover/OnePointCrossover.h"
+
 #include <catch.hpp>
 #include <fakeit.hpp>
-
-#include <gram/individual/crossover/OnePointCrossover.h>
 
 using namespace fakeit;
 using namespace gram;

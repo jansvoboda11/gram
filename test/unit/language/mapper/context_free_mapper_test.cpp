@@ -1,7 +1,8 @@
+#include "gram/language/mapper/ContextFreeMapper.h"
+
 #include <catch.hpp>
 
-#include <gram/error/WrappingLimitExceeded.h>
-#include <gram/language/mapper/ContextFreeMapper.h>
+#include "gram/error/WrappingLimitExceeded.h"
 
 using namespace Catch::Matchers;
 using namespace gram;

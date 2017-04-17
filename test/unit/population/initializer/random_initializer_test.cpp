@@ -1,7 +1,7 @@
+#include "gram/population/initializer/RandomInitializer.h"
+
 #include <catch.hpp>
 #include <fakeit.hpp>
-
-#include <gram/population/initializer/RandomInitializer.h>
 
 using namespace fakeit;
 using namespace gram;

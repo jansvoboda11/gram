@@ -1,9 +1,10 @@
+#include "gram/population/selector/TournamentSelector.h"
+
 #include <catch.hpp>
 #include <fakeit.hpp>
 
-#include <gram/error/NoIndividuals.h>
-#include <gram/individual/comparer/LowFitnessComparer.h>
-#include <gram/population/selector/TournamentSelector.h>
+#include "gram/error/NoIndividuals.h"
+#include "gram/individual/comparer/LowFitnessComparer.h"
 
 using namespace fakeit;
 using namespace gram;

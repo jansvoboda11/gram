@@ -1,7 +1,8 @@
+#include "gram/individual/mutation/BernoulliDistributionStepGenerator.h"
+
 #include <catch.hpp>
 
-#include <gram/individual/mutation/BernoulliDistributionStepGenerator.h>
-#include <gram/random/number_generator/XorShiftNumberGenerator.h>
+#include "gram/random/number_generator/XorShiftNumberGenerator.h"
 
 using namespace gram;
 using namespace std;

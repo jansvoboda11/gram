@@ -1,5 +1,12 @@
 #include "StringDiffEvaluator.h"
 
+#include <memory>
+#include <string>
+
+#include "gram/evaluation/Evaluator.h"
+#include "gram/individual/Genotype.h"
+#include "gram/language/mapper/ContextFreeMapper.h"
+
 using namespace gram;
 using namespace std;
 

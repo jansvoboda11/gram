@@ -1,6 +1,6 @@
-#include <catch.hpp>
+#include "gram/language/grammar/ContextFreeGrammar.h"
 
-#include <gram/language/grammar/ContextFreeGrammar.h>
+#include <catch.hpp>
 
 using namespace gram;
 using namespace std;

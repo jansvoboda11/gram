@@ -1,19 +1,25 @@
+#include "gram/Evolution.h"
+
 #include <catch.hpp>
 #include <fakeit.hpp>
+#include <functional>
+#include <string>
 
-#include <gram/evaluation/driver/SingleThreadDriver.h>
-#include <gram/individual/comparer/LowFitnessComparer.h>
-#include <gram/individual/crossover/OnePointCrossover.h>
-#include <gram/individual/mutation/FastCodonMutation.h>
-#include <gram/language/parser/BnfRuleParser.h>
-#include <gram/language/mapper/ContextFreeMapper.h>
-#include <gram/population/initializer/RandomInitializer.h>
-#include <gram/population/reproducer/PassionateReproducer.h>
-#include <gram/population/selector/TournamentSelector.h>
-#include <gram/random/number_generator/XorShiftNumberGenerator.h>
-#include <gram/util/logger/NullLogger.h>
-#include <gram/Evolution.h>
-
+#include "gram/evaluation/driver/SingleThreadDriver.h"
+#include "gram/individual/Individual.h"
+#include "gram/individual/comparer/LowFitnessComparer.h"
+#include "gram/individual/crossover/OnePointCrossover.h"
+#include "gram/individual/mutation/BernoulliDistributionStepGenerator.h"
+#include "gram/individual/mutation/FastCodonMutation.h"
+#include "gram/language/grammar/ContextFreeGrammar.h"
+#include "gram/language/mapper/ContextFreeMapper.h"
+#include "gram/language/parser/BnfRuleParser.h"
+#include "gram/population/Population.h"
+#include "gram/population/initializer/RandomInitializer.h"
+#include "gram/population/reproducer/PassionateReproducer.h"
+#include "gram/population/selector/TournamentSelector.h"
+#include "gram/random/number_generator/XorShiftNumberGenerator.h"
+#include "gram/util/logger/NullLogger.h"
 #include "StringDiffEvaluator.h"
 
 using namespace fakeit;

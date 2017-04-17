@@ -1,6 +1,6 @@
-#include <catch.hpp>
+#include "gram/util/helper.h"
 
-#include <gram/util/helper.h>
+#include <catch.hpp>
 
 using namespace gram;
 using namespace std;

@@ -1,6 +1,6 @@
-#include <catch.hpp>
+#include "gram/language/parser/BnfRuleParser.h"
 
-#include <gram/language/parser/BnfRuleParser.h>
+#include <catch.hpp>
 
 using namespace gram;
 using namespace std;

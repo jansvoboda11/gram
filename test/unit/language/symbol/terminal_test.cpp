@@ -1,6 +1,6 @@
-#include <catch.hpp>
+#include "gram/language/symbol/Terminal.h"
 
-#include <gram/language/symbol/Terminal.h>
+#include <catch.hpp>
 
 using namespace gram;
 

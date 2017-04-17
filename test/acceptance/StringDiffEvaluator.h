@@ -1,8 +1,12 @@
 #ifndef GRAM_TEST_STRING_DIFF_EVALUATOR
 #define GRAM_TEST_STRING_DIFF_EVALUATOR
 
-#include <gram/evaluation/Evaluator.h>
-#include <gram/language/mapper/ContextFreeMapper.h>
+#include <memory>
+#include <string>
+
+#include "gram/evaluation/Evaluator.h"
+#include "gram/individual/Genotype.h"
+#include "gram/language/mapper/ContextFreeMapper.h"
 
 class StringDiffEvaluator : public gram::Evaluator {
  public:

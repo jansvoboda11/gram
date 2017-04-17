@@ -1,7 +1,7 @@
+#include "gram/individual/mutation/FastCodonMutation.h"
+
 #include <catch.hpp>
 #include <fakeit.hpp>
-
-#include <gram/individual/mutation/FastCodonMutation.h>
 
 using namespace fakeit;
 using namespace gram;
