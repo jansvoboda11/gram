@@ -11,5 +11,5 @@ bool HighFitnessComparer::isFirstFitter(const Individual& first, const Individua
     return true;
   }
 
-  return first.fitness() > first.fitness();
+  return first.fitness() > second.fitness();
 }
