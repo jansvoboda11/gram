@@ -3,13 +3,17 @@
 
 #include <memory>
 #include <regex>
+#include <string>
 
-#include <gram/language/parser/RuleParser.h>
+#include "gram/language/grammar/ContextFreeGrammar.h"
+#include "gram/language/parser/RuleParser.h"
 
 namespace gram {
 /**
  * Class.
  */
+class Option;
+
 class BnfRuleParser : public RuleParser {
  public:
   ContextFreeGrammar parse(std::string input) const;

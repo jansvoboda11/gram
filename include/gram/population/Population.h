@@ -4,15 +4,18 @@
 #include <memory>
 #include <vector>
 
-#include <gram/individual/comparer/IndividualComparer.h>
-#include <gram/individual/Individual.h>
-#include <gram/population/reproducer/Reproducer.h>
-#include <gram/population/Individuals.h>
+#include "gram/individual/Individual.h"
+#include "gram/individual/comparer/IndividualComparer.h"
+#include "gram/population/Individuals.h"
+#include "gram/population/reproducer/Reproducer.h"
 
 namespace gram {
 /**
  * Class.
  */
+class IndividualComparer;
+class Reproducer;
+
 class Population {
  public:
   Population(Individuals individuals, std::shared_ptr<Reproducer> reproducer, unsigned long generationNumber);

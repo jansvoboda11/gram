@@ -1,7 +1,14 @@
-#include <gram/population/Population.h>
+#include "gram/population/Population.h"
 
-#include <gram/individual/comparer/LowFitnessComparer.h>
-#include <gram/individual/comparer/HighFitnessComparer.h>
+#include "gram/individual/Individual.h"
+#include "gram/individual/comparer/HighFitnessComparer.h"
+#include "gram/individual/comparer/LowFitnessComparer.h"
+#include "gram/population/Individuals.h"
+#include "gram/population/reproducer/Reproducer.h"
+
+namespace gram {
+class IndividualComparer;
+}
 
 using namespace gram;
 using namespace std;

@@ -1,4 +1,6 @@
-#include <gram/individual/mutation/FastCodonMutation.h>
+#include "gram/individual/mutation/FastCodonMutation.h"
+
+#include <algorithm>
 
 using namespace gram;
 using namespace std;

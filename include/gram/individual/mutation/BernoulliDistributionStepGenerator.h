@@ -1,8 +1,8 @@
 #ifndef GRAM_INDIVIDUAL_BERNOULLI_DISTRIBUTION_STEP_GENERATOR
 #define GRAM_INDIVIDUAL_BERNOULLI_DISTRIBUTION_STEP_GENERATOR
 
-#include <gram/random/number_generator/NumberGenerator.h>
-#include <gram/util/Probability.h>
+#include "gram/random/number_generator/NumberGenerator.h"
+#include "gram/util/Probability.h"
 
 #include <memory>
 

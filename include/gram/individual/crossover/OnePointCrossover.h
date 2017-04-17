@@ -3,8 +3,9 @@
 
 #include <memory>
 
-#include <gram/individual/crossover/Crossover.h>
-#include <gram/random/number_generator/NumberGenerator.h>
+#include "gram/individual/Genotype.h"
+#include "gram/individual/crossover/Crossover.h"
+#include "gram/random/number_generator/NumberGenerator.h"
 
 namespace gram {
 /**

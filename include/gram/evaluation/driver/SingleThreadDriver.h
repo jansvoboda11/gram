@@ -3,10 +3,11 @@
 
 #include <memory>
 
-#include <gram/evaluation/driver/EvaluationDriver.h>
-#include <gram/evaluation/Evaluator.h>
+#include "gram/evaluation/Evaluator.h"
+#include "gram/evaluation/driver/EvaluationDriver.h"
 
 namespace gram {
+class Population;
 /**
  * Class.
  */

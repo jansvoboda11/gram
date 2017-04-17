@@ -1,4 +1,12 @@
-#include <gram/language/symbol/Option.h>
+#include "gram/language/symbol/Option.h"
+
+#include <ext/alloc_traits.h>
+#include <algorithm>
+
+namespace gram {
+class NonTerminal;
+class Terminal;
+}  // namespace gram
 
 using namespace gram;
 using namespace std;

@@ -3,15 +3,18 @@
 
 #include <memory>
 
-#include <gram/individual/Individual.h>
-#include <gram/population/selector/IndividualSelector.h>
-#include <gram/random/number_generator/NumberGenerator.h>
-#include <gram/individual/comparer/IndividualComparer.h>
+#include "gram/individual/Individual.h"
+#include "gram/individual/comparer/IndividualComparer.h"
+#include "gram/population/selector/IndividualSelector.h"
+#include "gram/random/number_generator/NumberGenerator.h"
 
 namespace gram {
 /**
  * Class.
  */
+class Individual;
+class Individuals;
+
 class TournamentSelector : public IndividualSelector {
  public:
   TournamentSelector(unsigned long tournamentSize,

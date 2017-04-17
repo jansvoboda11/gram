@@ -1,4 +1,4 @@
-#include <gram/individual/comparer/LowFitnessComparer.h>
+#include "gram/individual/comparer/LowFitnessComparer.h"
 
 using namespace gram;
 

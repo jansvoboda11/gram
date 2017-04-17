@@ -2,6 +2,7 @@
 #define GRAM_ERROR_NO_INDIVIDUALS
 
 #include <stdexcept>
+
 namespace gram {
 /**
  * Exception.

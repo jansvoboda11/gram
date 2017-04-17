@@ -1,7 +1,15 @@
-#include <gram/language/parser/BnfRuleParser.h>
+#include "gram/language/parser/BnfRuleParser.h"
 
-#include <gram/error/InvalidGrammar.h>
-#include <gram/util/helper.h>
+#include <algorithm>
+#include <regex>
+#include <vector>
+
+#include "gram/error/InvalidGrammar.h"
+#include "gram/language/symbol/NonTerminal.h"
+#include "gram/language/symbol/Option.h"
+#include "gram/language/symbol/Rule.h"
+#include "gram/language/symbol/Terminal.h"
+#include "gram/util/helper.h"
 
 using namespace gram;
 using namespace std;

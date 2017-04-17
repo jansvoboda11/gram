@@ -1,6 +1,16 @@
-#include <gram/population/selector/TournamentSelector.h>
+#include "gram/population/selector/TournamentSelector.h"
 
-#include <gram/error/NoIndividuals.h>
+#include <algorithm>
+#include <vector>
+
+#include "gram/error/NoIndividuals.h"
+#include "gram/individual/comparer/IndividualComparer.h"
+#include "gram/population/Individuals.h"
+#include "gram/random/number_generator/NumberGenerator.h"
+
+namespace gram {
+class Individual;
+}
 
 using namespace gram;
 using namespace std;

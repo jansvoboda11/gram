@@ -1,12 +1,14 @@
 #ifndef GRAM_UTIL_NULL_LOGGER
 #define GRAM_UTIL_NULL_LOGGER
 
-#include <gram/util/logger/Logger.h>
+#include "gram/util/logger/Logger.h"
 
 namespace gram {
 /**
  * Class.
  */
+class Population;
+
 class NullLogger : public Logger {
  public:
   void logProgress(const Population& population);

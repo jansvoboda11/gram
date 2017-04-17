@@ -1,4 +1,9 @@
-#include <gram/random/bool_generator/BoolGenerator.h>
+#include "gram/random/bool_generator/BoolGenerator.h"
+
+#include <algorithm>
+
+#include "gram/random/number_generator/NumberGenerator.h"
+#include "gram/util/Probability.h"
 
 using namespace gram;
 using namespace std;

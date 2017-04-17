@@ -1,7 +1,10 @@
 #ifndef GRAM_LANGUAGE_RULE
 #define GRAM_LANGUAGE_RULE
 
-#include <gram/language/symbol/Option.h>
+#include "gram/language/symbol/Option.h"
+#include <memory>
+#include <string>
+#include <vector>
 
 namespace gram {
 /**

@@ -1,15 +1,24 @@
 #ifndef GRAM_LANGUAGE_CONTEXT_FREE_MAPPER
 #define GRAM_LANGUAGE_CONTEXT_FREE_MAPPER
 
-#include <gram/language/grammar/ContextFreeGrammar.h>
-#include <gram/individual/Individual.h>
-
+#include <memory>
 #include <stack>
+#include <vector>
+
+#include "gram/individual/Genotype.h"
+#include "gram/individual/Individual.h"
+#include "gram/individual/Phenotype.h"
+#include "gram/language/grammar/ContextFreeGrammar.h"
+#include "gram/language/mapper/Mapper.h"
 
 namespace gram {
 /**
  * Class.
  */
+class ContextFreeGrammar;
+class Option;
+class Symbol;
+
 class ContextFreeMapper : public Mapper {
  public:
   ContextFreeMapper(std::shared_ptr<ContextFreeGrammar> grammar, unsigned long wrappingLimit);

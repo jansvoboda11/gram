@@ -1,8 +1,8 @@
 #ifndef GRAM_LANGUAGE_MAPPER
 #define GRAM_LANGUAGE_MAPPER
 
-#include <gram/individual/Genotype.h>
-#include <gram/individual/Phenotype.h>
+#include "gram/individual/Genotype.h"
+#include "gram/individual/Phenotype.h"
 
 namespace gram {
 /**

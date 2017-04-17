@@ -4,13 +4,17 @@
 #include <memory>
 #include <vector>
 
-#include <gram/language/symbol/NonTerminal.h>
-#include <gram/language/symbol/Terminal.h>
+#include "gram/language/symbol/NonTerminal.h"
+#include "gram/language/symbol/Symbol.h"
+#include "gram/language/symbol/Terminal.h"
 
 namespace gram {
 /**
  * Class.
  */
+class NonTerminal;
+class Terminal;
+
 class Option {
  public:
   void addNonTerminal(std::unique_ptr<NonTerminal> nonTerminal);

@@ -3,10 +3,11 @@
 
 #include <memory>
 
-#include <gram/individual/mutation/BernoulliDistributionStepGenerator.h>
-#include <gram/individual/mutation/Mutation.h>
-#include <gram/random/bool_generator/BoolGenerator.h>
-#include <gram/random/number_generator/NumberGenerator.h>
+#include "gram/individual/Genotype.h"
+#include "gram/individual/mutation/BernoulliDistributionStepGenerator.h"
+#include "gram/individual/mutation/Mutation.h"
+#include "gram/random/bool_generator/BoolGenerator.h"
+#include "gram/random/number_generator/NumberGenerator.h"
 
 namespace gram {
 /**

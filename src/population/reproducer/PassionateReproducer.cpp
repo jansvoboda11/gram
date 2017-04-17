@@ -1,4 +1,8 @@
-#include <gram/population/reproducer/PassionateReproducer.h>
+#include "gram/population/reproducer/PassionateReproducer.h"
+
+#include <algorithm>
+
+#include "gram/population/selector/IndividualSelector.h"
 
 using namespace gram;
 using namespace std;

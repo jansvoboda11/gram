@@ -1,6 +1,9 @@
-#include <gram/language/grammar/ContextFreeGrammar.h>
+#include "gram/language/grammar/ContextFreeGrammar.h"
 
-#include <gram/error/InvalidGrammar.h>
+#include <algorithm>
+
+#include "gram/error/InvalidGrammar.h"
+#include "gram/language/symbol/Rule.h"
 
 using namespace gram;
 using namespace std;

@@ -2,10 +2,13 @@
 #define GRAM_MULTI_THREAD_EVALUATION_DRIVER
 
 #include <memory>
+#include <vector>
 
-#include <gram/evaluation/driver/EvaluationDriver.h>
+#include "gram/evaluation/Evaluator.h"
+#include "gram/evaluation/driver/EvaluationDriver.h"
 
 namespace gram {
+class Population;
 /**
  * Class.
  */

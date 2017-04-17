@@ -1,7 +1,17 @@
-#include <gram/population/initializer/RandomInitializer.h>
+#include "gram/population/initializer/RandomInitializer.h"
 
-#include <gram/error/NoIndividuals.h>
-#include <gram/error/ZeroGenotypeLength.h>
+#include <algorithm>
+
+#include "gram/error/NoIndividuals.h"
+#include "gram/error/ZeroGenotypeLength.h"
+#include "gram/individual/Genotype.h"
+#include "gram/individual/Individual.h"
+#include "gram/population/Individuals.h"
+#include "gram/random/number_generator/NumberGenerator.h"
+
+namespace gram {
+class Reproducer;
+}
 
 using namespace gram;
 using namespace std;

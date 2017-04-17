@@ -1,4 +1,12 @@
-#include <gram/evaluation/driver/SingleThreadDriver.h>
+#include "gram/evaluation/driver/SingleThreadDriver.h"
+
+#include <algorithm>
+
+#include "gram/individual/Individual.h"
+
+namespace gram {
+class Population;
+}  // namespace gram
 
 using namespace gram;
 using namespace std;

@@ -1,4 +1,4 @@
-#include <gram/error/FitnessNotCalculated.h>
+#include "gram/error/FitnessNotCalculated.h"
 
 using namespace gram;
 

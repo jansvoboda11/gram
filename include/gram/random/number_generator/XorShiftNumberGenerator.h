@@ -1,7 +1,7 @@
 #ifndef GRAM_XOR_SHIFT_RANDOM_NUMBER_GENERATOR
 #define GRAM_XOR_SHIFT_RANDOM_NUMBER_GENERATOR
 
-#include <gram/random/number_generator/NumberGenerator.h>
+#include "gram/random/number_generator/NumberGenerator.h"
 
 #include <cstdint>
 

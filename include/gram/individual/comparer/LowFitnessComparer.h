@@ -1,7 +1,8 @@
 #ifndef GRAM_INDIVIDUAL_LOW_FITNESS_COMPARER
 #define GRAM_INDIVIDUAL_LOW_FITNESS_COMPARER
 
-#include <gram/individual/comparer/IndividualComparer.h>
+#include "gram/individual/Individual.h"
+#include "gram/individual/comparer/IndividualComparer.h"
 
 namespace gram {
 /**

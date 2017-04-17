@@ -1,7 +1,7 @@
 #ifndef GRAM_EVALUATOR
 #define GRAM_EVALUATOR
 
-#include <gram/individual/Genotype.h>
+#include "gram/individual/Genotype.h"
 
 namespace gram {
 /**

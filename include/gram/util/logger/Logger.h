@@ -1,7 +1,7 @@
 #ifndef GRAM_UTIL_LOGGER
 #define GRAM_UTIL_LOGGER
 
-#include <gram/population/Population.h>
+#include "gram/population/Population.h"
 
 namespace gram {
 /**

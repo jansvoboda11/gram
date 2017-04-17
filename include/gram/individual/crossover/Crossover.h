@@ -1,7 +1,7 @@
 #ifndef GRAM_INDIVIDUAL_CROSSOVER
 #define GRAM_INDIVIDUAL_CROSSOVER
 
-#include <gram/individual/Genotype.h>
+#include "gram/individual/Genotype.h"
 
 namespace gram {
 /**

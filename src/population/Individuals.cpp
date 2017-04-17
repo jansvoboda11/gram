@@ -1,6 +1,10 @@
-#include <gram/population/Individuals.h>
+#include "gram/population/Individuals.h"
 
-#include <gram/error/NoIndividuals.h>
+#include <memory>
+
+#include "gram/error/NoIndividuals.h"
+#include "gram/individual/Individual.h"
+#include "gram/individual/comparer/IndividualComparer.h"
 
 using namespace gram;
 using namespace std;

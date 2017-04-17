@@ -1,4 +1,4 @@
-#include <gram/error/InvalidGrammar.h>
+#include "gram/error/InvalidGrammar.h"
 
 using namespace gram;
 

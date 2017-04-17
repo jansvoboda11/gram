@@ -1,4 +1,10 @@
-#include <gram/Evolution.h>
+#include "gram/Evolution.h"
+
+#include <algorithm>
+
+#include "gram/evaluation/driver/EvaluationDriver.h"
+#include "gram/population/Population.h"
+#include "gram/util/logger/Logger.h"
 
 using namespace gram;
 using namespace std;

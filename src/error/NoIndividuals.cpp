@@ -1,4 +1,4 @@
-#include <gram/error/NoIndividuals.h>
+#include "gram/error/NoIndividuals.h"
 
 using namespace gram;
 

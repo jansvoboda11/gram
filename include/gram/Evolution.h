@@ -4,9 +4,9 @@
 #include <functional>
 #include <memory>
 
-#include <gram/evaluation/driver/EvaluationDriver.h>
-#include <gram/population/Population.h>
-#include <gram/util/logger/Logger.h>
+#include "gram/evaluation/driver/EvaluationDriver.h"
+#include "gram/population/Population.h"
+#include "gram/util/logger/Logger.h"
 
 namespace gram {
 /**

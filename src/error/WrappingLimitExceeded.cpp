@@ -1,4 +1,6 @@
-#include <gram/error/WrappingLimitExceeded.h>
+#include "gram/error/WrappingLimitExceeded.h"
+
+#include <string>
 
 using namespace gram;
 using namespace std;

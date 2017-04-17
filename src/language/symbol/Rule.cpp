@@ -1,6 +1,10 @@
-#include <gram/language/symbol/Rule.h>
+#include "gram/language/symbol/Rule.h"
 
-#include <gram/error/InvalidGrammar.h>
+#include <ext/alloc_traits.h>
+#include <algorithm>
+
+#include "gram/error/InvalidGrammar.h"
+#include "gram/language/symbol/Option.h"
 
 using namespace gram;
 using namespace std;

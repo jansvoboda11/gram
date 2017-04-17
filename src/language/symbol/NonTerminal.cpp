@@ -1,6 +1,6 @@
-#include <gram/language/symbol/NonTerminal.h>
+#include "gram/language/symbol/NonTerminal.h"
 
-#include <gram/language/symbol/Rule.h>
+#include "gram/language/symbol/Rule.h"
 
 using namespace gram;
 using namespace std;

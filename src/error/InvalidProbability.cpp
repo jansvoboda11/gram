@@ -1,4 +1,4 @@
-#include <gram/error/InvalidProbability.h>
+#include "gram/error/InvalidProbability.h"
 
 using namespace gram;
 

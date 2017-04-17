@@ -1,5 +1,6 @@
-#include <gram/random/number_generator/XorShiftNumberGenerator.h>
+#include "gram/random/number_generator/XorShiftNumberGenerator.h"
 
+#include <limits>
 #include <random>
 
 using namespace gram;

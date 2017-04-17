@@ -1,6 +1,11 @@
-#include <gram/evaluation/driver/MultiThreadDriver.h>
+#include "gram/evaluation/driver/MultiThreadDriver.h"
 
+#include <algorithm>
+#include <functional>
 #include <thread>
+
+#include "gram/individual/Individual.h"
+#include "gram/population/Population.h"
 
 using namespace gram;
 using namespace std;

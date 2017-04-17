@@ -4,13 +4,15 @@
 #include <memory>
 #include <vector>
 
-#include <gram/individual/comparer/IndividualComparer.h>
-#include <gram/individual/Individual.h>
+#include "gram/individual/Individual.h"
+#include "gram/individual/comparer/IndividualComparer.h"
 
 namespace gram {
 /**
  * Class.
  */
+class IndividualComparer;
+
 class Individuals {
  public:
   void addIndividual(Individual individual);

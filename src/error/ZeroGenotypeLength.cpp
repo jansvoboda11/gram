@@ -1,4 +1,4 @@
-#include <gram/error/ZeroGenotypeLength.h>
+#include "gram/error/ZeroGenotypeLength.h"
 
 using namespace gram;
 

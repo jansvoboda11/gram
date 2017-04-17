@@ -1,4 +1,8 @@
-#include <gram/util/logger/NullLogger.h>
+#include "gram/util/logger/NullLogger.h"
+
+namespace gram {
+class Population;
+}
 
 using namespace gram;
 

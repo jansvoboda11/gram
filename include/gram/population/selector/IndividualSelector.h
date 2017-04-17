@@ -4,8 +4,8 @@
 #include <memory>
 #include <vector>
 
-#include <gram/individual/Individual.h>
-#include <gram/population/Individuals.h>
+#include "gram/individual/Individual.h"
+#include "gram/population/Individuals.h"
 
 namespace gram {
 /**

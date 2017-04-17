@@ -1,5 +1,6 @@
-#include <gram/individual/mutation/BernoulliDistributionStepGenerator.h>
+#include "gram/individual/mutation/BernoulliDistributionStepGenerator.h"
 
+#include <algorithm>
 #include <cmath>
 #include <limits>
 

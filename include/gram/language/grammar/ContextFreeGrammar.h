@@ -2,14 +2,17 @@
 #define GRAM_LANGUAGE_CONTEXT_FREE_GRAMMAR
 
 #include <memory>
+#include <string>
 #include <unordered_map>
 
-#include <gram/language/symbol/Rule.h>
+#include "gram/language/symbol/Rule.h"
 
 namespace gram {
 /**
  * Class.
  */
+class Rule;
+
 class ContextFreeGrammar {
  public:
   ContextFreeGrammar();

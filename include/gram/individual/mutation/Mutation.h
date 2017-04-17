@@ -1,7 +1,7 @@
 #ifndef GRAM_INDIVIDUAL_MUTATION
 #define GRAM_INDIVIDUAL_MUTATION
 
-#include <gram/individual/Genotype.h>
+#include "gram/individual/Genotype.h"
 
 namespace gram {
 /**

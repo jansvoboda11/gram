@@ -1,7 +1,7 @@
 #ifndef GRAM_POPULATION_REPRODUCER
 #define GRAM_POPULATION_REPRODUCER
 
-#include <gram/population/Individuals.h>
+#include "gram/population/Individuals.h"
 
 namespace gram {
 /**

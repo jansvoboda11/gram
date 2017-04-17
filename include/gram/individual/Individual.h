@@ -2,14 +2,19 @@
 #define GRAM_INDIVIDUAL
 
 #include <memory>
+#include <string>
 
-#include <gram/evaluation/Evaluator.h>
-#include <gram/individual/crossover/Crossover.h>
-#include <gram/individual/mutation/Mutation.h>
-#include <gram/individual/Genotype.h>
-#include <gram/language/mapper/Mapper.h>
+#include "gram/evaluation/Evaluator.h"
+#include "gram/individual/Genotype.h"
+#include "gram/individual/crossover/Crossover.h"
+#include "gram/individual/mutation/Mutation.h"
+#include "gram/language/mapper/Mapper.h"
 
 namespace gram {
+class Crossover;
+class Evaluator;
+class Mapper;
+class Mutation;
 /**
  * Class.
  */

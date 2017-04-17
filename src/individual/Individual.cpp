@@ -1,6 +1,12 @@
-#include <gram/individual/Individual.h>
+#include "gram/individual/Individual.h"
 
-#include <gram/error/FitnessNotCalculated.h>
+#include <vector>
+
+#include "gram/error/FitnessNotCalculated.h"
+#include "gram/evaluation/Evaluator.h"
+#include "gram/individual/crossover/Crossover.h"
+#include "gram/individual/mutation/Mutation.h"
+#include "gram/language/mapper/Mapper.h"
 
 using namespace gram;
 using namespace std;
