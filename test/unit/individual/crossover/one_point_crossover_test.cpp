@@ -43,8 +43,8 @@ TEST_CASE("long and short genotypes can be combined", "[one_point_crossover]") {
 
   OnePointCrossover crossover(move(numberGenerator));
 
-  Genotype genotype1({0, 1, 2, 3, 4});
-  Genotype genotype2({5, 6});
+  Genotype genotype1({5, 6, 7, 8, 9});
+  Genotype genotype2({0, 1, 2});
 
-  REQUIRE(Genotype({0, 1}) == crossover.apply(genotype1, genotype2));
+  REQUIRE(Genotype({5, 6, 2}) == crossover.apply(genotype1, genotype2));
 }
