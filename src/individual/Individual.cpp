@@ -6,7 +6,9 @@ using namespace gram;
 using namespace std;
 
 Individual::Individual(const Individual& individual)
-    : genotype(individual.genotype), fitnessScore(individual.fitnessScore), fitnessCalculated(fitnessCalculated) {
+    : genotype(individual.genotype),
+      fitnessScore(individual.fitnessScore),
+      fitnessCalculated(individual.fitnessCalculated) {
   //
 }
 
