@@ -7,6 +7,12 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
+#include "gram/individual/Genotype.h"
+#include "gram/individual/Individual.h"
+#include "gram/population/Population.h"
+#include "gram/population/reproducer/Reproducer.h"
+#include "gram/random/number_generator/NumberGenerator.h"
+
 TEST_CASE("random initializer initializes new population", "[random_initializer]") {
   Genotype genotype1({0, 1, 2});
   Genotype genotype2({3, 0, 1});
@@ -32,9 +38,9 @@ TEST_CASE("random initializer initializes new population", "[random_initializer]
 
   Population population = initializer.initialize(3, reproducer);
 
-  REQUIRE(population.generationNumber() == 0);
   REQUIRE(population.size() == 3);
   REQUIRE(population[0] == individual1);
   REQUIRE(population[1] == individual2);
   REQUIRE(population[2] == individual3);
+  REQUIRE(population.generationNumber() == 0);
 }
