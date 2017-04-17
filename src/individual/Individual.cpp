@@ -42,6 +42,10 @@ double Individual::fitness() const {
   return fitnessScore;
 }
 
+double Individual::hasFitnessCalculated() const {
+  return fitnessCalculated;
+}
+
 bool Individual::operator==(const Individual& individual) const {
   return genotype == individual.genotype;
 }
