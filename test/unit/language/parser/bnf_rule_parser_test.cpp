@@ -52,7 +52,7 @@ TEST_CASE("BNF rule parser parses multiple rules with terminals", "[bnf_rule_par
 
   string rules =
       "<rule1> ::= <rule2>\n"
-          "<rule2> ::= \"hello\"";
+      "<rule2> ::= \"hello\"";
 
   ContextFreeGrammar grammar = parser.parse(rules);
 
