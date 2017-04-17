@@ -10,6 +10,7 @@ set(SOURCE_FILES
         error/InvalidProbability.cpp
         error/NoIndividuals.cpp
         error/WrappingLimitExceeded.cpp
+        error/ZeroGenotypeLength.cpp
         evaluation/driver/MultiThreadDriver.cpp
         evaluation/driver/SingleThreadDriver.cpp
         individual/comparer/HighFitnessComparer.cpp
@@ -44,6 +45,7 @@ set(SOURCE_FILES
         ../include/gram/error/InvalidProbability.h
         ../include/gram/error/NoIndividuals.h
         ../include/gram/error/WrappingLimitExceeded.h
+        ../include/gram/error/ZeroGenotypeLength.h
         ../include/gram/evaluation/driver/EvaluationDriver.h
         ../include/gram/evaluation/driver/MultiThreadDriver.h
         ../include/gram/evaluation/driver/SingleThreadDriver.h
