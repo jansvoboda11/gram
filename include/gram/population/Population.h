@@ -10,12 +10,11 @@
 #include "gram/population/reproducer/Reproducer.h"
 
 namespace gram {
+class IndividualComparer;
+class Reproducer;
 /**
  * Class.
  */
-class IndividualComparer;
-class Reproducer;
-
 class Population {
  public:
   Population(Individuals individuals, std::shared_ptr<Reproducer> reproducer, unsigned long generationNumber);

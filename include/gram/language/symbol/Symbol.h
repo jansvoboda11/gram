@@ -2,7 +2,6 @@
 #define GRAM_LANGUAGE_SYMBOL
 
 namespace gram {
-// Forward declarations.
 class Terminal;
 class NonTerminal;
 /**

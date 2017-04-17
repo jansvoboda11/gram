@@ -8,11 +8,10 @@
 #include "gram/language/symbol/Rule.h"
 
 namespace gram {
+class Rule;
 /**
  * Class.
  */
-class Rule;
-
 class ContextFreeGrammar {
  public:
   ContextFreeGrammar();

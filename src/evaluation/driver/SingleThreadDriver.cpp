@@ -6,7 +6,7 @@
 
 namespace gram {
 class Population;
-}  // namespace gram
+}
 
 using namespace gram;
 using namespace std;

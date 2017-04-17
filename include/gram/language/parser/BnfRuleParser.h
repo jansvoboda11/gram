@@ -9,11 +9,10 @@
 #include "gram/language/parser/RuleParser.h"
 
 namespace gram {
+class Option;
 /**
  * Class.
  */
-class Option;
-
 class BnfRuleParser : public RuleParser {
  public:
   ContextFreeGrammar parse(std::string input) const;

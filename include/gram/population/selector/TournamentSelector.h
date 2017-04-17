@@ -9,12 +9,11 @@
 #include "gram/random/number_generator/NumberGenerator.h"
 
 namespace gram {
+class Individual;
+class Individuals;
 /**
  * Class.
  */
-class Individual;
-class Individuals;
-
 class TournamentSelector : public IndividualSelector {
  public:
   TournamentSelector(unsigned long tournamentSize,

@@ -1,5 +1,7 @@
 #include "gram/random/number_generator/NumberGenerator.h"
 
+#include <vector>
+
 using namespace gram;
 using namespace std;
 

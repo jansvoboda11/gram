@@ -4,11 +4,10 @@
 #include "gram/util/logger/Logger.h"
 
 namespace gram {
+class Population;
 /**
  * Class.
  */
-class Population;
-
 class NullLogger : public Logger {
  public:
   void logProgress(const Population& population);

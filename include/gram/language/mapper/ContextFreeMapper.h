@@ -12,13 +12,12 @@
 #include "gram/language/mapper/Mapper.h"
 
 namespace gram {
-/**
- * Class.
- */
 class ContextFreeGrammar;
 class Option;
 class Symbol;
-
+/**
+ * Class.
+ */
 class ContextFreeMapper : public Mapper {
  public:
   ContextFreeMapper(std::shared_ptr<ContextFreeGrammar> grammar, unsigned long wrappingLimit);

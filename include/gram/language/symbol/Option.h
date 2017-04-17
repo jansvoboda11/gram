@@ -9,12 +9,11 @@
 #include "gram/language/symbol/Terminal.h"
 
 namespace gram {
+class NonTerminal;
+class Terminal;
 /**
  * Class.
  */
-class NonTerminal;
-class Terminal;
-
 class Option {
  public:
   void addNonTerminal(std::unique_ptr<NonTerminal> nonTerminal);

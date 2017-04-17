@@ -5,7 +5,7 @@
 
 namespace gram {
 /**
- * Class.
+ * Interface.
  */
 class Evaluator {
  public:

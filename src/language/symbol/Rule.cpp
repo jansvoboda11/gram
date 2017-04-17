@@ -1,7 +1,7 @@
 #include "gram/language/symbol/Rule.h"
 
-#include <ext/alloc_traits.h>
 #include <algorithm>
+#include <memory>
 
 #include "gram/error/InvalidGrammar.h"
 #include "gram/language/symbol/Option.h"

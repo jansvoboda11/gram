@@ -4,7 +4,6 @@
 #include "gram/language/symbol/Symbol.h"
 
 namespace gram {
-// Forward declaration.
 class Rule;
 /**
  * Class.

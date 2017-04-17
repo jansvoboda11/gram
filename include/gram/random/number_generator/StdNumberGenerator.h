@@ -1,9 +1,9 @@
 #ifndef GRAM_MINIMAL_RANDOM_NUMBER_GENERATOR
 #define GRAM_MINIMAL_RANDOM_NUMBER_GENERATOR
 
-#include "gram/random/number_generator/NumberGenerator.h"
-
 #include <random>
+
+#include "gram/random/number_generator/NumberGenerator.h"
 
 namespace gram {
 /**

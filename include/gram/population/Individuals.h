@@ -8,11 +8,10 @@
 #include "gram/individual/comparer/IndividualComparer.h"
 
 namespace gram {
+class IndividualComparer;
 /**
  * Class.
  */
-class IndividualComparer;
-
 class Individuals {
  public:
   void addIndividual(Individual individual);

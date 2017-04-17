@@ -1,9 +1,9 @@
 #ifndef GRAM_LANGUAGE_TERMINAL_SYMBOL
 #define GRAM_LANGUAGE_TERMINAL_SYMBOL
 
-#include "gram/language/symbol/Symbol.h"
-
 #include <string>
+
+#include "gram/language/symbol/Symbol.h"
 
 namespace gram {
 /**
