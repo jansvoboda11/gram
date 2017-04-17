@@ -3,6 +3,14 @@
 #include <catch.hpp>
 
 #include "gram/error/WrappingLimitExceeded.h"
+#include "gram/individual/Genotype.h"
+#include "gram/individual/Individual.h"
+#include "gram/individual/Phenotype.h"
+#include "gram/language/grammar/ContextFreeGrammar.h"
+#include "gram/language/symbol/NonTerminal.h"
+#include "gram/language/symbol/Option.h"
+#include "gram/language/symbol/Rule.h"
+#include "gram/language/symbol/Terminal.h"
 
 using namespace Catch::Matchers;
 using namespace gram;
@@ -57,7 +65,7 @@ TEST_CASE("context-free mapper maps a non-terminal", "[context-free_mapper]") {
   REQUIRE(mapper.map(genotype) == Phenotype("terminal"));
 }
 
-TEST_CASE("context-free mapper maps a recursive grammar", "[context-free_mapper]") {
+TEST_CASE("context-free mapper handles more complex grammar", "[context-free-mapper[") {
 //  <number> ::= <digit> <number> | <digit>
 //  <digit> ::= "0" | "1"
 
@@ -94,91 +102,21 @@ TEST_CASE("context-free mapper maps a recursive grammar", "[context-free_mapper]
   grammar->addRule(move(number));
   grammar->addRule(move(digit));
 
-  ContextFreeMapper mapper(grammar, 1);
+  SECTION("context-free mapper maps a recursive grammar") {
+    ContextFreeMapper mapper(grammar, 1);
 
-  REQUIRE(mapper.map(Genotype({0, 0, 1, 1})) == Phenotype("01"));
-}
+    REQUIRE(mapper.map(Genotype({0, 0, 1, 1})) == Phenotype("01"));
+  }
 
-TEST_CASE("context-free mapper wraps the genotype", "[context-free_mapper]") {
-//  <number> ::= <digit> <number> | <digit>
-//  <digit> ::= "0" | "1"
+  SECTION("context-free mapper wraps the genotype") {
+    ContextFreeMapper mapper(grammar, 1);
 
-  auto digit0 = make_unique<Terminal>("0");
-  auto digit1 = make_unique<Terminal>("1");
+    REQUIRE(mapper.map(Genotype({0, 1, 1})) == Phenotype("10"));
+  }
 
-  auto option0 = make_unique<Option>();
-  auto option1 = make_unique<Option>();
+  SECTION("context-free mapper respects wrapping limit") {
+    ContextFreeMapper mapper(grammar, 1);
 
-  option0->addTerminal(move(digit0));
-  option1->addTerminal(move(digit1));
-
-  auto digit = make_unique<Rule>("digit");
-  auto digitNonTerminal1 = make_unique<NonTerminal>(*digit);
-  auto digitNonTerminal2 = make_unique<NonTerminal>(*digit);
-
-  digit->addOption(move(option0));
-  digit->addOption(move(option1));
-
-  auto number = make_unique<Rule>("number");
-  auto numberNonTerminal = make_unique<NonTerminal>(*number);
-
-  auto numberOption1 = make_unique<Option>();
-  auto numberOption2 = make_unique<Option>();
-
-  numberOption1->addNonTerminal(move(digitNonTerminal1));
-  numberOption1->addNonTerminal(move(numberNonTerminal));
-  numberOption2->addNonTerminal(move(digitNonTerminal2));
-
-  number->addOption(move(numberOption1));
-  number->addOption(move(numberOption2));
-
-  auto grammar = make_shared<ContextFreeGrammar>();
-  grammar->addRule(move(number));
-  grammar->addRule(move(digit));
-
-  ContextFreeMapper mapper(grammar, 1);
-
-  REQUIRE(mapper.map(Genotype({0, 1, 1})) == Phenotype("10"));
-}
-
-TEST_CASE("context-free mapper respects wrapping limit", "[context-free_mapper]") {
-//  <number> ::= <digit> <number> | <digit>
-//  <digit> ::= "0" | "1"
-
-  auto digit0 = make_unique<Terminal>("0");
-  auto digit1 = make_unique<Terminal>("1");
-
-  auto option0 = make_unique<Option>();
-  auto option1 = make_unique<Option>();
-
-  option0->addTerminal(move(digit0));
-  option1->addTerminal(move(digit1));
-
-  auto digit = make_unique<Rule>("digit");
-  auto digitNonTerminal1 = make_unique<NonTerminal>(*digit);
-  auto digitNonTerminal2 = make_unique<NonTerminal>(*digit);
-
-  digit->addOption(move(option0));
-  digit->addOption(move(option1));
-
-  auto number = make_unique<Rule>("number");
-  auto numberNonTerminal = make_unique<NonTerminal>(*number);
-
-  auto numberOption1 = make_unique<Option>();
-  auto numberOption2 = make_unique<Option>();
-
-  numberOption1->addNonTerminal(move(digitNonTerminal1));
-  numberOption1->addNonTerminal(move(numberNonTerminal));
-  numberOption2->addNonTerminal(move(digitNonTerminal2));
-
-  number->addOption(move(numberOption1));
-  number->addOption(move(numberOption2));
-
-  auto grammar = make_shared<ContextFreeGrammar>();
-  grammar->addRule(move(number));
-  grammar->addRule(move(digit));
-
-  ContextFreeMapper mapper(grammar, 1);
-
-  REQUIRE_THROWS_AS(mapper.map(Genotype({0, 0, 0})), WrappingLimitExceeded);
+    REQUIRE_THROWS_AS(mapper.map(Genotype({0, 0, 0})), WrappingLimitExceeded);
+  }
 }
