@@ -9,7 +9,9 @@ TournamentSelector::TournamentSelector(unsigned long tournamentSize,
                                        unique_ptr<NumberGenerator> numberGenerator,
                                        unique_ptr<IndividualComparer> comparer)
     : tournamentSize(tournamentSize), numberGenerator(move(numberGenerator)), comparer(move(comparer)) {
-  //
+  if (tournamentSize == 0) {
+    throw NoIndividuals();
+  }
 }
 
 Individual& TournamentSelector::select(Individuals& individuals) {
