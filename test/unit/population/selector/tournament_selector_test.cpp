@@ -10,6 +10,16 @@ using namespace fakeit;
 using namespace gram;
 using namespace std;
 
+TEST_CASE("tournament rejects invalid tournament size", "[tournament_selector]") {
+  Mock<NumberGenerator> numberGeneratorMock;
+  Fake(Dtor(numberGeneratorMock));
+  auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
+
+  auto comparer = make_unique<LowFitnessComparer>();
+
+  REQUIRE_THROWS_AS(TournamentSelector(0, move(numberGenerator), move(comparer)), NoIndividuals);
+}
+
 TEST_CASE("tournament selector handles empty population", "[tournament_selector]") {
   Mock<NumberGenerator> numberGeneratorMock;
   Fake(Dtor(numberGeneratorMock));
