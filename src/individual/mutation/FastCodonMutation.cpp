@@ -5,7 +5,7 @@
 using namespace gram;
 using namespace std;
 
-FastCodonMutation::FastCodonMutation(unique_ptr<BernoulliDistributionStepGenerator> stepGenerator,
+FastCodonMutation::FastCodonMutation(unique_ptr<BernoulliStepGenerator> stepGenerator,
                                      unique_ptr<NumberGenerator> numberGenerator)
     : stepGenerator(move(stepGenerator)),
       numberGenerator(move(numberGenerator)),

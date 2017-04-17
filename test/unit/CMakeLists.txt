@@ -8,7 +8,7 @@ add_executable(gram-unit-tests
         individual/comparer/high_fitness_comparer_test.cpp
         individual/comparer/low_fitness_comparer_test.cpp
         individual/crossover/one_point_crossover_test.cpp
-        individual/mutation/bernoulli_distribution_step_generator_test.cpp
+        individual/mutation/bernoulli_step_generator_test.cpp
         individual/mutation/codon_mutation_test.cpp
         individual/mutation/fast_codon_mutation_test.cpp
         individual/individual_test.cpp

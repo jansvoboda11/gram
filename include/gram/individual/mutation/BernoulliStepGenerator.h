@@ -10,10 +10,10 @@ namespace gram {
 /**
  * Class.
  */
-class BernoulliDistributionStepGenerator {
+class BernoulliStepGenerator {
  public:
-  BernoulliDistributionStepGenerator(Probability probability, std::unique_ptr<NumberGenerator> numberGenerator);
-  virtual ~BernoulliDistributionStepGenerator() = default;
+  BernoulliStepGenerator(Probability probability, std::unique_ptr<NumberGenerator> numberGenerator);
+  virtual ~BernoulliStepGenerator() = default;
   virtual unsigned long generateStep();
  private:
   Probability probability;

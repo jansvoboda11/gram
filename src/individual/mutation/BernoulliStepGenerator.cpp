@@ -1,4 +1,4 @@
-#include "gram/individual/mutation/BernoulliDistributionStepGenerator.h"
+#include "gram/individual/mutation/BernoulliStepGenerator.h"
 
 #include <algorithm>
 #include <cmath>
@@ -7,13 +7,12 @@
 using namespace gram;
 using namespace std;
 
-BernoulliDistributionStepGenerator::BernoulliDistributionStepGenerator(Probability probability,
-                                                                       unique_ptr<NumberGenerator> numberGenerator)
+BernoulliStepGenerator::BernoulliStepGenerator(Probability probability, unique_ptr<NumberGenerator> numberGenerator)
     : probability(probability), numberGenerator(move(numberGenerator)), divisor(log(1 - probability.getValue())) {
   //
 }
 
-unsigned long BernoulliDistributionStepGenerator::generateStep() {
+unsigned long BernoulliStepGenerator::generateStep() {
   double random = static_cast<double>(numberGenerator->generate()) / static_cast<double>(numberGenerator->getMax());
 
   double dividend = log(1.0 - random);

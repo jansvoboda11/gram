@@ -8,10 +8,10 @@ using namespace gram;
 using namespace std;
 
 TEST_CASE("fast codon mutation mutates single codon in genotype", "[fast_codon_mutation]") {
-  Mock<BernoulliDistributionStepGenerator> stepGeneratorMock;
+  Mock<BernoulliStepGenerator> stepGeneratorMock;
   Fake(Dtor(stepGeneratorMock));
   When(Method(stepGeneratorMock, generateStep)).Return(2).Return(100);
-  auto stepGenerator = unique_ptr<BernoulliDistributionStepGenerator>(&stepGeneratorMock.get());
+  auto stepGenerator = unique_ptr<BernoulliStepGenerator>(&stepGeneratorMock.get());
 
   Mock<NumberGenerator> numberGeneratorMock;
   Fake(Dtor(numberGeneratorMock));
@@ -24,10 +24,10 @@ TEST_CASE("fast codon mutation mutates single codon in genotype", "[fast_codon_m
 }
 
 TEST_CASE("fast codon mutation mutates a series of genotypes", "[fast_codon_mutation]") {
-  Mock<BernoulliDistributionStepGenerator> stepGeneratorMock;
+  Mock<BernoulliStepGenerator> stepGeneratorMock;
   Fake(Dtor(stepGeneratorMock));
   When(Method(stepGeneratorMock, generateStep)).Return(6).Return(3).Return(100);
-  auto stepGenerator = unique_ptr<BernoulliDistributionStepGenerator>(&stepGeneratorMock.get());
+  auto stepGenerator = unique_ptr<BernoulliStepGenerator>(&stepGeneratorMock.get());
 
   Mock<NumberGenerator> numberGeneratorMock;
   Fake(Dtor(numberGeneratorMock));

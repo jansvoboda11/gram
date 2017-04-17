@@ -1,19 +1,19 @@
-#include "gram/individual/mutation/BernoulliDistributionStepGenerator.h"
+#include "gram/individual/mutation/BernoulliStepGenerator.h"
 
 #include <catch.hpp>
 
 #include "gram/random/number_generator/XorShiftNumberGenerator.h"
+#include "gram/util/Probability.h"
 
 using namespace gram;
 using namespace std;
 
-TEST_CASE("Bernoulli distribution step generator generates statistically good steps",
-          "[bernoulli_distribution_step_generator") {
+TEST_CASE("Bernoulli step generator generates statistically good steps", "[bernoulli_step_generator") {
   unsigned long testSize = 1000000;
 
   auto numberGenerator = make_unique<XorShiftNumberGenerator>();
 
-  BernoulliDistributionStepGenerator stepGenerator(Probability(0.5), move(numberGenerator));
+  BernoulliStepGenerator stepGenerator(Probability(0.5), move(numberGenerator));
 
   unsigned long totalSteps = 0;
 

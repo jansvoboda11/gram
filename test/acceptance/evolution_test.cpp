@@ -10,7 +10,7 @@
 #include "gram/individual/Individual.h"
 #include "gram/individual/comparer/LowFitnessComparer.h"
 #include "gram/individual/crossover/OnePointCrossover.h"
-#include "gram/individual/mutation/BernoulliDistributionStepGenerator.h"
+#include "gram/individual/mutation/BernoulliStepGenerator.h"
 #include "gram/individual/mutation/FastCodonMutation.h"
 #include "gram/language/grammar/ContextFreeGrammar.h"
 #include "gram/language/mapper/ContextFreeMapper.h"
@@ -20,6 +20,7 @@
 #include "gram/population/reproducer/PassionateReproducer.h"
 #include "gram/population/selector/TournamentSelector.h"
 #include "gram/random/number_generator/XorShiftNumberGenerator.h"
+#include "gram/util/Probability.h"
 #include "gram/util/logger/NullLogger.h"
 #include "StringDiffEvaluator.h"
 
@@ -33,7 +34,7 @@ TEST_CASE("evolution_test") {
   auto numberGenerator3 = make_unique<XorShiftNumberGenerator>();
   auto numberGenerator4 = make_unique<XorShiftNumberGenerator>();
   auto numberGenerator5 = make_unique<XorShiftNumberGenerator>();
-  auto stepGenerator = make_unique<BernoulliDistributionStepGenerator>(Probability(0.1), move(numberGenerator5));
+  auto stepGenerator = make_unique<BernoulliStepGenerator>(Probability(0.1), move(numberGenerator5));
 
   auto comparer = make_unique<LowFitnessComparer>();
   auto selector = make_unique<TournamentSelector>(20, move(numberGenerator1), move(comparer));
