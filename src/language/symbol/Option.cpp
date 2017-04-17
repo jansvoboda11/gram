@@ -3,10 +3,8 @@
 #include <algorithm>
 #include <memory>
 
-namespace gram {
-class NonTerminal;
-class Terminal;
-}
+#include "gram/language/symbol/NonTerminal.h"
+#include "gram/language/symbol/Terminal.h"
 
 using namespace gram;
 using namespace std;

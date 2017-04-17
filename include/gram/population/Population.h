@@ -10,8 +10,6 @@
 #include "gram/population/reproducer/Reproducer.h"
 
 namespace gram {
-class IndividualComparer;
-class Reproducer;
 /**
  * Class.
  */

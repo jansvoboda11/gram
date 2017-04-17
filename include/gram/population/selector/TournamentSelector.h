@@ -5,12 +5,11 @@
 
 #include "gram/individual/Individual.h"
 #include "gram/individual/comparer/IndividualComparer.h"
+#include "gram/population/Individuals.h"
 #include "gram/population/selector/IndividualSelector.h"
 #include "gram/random/number_generator/NumberGenerator.h"
 
 namespace gram {
-class Individual;
-class Individuals;
 /**
  * Class.
  */

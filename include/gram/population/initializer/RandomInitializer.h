@@ -5,10 +5,10 @@
 
 #include "gram/population/Population.h"
 #include "gram/population/initializer/Initializer.h"
+#include "gram/population/reproducer/Reproducer.h"
 #include "gram/random/number_generator/NumberGenerator.h"
 
 namespace gram {
-class Reproducer;
 /**
  * Class.
  */

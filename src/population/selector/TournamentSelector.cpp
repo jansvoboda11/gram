@@ -4,13 +4,10 @@
 #include <vector>
 
 #include "gram/error/NoIndividuals.h"
+#include "gram/individual/Individual.h"
 #include "gram/individual/comparer/IndividualComparer.h"
 #include "gram/population/Individuals.h"
 #include "gram/random/number_generator/NumberGenerator.h"
-
-namespace gram {
-class Individual;
-}
 
 using namespace gram;
 using namespace std;

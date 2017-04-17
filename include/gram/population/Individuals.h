@@ -8,7 +8,6 @@
 #include "gram/individual/comparer/IndividualComparer.h"
 
 namespace gram {
-class IndividualComparer;
 /**
  * Class.
  */

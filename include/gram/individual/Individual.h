@@ -11,10 +11,6 @@
 #include "gram/language/mapper/Mapper.h"
 
 namespace gram {
-class Crossover;
-class Evaluator;
-class Mapper;
-class Mutation;
 /**
  * Class.
  */

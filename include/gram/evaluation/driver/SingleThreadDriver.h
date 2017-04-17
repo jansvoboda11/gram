@@ -5,9 +5,9 @@
 
 #include "gram/evaluation/Evaluator.h"
 #include "gram/evaluation/driver/EvaluationDriver.h"
+#include "gram/population/Population.h"
 
 namespace gram {
-class Population;
 /**
  * Class.
  */

@@ -9,8 +9,6 @@
 #include "gram/language/symbol/Terminal.h"
 
 namespace gram {
-class NonTerminal;
-class Terminal;
 /**
  * Class.
  */

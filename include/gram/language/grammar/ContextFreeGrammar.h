@@ -8,7 +8,6 @@
 #include "gram/language/symbol/Rule.h"
 
 namespace gram {
-class Rule;
 /**
  * Class.
  */

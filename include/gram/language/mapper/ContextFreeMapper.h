@@ -10,11 +10,10 @@
 #include "gram/individual/Phenotype.h"
 #include "gram/language/grammar/ContextFreeGrammar.h"
 #include "gram/language/mapper/Mapper.h"
+#include "gram/language/symbol/Option.h"
+#include "gram/language/symbol/Symbol.h"
 
 namespace gram {
-class ContextFreeGrammar;
-class Option;
-class Symbol;
 /**
  * Class.
  */

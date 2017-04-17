@@ -7,9 +7,9 @@
 
 #include "gram/language/grammar/ContextFreeGrammar.h"
 #include "gram/language/parser/RuleParser.h"
+#include "gram/language/symbol/Option.h"
 
 namespace gram {
-class Option;
 /**
  * Class.
  */

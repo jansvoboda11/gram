@@ -7,11 +7,8 @@
 #include "gram/individual/Genotype.h"
 #include "gram/individual/Individual.h"
 #include "gram/population/Individuals.h"
+#include "gram/population/reproducer/Reproducer.h"
 #include "gram/random/number_generator/NumberGenerator.h"
-
-namespace gram {
-class Reproducer;
-}
 
 using namespace gram;
 using namespace std;

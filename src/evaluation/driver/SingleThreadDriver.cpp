@@ -3,10 +3,7 @@
 #include <algorithm>
 
 #include "gram/individual/Individual.h"
-
-namespace gram {
-class Population;
-}
+#include "gram/population/Population.h"
 
 using namespace gram;
 using namespace std;
