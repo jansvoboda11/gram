@@ -3,6 +3,12 @@
 #include <catch.hpp>
 #include <fakeit.hpp>
 
+#include "gram/error/FitnessNotCalculated.h"
+#include "gram/evaluation/Evaluator.h"
+#include "gram/individual/Genotype.h"
+#include "gram/individual/crossover/Crossover.h"
+#include "gram/individual/mutation/Mutation.h"
+
 using namespace fakeit;
 using namespace gram;
 using namespace std;
@@ -16,10 +22,11 @@ TEST_CASE("individual mates with another individual", "[individual]") {
   Individual individual2(genotype2);
   Individual expectedChild(expectedGenotype);
 
-  Mock<Crossover> crossover;
-  When(Method(crossover, apply)).Return(Genotype({0, 0, 1}));
+  Mock<Crossover> crossoverMock;
+  When(Method(crossoverMock, apply)).Return(Genotype({0, 0, 1}));
+  Crossover& crossover = crossoverMock.get();
 
-  Individual child = individual1.mateWith(individual2, crossover.get());
+  Individual child = individual1.mateWith(individual2, crossover);
 
   REQUIRE(child == expectedChild);
 }
@@ -44,7 +51,33 @@ TEST_CASE("individual does not return fitness if it was not calculated yet", "[i
 
   Individual individual(genotype);
 
-  REQUIRE_THROWS_AS(individual.fitness(), logic_error);
+  REQUIRE_THROWS_AS(individual.fitness(), FitnessNotCalculated);
+}
+
+TEST_CASE("individual returns fitness if it was evaluated", "[individual]") {
+  Mock<Evaluator> evaluatorMock;
+  When(Method(evaluatorMock, evaluate)).Return(42.0);
+  Evaluator& evaluator = evaluatorMock.get();
+
+  Genotype genotype({0});
+
+  Individual individual(genotype);
+
+  individual.evaluate(evaluator);
+
+  REQUIRE(individual.fitness() == 42.0);
+}
+
+TEST_CASE("individual can be serialized", "[individual]") {
+  Mock<Mapper> mapperMock;
+  When(Method(mapperMock, map)).Return("hello world");
+  Mapper& mapper = mapperMock.get();
+
+  Genotype genotype({0});
+
+  Individual individual(genotype);
+
+  REQUIRE(individual.serialize(mapper) == "hello world");
 }
 
 TEST_CASE("same individuals are equal", "[individual]") {

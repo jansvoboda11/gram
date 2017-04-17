@@ -38,10 +38,6 @@ void Individual::evaluate(Evaluator& evaluator) {
   fitnessCalculated = true;
 }
 
-string Individual::serialize(Mapper& mapper) const {
-  return mapper.map(genotype);
-}
-
 double Individual::fitness() const {
   if (!fitnessCalculated) {
     throw FitnessNotCalculated();
@@ -52,6 +48,10 @@ double Individual::fitness() const {
 
 double Individual::hasFitnessCalculated() const {
   return fitnessCalculated;
+}
+
+string Individual::serialize(Mapper& mapper) const {
+  return mapper.map(genotype);
 }
 
 bool Individual::operator==(const Individual& individual) const {

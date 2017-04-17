@@ -22,9 +22,9 @@ class Individual {
   Individual mateWith(const Individual& partner, Crossover& crossover) const;
   void mutate(Mutation& mutation);
   void evaluate(Evaluator& evaluator);
-  std::string serialize(Mapper& mapper) const;
   virtual double fitness() const;
   virtual double hasFitnessCalculated() const;
+  std::string serialize(Mapper& mapper) const;
   bool operator==(const Individual& individual) const;
   bool operator!=(const Individual& individual) const;
  private:
