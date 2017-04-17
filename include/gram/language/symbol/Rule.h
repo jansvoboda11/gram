@@ -18,8 +18,6 @@ class Rule {
   void addOption(std::unique_ptr<gram::Option> option);
   Option& operator[](unsigned long index) const;
   unsigned long size() const;
-  bool operator==(const Rule& rule) const;
-  bool operator!=(const Rule& rule) const;
  private:
   std::string name;
   std::vector<std::unique_ptr<Option>> options;

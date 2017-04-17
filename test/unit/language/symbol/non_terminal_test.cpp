@@ -12,7 +12,7 @@ TEST_CASE("non-terminal accepts a rule", "[non-terminal]") {
 
   NonTerminal nonTerminal(rule);
 
-  REQUIRE(nonTerminal.toRule() == rule);
+  REQUIRE(nonTerminal.toRule().getName() == "rule");
 }
 
 TEST_CASE("same non-terminals are equal", "[non-terminal]") {

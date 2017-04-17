@@ -23,8 +23,8 @@ TEST_CASE("context-free grammar accepts rules", "[context-free_grammar]") {
   grammar.addRule(make_unique<Rule>("rule1"));
   grammar.addRule(make_unique<Rule>("rule2"));
 
-  REQUIRE(grammar.startRule() == rule1);
-  REQUIRE(grammar.ruleNamed("rule2") == rule2);
+  REQUIRE(grammar.startRule().getName() == "rule1");
+  REQUIRE(grammar.ruleNamed("rule2").getName() == "rule2");
 }
 
 TEST_CASE("context-free grammar creates start rule", "[context-free_grammar]") {

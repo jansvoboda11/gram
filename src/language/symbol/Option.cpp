@@ -24,21 +24,3 @@ Symbol& Option::operator[](unsigned long index) const {
 unsigned long Option::size() const {
   return symbols.size();
 }
-
-bool Option::operator==(const Option& option) const {
-  if (size() != option.size()) {
-    return false;
-  }
-
-  for (unsigned long i = 0; i < size(); i++) {
-    if (*symbols[i] != *option.symbols[i]) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-bool Option::operator!=(const Option& option) const {
-  return !operator==(option);
-}

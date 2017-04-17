@@ -18,8 +18,6 @@ class Option {
   void addTerminal(std::unique_ptr<Terminal> terminal);
   Symbol& operator[](unsigned long index) const;
   unsigned long size() const;
-  bool operator==(const Option& option) const;
-  bool operator!=(const Option& option) const;
  private:
   std::vector<std::unique_ptr<Symbol>> symbols;
 };

@@ -22,7 +22,7 @@ bool NonTerminal::isNonTerminal() const {
 }
 
 bool NonTerminal::operator==(const NonTerminal& nonTerminal) const {
-  return rule == nonTerminal.rule;
+  return rule.getName() == nonTerminal.rule.getName();
 }
 
 bool NonTerminal::operator!=(const NonTerminal& nonTerminal) const {

@@ -32,25 +32,3 @@ Option& Rule::operator[](unsigned long index) const {
 unsigned long Rule::size() const {
   return options.size();
 }
-
-bool Rule::operator==(const Rule& rule) const {
-  if (name != rule.name) {
-    return false;
-  }
-
-  if (options.size() != rule.options.size()) {
-    return false;
-  }
-
-  for (unsigned long i = 0; i < options.size(); i++) {
-    if (*options[i] != *rule.options[i]) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-bool Rule::operator!=(const Rule& rule) const {
-  return !operator==(rule);
-}
