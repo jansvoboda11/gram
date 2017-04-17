@@ -17,8 +17,8 @@ set(SOURCE_FILES
         individual/comparer/LowFitnessComparer.cpp
         individual/crossover/OnePointCrossover.cpp
         individual/mutation/BernoulliStepGenerator.cpp
-        individual/mutation/CodonMutation.cpp
         individual/mutation/FastCodonMutation.cpp
+        individual/mutation/NaiveCodonMutation.cpp
         individual/Individual.cpp
         language/parser/BnfRuleParser.cpp
         language/symbol/NonTerminal.cpp
@@ -56,9 +56,9 @@ set(SOURCE_FILES
         ../include/gram/individual/crossover/Crossover.h
         ../include/gram/individual/crossover/OnePointCrossover.h
         ../include/gram/individual/mutation/BernoulliStepGenerator.h
-        ../include/gram/individual/mutation/CodonMutation.h
         ../include/gram/individual/mutation/FastCodonMutation.h
         ../include/gram/individual/mutation/Mutation.h
+        ../include/gram/individual/mutation/NaiveCodonMutation.h
         ../include/gram/individual/Genotype.h
         ../include/gram/individual/Individual.h
         ../include/gram/individual/Phenotype.h

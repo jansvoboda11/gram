@@ -12,9 +12,9 @@ namespace gram {
 /**
  * Class.
  */
-class CodonMutation : public Mutation {
+class NaiveCodonMutation : public Mutation {
  public:
-  CodonMutation(std::unique_ptr<BoolGenerator> boolGenerator, std::unique_ptr<NumberGenerator> numberGenerator);
+  NaiveCodonMutation(std::unique_ptr<BoolGenerator> boolGenerator, std::unique_ptr<NumberGenerator> numberGenerator);
   Genotype apply(Genotype genotype);
  private:
   std::unique_ptr<BoolGenerator> boolGenerator;

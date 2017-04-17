@@ -9,8 +9,8 @@ add_executable(gram-unit-tests
         individual/comparer/low_fitness_comparer_test.cpp
         individual/crossover/one_point_crossover_test.cpp
         individual/mutation/bernoulli_step_generator_test.cpp
-        individual/mutation/codon_mutation_test.cpp
         individual/mutation/fast_codon_mutation_test.cpp
+        individual/mutation/naive_codon_mutation_test.cpp
         individual/individual_test.cpp
         language/grammar/context_free_grammar_test.cpp
         language/mapper/context_free_mapper_test.cpp

@@ -1,16 +1,16 @@
-#include "gram/individual/mutation/CodonMutation.h"
+#include "gram/individual/mutation/NaiveCodonMutation.h"
 
 #include <algorithm>
 
 using namespace gram;
 using namespace std;
 
-CodonMutation::CodonMutation(unique_ptr<BoolGenerator> boolGenerator, unique_ptr<NumberGenerator> numberGenerator)
+NaiveCodonMutation::NaiveCodonMutation(unique_ptr<BoolGenerator> boolGenerator, unique_ptr<NumberGenerator> numberGenerator)
     : boolGenerator(move(boolGenerator)), numberGenerator(move(numberGenerator)) {
   //
 }
 
-Genotype CodonMutation::apply(Genotype genotype) {
+Genotype NaiveCodonMutation::apply(Genotype genotype) {
   for (auto& codon : genotype) {
     if (boolGenerator->generate()) {
       codon = numberGenerator->generate();
