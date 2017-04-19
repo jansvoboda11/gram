@@ -20,6 +20,7 @@ Phenotype ContextFreeMapper::map(const Genotype& genotype) {
   symbols.clear();
 
   Phenotype phenotype;
+  phenotype.reserve(512);
 
   unsigned long wrappings = 0;
   unsigned long codonIndex = 0;
