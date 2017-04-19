@@ -6,11 +6,11 @@
 using namespace gram;
 
 const Terminal& Symbol::toTerminal() const {
-  return dynamic_cast<const Terminal&>(*this);
+  return static_cast<const Terminal&>(*this);
 }
 
 const NonTerminal& Symbol::toNonTerminal() const {
-  return dynamic_cast<const NonTerminal&>(*this);
+  return static_cast<const NonTerminal&>(*this);
 }
 
 bool Symbol::operator==(const Symbol& symbol) const {
