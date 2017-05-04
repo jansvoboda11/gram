@@ -2,7 +2,6 @@
 #define GRAM_LANGUAGE_BNF_RULE_PARSER
 
 #include <memory>
-#include <regex>
 #include <string>
 
 #include "gram/language/grammar/ContextFreeGrammar.h"

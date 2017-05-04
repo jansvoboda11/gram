@@ -1,7 +1,9 @@
 #include "gram/language/parser/BnfRuleParser.h"
 
 #include <algorithm>
+#include <memory>
 #include <regex>
+#include <string>
 #include <vector>
 
 #include "gram/error/InvalidGrammar.h"
