@@ -1,0 +1,37 @@
+language: cpp
+dist: trusty
+sudo: false
+matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gcc-6
+            - g++-6
+      env:
+        - CCOMPILER=gcc-6
+        - CXXCOMPILER=g++-6
+        - CXXFLAGS=""
+    - compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-trusty-3.9
+          packages:
+            - clang-3.9
+            - libc++-dev
+      env:
+        - CCOMPILER=clang-3.9
+        - CXXCOMPILER=clang++-3.9
+        - CXXFLAGS="-stdlib=libc++"
+script:
+  - mkdir build
+  - cd build
+  - cmake -Dbuild_gram_tests=ON -DCMAKE_C_COMPILER=$CCOMPILER -DCMAKE_CXX_COMPILER=$CXXCOMPILER -DCMAKE_CXX_FLAGS=$CXXFLAGS ..
+  - make
+  - ./test/unit/gram-unit-tests
+  - ./test/acceptance/gram-acceptance-tests
