@@ -23,7 +23,7 @@ void ContextFreeGrammar::addRule(unique_ptr<Rule> rule) {
 Rule& ContextFreeGrammar::ruleNamed(string name) {
   Rule* rule = rules[name].get();
 
-  if (!rule) {
+  if (rule == nullptr) {
     auto newRule = make_unique<Rule>(name);
 
     rule = newRule.get();
