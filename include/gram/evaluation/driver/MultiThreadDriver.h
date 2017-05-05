@@ -13,10 +13,11 @@ namespace gram {
  * Class.
  */
 class MultiThreadDriver : public EvaluationDriver {
- public:
+public:
   MultiThreadDriver(std::vector<std::unique_ptr<Evaluator>> evaluators);
   void evaluate(Population& population);
- private:
+
+private:
   std::vector<std::unique_ptr<Evaluator>> evaluators;
   void launchEvaluator(Population& population, unsigned long threadNumber);
 };

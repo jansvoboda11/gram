@@ -8,7 +8,7 @@ namespace gram {
  * Interface.
  */
 class IndividualComparer {
- public:
+public:
   virtual bool isFirstFitter(const Individual& first, const Individual& second) const = 0;
 };
 }

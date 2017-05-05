@@ -8,7 +8,7 @@ namespace gram {
  * Interface.
  */
 class EvaluationDriver {
- public:
+public:
   virtual void evaluate(Population& population) = 0;
 };
 }

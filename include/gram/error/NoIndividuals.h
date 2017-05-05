@@ -8,7 +8,7 @@ namespace gram {
  * Exception.
  */
 class NoIndividuals : std::out_of_range {
- public:
+public:
   NoIndividuals();
 };
 }

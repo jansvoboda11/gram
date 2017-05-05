@@ -10,11 +10,12 @@ namespace gram {
  * Class.
  */
 class XorShiftNumberGenerator : public NumberGenerator {
- public:
+public:
   XorShiftNumberGenerator();
   unsigned long generate();
   unsigned long getMax();
- private:
+
+private:
   std::uint32_t state;
 };
 }

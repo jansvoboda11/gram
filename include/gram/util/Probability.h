@@ -6,10 +6,11 @@ namespace gram {
  * Class.
  */
 class Probability {
- public:
+public:
   Probability(double value);
   double getValue() const;
- private:
+
+private:
   double value;
 };
 }

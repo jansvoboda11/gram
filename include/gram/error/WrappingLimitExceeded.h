@@ -8,7 +8,7 @@ namespace gram {
  * Exception.
  */
 class WrappingLimitExceeded : std::out_of_range {
- public:
+public:
   WrappingLimitExceeded(unsigned long limit);
 };
 }

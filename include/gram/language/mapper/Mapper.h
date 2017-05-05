@@ -9,7 +9,7 @@ namespace gram {
  * Interface.
  */
 class Mapper {
- public:
+public:
   virtual Phenotype map(const Genotype& genotype) = 0;
 };
 }

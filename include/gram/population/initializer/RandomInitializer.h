@@ -13,10 +13,11 @@ namespace gram {
  * Class.
  */
 class RandomInitializer : public Initializer {
- public:
+public:
   RandomInitializer(std::unique_ptr<NumberGenerator> numberGenerator, unsigned long genotypeSize);
   Population initialize(unsigned long populationSize, std::shared_ptr<Reproducer> reproducer) const;
- private:
+
+private:
   std::unique_ptr<NumberGenerator> numberGenerator;
   unsigned long genotypeSize;
 };

@@ -9,16 +9,16 @@ namespace gram {
 /**
  * Template class.
  */
-template <typename T>
-class StdNumberGenerator : public NumberGenerator {
- public:
+template <typename T> class StdNumberGenerator : public NumberGenerator {
+public:
   StdNumberGenerator<T>();
   StdNumberGenerator(unsigned long seed, unsigned long max);
   static StdNumberGenerator withSeed(unsigned long seed);
   static StdNumberGenerator withMax(unsigned long max);
   unsigned long generate();
   unsigned long getMax();
- private:
+
+private:
   T generator;
   std::uniform_int_distribution<unsigned long> distribution;
   unsigned long max;
@@ -40,28 +40,24 @@ gram::StdNumberGenerator<T>::StdNumberGenerator(unsigned long seed, unsigned lon
   distribution = std::uniform_int_distribution<unsigned long>(0, max);
 }
 
-template <typename T>
-gram::StdNumberGenerator<T> gram::StdNumberGenerator<T>::withSeed(unsigned long seed) {
+template <typename T> gram::StdNumberGenerator<T> gram::StdNumberGenerator<T>::withSeed(unsigned long seed) {
   unsigned long max = std::numeric_limits<unsigned long>::max();
 
   return StdNumberGenerator(seed, max);
 }
 
-template <typename T>
-gram::StdNumberGenerator<T> gram::StdNumberGenerator<T>::withMax(unsigned long max) {
+template <typename T> gram::StdNumberGenerator<T> gram::StdNumberGenerator<T>::withMax(unsigned long max) {
   std::random_device device;
   unsigned long seed = device();
 
   return StdNumberGenerator(seed, max);
 }
 
-template <typename T>
-unsigned long gram::StdNumberGenerator<T>::generate() {
+template <typename T> unsigned long gram::StdNumberGenerator<T>::generate() {
   return distribution(generator);
 }
 
-template <typename T>
-unsigned long gram::StdNumberGenerator<T>::getMax() {
+template <typename T> unsigned long gram::StdNumberGenerator<T>::getMax() {
   return max;
 }
 

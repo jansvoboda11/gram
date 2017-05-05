@@ -8,7 +8,7 @@ namespace gram {
  * Interface.
  */
 class RuleParser {
- public:
+public:
   virtual ContextFreeGrammar parse(std::string input) const = 0;
 };
 }

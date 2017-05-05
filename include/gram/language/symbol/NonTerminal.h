@@ -9,14 +9,15 @@ class Rule;
  * Class.
  */
 class NonTerminal : public Symbol {
- public:
+public:
   NonTerminal(Rule& rule);
   Rule& toRule() const;
   bool isTerminal() const;
   bool isNonTerminal() const;
   bool operator==(const NonTerminal& nonTerminal) const;
   bool operator!=(const NonTerminal& nonTerminal) const;
- private:
+
+private:
   Rule& rule;
 };
 }

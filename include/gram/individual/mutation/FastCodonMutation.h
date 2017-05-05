@@ -14,11 +14,12 @@ namespace gram {
  * Class.
  */
 class FastCodonMutation : public Mutation {
- public:
+public:
   FastCodonMutation(std::unique_ptr<BernoulliStepGenerator> stepGenerator,
                     std::unique_ptr<NumberGenerator> numberGenerator);
   Genotype apply(Genotype genotype);
- private:
+
+private:
   std::unique_ptr<BernoulliStepGenerator> stepGenerator;
   std::unique_ptr<NumberGenerator> numberGenerator;
   unsigned long step;

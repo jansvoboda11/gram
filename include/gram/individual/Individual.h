@@ -15,7 +15,7 @@ namespace gram {
  * Class.
  */
 class Individual {
- public:
+public:
   Individual(const Individual& individual);
   Individual(const Genotype& genotype);
   virtual ~Individual() = default;
@@ -27,7 +27,8 @@ class Individual {
   std::string serialize(Mapper& mapper) const;
   bool operator==(const Individual& individual) const;
   bool operator!=(const Individual& individual) const;
- private:
+
+private:
   Genotype genotype;
   double fitnessScore;
   bool fitnessCalculated;

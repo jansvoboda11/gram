@@ -8,7 +8,7 @@ class NonTerminal;
  * Abstract class.
  */
 class Symbol {
- public:
+public:
   const Terminal& toTerminal() const;
   const NonTerminal& toNonTerminal() const;
   virtual bool isTerminal() const = 0;

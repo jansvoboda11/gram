@@ -8,7 +8,7 @@ namespace gram {
  * Interface.
  */
 class Reproducer {
- public:
+public:
   virtual ~Reproducer() = default;
   virtual Individuals reproduce(Individuals& individuals) = 0;
 };

@@ -8,7 +8,7 @@ namespace gram {
  * Abstract class.
  */
 class NumberGenerator {
- public:
+public:
   virtual ~NumberGenerator() = default;
   virtual unsigned long generate() = 0;
   virtual std::vector<unsigned long> generateMany(unsigned long count);

@@ -12,7 +12,7 @@ namespace gram {
  * Interface.
  */
 class IndividualSelector {
- public:
+public:
   virtual Individual& select(Individuals& individuals) = 0;
 };
 }

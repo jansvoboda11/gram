@@ -12,13 +12,14 @@ namespace gram {
  * Class.
  */
 class Rule {
- public:
+public:
   Rule(std::string name);
   std::string getName() const;
   void addOption(std::unique_ptr<gram::Option> option);
   Option& operator[](unsigned long index) const;
   unsigned long size() const;
- private:
+
+private:
   std::string name;
   std::vector<std::unique_ptr<Option>> options;
 };

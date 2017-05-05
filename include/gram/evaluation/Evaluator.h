@@ -8,7 +8,7 @@ namespace gram {
  * Interface.
  */
 class Evaluator {
- public:
+public:
   virtual ~Evaluator() = default;
   virtual double evaluate(const Genotype& genotype) noexcept = 0;
 };

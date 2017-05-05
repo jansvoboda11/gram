@@ -10,14 +10,15 @@ namespace gram {
  * Class.
  */
 class Terminal : public Symbol {
- public:
+public:
   Terminal(std::string value);
   std::string getValue() const;
   bool isTerminal() const;
   bool isNonTerminal() const;
   bool operator==(const Terminal& terminal) const;
   bool operator!=(const Terminal& terminal) const;
- private:
+
+private:
   std::string value;
 };
 }

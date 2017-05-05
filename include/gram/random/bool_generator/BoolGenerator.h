@@ -12,11 +12,12 @@ namespace gram {
  * Abstract class.
  */
 class BoolGenerator {
- public:
+public:
   BoolGenerator(std::unique_ptr<NumberGenerator> numberGenerator, Probability probability);
   virtual ~BoolGenerator() = default;
   virtual bool generate() const;
- private:
+
+private:
   std::unique_ptr<NumberGenerator> numberGenerator;
   Probability probability;
 };

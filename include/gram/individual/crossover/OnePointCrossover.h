@@ -12,10 +12,11 @@ namespace gram {
  * Class.
  */
 class OnePointCrossover : public Crossover {
- public:
+public:
   OnePointCrossover(std::unique_ptr<NumberGenerator> numberGenerator);
   Genotype apply(const Genotype& first, const Genotype& second);
- private:
+
+private:
   std::unique_ptr<NumberGenerator> numberGenerator;
 };
 }

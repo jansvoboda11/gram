@@ -12,7 +12,7 @@ namespace gram {
  * Class.
  */
 class Individuals {
- public:
+public:
   void addIndividual(Individual individual);
   const Individual& bestIndividual(IndividualComparer& comparer) const;
   Individual& operator[](unsigned long index);
@@ -23,7 +23,8 @@ class Individuals {
   std::vector<Individual>::iterator end();
   std::vector<Individual>::const_iterator begin() const;
   std::vector<Individual>::const_iterator end() const;
- private:
+
+private:
   std::vector<Individual> individuals;
 };
 }

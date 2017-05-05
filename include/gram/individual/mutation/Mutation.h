@@ -8,7 +8,7 @@ namespace gram {
  * Interface.
  */
 class Mutation {
- public:
+public:
   virtual Genotype apply(Genotype genotype) = 0;
 };
 }

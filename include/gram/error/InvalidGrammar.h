@@ -8,7 +8,7 @@ namespace gram {
  * Exception.
  */
 class InvalidGrammar : public std::domain_error {
- public:
+public:
   InvalidGrammar();
 };
 }

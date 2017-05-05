@@ -9,7 +9,7 @@ namespace gram {
  * Class.
  */
 class LowFitnessComparer : public IndividualComparer {
- public:
+public:
   bool isFirstFitter(const Individual& first, const Individual& second) const;
 };
 }

@@ -8,7 +8,7 @@ namespace gram {
  * Exception.
  */
 class FitnessNotCalculated : public std::logic_error {
- public:
+public:
   FitnessNotCalculated();
 };
 }

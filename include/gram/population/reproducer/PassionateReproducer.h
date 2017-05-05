@@ -15,12 +15,12 @@ namespace gram {
  * Class.
  */
 class PassionateReproducer : public Reproducer {
- public:
-  PassionateReproducer(std::unique_ptr<IndividualSelector> selector,
-                       std::unique_ptr<Crossover> crossover,
+public:
+  PassionateReproducer(std::unique_ptr<IndividualSelector> selector, std::unique_ptr<Crossover> crossover,
                        std::unique_ptr<Mutation> mutation);
   Individuals reproduce(Individuals& individuals);
- private:
+
+private:
   std::unique_ptr<IndividualSelector> selector;
   std::unique_ptr<Crossover> crossover;
   std::unique_ptr<Mutation> mutation;

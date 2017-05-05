@@ -8,7 +8,7 @@ namespace gram {
  * Interface.
  */
 class Initializer {
- public:
+public:
   virtual Population initialize(unsigned long count, std::shared_ptr<Reproducer> reproducer) const = 0;
 };
 }

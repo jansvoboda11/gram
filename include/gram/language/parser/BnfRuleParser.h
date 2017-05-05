@@ -13,9 +13,10 @@ namespace gram {
  * Class.
  */
 class BnfRuleParser : public RuleParser {
- public:
+public:
   ContextFreeGrammar parse(std::string input) const;
- private:
+
+private:
   void parseRule(ContextFreeGrammar& grammar, std::string& line) const;
   std::unique_ptr<Option> parseOption(ContextFreeGrammar& grammar, std::string& line) const;
   bool parseNonTerminal(std::string& name, std::string& line) const;

@@ -9,7 +9,7 @@ namespace gram {
  * Class.
  */
 class NullLogger : public Logger {
- public:
+public:
   void logProgress(const Population& population);
   void logResult(const Population& population);
 };

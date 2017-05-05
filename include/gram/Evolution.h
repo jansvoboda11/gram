@@ -13,10 +13,11 @@ namespace gram {
  * Class.
  */
 class Evolution {
- public:
+public:
   Evolution(std::unique_ptr<EvaluationDriver> evaluationDriver, std::unique_ptr<Logger> logger);
   Population run(Population& population, std::function<bool(Population&)>& successCondition) const;
- private:
+
+private:
   std::unique_ptr<EvaluationDriver> evaluationDriver;
   std::unique_ptr<Logger> logger;
 };

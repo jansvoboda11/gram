@@ -8,7 +8,7 @@ namespace gram {
  * Exception.
  */
 class InvalidProbability : std::domain_error {
- public:
+public:
   InvalidProbability();
 };
 }

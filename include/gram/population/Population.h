@@ -14,7 +14,7 @@ namespace gram {
  * Class.
  */
 class Population {
- public:
+public:
   Population(Individuals individuals, std::shared_ptr<Reproducer> reproducer, unsigned long generationNumber);
   unsigned long generationNumber() const;
   const Individual& bestIndividual(IndividualComparer& comparer) const;
@@ -31,7 +31,8 @@ class Population {
   unsigned long size() const;
   Population reproduce();
   virtual ~Population() = default;
- private:
+
+private:
   Individuals individuals;
   std::shared_ptr<Reproducer> reproducer;
   unsigned long number;

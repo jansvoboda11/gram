@@ -12,10 +12,11 @@ namespace gram {
  * Class.
  */
 class SingleThreadDriver : public EvaluationDriver {
- public:
+public:
   SingleThreadDriver(std::unique_ptr<Evaluator> evaluator);
   void evaluate(Population& population);
- private:
+
+private:
   std::unique_ptr<Evaluator> evaluator;
 };
 }

@@ -13,12 +13,13 @@ namespace gram {
  * Class.
  */
 class Option {
- public:
+public:
   void addNonTerminal(std::unique_ptr<NonTerminal> nonTerminal);
   void addTerminal(std::unique_ptr<Terminal> terminal);
   Symbol& operator[](unsigned long index) const;
   unsigned long size() const;
- private:
+
+private:
   std::vector<std::unique_ptr<Symbol>> symbols;
 };
 }

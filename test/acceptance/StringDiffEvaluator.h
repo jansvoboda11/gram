@@ -9,11 +9,12 @@
 #include "gram/language/mapper/ContextFreeMapper.h"
 
 class StringDiffEvaluator : public gram::Evaluator {
- public:
+public:
   StringDiffEvaluator(std::shared_ptr<gram::ContextFreeMapper> mapper, std::string desired);
   double evaluate(const gram::Genotype& genotype) noexcept;
   double calculateFitness(std::string program);
- private:
+
+private:
   std::shared_ptr<gram::ContextFreeMapper> mapper;
   std::string desired;
 };

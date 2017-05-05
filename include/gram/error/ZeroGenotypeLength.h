@@ -8,7 +8,7 @@ namespace gram {
  * Exception.
  */
 class ZeroGenotypeLength : public std::length_error {
- public:
+public:
   ZeroGenotypeLength();
 };
 }

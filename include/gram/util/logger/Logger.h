@@ -8,7 +8,7 @@ namespace gram {
  * Interface.
  */
 class Logger {
- public:
+public:
   virtual void logProgress(const Population& population) = 0;
   virtual void logResult(const Population& population) = 0;
 };
