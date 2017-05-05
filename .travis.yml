@@ -12,9 +12,9 @@ matrix:
             - gcc-6
             - g++-6
       env:
-        - CCOMPILER=gcc-6
-        - CXXCOMPILER=g++-6
-        - CXXFLAGS=""
+        - C_COMPILER=gcc-6
+        - CXX_COMPILER=g++-6
+        - CXX_FLAGS=""
     - compiler: clang
       addons:
         apt:
@@ -25,13 +25,13 @@ matrix:
             - clang-3.9
             - libc++-dev
       env:
-        - CCOMPILER=clang-3.9
-        - CXXCOMPILER=clang++-3.9
-        - CXXFLAGS="-stdlib=libc++"
+        - C_COMPILER=clang-3.9
+        - CXX_COMPILER=clang++-3.9
+        - CXX_FLAGS="-stdlib=libc++"
 script:
   - mkdir build
   - cd build
-  - cmake -Dbuild_gram_tests=ON -DCMAKE_C_COMPILER=$CCOMPILER -DCMAKE_CXX_COMPILER=$CXXCOMPILER -DCMAKE_CXX_FLAGS=$CXXFLAGS ..
+  - cmake -DGRAM_BUILD_TESTS=ON -DCMAKE_C_COMPILER=$C_COMPILER -DCMAKE_CXX_COMPILER=$CXX_COMPILER -DCMAKE_CXX_FLAGS=$CXX_FLAGS ..
   - make
-  - ./test/unit/gram-unit-tests
-  - ./test/acceptance/gram-acceptance-tests
+  - ./test/unit/utest
+  - ./test/acceptance/atest

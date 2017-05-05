@@ -2,7 +2,7 @@ include_directories(../lib/catch/src/catch/single_include)
 include_directories(../lib/fakeit/src/fakeit/single_header/catch)
 include_directories(../../include)
 
-add_executable(gram-unit-tests
+add_executable(utest
         evaluation/driver/multi_thread_driver_test.cpp
         evaluation/driver/single_thread_driver_test.cpp
         individual/comparer/high_fitness_comparer_test.cpp
@@ -29,6 +29,6 @@ add_executable(gram-unit-tests
         test.cpp
         )
 
-add_dependencies(gram-unit-tests catch fakeit)
+add_dependencies(utest catch fakeit)
 
-target_link_libraries(gram-unit-tests gram)
+target_link_libraries(utest gram)
