@@ -2,7 +2,7 @@ include_directories(../include)
 
 find_package(Threads REQUIRED)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -Wextra -pedantic")
 
 set(SOURCE_FILES
         error/FitnessNotCalculated.cpp
