@@ -9,8 +9,8 @@
 #include "gram/individual/Genotype.h"
 #include "gram/individual/Individual.h"
 #include "gram/population/Individuals.h"
-#include <gram/population/reproducer/PassionateReproducer.h>
 #include "gram/population/Population.h"
+#include <gram/population/reproducer/PassionateReproducer.h>
 
 using namespace fakeit;
 using namespace gram;

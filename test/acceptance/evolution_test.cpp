@@ -22,6 +22,7 @@
 #include "gram/random/number_generator/XorShiftNumberGenerator.h"
 #include "gram/util/Probability.h"
 #include "gram/util/logger/NullLogger.h"
+
 #include "StringDiffEvaluator.h"
 
 using namespace fakeit;
@@ -42,9 +43,8 @@ TEST_CASE("evolution_test") {
   auto crossover = make_unique<OnePointCrossover>(move(numberGenerator3));
   auto reproducer = make_shared<PassionateReproducer>(move(selector), move(crossover), move(mutation));
 
-  string grammarString =
-      "<word> ::= <word> <char> | <char>\n"
-      "<char> ::= \"g\" | \"r\" | \"a\" | \"m\"";
+  string grammarString = "<word> ::= <word> <char> | <char>\n"
+                         "<char> ::= \"g\" | \"r\" | \"a\" | \"m\"";
 
   BnfRuleParser parser;
 

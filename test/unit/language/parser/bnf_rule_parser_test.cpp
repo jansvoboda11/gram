@@ -50,9 +50,8 @@ TEST_CASE("BNF rule parser parses rule with multiple terminal options", "[bnf_ru
 TEST_CASE("BNF rule parser parses multiple rules with terminals", "[bnf_rule_parser]") {
   BnfRuleParser parser;
 
-  string rules =
-      "<rule1> ::= <rule2>\n"
-      "<rule2> ::= \"hello\"";
+  string rules = "<rule1> ::= <rule2>\n"
+                 "<rule2> ::= \"hello\"";
 
   ContextFreeGrammar grammar = parser.parse(rules);
 
@@ -68,9 +67,8 @@ TEST_CASE("BNF rule parser parses multiple rules with terminals", "[bnf_rule_par
 TEST_CASE("BNF rule parser parses rules with terminals and non-terminals", "[bnf_rule_parser]") {
   BnfRuleParser parser;
 
-  string rules =
-      "<rule1> ::= <rule2> \"world\" | \"she\" \"said\"\n"
-      "<rule2> ::= \"hello\"";
+  string rules = "<rule1> ::= <rule2> \"world\" | \"she\" \"said\"\n"
+                 "<rule2> ::= \"hello\"";
 
   ContextFreeGrammar grammar = parser.parse(rules);
 
@@ -91,11 +89,10 @@ TEST_CASE("BNF rule parser parses rules with terminals and non-terminals", "[bnf
 TEST_CASE("BNF rule parser parses rules with extra whitespace", "[bnf_rule_parser]") {
   BnfRuleParser parser;
 
-  string rules =
-      "    <start>::= \"world\"  |<next> \n"
-      " \n"
-      "<next> ::= \"hello\"\n"
-      "\n";
+  string rules = "    <start>::= \"world\"  |<next> \n"
+                 " \n"
+                 "<next> ::= \"hello\"\n"
+                 "\n";
 
   ContextFreeGrammar grammar = parser.parse(rules);
 

@@ -12,8 +12,7 @@
 using namespace gram;
 using namespace std;
 
-TournamentSelector::TournamentSelector(unsigned long tournamentSize,
-                                       unique_ptr<NumberGenerator> numberGenerator,
+TournamentSelector::TournamentSelector(unsigned long tournamentSize, unique_ptr<NumberGenerator> numberGenerator,
                                        unique_ptr<IndividualComparer> comparer)
     : tournamentSize(tournamentSize), numberGenerator(move(numberGenerator)), comparer(move(comparer)) {
   if (tournamentSize == 0) {

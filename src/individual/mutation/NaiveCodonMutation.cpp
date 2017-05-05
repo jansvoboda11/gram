@@ -5,7 +5,8 @@
 using namespace gram;
 using namespace std;
 
-NaiveCodonMutation::NaiveCodonMutation(unique_ptr<BoolGenerator> boolGenerator, unique_ptr<NumberGenerator> numberGenerator)
+NaiveCodonMutation::NaiveCodonMutation(unique_ptr<BoolGenerator> boolGenerator,
+                                       unique_ptr<NumberGenerator> numberGenerator)
     : boolGenerator(move(boolGenerator)), numberGenerator(move(numberGenerator)) {
   //
 }

@@ -12,14 +12,12 @@ using namespace gram;
 using namespace std;
 
 Individual::Individual(const Individual& individual)
-    : genotype(individual.genotype),
-      fitnessScore(individual.fitnessScore),
+    : genotype(individual.genotype), fitnessScore(individual.fitnessScore),
       fitnessCalculated(individual.fitnessCalculated) {
   //
 }
 
-Individual::Individual(const Genotype& genotype)
-    : genotype(genotype), fitnessScore(0.0), fitnessCalculated(false) {
+Individual::Individual(const Genotype& genotype) : genotype(genotype), fitnessScore(0.0), fitnessCalculated(false) {
   //
 }
 

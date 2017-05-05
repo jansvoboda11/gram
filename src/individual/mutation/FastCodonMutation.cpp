@@ -7,8 +7,7 @@ using namespace std;
 
 FastCodonMutation::FastCodonMutation(unique_ptr<BernoulliStepGenerator> stepGenerator,
                                      unique_ptr<NumberGenerator> numberGenerator)
-    : stepGenerator(move(stepGenerator)),
-      numberGenerator(move(numberGenerator)),
+    : stepGenerator(move(stepGenerator)), numberGenerator(move(numberGenerator)),
       step(this->stepGenerator->generateStep()) {
   //
 }

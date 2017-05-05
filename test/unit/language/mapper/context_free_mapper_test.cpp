@@ -17,7 +17,8 @@ using namespace gram;
 using namespace std;
 
 TEST_CASE("context-free mapper maps a terminal", "[context-free_mapper]") {
-//  <rule> ::= "terminal"
+  // <rule> ::= "terminal"
+
   auto terminal = make_unique<Terminal>("terminal");
   auto rule = make_unique<Rule>("rule");
   auto option = make_unique<Option>();
@@ -36,8 +37,8 @@ TEST_CASE("context-free mapper maps a terminal", "[context-free_mapper]") {
 }
 
 TEST_CASE("context-free mapper maps a non-terminal", "[context-free_mapper]") {
-//  <rule1> ::= <rule2>
-//  <rule2> ::= "terminal"
+  // <rule1> ::= <rule2>
+  // <rule2> ::= "terminal"
 
   auto rule1 = make_unique<Rule>("rule1");
   auto rule2 = make_unique<Rule>("rule2");
@@ -66,8 +67,8 @@ TEST_CASE("context-free mapper maps a non-terminal", "[context-free_mapper]") {
 }
 
 TEST_CASE("context-free mapper handles more complex grammar", "[context-free-mapper[") {
-//  <number> ::= <digit> <number> | <digit>
-//  <digit> ::= "0" | "1"
+  // <number> ::= <digit> <number> | <digit>
+  // <digit> ::= "0" | "1"
 
   auto digit0 = make_unique<Terminal>("0");
   auto digit1 = make_unique<Terminal>("1");

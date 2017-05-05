@@ -13,8 +13,7 @@
 using namespace gram;
 using namespace std;
 
-PassionateReproducer::PassionateReproducer(unique_ptr<IndividualSelector> selector,
-                                           unique_ptr<Crossover> crossover,
+PassionateReproducer::PassionateReproducer(unique_ptr<IndividualSelector> selector, unique_ptr<Crossover> crossover,
                                            unique_ptr<Mutation> mutation)
     : selector(move(selector)), crossover(move(crossover)), mutation(move(mutation)) {
   //
