@@ -44,7 +44,7 @@ double Individual::fitness() const {
   return fitnessScore;
 }
 
-double Individual::hasFitnessCalculated() const {
+bool Individual::hasFitnessCalculated() const {
   return fitnessCalculated;
 }
 

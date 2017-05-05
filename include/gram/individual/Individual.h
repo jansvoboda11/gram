@@ -23,7 +23,7 @@ public:
   void mutate(Mutation& mutation);
   void evaluate(Evaluator& evaluator);
   virtual double fitness() const;
-  virtual double hasFitnessCalculated() const;
+  virtual bool hasFitnessCalculated() const;
   std::string serialize(Mapper& mapper) const;
   bool operator==(const Individual& individual) const;
   bool operator!=(const Individual& individual) const;
