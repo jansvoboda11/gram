@@ -65,7 +65,7 @@ vector<Individual>::iterator Population::end() {
 
 vector<Individual>::const_iterator Population::begin() const {
   return individuals.begin();
-};
+}
 
 vector<Individual>::const_iterator Population::end() const {
   return individuals.end();

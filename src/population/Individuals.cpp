@@ -56,7 +56,7 @@ vector<Individual>::iterator Individuals::end() {
 
 vector<Individual>::const_iterator Individuals::begin() const {
   return individuals.begin();
-};
+}
 
 vector<Individual>::const_iterator Individuals::end() const {
   return individuals.end();

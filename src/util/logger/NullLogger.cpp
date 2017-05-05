@@ -5,9 +5,13 @@
 using namespace gram;
 
 void NullLogger::logProgress(const Population& population) {
+  static_cast<void>(population);
+
   //
 }
 
 void NullLogger::logResult(const Population& population) {
+  static_cast<void>(population);
+
   //
 }
