@@ -31,12 +31,6 @@ void Individual::mutate(Mutation& mutation) {
   genotype = mutation.apply(genotype);
 }
 
-void Individual::evaluate(Evaluator& evaluator) {
-  double fitness = evaluator.evaluate(genotype);
-
-  assignFitness(fitness);
-}
-
 void Individual::assignFitness(double fitness) {
   fitnessScore = fitness;
   fitnessCalculated = true;
@@ -54,7 +48,7 @@ bool Individual::hasFitnessCalculated() const {
   return fitnessCalculated;
 }
 
-string Individual::serialize(Mapper& mapper) const {
+Phenotype Individual::serialize(Mapper& mapper) const {
   return mapper.map(genotype);
 }
 

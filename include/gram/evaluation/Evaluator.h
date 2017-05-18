@@ -1,7 +1,7 @@
 #ifndef GRAM_EVALUATOR
 #define GRAM_EVALUATOR
 
-#include "gram/individual/Genotype.h"
+#include "gram/individual/Phenotype.h"
 
 namespace gram {
 /**
@@ -10,7 +10,7 @@ namespace gram {
 class Evaluator {
 public:
   virtual ~Evaluator() = default;
-  virtual double evaluate(const Genotype& genotype) noexcept = 0;
+  virtual double evaluate(const Phenotype& phenotype) noexcept = 0;
 };
 }
 

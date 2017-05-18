@@ -23,6 +23,7 @@ public:
   double bestFitness(IndividualComparer& comparer) const;
   double lowestFitness() const;
   double highestFitness() const;
+  Individuals& allIndividuals();
   Individual& operator[](unsigned long index);
   std::vector<Individual>::iterator begin();
   std::vector<Individual>::iterator end();

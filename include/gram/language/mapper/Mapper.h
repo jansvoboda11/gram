@@ -10,6 +10,7 @@ namespace gram {
  */
 class Mapper {
 public:
+  virtual ~Mapper() = default;
   virtual Phenotype map(const Genotype& genotype) = 0;
 };
 }

@@ -54,17 +54,12 @@ TEST_CASE("individual does not return fitness if it was not calculated yet", "[i
   REQUIRE_THROWS_AS(individual.fitness(), FitnessNotCalculated);
 }
 
-TEST_CASE("individual returns fitness if it was evaluated", "[individual]") {
-  Mock<Evaluator> evaluatorMock;
-  When(Method(evaluatorMock, evaluate)).Return(42.0);
-  Evaluator& evaluator = evaluatorMock.get();
+TEST_CASE("individual returns fitness if it was assigned", "[individual]") {
+  Individual individual(Genotype({0}));
 
-  Genotype genotype({0});
+  individual.assignFitness(42.0);
 
-  Individual individual(genotype);
-
-  individual.evaluate(evaluator);
-
+  REQUIRE(individual.hasFitnessCalculated() == true);
   REQUIRE(individual.fitness() == 42.0);
 }
 

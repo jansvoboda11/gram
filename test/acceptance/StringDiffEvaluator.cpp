@@ -4,20 +4,19 @@
 #include <string>
 
 #include "gram/evaluation/Evaluator.h"
-#include "gram/individual/Genotype.h"
+#include "gram/individual/Phenotype.h"
 #include "gram/language/mapper/ContextFreeMapper.h"
 
 using namespace gram;
 using namespace std;
 
-StringDiffEvaluator::StringDiffEvaluator(shared_ptr<ContextFreeMapper> mapper, string desired)
-    : mapper(mapper), desired(desired) {
+StringDiffEvaluator::StringDiffEvaluator(string desired) : desired(desired) {
   //
 }
 
-double StringDiffEvaluator::evaluate(const Genotype& genotype) noexcept {
+double StringDiffEvaluator::evaluate(const Phenotype& phenotype) noexcept {
   try {
-    return calculateFitness(mapper->map(genotype));
+    return calculateFitness(phenotype);
   } catch (...) {
     return 1000;
   }

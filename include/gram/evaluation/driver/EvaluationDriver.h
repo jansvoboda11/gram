@@ -1,7 +1,7 @@
 #ifndef GRAM_EVALUATION_DRIVER
 #define GRAM_EVALUATION_DRIVER
 
-#include "gram/population/Population.h"
+#include "gram/population/Individuals.h"
 
 namespace gram {
 /**
@@ -9,7 +9,8 @@ namespace gram {
  */
 class EvaluationDriver {
 public:
-  virtual void evaluate(Population& population) = 0;
+  virtual ~EvaluationDriver() = default;
+  virtual void evaluate(Individuals& individuals) = 0;
 };
 }
 

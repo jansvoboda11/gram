@@ -15,14 +15,14 @@ Evolution::Evolution(unique_ptr<EvaluationDriver> evaluationDriver, unique_ptr<L
 }
 
 Population Evolution::run(Population& population, function<bool(Population&)>& successCondition) const {
-  evaluationDriver->evaluate(population);
+  evaluationDriver->evaluate(population.allIndividuals());
 
   while (!successCondition(population)) {
     logger->logProgress(population);
 
     population = population.reproduce();
 
-    evaluationDriver->evaluate(population);
+    evaluationDriver->evaluate(population.allIndividuals());
   }
 
   logger->logResult(population);

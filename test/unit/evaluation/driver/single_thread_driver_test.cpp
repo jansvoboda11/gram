@@ -17,36 +17,31 @@ using namespace gram;
 using namespace std;
 
 TEST_CASE("single thread driver evaluates all individuals in a population", "[single_thread_driver]") {
+  Mock<Mapper> mapperMock;
+  Fake(Dtor(mapperMock));
+  When(Method(mapperMock, map).Using(Genotype({0, 0, 0}))).Return(Phenotype("zero"));
+  When(Method(mapperMock, map).Using(Genotype({1, 1, 1}))).Return(Phenotype("one"));
+  When(Method(mapperMock, map).Using(Genotype({2, 2, 2}))).Return(Phenotype("two"));
+  auto mapper = unique_ptr<Mapper>(&mapperMock.get());
+
   Mock<Evaluator> evaluatorMock;
   Fake(Dtor(evaluatorMock));
-  When(Method(evaluatorMock, evaluate)).Return(1).Return(2).Return(3);
+  When(Method(evaluatorMock, evaluate).Using(Phenotype("zero"))).Return(0);
+  When(Method(evaluatorMock, evaluate).Using(Phenotype("one"))).Return(1);
+  When(Method(evaluatorMock, evaluate).Using(Phenotype("two"))).Return(2);
   auto evaluator = unique_ptr<Evaluator>(&evaluatorMock.get());
 
-  Mock<Reproducer> reproducerMock;
-  Fake(Dtor(reproducerMock));
-  auto reproducer = unique_ptr<Reproducer>(&reproducerMock.get());
+  Individual individual1(Genotype({0, 0, 0}));
+  Individual individual2(Genotype({1, 1, 1}));
+  Individual individual3(Genotype({2, 2, 2}));
 
-  Genotype genotype1({0, 0, 0});
-  Genotype genotype2({1, 1, 1});
-  Genotype genotype3({2, 2, 2});
+  Individuals individuals({individual1, individual2, individual3});
 
-  Individual individual1(genotype1);
-  Individual individual2(genotype2);
-  Individual individual3(genotype3);
+  SingleThreadDriver driver(move(mapper), move(evaluator));
 
-  Individuals individuals;
+  driver.evaluate(individuals);
 
-  individuals.addIndividual(individual1);
-  individuals.addIndividual(individual2);
-  individuals.addIndividual(individual3);
-
-  Population population(individuals, move(reproducer), 0);
-
-  SingleThreadDriver driver(move(evaluator));
-
-  driver.evaluate(population);
-
-  REQUIRE(population[0].hasFitnessCalculated());
-  REQUIRE(population[1].hasFitnessCalculated());
-  REQUIRE(population[2].hasFitnessCalculated());
+  REQUIRE(individuals[0].hasFitnessCalculated());
+  REQUIRE(individuals[1].hasFitnessCalculated());
+  REQUIRE(individuals[2].hasFitnessCalculated());
 }

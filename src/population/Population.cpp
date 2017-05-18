@@ -51,6 +51,10 @@ double Population::highestFitness() const {
   return bestFitness(comparer);
 }
 
+Individuals& Population::allIndividuals() {
+  return individuals;
+}
+
 Individual& Population::operator[](unsigned long index) {
   return individuals[index];
 }

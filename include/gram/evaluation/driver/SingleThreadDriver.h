@@ -5,7 +5,8 @@
 
 #include "gram/evaluation/Evaluator.h"
 #include "gram/evaluation/driver/EvaluationDriver.h"
-#include "gram/population/Population.h"
+#include "gram/language/mapper/Mapper.h"
+#include "gram/population/Individuals.h"
 
 namespace gram {
 /**
@@ -13,10 +14,12 @@ namespace gram {
  */
 class SingleThreadDriver : public EvaluationDriver {
 public:
-  SingleThreadDriver(std::unique_ptr<Evaluator> evaluator);
-  void evaluate(Population& population);
+  SingleThreadDriver(std::unique_ptr<Mapper> mapper, std::unique_ptr<Evaluator> evaluator);
+  void evaluate(Individuals& individuals);
+  virtual void evaluateOne(Individual& individual);
 
 private:
+  std::unique_ptr<Mapper> mapper;
   std::unique_ptr<Evaluator> evaluator;
 };
 }

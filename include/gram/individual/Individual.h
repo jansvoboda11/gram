@@ -2,10 +2,9 @@
 #define GRAM_INDIVIDUAL
 
 #include <memory>
-#include <string>
 
-#include "gram/evaluation/Evaluator.h"
 #include "gram/individual/Genotype.h"
+#include "gram/individual/Phenotype.h"
 #include "gram/individual/crossover/Crossover.h"
 #include "gram/individual/mutation/Mutation.h"
 #include "gram/language/mapper/Mapper.h"
@@ -20,11 +19,10 @@ public:
   Individual(const Genotype& genotype);
   Individual mateWith(const Individual& partner, Crossover& crossover) const;
   void mutate(Mutation& mutation);
-  void evaluate(Evaluator& evaluator);
-  void assignFitness(double fitnessScore);
+  void assignFitness(double fitness);
   double fitness() const;
   bool hasFitnessCalculated() const;
-  std::string serialize(Mapper& mapper) const;
+  Phenotype serialize(Mapper& mapper) const;
   bool operator==(const Individual& individual) const;
   bool operator!=(const Individual& individual) const;
 

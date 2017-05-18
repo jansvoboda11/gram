@@ -5,110 +5,47 @@
 
 #include <memory>
 
-#include "gram/evaluation/Evaluator.h"
 #include "gram/individual/Genotype.h"
 #include "gram/individual/Individual.h"
 #include "gram/population/Individuals.h"
-#include "gram/population/Population.h"
-#include <gram/population/reproducer/PassionateReproducer.h>
 
 using namespace fakeit;
 using namespace gram;
 using namespace std;
 
-TEST_CASE("multi thread driver evaluates all individuals in a population", "[single_thread_driver]") {
-  Mock<Evaluator> evaluatorMock1;
-  Fake(Dtor(evaluatorMock1));
-  When(Method(evaluatorMock1, evaluate)).Return(1);
-  auto evaluator1 = unique_ptr<Evaluator>(&evaluatorMock1.get());
+TEST_CASE("multi thread driver evaluates all individuals in a population", "[multi_thread_driver]") {
+  Individual individual1(Genotype({0, 0, 0}));
+  Individual individual2(Genotype({1, 1, 1}));
+  Individual individual3(Genotype({2, 2, 2}));
 
-  Mock<Evaluator> evaluatorMock2;
-  Fake(Dtor(evaluatorMock2));
-  When(Method(evaluatorMock2, evaluate)).Return(2);
-  auto evaluator2 = unique_ptr<Evaluator>(&evaluatorMock2.get());
+  Individuals individuals({individual1, individual2, individual3});
 
-  Mock<Evaluator> evaluatorMock3;
-  Fake(Dtor(evaluatorMock3));
-  When(Method(evaluatorMock3, evaluate)).Return(3);
-  auto evaluator3 = unique_ptr<Evaluator>(&evaluatorMock3.get());
+  Mock<SingleThreadDriver> driverMock1;
+  Mock<SingleThreadDriver> driverMock2;
+  Mock<SingleThreadDriver> driverMock3;
 
-  Mock<Reproducer> reproducerMock;
-  Fake(Dtor(reproducerMock));
-  auto reproducer = unique_ptr<Reproducer>(&reproducerMock.get());
+  Fake(Dtor(driverMock1));
+  Fake(Dtor(driverMock2));
+  Fake(Dtor(driverMock3));
 
-  Genotype genotype1({0, 0, 0});
-  Genotype genotype2({1, 1, 1});
-  Genotype genotype3({2, 2, 2});
+  Fake(Method(driverMock1, evaluateOne));
+  Fake(Method(driverMock2, evaluateOne));
+  Fake(Method(driverMock3, evaluateOne));
 
-  Individual individual1(genotype1);
-  Individual individual2(genotype2);
-  Individual individual3(genotype3);
+  auto driver1 = unique_ptr<SingleThreadDriver>(&driverMock1.get());
+  auto driver2 = unique_ptr<SingleThreadDriver>(&driverMock2.get());
+  auto driver3 = unique_ptr<SingleThreadDriver>(&driverMock3.get());
 
-  Individuals individuals;
+  vector<unique_ptr<SingleThreadDriver>> drivers;
+  drivers.push_back(move(driver1));
+  drivers.push_back(move(driver2));
+  drivers.push_back(move(driver3));
 
-  individuals.addIndividual(individual1);
-  individuals.addIndividual(individual2);
-  individuals.addIndividual(individual3);
+  MultiThreadDriver driver(move(drivers));
 
-  Population population(individuals, move(reproducer), 0);
+  driver.evaluate(individuals);
 
-  vector<unique_ptr<Evaluator>> evaluators;
-  evaluators.push_back(move(evaluator1));
-  evaluators.push_back(move(evaluator2));
-  evaluators.push_back(move(evaluator3));
-
-  MultiThreadDriver driver(move(evaluators));
-
-  driver.evaluate(population);
-
-  REQUIRE(population[0].hasFitnessCalculated());
-  REQUIRE(population[1].hasFitnessCalculated());
-  REQUIRE(population[2].hasFitnessCalculated());
-}
-
-TEST_CASE("multi thread driver evaluates all individuals with distinct drivers", "[single_thread_driver]") {
-  Mock<Evaluator> evaluatorMock1;
-  Fake(Dtor(evaluatorMock1));
-  When(Method(evaluatorMock1, evaluate)).AlwaysReturn(1);
-  auto evaluator1 = unique_ptr<Evaluator>(&evaluatorMock1.get());
-
-  Mock<Evaluator> evaluatorMock2;
-  Fake(Dtor(evaluatorMock2));
-  When(Method(evaluatorMock2, evaluate)).AlwaysReturn(2);
-  auto evaluator2 = unique_ptr<Evaluator>(&evaluatorMock2.get());
-
-  Mock<Reproducer> reproducerMock;
-  Fake(Dtor(reproducerMock));
-  auto reproducer = unique_ptr<Reproducer>(&reproducerMock.get());
-
-  Genotype genotype1({0, 0, 0});
-  Genotype genotype2({1, 1, 1});
-  Genotype genotype3({2, 2, 2});
-
-  Individual individual1(genotype1);
-  Individual individual2(genotype2);
-  Individual individual3(genotype3);
-
-  Individuals individuals;
-
-  individuals.addIndividual(individual1);
-  individuals.addIndividual(individual2);
-  individuals.addIndividual(individual3);
-
-  Population population(individuals, move(reproducer), 0);
-
-  vector<unique_ptr<Evaluator>> evaluators;
-  evaluators.push_back(move(evaluator1));
-  evaluators.push_back(move(evaluator2));
-
-  MultiThreadDriver driver(move(evaluators));
-
-  driver.evaluate(population);
-
-  Verify(Method(evaluatorMock1, evaluate)).AtLeastOnce();
-  Verify(Method(evaluatorMock2, evaluate)).AtLeastOnce();
-
-  REQUIRE(population[0].hasFitnessCalculated());
-  REQUIRE(population[1].hasFitnessCalculated());
-  REQUIRE(population[2].hasFitnessCalculated());
+  Verify(Method(driverMock1, evaluateOne)).AtLeastOnce();
+  Verify(Method(driverMock2, evaluateOne)).AtLeastOnce();
+  Verify(Method(driverMock3, evaluateOne)).AtLeastOnce();
 }

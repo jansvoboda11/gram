@@ -5,17 +5,16 @@
 #include <string>
 
 #include "gram/evaluation/Evaluator.h"
-#include "gram/individual/Genotype.h"
+#include "gram/individual/Phenotype.h"
 #include "gram/language/mapper/ContextFreeMapper.h"
 
 class StringDiffEvaluator : public gram::Evaluator {
 public:
-  StringDiffEvaluator(std::shared_ptr<gram::ContextFreeMapper> mapper, std::string desired);
-  double evaluate(const gram::Genotype& genotype) noexcept;
+  StringDiffEvaluator(std::string desired);
+  double evaluate(const gram::Phenotype& phenotype) noexcept;
   double calculateFitness(std::string program);
 
 private:
-  std::shared_ptr<gram::ContextFreeMapper> mapper;
   std::string desired;
 };
 

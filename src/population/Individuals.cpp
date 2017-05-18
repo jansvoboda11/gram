@@ -9,6 +9,14 @@
 using namespace gram;
 using namespace std;
 
+Individuals::Individuals() : individuals({}) {
+  //
+}
+
+Individuals::Individuals(std::initializer_list<Individual> individuals) : individuals(move(individuals)) {
+  //
+}
+
 void Individuals::addIndividual(Individual individual) {
   individuals.push_back(individual);
 }
@@ -31,6 +39,10 @@ const Individual& Individuals::bestIndividual(IndividualComparer& comparer) cons
 }
 
 Individual& Individuals::operator[](unsigned long index) {
+  return individuals[index];
+}
+
+const Individual &Individuals::operator[](unsigned long index) const {
   return individuals[index];
 }
 
@@ -60,4 +72,22 @@ vector<Individual>::const_iterator Individuals::begin() const {
 
 vector<Individual>::const_iterator Individuals::end() const {
   return individuals.end();
+}
+
+bool Individuals::operator==(const Individuals &second) const {
+  if (size() != second.size()) {
+    return false;
+  }
+
+  for (unsigned long i = 0; i < size(); i++) {
+    if (operator[](i) != second[i]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+bool Individuals::operator!=(const Individuals &second) const {
+  return !operator==(second);
 }

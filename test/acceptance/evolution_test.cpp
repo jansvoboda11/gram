@@ -49,12 +49,12 @@ TEST_CASE("evolution_test") {
   BnfRuleParser parser;
 
   auto grammar = make_shared<ContextFreeGrammar>(parser.parse(grammarString));
-  auto mapper = make_shared<ContextFreeMapper>(grammar, 1);
+  auto mapper = make_unique<ContextFreeMapper>(grammar, 1);
 
   RandomInitializer initializer(move(numberGenerator4), 50);
 
-  auto evaluator = make_unique<StringDiffEvaluator>(mapper, "gram");
-  auto evaluationDriver = make_unique<SingleThreadDriver>(move(evaluator));
+  auto evaluator = make_unique<StringDiffEvaluator>("gram");
+  auto evaluationDriver = make_unique<SingleThreadDriver>(move(mapper), move(evaluator));
   auto logger = make_unique<NullLogger>();
 
   Evolution evolution(move(evaluationDriver), move(logger));
@@ -69,6 +69,8 @@ TEST_CASE("evolution_test") {
 
   const Individual& result = lastGeneration.individualWithLowestFitness();
 
+  auto resultMapper = make_unique<ContextFreeMapper>(grammar, 1);
+
   REQUIRE(result.fitness() == 0.0);
-  REQUIRE(result.serialize(*mapper) == "gram");
+  REQUIRE(result.serialize(*resultMapper) == "gram");
 }
