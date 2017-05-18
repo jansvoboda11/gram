@@ -5,6 +5,7 @@
 
 #include "gram/error/FitnessNotCalculated.h"
 #include "gram/evaluation/Evaluator.h"
+#include "gram/individual/Fitness.h"
 #include "gram/individual/Genotype.h"
 #include "gram/operator/crossover/Crossover.h"
 #include "gram/operator/mutation/Mutation.h"
@@ -58,10 +59,10 @@ TEST_CASE("individual does not return fitness if it was not calculated yet", "[i
 TEST_CASE("individual returns fitness if it was assigned", "[individual]") {
   Individual individual(Genotype({0}));
 
-  individual.assignFitness(42.0);
+  individual.assignFitness(Fitness(42.0));
 
   REQUIRE(individual.hasFitnessCalculated() == true);
-  REQUIRE(individual.fitness() == 42.0);
+  REQUIRE(individual.fitness() == Fitness(42.0));
 }
 
 TEST_CASE("individual can be serialized", "[individual]") {

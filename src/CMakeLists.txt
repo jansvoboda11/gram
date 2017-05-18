@@ -63,6 +63,7 @@ set(SOURCE_FILES
         ../include/gram/operator/selector/comparer/LowFitnessComparer.h
         ../include/gram/operator/selector/IndividualSelector.h
         ../include/gram/operator/selector/TournamentSelector.h
+        ../include/gram/individual/Fitness.h
         ../include/gram/individual/Genotype.h
         ../include/gram/individual/Individual.h
         ../include/gram/individual/Phenotype.h

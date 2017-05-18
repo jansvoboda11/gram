@@ -5,6 +5,7 @@
 #include <unordered_map>
 
 #include "gram/evaluation/Evaluator.h"
+#include "gram/individual/Fitness.h"
 
 namespace gram {
 /**
@@ -13,11 +14,11 @@ namespace gram {
 class EvaluatorCache : public Evaluator {
 public:
   EvaluatorCache(std::unique_ptr<Evaluator> evaluator);
-  double evaluate(const Phenotype& phenotype) noexcept override;
+  Fitness evaluate(const Phenotype& phenotype) noexcept override;
 
 private:
   std::unique_ptr<Evaluator> evaluator;
-  std::unordered_map<Phenotype, double> cache;
+  std::unordered_map<Phenotype, Fitness> cache;
 };
 }
 

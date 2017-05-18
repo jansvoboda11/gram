@@ -4,6 +4,7 @@
 #include <fakeit.hpp>
 
 #include "gram/error/NoIndividuals.h"
+#include "gram/individual/Fitness.h"
 #include "gram/operator/selector/comparer/LowFitnessComparer.h"
 
 using namespace fakeit;
@@ -43,7 +44,7 @@ TEST_CASE("tournament selector chooses the only individual", "[tournament_select
   auto comparer = make_unique<LowFitnessComparer>();
 
   Individual individual(Genotype({0}));
-  individual.assignFitness(1.0);
+  individual.assignFitness(Fitness(1.0));
 
   Individuals individuals;
   individuals.addIndividual(individual);
@@ -66,10 +67,10 @@ TEST_CASE("tournament selector chooses the best individual from randomly selecte
   Individual individual3(Genotype({0}));
   Individual individual4(Genotype({0}));
 
-  individual1.assignFitness(0.0);
-  individual2.assignFitness(1.0);
-  individual3.assignFitness(2.0);
-  individual4.assignFitness(3.0);
+  individual1.assignFitness(Fitness(0.0));
+  individual2.assignFitness(Fitness(1.0));
+  individual3.assignFitness(Fitness(2.0));
+  individual4.assignFitness(Fitness(3.0));
 
   Individuals individuals;
   individuals.addIndividual(individual1);

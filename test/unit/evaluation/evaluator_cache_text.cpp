@@ -6,6 +6,7 @@
 #include <memory>
 
 #include "gram/evaluation/Evaluator.h"
+#include "gram/individual/Fitness.h"
 #include "gram/individual/Phenotype.h"
 
 using namespace fakeit;
@@ -25,6 +26,6 @@ TEST_CASE("caching evaluator calls the real one only once", "[caching_evaluator]
 
   Verify(Method(evaluatorMock, evaluate)).Exactly(Once);
 
-  REQUIRE(fitness1 == 0.0);
-  REQUIRE(fitness2 == 0.0);
+  REQUIRE(fitness1 == Fitness(0.0));
+  REQUIRE(fitness2 == Fitness(0.0));
 }

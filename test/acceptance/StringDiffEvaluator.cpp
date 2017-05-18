@@ -4,6 +4,7 @@
 #include <string>
 
 #include "gram/evaluation/Evaluator.h"
+#include "gram/individual/Fitness.h"
 #include "gram/individual/Phenotype.h"
 #include "gram/language/mapper/ContextFreeMapper.h"
 
@@ -14,7 +15,7 @@ StringDiffEvaluator::StringDiffEvaluator(string desired) : desired(desired) {
   //
 }
 
-double StringDiffEvaluator::evaluate(const Phenotype& phenotype) noexcept {
+Fitness StringDiffEvaluator::evaluate(const Phenotype& phenotype) noexcept {
   try {
     return calculateFitness(phenotype);
   } catch (...) {
@@ -22,11 +23,11 @@ double StringDiffEvaluator::evaluate(const Phenotype& phenotype) noexcept {
   }
 }
 
-double StringDiffEvaluator::calculateFitness(string program) {
+Fitness StringDiffEvaluator::calculateFitness(string program) {
   unsigned long shorter = min(desired.length(), program.length());
   unsigned long longer = max(desired.length(), program.length());
 
-  double fitness = longer - shorter;
+  Fitness fitness(longer - shorter);
 
   for (unsigned long i = 0; i < shorter; i++) {
     if (program[i] != desired[i]) {

@@ -6,6 +6,7 @@
 #include <memory>
 
 #include "gram/evaluation/Evaluator.h"
+#include "gram/individual/Fitness.h"
 #include "gram/individual/Genotype.h"
 #include "gram/individual/Individual.h"
 #include "gram/population/Individuals.h"
@@ -26,9 +27,9 @@ TEST_CASE("single thread driver evaluates all individuals in a population", "[si
 
   Mock<Evaluator> evaluatorMock;
   Fake(Dtor(evaluatorMock));
-  When(Method(evaluatorMock, evaluate).Using(Phenotype("zero"))).Return(0);
-  When(Method(evaluatorMock, evaluate).Using(Phenotype("one"))).Return(1);
-  When(Method(evaluatorMock, evaluate).Using(Phenotype("two"))).Return(2);
+  When(Method(evaluatorMock, evaluate).Using(Phenotype("zero"))).Return(Fitness(0.0));
+  When(Method(evaluatorMock, evaluate).Using(Phenotype("one"))).Return(Fitness(1.0));
+  When(Method(evaluatorMock, evaluate).Using(Phenotype("two"))).Return(Fitness(2.0));
   auto evaluator = unique_ptr<Evaluator>(&evaluatorMock.get());
 
   Individual individual1(Genotype({0, 0, 0}));

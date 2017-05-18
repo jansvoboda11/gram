@@ -22,7 +22,7 @@ void SingleThreadDriver::evaluate(Individuals& individuals) {
 void SingleThreadDriver::evaluateOne(Individual& individual) {
   Phenotype phenotype = individual.serialize(*mapper);
 
-  double fitness = evaluator->evaluate(phenotype);
+  Fitness fitness = evaluator->evaluate(phenotype);
 
   individual.assignFitness(fitness);
 }

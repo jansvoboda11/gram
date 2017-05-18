@@ -1,6 +1,7 @@
 #ifndef GRAM_EVALUATOR
 #define GRAM_EVALUATOR
 
+#include "gram/individual/Fitness.h"
 #include "gram/individual/Phenotype.h"
 
 namespace gram {
@@ -10,7 +11,7 @@ namespace gram {
 class Evaluator {
 public:
   virtual ~Evaluator() = default;
-  virtual double evaluate(const Phenotype& phenotype) noexcept = 0;
+  virtual Fitness evaluate(const Phenotype& phenotype) noexcept = 0;
 };
 }
 

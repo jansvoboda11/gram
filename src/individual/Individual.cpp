@@ -31,12 +31,12 @@ void Individual::mutate(Mutation& mutation) {
   genotype = mutation.apply(genotype);
 }
 
-void Individual::assignFitness(double fitness) {
+void Individual::assignFitness(Fitness fitness) {
   fitnessScore = fitness;
   fitnessCalculated = true;
 }
 
-double Individual::fitness() const {
+Fitness Individual::fitness() const {
   if (!fitnessCalculated) {
     throw FitnessNotCalculated();
   }

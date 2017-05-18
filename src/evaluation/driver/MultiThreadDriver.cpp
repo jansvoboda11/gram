@@ -13,8 +13,7 @@
 using namespace gram;
 using namespace std;
 
-MultiThreadDriver::MultiThreadDriver(vector<unique_ptr<SingleThreadDriver>> drivers)
-    : drivers(move(drivers)) {
+MultiThreadDriver::MultiThreadDriver(vector<unique_ptr<SingleThreadDriver>> drivers) : drivers(move(drivers)) {
   //
 }
 

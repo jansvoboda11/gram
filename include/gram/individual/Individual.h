@@ -3,6 +3,7 @@
 
 #include <memory>
 
+#include "gram/individual/Fitness.h"
 #include "gram/individual/Genotype.h"
 #include "gram/individual/Phenotype.h"
 #include "gram/language/mapper/Mapper.h"
@@ -19,8 +20,8 @@ public:
   Individual(Genotype genotype);
   Individual mateWith(const Individual& partner, Crossover& crossover) const;
   void mutate(Mutation& mutation);
-  void assignFitness(double fitness);
-  double fitness() const;
+  void assignFitness(Fitness fitness);
+  Fitness fitness() const;
   bool hasFitnessCalculated() const;
   Phenotype serialize(Mapper& mapper) const;
   bool operator==(const Individual& individual) const;
@@ -28,7 +29,7 @@ public:
 
 private:
   Genotype genotype;
-  double fitnessScore;
+  Fitness fitnessScore;
   bool fitnessCalculated;
 };
 }

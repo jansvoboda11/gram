@@ -4,6 +4,7 @@
 #include <fakeit.hpp>
 
 #include "gram/error/NoIndividuals.h"
+#include "gram/individual/Fitness.h"
 #include "gram/operator/selector/comparer/LowFitnessComparer.h"
 
 using namespace fakeit;
@@ -25,9 +26,9 @@ TEST_CASE("individuals choose individual with the lowest fitness", "[individuals
   Individual individual2(Genotype({0}));
   Individual individual3(Genotype({0}));
 
-  individual1.assignFitness(1.0);
-  individual2.assignFitness(0.5);
-  individual3.assignFitness(2.0);
+  individual1.assignFitness(Fitness(1.0));
+  individual2.assignFitness(Fitness(0.5));
+  individual3.assignFitness(Fitness(2.0));
 
   Individuals individuals;
   individuals.addIndividual(individual1);

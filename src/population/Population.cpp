@@ -35,17 +35,17 @@ const Individual& Population::individualWithHighestFitness() const {
   return bestIndividual(comparer);
 }
 
-double Population::bestFitness(IndividualComparer& comparer) const {
+Fitness Population::bestFitness(IndividualComparer& comparer) const {
   return bestIndividual(comparer).fitness();
 }
 
-double Population::lowestFitness() const {
+Fitness Population::lowestFitness() const {
   LowFitnessComparer comparer;
 
   return bestFitness(comparer);
 }
 
-double Population::highestFitness() const {
+Fitness Population::highestFitness() const {
   HighFitnessComparer comparer;
 
   return bestFitness(comparer);

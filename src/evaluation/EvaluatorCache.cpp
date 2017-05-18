@@ -7,11 +7,11 @@ EvaluatorCache::EvaluatorCache(unique_ptr<Evaluator> evaluator) : evaluator(move
   //
 }
 
-double EvaluatorCache::evaluate(const Phenotype& phenotype) noexcept {
+Fitness EvaluatorCache::evaluate(const Phenotype& phenotype) noexcept {
   auto cacheItem = cache.find(phenotype);
 
   if (cacheItem == cache.end()) {
-    double fitness = evaluator->evaluate(phenotype);
+    Fitness fitness = evaluator->evaluate(phenotype);
 
     cache.insert({phenotype, fitness});
 

@@ -21,9 +21,9 @@ public:
   const Individual& bestIndividual(IndividualComparer& comparer) const;
   const Individual& individualWithLowestFitness() const;
   const Individual& individualWithHighestFitness() const;
-  double bestFitness(IndividualComparer& comparer) const;
-  double lowestFitness() const;
-  double highestFitness() const;
+  Fitness bestFitness(IndividualComparer& comparer) const;
+  Fitness lowestFitness() const;
+  Fitness highestFitness() const;
   Individuals& allIndividuals();
   Individual& operator[](unsigned long index);
   std::vector<Individual>::iterator begin();
