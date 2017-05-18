@@ -7,7 +7,7 @@ namespace gram {
 /**
  * Class.
  */
-typedef std::vector<unsigned long> Genotype;
+using Genotype = std::vector<unsigned long>;
 }
 
 #endif // GRAM_INDIVIDUAL_GENOTYPE

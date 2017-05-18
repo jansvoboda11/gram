@@ -7,7 +7,7 @@ namespace gram {
 /**
  * Class.
  */
-typedef std::string Phenotype;
+using Phenotype = std::string;
 }
 
 #endif // GRAM_INDIVIDUAL_PHENOTYPE
