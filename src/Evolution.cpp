@@ -14,13 +14,13 @@ Evolution::Evolution(unique_ptr<EvaluationDriver> evaluationDriver, unique_ptr<L
   //
 }
 
-Population Evolution::run(Population& population, function<bool(Population&)> terminatingCondition) const {
+Population Evolution::run(Population population, function<bool(Population&)> terminatingCondition) const {
   evaluationDriver->evaluate(population.allIndividuals());
 
   while (!terminatingCondition(population)) {
     logger->logProgress(population);
 
-    population = population.reproduce();
+    population.reproduce();
 
     evaluationDriver->evaluate(population.allIndividuals());
   }

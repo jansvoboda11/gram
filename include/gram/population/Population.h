@@ -15,7 +15,8 @@ namespace gram {
  */
 class Population {
 public:
-  Population(Individuals individuals, std::shared_ptr<Reproducer> reproducer, unsigned long generationNumber);
+  Population(Individuals individuals, std::unique_ptr<Reproducer> reproducer, unsigned long generationNumber);
+  Population(Population&&) = default;
   unsigned long generationNumber() const;
   const Individual& bestIndividual(IndividualComparer& comparer) const;
   const Individual& individualWithLowestFitness() const;
@@ -30,12 +31,12 @@ public:
   std::vector<Individual>::const_iterator begin() const;
   std::vector<Individual>::const_iterator end() const;
   unsigned long size() const;
-  Population reproduce();
+  void reproduce();
   virtual ~Population() = default;
 
 private:
   Individuals individuals;
-  std::shared_ptr<Reproducer> reproducer;
+  std::unique_ptr<Reproducer> reproducer;
   unsigned long number;
 };
 }

@@ -20,7 +20,7 @@ RandomInitializer::RandomInitializer(unique_ptr<NumberGenerator> numberGenerator
   }
 }
 
-Population RandomInitializer::initialize(unsigned long populationSize, shared_ptr<Reproducer> reproducer) const {
+Population RandomInitializer::initialize(unsigned long populationSize, unique_ptr<Reproducer> reproducer) const {
   if (populationSize == 0) {
     throw NoIndividuals();
   }
@@ -34,5 +34,5 @@ Population RandomInitializer::initialize(unsigned long populationSize, shared_pt
     individuals.addIndividual(Individual(genotype));
   }
 
-  return Population(individuals, reproducer, 0);
+  return Population(individuals, move(reproducer), 0);
 }

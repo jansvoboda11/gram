@@ -42,7 +42,7 @@ TEST_CASE("evolution_test") {
   auto selector = make_unique<TournamentSelector>(20, move(numberGenerator1), move(comparer));
   auto mutation = make_unique<FastCodonMutation>(move(stepGenerator), move(numberGenerator2));
   auto crossover = make_unique<OnePointCrossover>(move(numberGenerator3));
-  auto reproducer = make_shared<PassionateReproducer>(move(selector), move(crossover), move(mutation));
+  auto reproducer = make_unique<PassionateReproducer>(move(selector), move(crossover), move(mutation));
 
   string grammarString = "<word> ::= <word> <char> | <char>\n"
                          "<char> ::= \"g\" | \"r\" | \"a\" | \"m\"";
@@ -61,9 +61,9 @@ TEST_CASE("evolution_test") {
 
   Evolution evolution(move(evaluationDriver), move(logger));
 
-  Population population = initializer.initialize(200, reproducer);
+  Population population = initializer.initialize(200, move(reproducer));
 
-  Population lastGeneration = evolution.run(population, [](Population& currentPopulation) -> bool {
+  Population lastGeneration = evolution.run(move(population), [](Population& currentPopulation) -> bool {
     return currentPopulation.lowestFitness() == 0.0;
   });
 

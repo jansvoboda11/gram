@@ -30,11 +30,11 @@ TEST_CASE("random initializer requires valid population size", "[random_initiali
 
   Mock<Reproducer> reproducerMock;
   Fake(Dtor(reproducerMock));
-  auto reproducer = shared_ptr<Reproducer>(&reproducerMock.get());
+  auto reproducer = unique_ptr<Reproducer>(&reproducerMock.get());
 
   RandomInitializer initializer(move(numberGenerator), 200);
 
-  REQUIRE_THROWS_AS(initializer.initialize(0, reproducer), NoIndividuals);
+  REQUIRE_THROWS_AS(initializer.initialize(0, move(reproducer)), NoIndividuals);
 }
 
 TEST_CASE("random initializer initializes new population", "[random_initializer]") {
@@ -56,11 +56,11 @@ TEST_CASE("random initializer initializes new population", "[random_initializer]
 
   Mock<Reproducer> reproducerMock;
   Fake(Dtor(reproducerMock));
-  auto reproducer = shared_ptr<Reproducer>(&reproducerMock.get());
+  auto reproducer = unique_ptr<Reproducer>(&reproducerMock.get());
 
   RandomInitializer initializer(move(numberGenerator), 3);
 
-  Population population = initializer.initialize(3, reproducer);
+  Population population = initializer.initialize(3, move(reproducer));
 
   REQUIRE(population.size() == 3);
   REQUIRE(population[0] == individual1);

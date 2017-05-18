@@ -15,7 +15,7 @@ namespace gram {
 class RandomInitializer : public Initializer {
 public:
   RandomInitializer(std::unique_ptr<NumberGenerator> numberGenerator, unsigned long genotypeSize);
-  Population initialize(unsigned long populationSize, std::shared_ptr<Reproducer> reproducer) const override;
+  Population initialize(unsigned long populationSize, std::unique_ptr<Reproducer> reproducer) const override;
 
 private:
   std::unique_ptr<NumberGenerator> numberGenerator;

@@ -10,8 +10,8 @@
 using namespace gram;
 using namespace std;
 
-Population::Population(Individuals individuals, shared_ptr<Reproducer> reproducer, unsigned long generationNumber)
-    : individuals(individuals), reproducer(reproducer), number(generationNumber) {
+Population::Population(Individuals individuals, unique_ptr<Reproducer> reproducer, unsigned long generationNumber)
+    : individuals(individuals), reproducer(move(reproducer)), number(generationNumber) {
   //
 }
 
@@ -79,8 +79,8 @@ unsigned long Population::size() const {
   return individuals.size();
 }
 
-Population Population::reproduce() {
-  Individuals successors = reproducer->reproduce(individuals);
+void Population::reproduce() {
+  individuals = reproducer->reproduce(individuals);
 
-  return Population(successors, reproducer, number + 1);
+  number += 1;
 }
