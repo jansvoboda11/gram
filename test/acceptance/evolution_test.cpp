@@ -63,11 +63,9 @@ TEST_CASE("evolution_test") {
 
   Population population = initializer.initialize(200, reproducer);
 
-  function<bool(Population&)> successCondition = [](Population& currentPopulation) -> bool {
-    return currentPopulation.lowestFitness() == 0;
-  };
-
-  Population lastGeneration = evolution.run(population, successCondition);
+  Population lastGeneration = evolution.run(population, [](Population& currentPopulation) -> bool {
+    return currentPopulation.lowestFitness() == 0.0;
+  });
 
   const Individual& result = lastGeneration.individualWithLowestFitness();
 
