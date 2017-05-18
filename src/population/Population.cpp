@@ -1,9 +1,9 @@
 #include "gram/population/Population.h"
 
 #include "gram/individual/Individual.h"
-#include "gram/individual/comparer/HighFitnessComparer.h"
-#include "gram/individual/comparer/IndividualComparer.h"
-#include "gram/individual/comparer/LowFitnessComparer.h"
+#include "gram/operator/selector/comparer/HighFitnessComparer.h"
+#include "gram/operator/selector/comparer/IndividualComparer.h"
+#include "gram/operator/selector/comparer/LowFitnessComparer.h"
 #include "gram/population/Individuals.h"
 #include "gram/population/reproducer/Reproducer.h"
 

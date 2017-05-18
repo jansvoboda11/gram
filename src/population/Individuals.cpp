@@ -4,7 +4,7 @@
 
 #include "gram/error/NoIndividuals.h"
 #include "gram/individual/Individual.h"
-#include "gram/individual/comparer/IndividualComparer.h"
+#include "gram/operator/selector/comparer/IndividualComparer.h"
 
 using namespace gram;
 using namespace std;

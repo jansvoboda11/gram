@@ -4,7 +4,7 @@
 #include <fakeit.hpp>
 
 #include "gram/error/NoIndividuals.h"
-#include "gram/individual/comparer/LowFitnessComparer.h"
+#include "gram/operator/selector/comparer/LowFitnessComparer.h"
 
 using namespace fakeit;
 using namespace gram;

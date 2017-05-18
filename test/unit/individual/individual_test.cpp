@@ -6,8 +6,8 @@
 #include "gram/error/FitnessNotCalculated.h"
 #include "gram/evaluation/Evaluator.h"
 #include "gram/individual/Genotype.h"
-#include "gram/individual/crossover/Crossover.h"
-#include "gram/individual/mutation/Mutation.h"
+#include "gram/operator/crossover/Crossover.h"
+#include "gram/operator/mutation/Mutation.h"
 
 using namespace fakeit;
 using namespace gram;

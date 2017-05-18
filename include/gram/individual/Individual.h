@@ -5,9 +5,9 @@
 
 #include "gram/individual/Genotype.h"
 #include "gram/individual/Phenotype.h"
-#include "gram/individual/crossover/Crossover.h"
-#include "gram/individual/mutation/Mutation.h"
 #include "gram/language/mapper/Mapper.h"
+#include "gram/operator/crossover/Crossover.h"
+#include "gram/operator/mutation/Mutation.h"
 
 namespace gram {
 /**

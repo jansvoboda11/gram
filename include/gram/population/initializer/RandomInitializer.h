@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "gram/population/Population.h"
-#include "gram/population/initializer/Initializer.h"
+#include "Initializer.h"
 #include "gram/population/reproducer/Reproducer.h"
 #include "gram/random/number_generator/NumberGenerator.h"
 

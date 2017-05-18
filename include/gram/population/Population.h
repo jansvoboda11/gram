@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "gram/individual/Individual.h"
-#include "gram/individual/comparer/IndividualComparer.h"
+#include "gram/operator/selector/comparer/IndividualComparer.h"
 #include "gram/population/Individuals.h"
 #include "gram/population/reproducer/Reproducer.h"
 

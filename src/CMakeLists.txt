@@ -14,12 +14,6 @@ set(SOURCE_FILES
         evaluation/driver/MultiThreadDriver.cpp
         evaluation/driver/SingleThreadDriver.cpp
         evaluation/EvaluatorCache.cpp
-        individual/comparer/HighFitnessComparer.cpp
-        individual/comparer/LowFitnessComparer.cpp
-        individual/crossover/OnePointCrossover.cpp
-        individual/mutation/BernoulliStepGenerator.cpp
-        individual/mutation/FastCodonMutation.cpp
-        individual/mutation/NaiveCodonMutation.cpp
         individual/Individual.cpp
         language/parser/BnfRuleParser.cpp
         language/symbol/NonTerminal.cpp
@@ -29,9 +23,15 @@ set(SOURCE_FILES
         language/symbol/Terminal.cpp
         language/grammar/ContextFreeGrammar.cpp
         language/mapper/ContextFreeMapper.cpp
+        operator/crossover/OnePointCrossover.cpp
+        operator/mutation/BernoulliStepGenerator.cpp
+        operator/mutation/FastCodonMutation.cpp
+        operator/mutation/NaiveCodonMutation.cpp
+        operator/selector/comparer/HighFitnessComparer.cpp
+        operator/selector/comparer/LowFitnessComparer.cpp
+        operator/selector/TournamentSelector.cpp
         population/initializer/RandomInitializer.cpp
         population/reproducer/PassionateReproducer.cpp
-        population/selector/TournamentSelector.cpp
         population/Individuals.cpp
         population/Population.cpp
         random/bool_generator/BoolGenerator.cpp
@@ -52,15 +52,17 @@ set(SOURCE_FILES
         ../include/gram/evaluation/driver/SingleThreadDriver.h
         ../include/gram/evaluation/EvaluatorCache.h
         ../include/gram/evaluation/Evaluator.h
-        ../include/gram/individual/comparer/HighFitnessComparer.h
-        ../include/gram/individual/comparer/IndividualComparer.h
-        ../include/gram/individual/comparer/LowFitnessComparer.h
-        ../include/gram/individual/crossover/Crossover.h
-        ../include/gram/individual/crossover/OnePointCrossover.h
-        ../include/gram/individual/mutation/BernoulliStepGenerator.h
-        ../include/gram/individual/mutation/FastCodonMutation.h
-        ../include/gram/individual/mutation/Mutation.h
-        ../include/gram/individual/mutation/NaiveCodonMutation.h
+        ../include/gram/operator/crossover/Crossover.h
+        ../include/gram/operator/crossover/OnePointCrossover.h
+        ../include/gram/operator/mutation/BernoulliStepGenerator.h
+        ../include/gram/operator/mutation/FastCodonMutation.h
+        ../include/gram/operator/mutation/Mutation.h
+        ../include/gram/operator/mutation/NaiveCodonMutation.h
+        ../include/gram/operator/selector/comparer/HighFitnessComparer.h
+        ../include/gram/operator/selector/comparer/IndividualComparer.h
+        ../include/gram/operator/selector/comparer/LowFitnessComparer.h
+        ../include/gram/operator/selector/IndividualSelector.h
+        ../include/gram/operator/selector/TournamentSelector.h
         ../include/gram/individual/Genotype.h
         ../include/gram/individual/Individual.h
         ../include/gram/individual/Phenotype.h
@@ -78,8 +80,6 @@ set(SOURCE_FILES
         ../include/gram/population/initializer/RandomInitializer.h
         ../include/gram/population/reproducer/PassionateReproducer.h
         ../include/gram/population/reproducer/Reproducer.h
-        ../include/gram/population/selector/IndividualSelector.h
-        ../include/gram/population/selector/TournamentSelector.h
         ../include/gram/population/Individuals.h
         ../include/gram/population/Population.h
         ../include/gram/random/bool_generator/BoolGenerator.h
