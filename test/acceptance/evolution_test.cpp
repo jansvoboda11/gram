@@ -7,6 +7,7 @@
 #include <fakeit.hpp>
 
 #include "gram/evaluation/driver/SingleThreadDriver.h"
+#include "gram/evaluation/EvaluatorCache.h"
 #include "gram/individual/Individual.h"
 #include "gram/individual/comparer/LowFitnessComparer.h"
 #include "gram/individual/crossover/OnePointCrossover.h"
@@ -54,7 +55,8 @@ TEST_CASE("evolution_test") {
   RandomInitializer initializer(move(numberGenerator4), 50);
 
   auto evaluator = make_unique<StringDiffEvaluator>("gram");
-  auto evaluationDriver = make_unique<SingleThreadDriver>(move(mapper), move(evaluator));
+  auto evaluatorCache = make_unique<EvaluatorCache>(move(evaluator));
+  auto evaluationDriver = make_unique<SingleThreadDriver>(move(mapper), move(evaluatorCache));
   auto logger = make_unique<NullLogger>();
 
   Evolution evolution(move(evaluationDriver), move(logger));

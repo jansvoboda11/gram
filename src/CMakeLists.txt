@@ -13,6 +13,7 @@ set(SOURCE_FILES
         error/ZeroGenotypeLength.cpp
         evaluation/driver/MultiThreadDriver.cpp
         evaluation/driver/SingleThreadDriver.cpp
+        evaluation/EvaluatorCache.cpp
         individual/comparer/HighFitnessComparer.cpp
         individual/comparer/LowFitnessComparer.cpp
         individual/crossover/OnePointCrossover.cpp
@@ -49,6 +50,7 @@ set(SOURCE_FILES
         ../include/gram/evaluation/driver/EvaluationDriver.h
         ../include/gram/evaluation/driver/MultiThreadDriver.h
         ../include/gram/evaluation/driver/SingleThreadDriver.h
+        ../include/gram/evaluation/EvaluatorCache.h
         ../include/gram/evaluation/Evaluator.h
         ../include/gram/individual/comparer/HighFitnessComparer.h
         ../include/gram/individual/comparer/IndividualComparer.h

@@ -5,6 +5,7 @@ include_directories(../../include)
 add_executable(utest
         evaluation/driver/multi_thread_driver_test.cpp
         evaluation/driver/single_thread_driver_test.cpp
+        evaluation/evaluator_cache_text.cpp
         individual/comparer/high_fitness_comparer_test.cpp
         individual/comparer/low_fitness_comparer_test.cpp
         individual/crossover/one_point_crossover_test.cpp
