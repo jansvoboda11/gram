@@ -21,17 +21,13 @@ TEST_CASE("individuals throw when empty and choosing the best individual", "[ind
 TEST_CASE("individuals choose individual with the lowest fitness", "[individuals]") {
   LowFitnessComparer comparer;
 
-  Mock<Individual> individual1Mock;
-  Mock<Individual> individual2Mock;
-  Mock<Individual> individual3Mock;
+  Individual individual1(Genotype({0}));
+  Individual individual2(Genotype({0}));
+  Individual individual3(Genotype({0}));
 
-  When(Method(individual1Mock, fitness)).AlwaysReturn(1.0);
-  When(Method(individual2Mock, fitness)).AlwaysReturn(0.5);
-  When(Method(individual3Mock, fitness)).AlwaysReturn(2.0);
-
-  Individual individual1 = individual1Mock.get();
-  Individual individual2 = individual2Mock.get();
-  Individual individual3 = individual3Mock.get();
+  individual1.assignFitness(1.0);
+  individual2.assignFitness(0.5);
+  individual3.assignFitness(2.0);
 
   Individuals individuals;
   individuals.addIndividual(individual1);

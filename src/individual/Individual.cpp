@@ -32,7 +32,13 @@ void Individual::mutate(Mutation& mutation) {
 }
 
 void Individual::evaluate(Evaluator& evaluator) {
-  fitnessScore = evaluator.evaluate(genotype);
+  double fitness = evaluator.evaluate(genotype);
+
+  assignFitness(fitness);
+}
+
+void Individual::assignFitness(double fitness) {
+  fitnessScore = fitness;
   fitnessCalculated = true;
 }
 

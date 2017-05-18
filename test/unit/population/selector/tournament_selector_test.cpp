@@ -42,9 +42,8 @@ TEST_CASE("tournament selector chooses the only individual", "[tournament_select
 
   auto comparer = make_unique<LowFitnessComparer>();
 
-  Mock<Individual> individualMock;
-  When(Method(individualMock, fitness)).AlwaysReturn(1.0);
-  Individual individual = individualMock.get();
+  Individual individual(Genotype({0}));
+  individual.assignFitness(1.0);
 
   Individuals individuals;
   individuals.addIndividual(individual);
@@ -62,20 +61,15 @@ TEST_CASE("tournament selector chooses the best individual from randomly selecte
 
   auto comparer = make_unique<LowFitnessComparer>();
 
-  Mock<Individual> individual1Mock;
-  Mock<Individual> individual2Mock;
-  Mock<Individual> individual3Mock;
-  Mock<Individual> individual4Mock;
+  Individual individual1(Genotype({0}));
+  Individual individual2(Genotype({0}));
+  Individual individual3(Genotype({0}));
+  Individual individual4(Genotype({0}));
 
-  When(Method(individual1Mock, fitness)).AlwaysReturn(0.0);
-  When(Method(individual2Mock, fitness)).AlwaysReturn(1.0);
-  When(Method(individual3Mock, fitness)).AlwaysReturn(2.0);
-  When(Method(individual4Mock, fitness)).AlwaysReturn(3.0);
-
-  Individual individual1 = individual1Mock.get();
-  Individual individual2 = individual2Mock.get();
-  Individual individual3 = individual3Mock.get();
-  Individual individual4 = individual4Mock.get();
+  individual1.assignFitness(0.0);
+  individual2.assignFitness(1.0);
+  individual3.assignFitness(2.0);
+  individual4.assignFitness(3.0);
 
   Individuals individuals;
   individuals.addIndividual(individual1);

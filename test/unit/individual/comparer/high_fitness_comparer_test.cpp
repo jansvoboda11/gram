@@ -9,15 +9,11 @@ using namespace fakeit;
 using namespace gram;
 
 TEST_CASE("high fitness comparer chooses the right individual", "[high_fitness_comparer]") {
-  Mock<Individual> individual1Mock;
-  When(Method(individual1Mock, hasFitnessCalculated)).AlwaysReturn(true);
-  When(Method(individual1Mock, fitness)).Return(1.0);
-  Individual& individual1(individual1Mock.get());
+  Individual individual1(Genotype({0}));
+  Individual individual2(Genotype({0}));
 
-  Mock<Individual> individual2Mock;
-  When(Method(individual2Mock, hasFitnessCalculated)).AlwaysReturn(true);
-  When(Method(individual2Mock, fitness)).Return(2.0);
-  Individual& individual2(individual2Mock.get());
+  individual1.assignFitness(1.0);
+  individual2.assignFitness(2.0);
 
   HighFitnessComparer comparer;
 
@@ -25,14 +21,10 @@ TEST_CASE("high fitness comparer chooses the right individual", "[high_fitness_c
 }
 
 TEST_CASE("high fitness comparer chooses individual with calculated fitness", "[high_fitness_comparer]") {
-  Mock<Individual> individual1Mock;
-  When(Method(individual1Mock, hasFitnessCalculated)).AlwaysReturn(true);
-  When(Method(individual1Mock, fitness)).Return(100.0);
-  Individual& individual1(individual1Mock.get());
+  Individual individual1(Genotype({0}));
+  Individual individual2(Genotype({0}));
 
-  Mock<Individual> individual2Mock;
-  When(Method(individual2Mock, hasFitnessCalculated)).AlwaysReturn(false);
-  Individual& individual2(individual2Mock.get());
+  individual1.assignFitness(100.0);
 
   HighFitnessComparer comparer;
 

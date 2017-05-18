@@ -18,12 +18,12 @@ class Individual {
 public:
   Individual(const Individual& individual);
   Individual(const Genotype& genotype);
-  virtual ~Individual() = default;
   Individual mateWith(const Individual& partner, Crossover& crossover) const;
   void mutate(Mutation& mutation);
   void evaluate(Evaluator& evaluator);
-  virtual double fitness() const;
-  virtual bool hasFitnessCalculated() const;
+  void assignFitness(double fitnessScore);
+  double fitness() const;
+  bool hasFitnessCalculated() const;
   std::string serialize(Mapper& mapper) const;
   bool operator==(const Individual& individual) const;
   bool operator!=(const Individual& individual) const;
