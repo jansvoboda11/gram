@@ -13,7 +13,7 @@ namespace gram {
 class EvaluatorCache : public Evaluator {
 public:
   EvaluatorCache(std::unique_ptr<Evaluator> evaluator);
-  double evaluate(const Phenotype& phenotype) noexcept;
+  double evaluate(const Phenotype& phenotype) noexcept override;
 
 private:
   std::unique_ptr<Evaluator> evaluator;

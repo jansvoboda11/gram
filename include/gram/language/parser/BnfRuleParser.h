@@ -14,7 +14,7 @@ namespace gram {
  */
 class BnfRuleParser : public RuleParser {
 public:
-  ContextFreeGrammar parse(std::string input) const;
+  ContextFreeGrammar parse(std::string input) const override;
 
 private:
   void parseRule(ContextFreeGrammar& grammar, std::string& line) const;

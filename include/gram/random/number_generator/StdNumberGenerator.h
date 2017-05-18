@@ -53,11 +53,11 @@ template <typename T> gram::StdNumberGenerator<T> gram::StdNumberGenerator<T>::w
   return StdNumberGenerator(seed, max);
 }
 
-template <typename T> unsigned long gram::StdNumberGenerator<T>::generate() {
+template <typename T> unsigned long gram::StdNumberGenerator<T>::generate() override {
   return distribution(generator);
 }
 
-template <typename T> unsigned long gram::StdNumberGenerator<T>::getMax() {
+template <typename T> unsigned long gram::StdNumberGenerator<T>::getMax() override {
   return max;
 }
 

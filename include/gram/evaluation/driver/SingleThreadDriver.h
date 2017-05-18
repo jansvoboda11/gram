@@ -15,7 +15,7 @@ namespace gram {
 class SingleThreadDriver : public EvaluationDriver {
 public:
   SingleThreadDriver(std::unique_ptr<Mapper> mapper, std::unique_ptr<Evaluator> evaluator);
-  void evaluate(Individuals& individuals);
+  void evaluate(Individuals& individuals) override;
   virtual void evaluateOne(Individual& individual);
 
 private:

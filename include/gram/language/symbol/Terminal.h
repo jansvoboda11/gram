@@ -13,8 +13,8 @@ class Terminal : public Symbol {
 public:
   Terminal(std::string value);
   std::string getValue() const;
-  bool isTerminal() const;
-  bool isNonTerminal() const;
+  bool isTerminal() const override;
+  bool isNonTerminal() const override;
   bool operator==(const Terminal& terminal) const;
   bool operator!=(const Terminal& terminal) const;
 

@@ -11,7 +11,7 @@
 class StringDiffEvaluator : public gram::Evaluator {
 public:
   StringDiffEvaluator(std::string desired);
-  double evaluate(const gram::Phenotype& phenotype) noexcept;
+  double evaluate(const gram::Phenotype& phenotype) noexcept override;
   double calculateFitness(std::string program);
 
 private:

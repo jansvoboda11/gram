@@ -17,7 +17,7 @@ namespace gram {
 class MultiThreadDriver : public EvaluationDriver {
 public:
   MultiThreadDriver(std::vector<std::unique_ptr<SingleThreadDriver>> drivers);
-  void evaluate(Individuals& individuals);
+  void evaluate(Individuals& individuals) override;
 
 private:
   std::vector<std::unique_ptr<SingleThreadDriver>> drivers;

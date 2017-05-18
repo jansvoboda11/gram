@@ -12,8 +12,8 @@ namespace gram {
 class XorShiftNumberGenerator : public NumberGenerator {
 public:
   XorShiftNumberGenerator();
-  unsigned long generate();
-  unsigned long getMax();
+  unsigned long generate() override;
+  unsigned long getMax() override;
 
 private:
   std::uint32_t state;

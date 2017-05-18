@@ -15,7 +15,7 @@ namespace gram {
 class NaiveCodonMutation : public Mutation {
 public:
   NaiveCodonMutation(std::unique_ptr<BoolGenerator> boolGenerator, std::unique_ptr<NumberGenerator> numberGenerator);
-  Genotype apply(Genotype genotype);
+  Genotype apply(Genotype genotype) override;
 
 private:
   std::unique_ptr<BoolGenerator> boolGenerator;

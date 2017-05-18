@@ -12,8 +12,8 @@ class NonTerminal : public Symbol {
 public:
   NonTerminal(Rule& rule);
   Rule& toRule() const;
-  bool isTerminal() const;
-  bool isNonTerminal() const;
+  bool isTerminal() const override;
+  bool isNonTerminal() const override;
   bool operator==(const NonTerminal& nonTerminal) const;
   bool operator!=(const NonTerminal& nonTerminal) const;
 

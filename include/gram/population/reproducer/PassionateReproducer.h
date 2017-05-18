@@ -18,7 +18,7 @@ class PassionateReproducer : public Reproducer {
 public:
   PassionateReproducer(std::unique_ptr<IndividualSelector> selector, std::unique_ptr<Crossover> crossover,
                        std::unique_ptr<Mutation> mutation);
-  Individuals reproduce(Individuals& individuals);
+  Individuals reproduce(Individuals& individuals) override;
 
 private:
   std::unique_ptr<IndividualSelector> selector;

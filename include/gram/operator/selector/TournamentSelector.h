@@ -17,7 +17,7 @@ class TournamentSelector : public IndividualSelector {
 public:
   TournamentSelector(unsigned long tournamentSize, std::unique_ptr<NumberGenerator> numberGenerator,
                      std::unique_ptr<IndividualComparer> comparer);
-  Individual& select(Individuals& individuals);
+  Individual& select(Individuals& individuals) override;
 
 private:
   unsigned long tournamentSize;

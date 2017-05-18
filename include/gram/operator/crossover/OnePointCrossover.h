@@ -14,7 +14,7 @@ namespace gram {
 class OnePointCrossover : public Crossover {
 public:
   OnePointCrossover(std::unique_ptr<NumberGenerator> numberGenerator);
-  Genotype apply(const Genotype& first, const Genotype& second);
+  Genotype apply(const Genotype& first, const Genotype& second) override;
 
 private:
   std::unique_ptr<NumberGenerator> numberGenerator;
