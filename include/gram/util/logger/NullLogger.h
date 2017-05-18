@@ -10,8 +10,8 @@ namespace gram {
  */
 class NullLogger : public Logger {
 public:
-  void logProgress(const Population& population);
-  void logResult(const Population& population);
+  void logProgress(const Population& population) override;
+  void logResult(const Population& population) override;
 };
 }
 
