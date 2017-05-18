@@ -38,10 +38,11 @@ TEST_CASE("individual undergoes mutation", "[individual]") {
   Individual individual(genotype);
   Individual expectedIndividual(expectedGenotype);
 
-  Mock<Mutation> mutation;
-  When(Method(mutation, apply)).Return(Genotype({0, 1, 0}));
+  Mock<Mutation> mutationMock;
+  When(Method(mutationMock, apply)).Return(Genotype({0, 1, 0}));
+  Mutation& mutation = mutationMock.get();
 
-  individual.mutate(mutation.get());
+  individual.mutate(mutation);
 
   REQUIRE(individual == expectedIndividual);
 }

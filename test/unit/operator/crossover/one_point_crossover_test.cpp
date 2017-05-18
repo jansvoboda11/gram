@@ -8,10 +8,10 @@ using namespace gram;
 using namespace std;
 
 TEST_CASE("genotypes of the same length can be combined", "[one_point_crossover]") {
-  Mock<NumberGenerator> mock;
-  Fake(Dtor(mock));
-  When(Method(mock, generate)).Return(2);
-  auto numberGenerator = unique_ptr<NumberGenerator>(&mock.get());
+  Mock<NumberGenerator> numberGeneratorMock;
+  Fake(Dtor(numberGeneratorMock));
+  When(Method(numberGeneratorMock, generate)).Return(2);
+  auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
   OnePointCrossover crossover(move(numberGenerator));
 
@@ -22,10 +22,10 @@ TEST_CASE("genotypes of the same length can be combined", "[one_point_crossover]
 }
 
 TEST_CASE("short and long genotypes can be combined", "[one_point_crossover]") {
-  Mock<NumberGenerator> mock;
-  Fake(Dtor(mock));
-  When(Method(mock, generate)).Return(2);
-  auto numberGenerator = unique_ptr<NumberGenerator>(&mock.get());
+  Mock<NumberGenerator> numberGeneratorMock;
+  Fake(Dtor(numberGeneratorMock));
+  When(Method(numberGeneratorMock, generate)).Return(2);
+  auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
   OnePointCrossover crossover(move(numberGenerator));
 
@@ -36,10 +36,10 @@ TEST_CASE("short and long genotypes can be combined", "[one_point_crossover]") {
 }
 
 TEST_CASE("long and short genotypes can be combined", "[one_point_crossover]") {
-  Mock<NumberGenerator> mock;
-  Fake(Dtor(mock));
-  When(Method(mock, generate)).Return(2);
-  auto numberGenerator = unique_ptr<NumberGenerator>(&mock.get());
+  Mock<NumberGenerator> numberGeneratorMock;
+  Fake(Dtor(numberGeneratorMock));
+  When(Method(numberGeneratorMock, generate)).Return(2);
+  auto numberGenerator = unique_ptr<NumberGenerator>(&numberGeneratorMock.get());
 
   OnePointCrossover crossover(move(numberGenerator));
 
