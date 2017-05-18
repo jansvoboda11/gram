@@ -13,7 +13,7 @@ Individuals::Individuals() : individuals({}) {
   //
 }
 
-Individuals::Individuals(std::initializer_list<Individual> individuals) : individuals(move(individuals)) {
+Individuals::Individuals(initializer_list<Individual> individuals) : individuals(move(individuals)) {
   //
 }
 
