@@ -41,4 +41,4 @@ private:
 };
 }
 
-#endif // GRAM_POPULATION
+#endif

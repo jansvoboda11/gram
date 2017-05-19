@@ -1,5 +1,5 @@
-#ifndef GRAM_ERROR_NO_INDIVIDUALS
-#define GRAM_ERROR_NO_INDIVIDUALS
+#ifndef GRAM_NO_INDIVIDUALS
+#define GRAM_NO_INDIVIDUALS
 
 #include <stdexcept>
 
@@ -13,4 +13,4 @@ public:
 };
 }
 
-#endif // GRAM_ERROR_NO_INDIVIDUALS
+#endif

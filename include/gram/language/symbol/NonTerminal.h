@@ -1,5 +1,5 @@
-#ifndef GRAM_LANGUAGE_NON_TERMINAL_SYMBOL
-#define GRAM_LANGUAGE_NON_TERMINAL_SYMBOL
+#ifndef GRAM_NON_TERMINAL
+#define GRAM_NON_TERMINAL
 
 #include "gram/language/symbol/Symbol.h"
 
@@ -22,4 +22,4 @@ private:
 };
 }
 
-#endif // GRAM_LANGUAGE_NON_TERMINAL_SYMBOL
+#endif

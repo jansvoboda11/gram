@@ -1,5 +1,5 @@
-#ifndef GRAM_ERROR_FITNESS_NOT_CALCULATED
-#define GRAM_ERROR_FITNESS_NOT_CALCULATED
+#ifndef GRAM_FITNESS_NOT_CALCULATED
+#define GRAM_FITNESS_NOT_CALCULATED
 
 #include <stdexcept>
 
@@ -13,4 +13,4 @@ public:
 };
 }
 
-#endif // GRAM_ERROR_FITNESS_NOT_CALCULATED
+#endif

@@ -34,4 +34,4 @@ private:
 };
 }
 
-#endif // GRAM_INDIVIDUAL
+#endif

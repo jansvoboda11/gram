@@ -15,4 +15,4 @@ private:
 };
 }
 
-#endif // GRAM_PROBABILITY
+#endif

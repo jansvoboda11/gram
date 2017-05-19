@@ -1,5 +1,5 @@
-#ifndef GRAM_ERROR_ZERO_GENOTYPE_LENGTH
-#define GRAM_ERROR_ZERO_GENOTYPE_LENGTH
+#ifndef GRAM_ZERO_GENOTYPE_LENGTH
+#define GRAM_ZERO_GENOTYPE_LENGTH
 
 #include <stdexcept>
 
@@ -13,4 +13,4 @@ public:
 };
 }
 
-#endif // GRAM_ERROR_ZERO_GENOTYPE_LENGTH
+#endif

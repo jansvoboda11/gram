@@ -1,5 +1,5 @@
-#ifndef GRAM_LANGUAGE_CONTEXT_FREE_GRAMMAR
-#define GRAM_LANGUAGE_CONTEXT_FREE_GRAMMAR
+#ifndef GRAM_CONTEXT_FREE_GRAMMAR
+#define GRAM_CONTEXT_FREE_GRAMMAR
 
 #include <memory>
 #include <string>
@@ -24,4 +24,4 @@ private:
 };
 }
 
-#endif // GRAM_LANGUAGE_CONTEXT_FREE_GRAMMAR
+#endif

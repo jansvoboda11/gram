@@ -1,5 +1,5 @@
-#ifndef GRAM_LANGUAGE_CONTEXT_FREE_MAPPER
-#define GRAM_LANGUAGE_CONTEXT_FREE_MAPPER
+#ifndef GRAM_CONTEXT_FREE_MAPPER
+#define GRAM_CONTEXT_FREE_MAPPER
 
 #include <memory>
 #include <stack>
@@ -30,4 +30,4 @@ private:
 };
 }
 
-#endif // GRAM_LANGUAGE_CONTEXT_FREE_MAPPER
+#endif

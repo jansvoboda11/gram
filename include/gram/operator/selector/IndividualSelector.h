@@ -1,5 +1,5 @@
-#ifndef GRAM_POPULATION_INDIVIDUAL_SELECTOR
-#define GRAM_POPULATION_INDIVIDUAL_SELECTOR
+#ifndef GRAM_SELECTOR
+#define GRAM_SELECTOR
 
 #include <memory>
 #include <vector>
@@ -17,4 +17,4 @@ public:
 };
 }
 
-#endif // GRAM_POPULATION_INDIVIDUAL_SELECTOR
+#endif

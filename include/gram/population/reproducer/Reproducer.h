@@ -1,5 +1,5 @@
-#ifndef GRAM_POPULATION_REPRODUCER
-#define GRAM_POPULATION_REPRODUCER
+#ifndef GRAM_REPRODUCER
+#define GRAM_REPRODUCER
 
 #include "gram/population/Individuals.h"
 
@@ -14,4 +14,4 @@ public:
 };
 }
 
-#endif // GRAM_POPULATION_REPRODUCER
+#endif

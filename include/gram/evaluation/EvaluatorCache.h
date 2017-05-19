@@ -22,4 +22,4 @@ private:
 };
 }
 
-#endif // GRAM_EVALUATOR_CACHE
+#endif

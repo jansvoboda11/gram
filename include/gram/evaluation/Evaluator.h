@@ -15,4 +15,4 @@ public:
 };
 }
 
-#endif // GRAM_LANGUAGE_EVALUATOR
+#endif

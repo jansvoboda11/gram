@@ -24,4 +24,4 @@ private:
 };
 }
 
-#endif // GRAM_SINGLE_THREAD_EVALUATION_DRIVER
+#endif

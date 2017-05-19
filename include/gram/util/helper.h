@@ -1,5 +1,5 @@
-#ifndef GRAM_UTIL_HELPER
-#define GRAM_UTIL_HELPER
+#ifndef GRAM_HELPER
+#define GRAM_HELPER
 
 #include <string>
 #include <vector>
@@ -15,4 +15,4 @@ std::vector<std::string> explode(std::string input, std::string delimiter);
 std::string left_trim(std::string input);
 }
 
-#endif // GRAM_UTIL_HELPER
+#endif

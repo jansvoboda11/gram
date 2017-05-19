@@ -1,5 +1,5 @@
-#ifndef GRAM_LANGUAGE_SYMBOL
-#define GRAM_LANGUAGE_SYMBOL
+#ifndef GRAM_SYMBOL
+#define GRAM_SYMBOL
 
 namespace gram {
 class Terminal;
@@ -18,4 +18,4 @@ public:
 };
 }
 
-#endif // GRAM_LANGUAGE_SYMBOL
+#endif

@@ -1,5 +1,5 @@
-#ifndef GRAM_INDIVIDUAL_PHENOTYPE
-#define GRAM_INDIVIDUAL_PHENOTYPE
+#ifndef GRAM_PHENOTYPE
+#define GRAM_PHENOTYPE
 
 #include <string>
 
@@ -10,4 +10,4 @@ namespace gram {
 using Phenotype = std::string;
 }
 
-#endif // GRAM_INDIVIDUAL_PHENOTYPE
+#endif

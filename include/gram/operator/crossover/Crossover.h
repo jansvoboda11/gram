@@ -1,5 +1,5 @@
-#ifndef GRAM_INDIVIDUAL_CROSSOVER
-#define GRAM_INDIVIDUAL_CROSSOVER
+#ifndef GRAM_CROSSOVER
+#define GRAM_CROSSOVER
 
 #include "gram/individual/Genotype.h"
 
@@ -13,4 +13,4 @@ public:
 };
 }
 
-#endif // GRAM_INDIVIDUAL_CROSSOVER
+#endif

@@ -25,4 +25,4 @@ private:
 };
 }
 
-#endif // GRAM_MULTI_THREAD_EVALUATION_DRIVER
+#endif

@@ -1,5 +1,5 @@
-#ifndef GRAM_INDIVIDUAL_MUTATION
-#define GRAM_INDIVIDUAL_MUTATION
+#ifndef GRAM_MUTATION
+#define GRAM_MUTATION
 
 #include "gram/individual/Genotype.h"
 
@@ -13,4 +13,4 @@ public:
 };
 }
 
-#endif // GRAM_INDIVIDUAL_MUTATION
+#endif

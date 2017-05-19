@@ -1,5 +1,5 @@
-#ifndef GRAM_MINIMAL_RANDOM_NUMBER_GENERATOR
-#define GRAM_MINIMAL_RANDOM_NUMBER_GENERATOR
+#ifndef GRAM_STD_NUMBER_GENERATOR
+#define GRAM_STD_NUMBER_GENERATOR
 
 #include <random>
 
@@ -61,4 +61,4 @@ template <typename T> unsigned long gram::StdNumberGenerator<T>::getMax() overri
   return max;
 }
 
-#endif // GRAM_MINIMAL_RANDOM_NUMBER_GENERATOR
+#endif

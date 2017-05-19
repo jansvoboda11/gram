@@ -1,5 +1,5 @@
-#ifndef GRAM_INDIVIDUAL_HIGH_FITNESS_COMPARER
-#define GRAM_INDIVIDUAL_HIGH_FITNESS_COMPARER
+#ifndef GRAM_HIGH_FITNESS_COMPARER
+#define GRAM_HIGH_FITNESS_COMPARER
 
 #include "gram/individual/Individual.h"
 #include "IndividualComparer.h"
@@ -14,4 +14,4 @@ public:
 };
 }
 
-#endif // GRAM_INDIVIDUAL_HIGH_FITNESS_COMPARER
+#endif

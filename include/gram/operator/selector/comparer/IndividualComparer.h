@@ -13,4 +13,4 @@ public:
 };
 }
 
-#endif // GRAM_INDIVIDUAL_COMPARER
+#endif

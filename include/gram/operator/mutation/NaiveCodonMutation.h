@@ -1,5 +1,5 @@
-#ifndef GRAM_INDIVIDUAL_CODON_MUTATION
-#define GRAM_INDIVIDUAL_CODON_MUTATION
+#ifndef GRAM_NAIVE_CODON_MUTATION
+#define GRAM_NAIVE_CODON_MUTATION
 
 #include <memory>
 
@@ -23,4 +23,4 @@ private:
 };
 }
 
-#endif // GRAM_INDIVIDUAL_CODON_MUTATION
+#endif

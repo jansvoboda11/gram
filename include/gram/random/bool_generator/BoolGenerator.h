@@ -1,5 +1,5 @@
-#ifndef GRAM_RANDOM_BOOL_GENERATOR
-#define GRAM_RANDOM_BOOL_GENERATOR
+#ifndef GRAM_BOOL_GENERATOR
+#define GRAM_BOOL_GENERATOR
 
 #include <memory>
 #include <vector>
@@ -23,4 +23,4 @@ private:
 };
 }
 
-#endif // GRAM_RANDOM_BOOL_GENERATOR
+#endif

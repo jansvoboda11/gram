@@ -1,5 +1,5 @@
-#ifndef GRAM_LANGUAGE_RULE_PARSER
-#define GRAM_LANGUAGE_RULE_PARSER
+#ifndef GRAM_RULE_PARSER
+#define GRAM_RULE_PARSER
 
 #include "gram/language/grammar/ContextFreeGrammar.h"
 
@@ -13,4 +13,4 @@ public:
 };
 }
 
-#endif // GRAM_LANGUAGE_RULE_PARSER
+#endif

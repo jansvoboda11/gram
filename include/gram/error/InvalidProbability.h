@@ -1,5 +1,5 @@
-#ifndef GRAM_ERROR_INVALID_PROBABILITY
-#define GRAM_ERROR_INVALID_PROBABILITY
+#ifndef GRAM_INVALID_PROBABILITY
+#define GRAM_INVALID_PROBABILITY
 
 #include <stdexcept>
 
@@ -13,4 +13,4 @@ public:
 };
 }
 
-#endif // GRAM_ERROR_INVALID_PROBABILITY
+#endif

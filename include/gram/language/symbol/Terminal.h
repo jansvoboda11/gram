@@ -1,5 +1,5 @@
-#ifndef GRAM_LANGUAGE_TERMINAL_SYMBOL
-#define GRAM_LANGUAGE_TERMINAL_SYMBOL
+#ifndef GRAM_TERMINAL
+#define GRAM_TERMINAL
 
 #include <string>
 
@@ -23,4 +23,4 @@ private:
 };
 }
 
-#endif // GRAM_LANGUAGE_TERMINAL_SYMBOL
+#endif

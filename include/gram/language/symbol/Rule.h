@@ -1,5 +1,5 @@
-#ifndef GRAM_LANGUAGE_RULE
-#define GRAM_LANGUAGE_RULE
+#ifndef GRAM_RULE
+#define GRAM_RULE
 
 #include <memory>
 #include <string>
@@ -25,4 +25,4 @@ private:
 };
 }
 
-#endif // GRAM_LANGUAGE_RULE
+#endif

@@ -1,5 +1,5 @@
-#ifndef GRAM_UTIL_LOGGER
-#define GRAM_UTIL_LOGGER
+#ifndef GRAM_LOGGER
+#define GRAM_LOGGER
 
 #include "gram/population/Population.h"
 
@@ -14,4 +14,4 @@ public:
 };
 }
 
-#endif // GRAM_UTIL_LOGGER
+#endif

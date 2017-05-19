@@ -1,5 +1,5 @@
-#ifndef GRAM_POPULATION_INDIVIDUALS
-#define GRAM_POPULATION_INDIVIDUALS
+#ifndef GRAM_INDIVIDUALS
+#define GRAM_INDIVIDUALS
 
 #include <memory>
 #include <vector>
@@ -34,4 +34,4 @@ private:
 };
 }
 
-#endif // GRAM_POPULATION_INDIVIDUALS
+#endif

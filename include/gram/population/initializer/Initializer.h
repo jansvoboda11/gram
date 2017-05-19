@@ -1,5 +1,5 @@
-#ifndef GRAM_POPULATION_INITIALIZER
-#define GRAM_POPULATION_INITIALIZER
+#ifndef GRAM_INITIALIZER
+#define GRAM_INITIALIZER
 
 #include "gram/population/Population.h"
 
@@ -13,4 +13,4 @@ public:
 };
 }
 
-#endif // GRAM_POPULATION_INITIALIZER
+#endif

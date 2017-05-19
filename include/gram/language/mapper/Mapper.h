@@ -1,5 +1,5 @@
-#ifndef GRAM_LANGUAGE_MAPPER
-#define GRAM_LANGUAGE_MAPPER
+#ifndef GRAM_MAPPER
+#define GRAM_MAPPER
 
 #include "gram/individual/Genotype.h"
 #include "gram/individual/Phenotype.h"
@@ -15,4 +15,4 @@ public:
 };
 }
 
-#endif // GRAM_LANGUAGE_MAPPER
+#endif

@@ -1,5 +1,5 @@
-#ifndef GRAM_UTIL_NULL_LOGGER
-#define GRAM_UTIL_NULL_LOGGER
+#ifndef GRAM_NULL_LOGGER
+#define GRAM_NULL_LOGGER
 
 #include "gram/population/Population.h"
 #include "gram/util/logger/Logger.h"
@@ -15,4 +15,4 @@ public:
 };
 }
 
-#endif // GRAM_UTIL_NULL_LOGGER
+#endif

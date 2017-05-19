@@ -1,5 +1,5 @@
-#ifndef GRAM_ERROR_INVALID_GRAMMAR
-#define GRAM_ERROR_INVALID_GRAMMAR
+#ifndef GRAM_INVALID_GRAMMAR
+#define GRAM_INVALID_GRAMMAR
 
 #include <stdexcept>
 
@@ -13,4 +13,4 @@ public:
 };
 }
 
-#endif // GRAM_ERROR_INVALID_GRAMMAR
+#endif

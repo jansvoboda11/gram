@@ -1,5 +1,5 @@
-#ifndef GRAM_EVOLUTION_EVOLUTION
-#define GRAM_EVOLUTION_EVOLUTION
+#ifndef GRAM_EVOLUTION
+#define GRAM_EVOLUTION
 
 #include <functional>
 #include <memory>
@@ -23,4 +23,4 @@ private:
 };
 }
 
-#endif // GRAM_EVOLUTION_EVOLUTION
+#endif

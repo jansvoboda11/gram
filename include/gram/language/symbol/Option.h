@@ -1,5 +1,5 @@
-#ifndef GRAM_LANGUAGE_OPTION
-#define GRAM_LANGUAGE_OPTION
+#ifndef GRAM_RULE_OPTION
+#define GRAM_RULE_OPTION
 
 #include <memory>
 #include <vector>
@@ -24,4 +24,4 @@ private:
 };
 }
 
-#endif // GRAM_LANGUAGE_OPTION
+#endif

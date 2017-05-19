@@ -1,5 +1,5 @@
-#ifndef GRAM_INDIVIDUAL_FITNESS
-#define GRAM_INDIVIDUAL_FITNESS
+#ifndef GRAM_FITNESS
+#define GRAM_FITNESS
 
 namespace gram {
 /**
@@ -8,4 +8,4 @@ namespace gram {
 using Fitness = double;
 }
 
-#endif // GRAM_INDIVIDUAL_FITNESS
+#endif

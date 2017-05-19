@@ -1,5 +1,5 @@
-#ifndef GRAM_LANGUAGE_BNF_RULE_PARSER
-#define GRAM_LANGUAGE_BNF_RULE_PARSER
+#ifndef GRAM_BNF_RULE_PARSER
+#define GRAM_BNF_RULE_PARSER
 
 #include <memory>
 #include <string>
@@ -26,4 +26,4 @@ private:
 };
 }
 
-#endif // GRAM_LANGUAGE_BNF_RULE_PARSER
+#endif
