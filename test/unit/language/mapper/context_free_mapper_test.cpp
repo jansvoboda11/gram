@@ -26,12 +26,12 @@ TEST_CASE("context-free mapper maps a terminal", "[context-free_mapper]") {
   option->addTerminal(move(terminal));
   rule->addOption(move(option));
 
-  auto grammar = make_shared<ContextFreeGrammar>();
+  auto grammar = make_unique<ContextFreeGrammar>();
   grammar->addRule(move(rule));
 
   Genotype genotype({0});
 
-  ContextFreeMapper mapper(grammar, 1);
+  ContextFreeMapper mapper(move(grammar), 1);
 
   REQUIRE(mapper.map(genotype) == Phenotype("terminal"));
 }
@@ -55,13 +55,13 @@ TEST_CASE("context-free mapper maps a non-terminal", "[context-free_mapper]") {
   rule1->addOption(move(option1));
   rule2->addOption(move(option2));
 
-  auto grammar = make_shared<ContextFreeGrammar>();
+  auto grammar = make_unique<ContextFreeGrammar>();
   grammar->addRule(move(rule1));
   grammar->addRule(move(rule2));
 
   Genotype genotype{0};
 
-  ContextFreeMapper mapper(grammar, 1);
+  ContextFreeMapper mapper(move(grammar), 1);
 
   REQUIRE(mapper.map(genotype) == Phenotype("terminal"));
 }
@@ -99,24 +99,24 @@ TEST_CASE("context-free mapper handles more complex grammar", "[context-free-map
   number->addOption(move(numberOption1));
   number->addOption(move(numberOption2));
 
-  auto grammar = make_shared<ContextFreeGrammar>();
+  auto grammar = make_unique<ContextFreeGrammar>();
   grammar->addRule(move(number));
   grammar->addRule(move(digit));
 
   SECTION("context-free mapper maps a recursive grammar") {
-    ContextFreeMapper mapper(grammar, 1);
+    ContextFreeMapper mapper(move(grammar), 1);
 
     REQUIRE(mapper.map(Genotype({0, 0, 1, 1})) == Phenotype("01"));
   }
 
   SECTION("context-free mapper wraps the genotype") {
-    ContextFreeMapper mapper(grammar, 1);
+    ContextFreeMapper mapper(move(grammar), 1);
 
     REQUIRE(mapper.map(Genotype({0, 1, 1})) == Phenotype("10"));
   }
 
   SECTION("context-free mapper respects wrapping limit") {
-    ContextFreeMapper mapper(grammar, 1);
+    ContextFreeMapper mapper(move(grammar), 1);
 
     REQUIRE_THROWS_AS(mapper.map(Genotype({0, 0, 0})), WrappingLimitExceeded);
   }

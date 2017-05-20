@@ -11,8 +11,8 @@
 using namespace gram;
 using namespace std;
 
-ContextFreeMapper::ContextFreeMapper(shared_ptr<ContextFreeGrammar> grammar, unsigned long wrappingLimit)
-    : grammar(grammar), wrappingLimit(wrappingLimit) {
+ContextFreeMapper::ContextFreeMapper(unique_ptr<ContextFreeGrammar> grammar, unsigned long wrappingLimit)
+    : grammar(move(grammar)), wrappingLimit(wrappingLimit) {
   symbols.reserve(512);
 }
 

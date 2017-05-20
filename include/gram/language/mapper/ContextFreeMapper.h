@@ -19,11 +19,11 @@ namespace gram {
  */
 class ContextFreeMapper : public Mapper {
 public:
-  ContextFreeMapper(std::shared_ptr<ContextFreeGrammar> grammar, unsigned long wrappingLimit);
+  ContextFreeMapper(std::unique_ptr<ContextFreeGrammar> grammar, unsigned long wrappingLimit);
   Phenotype map(const Genotype& genotype) override;
 
 private:
-  std::shared_ptr<ContextFreeGrammar> grammar;
+  std::unique_ptr<ContextFreeGrammar> grammar;
   unsigned long wrappingLimit;
   std::vector<Symbol*> symbols; // does not hold any state
   void pushOption(Option& option);
