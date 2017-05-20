@@ -16,7 +16,6 @@ namespace gram {
  */
 class Individual {
 public:
-  Individual(const Individual& individual);
   Individual(Genotype genotype);
   Individual mateWith(const Individual& partner, Crossover& crossover) const;
   void mutate(Mutation& mutation);
