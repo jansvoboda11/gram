@@ -8,7 +8,7 @@
 using namespace gram;
 using namespace std;
 
-TEST_CASE("Bernoulli step generator generates statistically good steps", "[bernoulli_step_generator") {
+TEST_CASE("Bernoulli step generator generates statistically good steps", "[bernoulli_step_generator]") {
   unsigned long testSize = 1000000;
 
   auto numberGenerator = make_unique<XorShiftNumberGenerator>();
