@@ -20,13 +20,13 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-trusty-3.9
+            - llvm-toolchain-trusty-4.0
           packages:
-            - clang-3.9
+            - clang-4.0
             - libc++-dev
       env:
-        - C_COMPILER=clang-3.9
-        - CXX_COMPILER=clang++-3.9
+        - C_COMPILER=clang-4.0
+        - CXX_COMPILER=clang++-4.0
         - CXX_FLAGS="-stdlib=libc++"
 script:
   - mkdir build
