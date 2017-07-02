@@ -20,7 +20,7 @@
 #include "gram/population/initializer/RandomInitializer.h"
 #include "gram/population/reproducer/PassionateReproducer.h"
 #include "gram/operator/selector/TournamentSelector.h"
-#include "gram/random/number_generator/XorShiftNumberGenerator.h"
+#include "gram/random/number_generator/StdNumberGenerator.h"
 #include "gram/util/Probability.h"
 #include "gram/util/logger/NullLogger.h"
 
@@ -31,11 +31,11 @@ using namespace gram;
 using namespace std;
 
 TEST_CASE("evolution_test") {
-  auto numberGenerator1 = make_unique<XorShiftNumberGenerator>();
-  auto numberGenerator2 = make_unique<XorShiftNumberGenerator>();
-  auto numberGenerator3 = make_unique<XorShiftNumberGenerator>();
-  auto numberGenerator4 = make_unique<XorShiftNumberGenerator>();
-  auto numberGenerator5 = make_unique<XorShiftNumberGenerator>();
+  auto numberGenerator1 = make_unique<StdNumberGenerator<mt19937>>();
+  auto numberGenerator2 = make_unique<StdNumberGenerator<mt19937>>();
+  auto numberGenerator3 = make_unique<StdNumberGenerator<mt19937>>();
+  auto numberGenerator4 = make_unique<StdNumberGenerator<mt19937>>();
+  auto numberGenerator5 = make_unique<StdNumberGenerator<mt19937>>();
   auto stepGenerator = make_unique<BernoulliStepGenerator>(Probability(0.1), move(numberGenerator5));
 
   auto comparer = make_unique<LowFitnessComparer>();
