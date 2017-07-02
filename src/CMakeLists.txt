@@ -37,9 +37,9 @@ set(SOURCE_FILES
         population/Population.cpp
         random/bool_generator/BoolGenerator.cpp
         random/number_generator/NumberGenerator.cpp
+        random/Probability.cpp
         util/logger/NullLogger.cpp
         util/helper.cpp
-        util/Probability.cpp
         Evolution.cpp
         ../include/gram/error/FitnessNotCalculated.h
         ../include/gram/error/InvalidGrammar.h
@@ -85,10 +85,10 @@ set(SOURCE_FILES
         ../include/gram/random/bool_generator/BoolGenerator.h
         ../include/gram/random/number_generator/StdNumberGenerator.h
         ../include/gram/random/number_generator/NumberGenerator.h
+        ../include/gram/random/Probability.h
         ../include/gram/util/logger/Logger.h
         ../include/gram/util/logger/NullLogger.h
         ../include/gram/util/helper.h
-        ../include/gram/util/Probability.h
         ../include/gram/Evolution.h
         )
 

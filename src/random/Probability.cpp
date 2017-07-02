@@ -1,4 +1,4 @@
-#include "gram/util/Probability.h"
+#include "gram/random/Probability.h"
 
 #include "gram/error/InvalidProbability.h"
 

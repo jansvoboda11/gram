@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "gram/random/number_generator/NumberGenerator.h"
-#include "gram/util/Probability.h"
+#include "gram/random/Probability.h"
 
 namespace gram {
 /**

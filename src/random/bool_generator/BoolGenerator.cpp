@@ -3,7 +3,7 @@
 #include <algorithm>
 
 #include "gram/random/number_generator/NumberGenerator.h"
-#include "gram/util/Probability.h"
+#include "gram/random/Probability.h"
 
 using namespace gram;
 using namespace std;

@@ -21,7 +21,7 @@
 #include "gram/population/reproducer/PassionateReproducer.h"
 #include "gram/operator/selector/TournamentSelector.h"
 #include "gram/random/number_generator/StdNumberGenerator.h"
-#include "gram/util/Probability.h"
+#include "gram/random/Probability.h"
 #include "gram/util/logger/NullLogger.h"
 
 #include "StringDiffEvaluator.h"
