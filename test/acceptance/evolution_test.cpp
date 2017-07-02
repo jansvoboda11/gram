@@ -12,7 +12,7 @@
 #include "gram/operator/selector/comparer/LowFitnessComparer.h"
 #include "gram/operator/crossover/OnePointCrossover.h"
 #include "gram/operator/mutation/BernoulliStepGenerator.h"
-#include "gram/operator/mutation/FastCodonMutation.h"
+#include "gram/operator/mutation/CodonMutation.h"
 #include "gram/language/grammar/ContextFreeGrammar.h"
 #include "gram/language/mapper/ContextFreeMapper.h"
 #include "gram/language/parser/BnfRuleParser.h"
@@ -40,7 +40,7 @@ TEST_CASE("evolution_test") {
 
   auto comparer = make_unique<LowFitnessComparer>();
   auto selector = make_unique<TournamentSelector>(20, move(numberGenerator1), move(comparer));
-  auto mutation = make_unique<FastCodonMutation>(move(stepGenerator), move(numberGenerator2));
+  auto mutation = make_unique<CodonMutation>(move(stepGenerator), move(numberGenerator2));
   auto crossover = make_unique<OnePointCrossover>(move(numberGenerator3));
   auto reproducer = make_unique<PassionateReproducer>(move(selector), move(crossover), move(mutation));
 

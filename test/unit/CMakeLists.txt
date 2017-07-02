@@ -16,8 +16,7 @@ add_executable(utest
         language/symbol/terminal_test.cpp
         operator/crossover/one_point_crossover_test.cpp
         operator/mutation/bernoulli_step_generator_test.cpp
-        operator/mutation/fast_codon_mutation_test.cpp
-        operator/mutation/naive_codon_mutation_test.cpp
+        operator/mutation/codon_mutation_test.cpp
         operator/selector/comparer/high_fitness_comparer_test.cpp
         operator/selector/comparer/low_fitness_comparer_test.cpp
         operator/selector/tournament_selector_test.cpp

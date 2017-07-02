@@ -27,8 +27,7 @@ set(SOURCE_FILES
         language/mapper/ContextFreeMapper.cpp
         operator/crossover/OnePointCrossover.cpp
         operator/mutation/BernoulliStepGenerator.cpp
-        operator/mutation/FastCodonMutation.cpp
-        operator/mutation/NaiveCodonMutation.cpp
+        operator/mutation/CodonMutation.cpp
         operator/selector/comparer/HighFitnessComparer.cpp
         operator/selector/comparer/LowFitnessComparer.cpp
         operator/selector/TournamentSelector.cpp
@@ -57,9 +56,8 @@ set(SOURCE_FILES
         ../include/gram/operator/crossover/Crossover.h
         ../include/gram/operator/crossover/OnePointCrossover.h
         ../include/gram/operator/mutation/BernoulliStepGenerator.h
-        ../include/gram/operator/mutation/FastCodonMutation.h
+        ../include/gram/operator/mutation/CodonMutation.h
         ../include/gram/operator/mutation/Mutation.h
-        ../include/gram/operator/mutation/NaiveCodonMutation.h
         ../include/gram/operator/selector/comparer/HighFitnessComparer.h
         ../include/gram/operator/selector/comparer/IndividualComparer.h
         ../include/gram/operator/selector/comparer/LowFitnessComparer.h
