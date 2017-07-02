@@ -9,11 +9,11 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - gcc-6
-            - g++-6
+            - gcc-7
+            - g++-7
       env:
-        - C_COMPILER=gcc-6
-        - CXX_COMPILER=g++-6
+        - C_COMPILER=gcc-7
+        - CXX_COMPILER=g++-7
         - CXX_FLAGS=""
     - compiler: clang
       addons:
