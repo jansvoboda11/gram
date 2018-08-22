@@ -1,4 +1,4 @@
-include_directories(../lib/catch/src/catch/single_include)
+include_directories(../lib/catch/src/catch/single_include/catch2)
 include_directories(../lib/fakeit/src/fakeit/single_header/catch)
 include_directories(../../include)
 
