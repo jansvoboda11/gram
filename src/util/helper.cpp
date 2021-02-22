@@ -1,9 +1,8 @@
 #include "gram/util/helper.h"
 
-#include <ctype.h>
-
 #include <algorithm>
-#include <functional>
+
+#include <cctype>
 
 using namespace std;
 
@@ -26,7 +25,9 @@ vector<string> gram::explode(string input, string delimiter) {
 }
 
 string gram::left_trim(string input) {
-  input.erase(input.begin(), find_if(input.begin(), input.end(), not1(ptr_fun<int, int>(isspace))));
+  input.erase(input.begin(), find_if(input.begin(), input.end(), [](char symbol) {
+    return !isspace(symbol);
+  }));
 
   return input;
 }
