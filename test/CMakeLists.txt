@@ -5,7 +5,7 @@ ExternalProject_Add(catch
         PREFIX ${gram_SOURCE_DIR}/test/lib/catch
         GIT_REPOSITORY https://github.com/catchorg/Catch2
         GIT_TAG v2.13.4
-        UPDATE_COMMAND ${GIT_EXECUTABLE} pull
+        UPDATE_COMMAND ""
         CONFIGURE_COMMAND ""
         BUILD_COMMAND ""
         INSTALL_COMMAND ""
