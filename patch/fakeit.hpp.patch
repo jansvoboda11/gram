@@ -1,0 +1,42 @@
+From 1b7f1bf7d9d940af2060739764322348deb53033 Mon Sep 17 00:00:00 2001
+From: Dmitry Makarov <dmitry.makarov@mionex.fi>
+Date: Sat, 14 Dec 2019 19:28:05 +0200
+Subject: [PATCH] Catch 2.11.0 support
+
+---
+ config/catch/CatchFakeit.hpp   | 3 ++-
+ single_header/catch/fakeit.hpp | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/config/catch/CatchFakeit.hpp b/config/catch/CatchFakeit.hpp
+index 2a6b625..38e04c9 100644
+--- a/config/catch/CatchFakeit.hpp
++++ b/config/catch/CatchFakeit.hpp
+@@ -92,9 +92,10 @@ namespace fakeit {
+                 Catch::ResultWas::OfType resultWas = Catch::ResultWas::OfType::ExpressionFailed ){
+             Catch::AssertionHandler catchAssertionHandler( vetificationType, sourceLineInfo, failingExpression, Catch::ResultDisposition::Normal );
+             INTERNAL_CATCH_TRY { \
++                CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \
+                 CATCH_INTERNAL_SUPPRESS_PARENTHESES_WARNINGS \
+                 catchAssertionHandler.handleMessage(resultWas, fomattedMessage); \
+-                CATCH_INTERNAL_UNSUPPRESS_PARENTHESES_WARNINGS \
++                CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION \
+             } INTERNAL_CATCH_CATCH(catchAssertionHandler) { \
+                 INTERNAL_CATCH_REACT(catchAssertionHandler) \
+             }
+diff --git a/single_header/catch/fakeit.hpp b/single_header/catch/fakeit.hpp
+index a03961a..ff857b9 100644
+--- a/single_header/catch/fakeit.hpp
++++ b/single_header/catch/fakeit.hpp
+@@ -1220,9 +1220,10 @@ namespace fakeit {
+                 Catch::ResultWas::OfType resultWas = Catch::ResultWas::OfType::ExpressionFailed ){
+             Catch::AssertionHandler catchAssertionHandler( vetificationType, sourceLineInfo, failingExpression, Catch::ResultDisposition::Normal );
+             INTERNAL_CATCH_TRY { \
++                CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \
+                 CATCH_INTERNAL_SUPPRESS_PARENTHESES_WARNINGS \
+                 catchAssertionHandler.handleMessage(resultWas, fomattedMessage); \
+-                CATCH_INTERNAL_UNSUPPRESS_PARENTHESES_WARNINGS \
++                CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION \
+             } INTERNAL_CATCH_CATCH(catchAssertionHandler) { \
+                 INTERNAL_CATCH_REACT(catchAssertionHandler) \
+             }
