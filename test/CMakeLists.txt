@@ -14,8 +14,8 @@ ExternalProject_Add(catch
 ExternalProject_Add(fakeit
         PREFIX ${gram_SOURCE_DIR}/test/lib/fakeit
         GIT_REPOSITORY https://github.com/eranpeer/FakeIt
-        GIT_TAG master
-        UPDATE_COMMAND ${GIT_EXECUTABLE} pull
+        GIT_TAG 2.0.5
+        UPDATE_COMMAND ""
         CONFIGURE_COMMAND ""
         PATCH_COMMAND ${GIT_EXECUTABLE} apply ${gram_SOURCE_DIR}/patch/fakeit.hpp.patch || true
         BUILD_COMMAND ""

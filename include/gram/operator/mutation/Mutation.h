@@ -9,6 +9,7 @@ namespace gram {
  */
 class Mutation {
 public:
+  virtual ~Mutation() = default;
   virtual Genotype apply(Genotype genotype) = 0;
 };
 }

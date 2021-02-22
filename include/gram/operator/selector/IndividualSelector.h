@@ -13,6 +13,7 @@ namespace gram {
  */
 class IndividualSelector {
 public:
+  virtual ~IndividualSelector() = default;
   virtual Individual& select(Individuals& individuals) = 0;
 };
 }
