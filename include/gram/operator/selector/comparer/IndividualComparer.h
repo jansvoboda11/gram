@@ -9,6 +9,7 @@ namespace gram {
  */
 class IndividualComparer {
 public:
+  virtual ~IndividualComparer() = default;
   virtual bool isFirstFitter(const Individual& first, const Individual& second) const = 0;
 };
 }

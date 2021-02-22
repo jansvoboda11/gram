@@ -9,6 +9,7 @@ namespace gram {
  */
 class RuleParser {
 public:
+  virtual ~RuleParser() = default;
   virtual ContextFreeGrammar parse(std::string input) const = 0;
 };
 }

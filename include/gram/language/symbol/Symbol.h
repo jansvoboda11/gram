@@ -9,6 +9,7 @@ class NonTerminal;
  */
 class Symbol {
 public:
+  virtual ~Symbol() = default;
   const Terminal& toTerminal() const;
   const NonTerminal& toNonTerminal() const;
   virtual bool isTerminal() const = 0;
