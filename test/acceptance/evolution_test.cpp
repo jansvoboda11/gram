@@ -58,7 +58,7 @@ TEST_CASE("evolution_test") {
 
   auto evaluator = make_unique<StringDiffEvaluator>("gram");
   auto evaluatorCache = make_unique<EvaluatorCache>(move(evaluator));
-  auto evaluationDriver = make_unique<SingleThreadDriver>(move(mapper1), move(evaluatorCache));
+  auto evaluationDriver = make_unique<SingleThreadDriver>(move(mapper1), move(evaluatorCache), true);
   auto logger = make_unique<NullLogger>();
 
   Evolution evolution(move(evaluationDriver), move(logger));

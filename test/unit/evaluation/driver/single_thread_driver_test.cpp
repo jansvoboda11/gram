@@ -38,7 +38,7 @@ TEST_CASE("single thread driver evaluates all individuals in a population", "[si
 
   Individuals individuals({individual1, individual2, individual3});
 
-  SingleThreadDriver driver(move(mapper), move(evaluator));
+  SingleThreadDriver driver(move(mapper), move(evaluator), true);
 
   driver.evaluate(individuals);
 
